@@ -92,6 +92,7 @@ Document can be found [here](URL_for_link).
   5. clone 'flaminGo-backEnd' repo to your local machine in same folder for this repo
   6. run ```npm install``` in the flaminGo-backEnd 'root' directory
   7. run ```npm start``` in the flaminGo-backEnd 'root' directory
+  8. find the site on ***localhost:7777***
 
 
 _Have a great day!_
