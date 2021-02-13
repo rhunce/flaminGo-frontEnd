@@ -18,7 +18,6 @@ class App extends React.Component {
       <div>
         HrNYC34 PROJECT
         <h1> {this.props.projectName} </h1>
-        <TextAreaForm />
       </div>
     );
   }
