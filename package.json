@@ -7,7 +7,8 @@
     "test": "jest",
     "build-prod": "webpack --mode production",
     "build-dev": "webpack -w --mode development",
-    "sass": "sass --watch client/dist/styles/index.scss:client/dist/styles/index.css"
+    "sass": "sass --watch client/dist/styles/index.scss:client/dist/styles/index.css",
+    "start": "nodemon server/index.js"
   },
   "keywords": [],
   "author": "Claire Sujin Kim",
@@ -31,6 +32,7 @@
     "path": "^0.12.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "sass": "^1.32.7"
+    "sass": "^1.32.7",
+    "styled-components": "^5.2.1"
   }
 }
