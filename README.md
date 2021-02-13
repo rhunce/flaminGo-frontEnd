@@ -86,9 +86,12 @@ Document can be found [here](URL_for_link).
 
 ## Installation Guidelines
   1. clone this repo to your local machine
-  2. run ```npm install``` in the 'root' directory
-  3. run ```npm run sass```
-  4. find the site on ***localhost:7777***
+  2. run ```npm install``` in this 'root' directory
+  3. run ```npm run build-dev```in this 'root' directory
+  4. run ```npm run sass```
+  5. clone 'flaminGo-backEnd' repo to your local machine in same folder for this repo
+  6. run ```npm install``` in the flaminGo-backEnd 'root' directory
+  7. run ```npm start``` in the flaminGo-backEnd 'root' directory
 
 
 _Have a great day!_
