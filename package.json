@@ -2,7 +2,7 @@
   "name": "flaminGo",
   "version": "1.0.0",
   "description": "Property Management Solution",
-  "main": "../flaminGoBackEnd/server/index.js",
+  "main": "../flaminGo-backEnd/server/index.js",
   "scripts": {
     "test": "jest",
     "build-prod": "webpack --mode production",
