@@ -1,10 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import Landing from './landingPage/MainLanding';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      color: 'berry',
+    };
   }
 
   componentDidMount() {
@@ -15,10 +18,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        HrNYC34 PROJECT
-        <h1> {this.props.projectName} </h1>
-      </div>
+      <main className='main'>
+        <Landing />
+      </main>
     );
   }
 }
