@@ -1,5 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import TextAreaForm from './styledElements/TextAreaForm.jsx'
+import ListMaster from './GlobalComponents/ListMaster.jsx'
+import MainHeader from './GlobalComponents/Header.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -16,9 +19,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        HrNYC34 PROJECT
-        <h1> {this.props.projectName} </h1>
-        <TextAreaForm />
+        <MainHeader />
+        <ListMaster type="room"/>
       </div>
     );
   }

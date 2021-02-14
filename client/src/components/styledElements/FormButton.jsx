@@ -4,8 +4,8 @@ import { colors, font } from './styleGuid';
 
 const Button = styled.button`
   font-family: ${font.mainFont};
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 400;
   color: ${colors.white};
   background-color: ${(props) =>
     props.color ? props.color : colors.clementine};
@@ -13,6 +13,7 @@ const Button = styled.button`
   border-radius: 20px;
   width: 160px;
   height: 40px;
+  outline: none;
   margin: ${(props) => (props.margin ? props.margin : 0)};
 
   &:active {
