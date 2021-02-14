@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
+import EmployeeContainer from './employeeModal/EmployeeContainer';
 
 // flex container
 const BtnContainer = styled.div`
@@ -42,7 +43,7 @@ const ManagementLanding = ({ back }) => {
       <BackArrow margin={'40px 40px'} onClick={clickBack} />
       {paths.viewEmployees ? (
         // place holder for employee view component
-        <div>place holder for employee view component</div>
+        <EmployeeContainer />
       ) : paths.viewRooms ? (
         // place holder for room view component
         <div>place holder for room view component</div>
