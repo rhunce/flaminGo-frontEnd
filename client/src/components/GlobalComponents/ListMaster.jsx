@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FormButton from "../styledElements/FormButton.jsx";
 import HalfRoundDiv from "../styledElements/HalfRoundDiv.jsx";
 import ListEntry from "../GlobalComponents/ListEntry.jsx";
 import { roomsData } from "../../SampleData/Rooms.js";
 
-const ListMaster = ({ type }) => {
+const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
+
+  useEffect(() => {
+    handleBackChange("black");
+    handleBackgroundChange("listBgContainer");
+  } )
+
   if (type === "room") {
     console.log(roomsData);
   }
@@ -61,9 +67,6 @@ const ListMaster = ({ type }) => {
 
   return (
     <div id="listContainer">
-      <div id="backButton">
-        <img src="/chevron-left.svg" height="35px"></img>
-      </div>
       <div className="listHeader">
         <div className="listHeaderButtons">
           <div id="dropDown" className={dropDownStatus}>
@@ -87,7 +90,7 @@ const ListMaster = ({ type }) => {
         </div>
       </div>
       <HalfRoundDiv
-        gradient={true}
+        gradients={true}
         margin="0 30px 0 30px"
         width="100vh - 60px"
         height="calc(100vh - 260px)"
