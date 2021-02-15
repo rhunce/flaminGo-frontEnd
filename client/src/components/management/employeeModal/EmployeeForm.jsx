@@ -1,36 +1,49 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { colors } from '../../styledElements/styleGuid';
 import ModalTitle from '../../styledElements/ModalTitle';
 import FormRow from './FormRow';
 import useEmployeeInfo from './useEmployeeData';
 import FormButton from '../../styledElements/FormButton';
-
-const fields = [
-  { field: 'firstName', name: 'First Name' },
-  { field: 'lastName', name: 'Last Name' },
-  { field: 'address1', name: 'Address 1' },
-  { field: 'address2', name: 'Address 2' },
-  { field: 'phone', name: 'Phone', placeholder: '000-000-0000' },
-  { field: 'email', name: 'Email', placeholder: 'example@example.com' },
-  { field: 'wage', name: 'Hourly Wage', placeholder: '$' },
-  { field: 'startDate', name: 'Start Date', placeholder: 'YYYY-MM-DD' },
-];
+import PositionDropDown from './PositionDropDown';
+import { fields, mandatory } from './employeeFormConstants';
+import axios from 'axios';
 
 const EmployeeForm = ({ employee, newEmployee }) => {
   const [employeeInfo, setEmployeeInfo, editEmployeeInfo] = useEmployeeInfo(
     employee
   );
   const [editMode, setEditMode] = useState(employeeInfo ? false : true);
+  const [invalidEntry, setInvalidEntry] = useState(false);
 
-  const saveNewEmployee = () => {
-    setEditMode(false);
-    console.log('test', employeeInfo);
+  const dataChecker = (employeeInfo) => {
+    for (const row of mandatory) {
+      const field = row.field;
+      if (!employeeInfo.hasOwnProperty(field)) return false;
+    }
+    return true;
+  };
+
+  const saveEmployee = () => {
+    setInvalidEntry(false);
+    if (dataChecker(employeeInfo)) {
+      employeeInfo.country = 'Bermuda';
+      employeeInfo.isActive = true;
+
+      if (newEmployee) {
+        // axios.post(`/employees`, employeeInfo).then(() => setEditMode(true));
+      } else {
+        // axios.put(`/employees/${employee._id}`).then(() => setEditMode(true));;
+      }
+      console.log('this will be posted', employeeInfo);
+      setEditMode(false);
+    } else {
+      setInvalidEntry(true);
+    }
   };
 
   return (
     <div>
-      <ModalTitle>
+      <ModalTitle margin='0'>
         {employeeInfo && (employeeInfo.firstName || employeeInfo.lastName)
           ? `${employeeInfo.firstName ? employeeInfo.firstName : ''} ${
               employeeInfo.lastName ? employeeInfo.lastName : ''
@@ -50,16 +63,29 @@ const EmployeeForm = ({ employee, newEmployee }) => {
           />
         );
       })}
+      <PositionDropDown
+        onChange={editEmployeeInfo}
+        employeeInfo={employeeInfo}
+        editMode={editMode}
+      />
       {editMode ? (
         <div>
-          <FormButton onClick={saveNewEmployee}>Save</FormButton>
-          <FormButton onClick={() => setEmployeeInfo(employee)}>
+          {invalidEntry ? <div>Please Check Your Entries</div> : null}
+          <FormButton margin={'10px'} onClick={saveEmployee}>
+            Save
+          </FormButton>
+          <FormButton
+            margin={'10px'}
+            backgroundColor='berry'
+            onClick={() => setEmployeeInfo(employee)}
+          >
             Cancel
           </FormButton>
         </div>
       ) : (
         <FormButton
-          backgroundColor={colors.berry}
+          margin={'10px'}
+          backgroundColor='berry'
           onClick={(e) => {
             e.preventDefault();
             setEditMode(true);
