@@ -30,7 +30,9 @@ const FormRow = ({
         name={name}
         defaultValue={defaultValue}
         onChange={onChange}
-        placeholder={placeholder}
+        placeholder={editMode && placeholder}
+        border={!editMode && 'none'}
+        disabled={!editMode}
       />
     </FlexRow>
   );

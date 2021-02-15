@@ -39,6 +39,7 @@ const InputTypeText = ({
   maxlength,
   minlength,
   id,
+  border,
 }) => (
   <FormInput
     id={id}
@@ -56,6 +57,7 @@ const InputTypeText = ({
     value={value}
     defaultValue={defaultValue}
     width={width}
+    border={border}
   />
 );
 export default InputTypeText;
