@@ -40,6 +40,7 @@ const InputTypeText = ({
   minlength,
   id,
   border,
+  type = 'text',
 }) => (
   <FormInput
     id={id}
@@ -47,7 +48,7 @@ const InputTypeText = ({
     maxlength={maxlength}
     placeholder={placeholder}
     name={name}
-    type='text'
+    type={type}
     margin={margin}
     onChange={onChange}
     disabled={disabled}
