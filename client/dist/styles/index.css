@@ -108,5 +108,46 @@
   float: right;
 }
 
+/*Dropdown Test*/
+
+.list1 {
+  display: inline-block;
+}
+
+.list1 .anchor {
+  position: relative;
+}
+
+
+.list1 ul.items {
+  padding: 2px;
+  display: none;
+  margin: 0;
+  background-color: #FF8B03;
+  border-top: none;
+  position: absolute;
+  width: 140px;
+  border-radius: 0 20px 0 20px;
+  padding: 10px;
+}
+
+.list1 ul.items li {
+  list-style: none;
+  color: white;
+  font-size: 14px;
+
+}
+
+
+.list1.visible .items {
+  display: block;
+}
+
+input[type=checkbox]:checked label {
+  color: #f3f3f3;
+  background-color:#FF2063;
+
+  }
+
 
 /*# sourceMappingURL=index.css.map */

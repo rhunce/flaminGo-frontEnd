@@ -63,7 +63,7 @@ exports.roomsData = [
     "_id": "507c7f79bcf86cd7994f6c0e",
     "roomNumber": "112",
     "floorNumber": 1,
-    "roomType": "Queen",
+    "roomType": "Single Queen",
     "amenities": [
       "Non-Smoking",
       "Pool Side",
@@ -93,7 +93,34 @@ exports.roomsData = [
     "_id": "507c7f79bcf86cd7994f6c0e",
     "roomNumber": "113",
     "floorNumber": 1,
-    "roomType": "Double Queen",
+    "roomType": "Single King",
+    "amenities": [
+      "Non-Smoking",
+      "Pool Side",
+      "Mini-Fridge"
+    ],
+    "isClean":true,
+    "isOccupied": false,
+    "currentGuests": [
+    ],
+    "tasks": [
+      {
+        "_id":"5febcfb988e5d76e417427c6",
+        "taskTitle": "Daily cleaning",
+        "department":"Housekeeping"
+      },
+      {
+        "_id":"5febcfc488e5d76e417427c7",
+        "taskTitle": "Shower needs new caulk",
+        "department":"Maintenance"
+      },
+    ]
+  },
+  {
+    "_id": "507c7f79bcf86cd7994f6c0e",
+    "roomNumber": "114",
+    "floorNumber": 1,
+    "roomType": "Suite",
     "amenities": [
       "Non-Smoking",
       "Pool Side",
