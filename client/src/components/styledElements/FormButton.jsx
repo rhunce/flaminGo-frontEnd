@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, font } from './styleGuid';
+import { colors, fonts } from './styleGuid';
 
 const Button = styled.button`
-  font-family: ${font.mainFont};
   font-size: 14px;
-  font-weight: 400;
+  font-family: ${fonts.mainFont};
+  font-weight: ${fonts.plain};
   color: ${colors.white};
   background-color: ${(props) =>
     props.color ? props.color : colors.clementine};
   border: none;
   border-radius: 20px;
-  width: 160px;
+  width: ${(props) => (props.width ? props.width : '160px')};
   height: 40px;
   outline: none;
   margin: ${(props) => (props.margin ? props.margin : 0)};
@@ -21,25 +21,37 @@ const Button = styled.button`
       props.color ? colors.grape : colors.carrot};
   }
 `;
-
+/**
+ * This is for all the smaller buttons
+ * @param {Function} onClick - the onClick functionality
+ * @param {String} backgroundColor - set the background color - default is clementine
+ * @param {String} margin - set the margins for the element - default is 0
+ * this is using margin shorthand property https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#margin_and_padding_properties
+ * @param {Boolean} disabled - set the element to disabled - default is false
+ * @param {String} className - add class or list of classes to element
+ * @param {String} id - add an id to the element
+ * @param {String} width - change the width of the button - default is 160px and should work for the majority of buttons
+ */
 const FormButton = ({
   children,
   onClick,
-  color,
+  backgroundColor,
   margin,
   type,
   disabled = false,
   className,
   id,
+  width,
 }) => (
   <Button
     id={id}
     type={type}
     margin={margin}
-    color={color}
+    color={backgroundColor}
     onClick={onClick}
     disabled={disabled}
     className={className}
+    width={width}
   >
     {children}
   </Button>
