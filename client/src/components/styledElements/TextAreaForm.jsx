@@ -13,7 +13,6 @@ const FormInput = styled.textarea`
   padding: 15px 20px 15px 20px;
   width: ${(props) => props.width && props.width};
   resize: none;
-  overflow: scroll;
 `;
 
 /**

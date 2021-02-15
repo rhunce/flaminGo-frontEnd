@@ -23,5 +23,11 @@ h1 {
 
 Body {
   font-family: $mainFont;
-  // padding: $left-padding;
+  height: 100%;
+}
+
+.main {
+  background-image: $carrotToBerry;
+  height: 98vh;
+  width: 100%;
 }
