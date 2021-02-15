@@ -7,8 +7,39 @@ Body {
 }
 
 .addTask {
-  display: flex;
-  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.formTitle {
+  grid-area: 1/2/2/8;
+}
+
+.roomInputTitle, .roomInput {
+  grid-area: 2/9/3/12;
+}
+
+.taskInputTitle, .taskInput {
+  grid-area: 2/2/3/8;
+}
+
+.div3 {
+  grid-area: 10/2/12/5;
+}
+
+.submitButton {
+  grid-area: 11/9/12/12;
+}
+
+.radioTitle {
+  grid-area: 9/2/10/5;
+}
+
+.textArea {
+  grid-area: 4/2/8/12;
 }
 
 /*# sourceMappingURL=index.css.map */
