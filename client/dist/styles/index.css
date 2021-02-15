@@ -46,8 +46,9 @@ Body {
   grid-area: 19/2/20/7;
 }
 
-.div9 {
-  grid-area: 20/2/23/7;
+.ticketType {
+  grid-area: 20/2/24/7;
+  display: grid;
 }
 
 .submitButton {
