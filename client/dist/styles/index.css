@@ -4,6 +4,13 @@ h1 {
 
 Body {
   font-family: Open Sans, sans-serif;
+  height: 100%;
+}
+
+.main {
+  background-image: linear-gradient(135deg, #ff4f03, #ff2063);
+  height: 98vh;
+  width: 100%;
 }
 
 /*# sourceMappingURL=index.css.map */
