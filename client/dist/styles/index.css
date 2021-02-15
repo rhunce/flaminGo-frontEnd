@@ -6,4 +6,9 @@ Body {
   padding: 20px;
 }
 
+.addTask {
+  display: flex;
+  margin: auto;
+}
+
 /*# sourceMappingURL=index.css.map */
