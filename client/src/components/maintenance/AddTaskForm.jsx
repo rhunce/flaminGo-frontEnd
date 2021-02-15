@@ -1,5 +1,4 @@
 import React from 'react';
-import BigButton from '../styledElements/BigButton.jsx';
 import FormButton from '../styledElements/FormButton.jsx';
 import HalfRoundDiv from '../styledElements/HalfRoundDiv.jsx';
 import InputTypeText from '../styledElements/InputTypeText.jsx';
@@ -10,15 +9,15 @@ let AddTaskForm = () => {
   return (
     <div>
       <HalfRoundDiv gradient={gradient.clementineToCarrot} className={'addTask'}>
-        <h1>Add a Task</h1>
-        <h2>Task Title</h2>
-        <InputTypeText name={'Task Title'} placeholder={'Task Title'}/>
-        <h2>Room Number</h2>
-        <InputTypeText placeholder={'Room Number'}/>
-        <h2>Task Description</h2>
-        <TextAreaForm placeholder={'Task Description'}/>
-        <h2>Task Description</h2>
-        <FormButton>
+        <h1 className="formTitle">Add a Task</h1>
+        <h2 className="taskInputTitle">Task Title</h2>
+        <InputTypeText className="taskInput" placeholder={'Task Title'}/>
+        <h2 className="roomInputTitle">Room Number</h2>
+        <InputTypeText className="roomInput" placeholder={'Room Number'}/>
+        <h2 className="textAreaTitle">Task Description</h2>
+        <TextAreaForm margin={10} className="textArea" placeholder={'Task Description'}/>
+        <h2 className="radioTitle">Department</h2>
+        <FormButton className="submitButton">
           Submit
         </FormButton>
       </HalfRoundDiv>
