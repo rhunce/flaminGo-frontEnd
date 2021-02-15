@@ -15,7 +15,7 @@ let AddTaskForm = () => {
         <h2 className="roomInputTitle">Room Number</h2>
         <InputTypeText className="roomInput" placeholder={'Room Number'}/>
         <h2 className="textAreaTitle">Task Description</h2>
-        <TextAreaForm margin={10} className="textArea" placeholder={'Task Description'}/>
+        <TextAreaForm className="textArea" placeholder={'Task Description'}/>
         <h2 className="radioTitle">Department</h2>
         <FormButton className="submitButton">
           Submit
