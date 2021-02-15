@@ -12,6 +12,7 @@ const ModalTitle = styled.h3`
   font-weight: ${fonts.bold};
   color: ${(props) => (props.color ? colors[props.color] : colors.black)};
   margin: ${(props) => props.margin && props.margin};
+  text-align: center;
 `;
 
 export default ModalTitle;

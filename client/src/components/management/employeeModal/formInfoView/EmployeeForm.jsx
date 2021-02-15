@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { colors } from '../../styledElements/styleGuid';
-import ModalTitle from '../../styledElements/ModalTitle';
+import { colors } from '../../../styledElements/styleGuid';
+import ModalTitle from '../../../styledElements/ModalTitle';
 import FormRow from './FormRow';
 import useEmployeeInfo from './useEmployeeData';
-import FormButton from '../../styledElements/FormButton';
+import FormButton from '../../../styledElements/FormButton';
 import PositionDropDown from './PositionDropDown';
 import { fields, mandatory } from './employeeFormConstants';
 import axios from 'axios';

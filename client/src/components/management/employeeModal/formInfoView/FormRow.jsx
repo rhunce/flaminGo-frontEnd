@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlexRow, FormLabel } from './EmployFormPositioning';
-import FormInput from '../../styledElements/InputTypeText';
+import FormInput from '../../../styledElements/InputTypeText';
 
 const FormRow = ({
   label,
