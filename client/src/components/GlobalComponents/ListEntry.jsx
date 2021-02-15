@@ -2,7 +2,7 @@ import React from 'react';
 import FormButton from '../styledElements/FormButton.jsx'
 
 
-const ListEntry = ({table}) => {
+const ListEntry = ({table, type}) => {
 
 
   return (

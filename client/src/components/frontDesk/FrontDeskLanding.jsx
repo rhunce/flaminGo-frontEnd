@@ -26,7 +26,7 @@ const FrontDeskLanding = ({ back }) => {
   });
 
 
-  //set up for transition to room list pag
+  //set up for transition to room list page
   const [backColor, setBackColor] = useState("white");
   const [listBackground, setListBackground] = useState(0)
 

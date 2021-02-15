@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import FormButton from "../styledElements/FormButton.jsx";
 import HalfRoundDiv from "../styledElements/HalfRoundDiv.jsx";
 import ListEntry from "../GlobalComponents/ListEntry.jsx";
-import { roomsData } from "../../SampleData/Rooms.js";
+import { roomsData, employeeData, taskData } from "../../SampleData/SampleData.js";
 
 const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
 
@@ -11,9 +11,9 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
     handleBackgroundChange("listBgContainer");
   } )
 
-  if (type === "room") {
-    console.log(roomsData);
-  }
+  let data;
+  let titleTable;
+
 
   let titleTableRooms = () => {
     return (
@@ -28,7 +28,43 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
     );
   };
 
-  let entryTable = (roomNumber, roomType, occupied, cleaned) => {
+  let titleTableEmployees = () => {
+    return (
+      <table className="titleTable">
+        <tr>
+          <th>Employee Name</th>
+          <th>Position</th>
+          <th>Hours Worked</th>
+          <th>Wage</th>
+        </tr>
+      </table>
+    )
+  }
+
+  let titleTableTasks = () => {
+    return (
+      <table className="titleTable">
+        <tr>
+          <th>Task Title</th>
+          <th>Location</th>
+          <th>Department</th>
+        </tr>
+      </table>
+    )
+  }
+
+  if (type === "room") {
+    data = roomsData;
+    titleTable = titleTableRooms();
+  } else if (type === "employee") {
+    data = employeeData;
+    titleTable = titleTableEmployees()
+  } else if (type === "task") {
+    data = taskData;
+    titleTable = titleTableTasks();
+  }
+
+  let entryTableRooms = (roomNumber, roomType, occupied, cleaned) => {
     let occupStatus, cleanStatus;
 
     if (occupied) {
@@ -55,6 +91,43 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
     );
   };
 
+  let entryTableEmployees = (firstName, lastName, position, hours, wage) => {
+    return (
+      <table className="entryTable">
+        <tbody>
+        <tr>
+          <th>{firstName} {lastName}</th>
+          <th>{position}</th>
+          <th>{hours}</th>
+          <th>{wage}</th>
+        </tr>
+        </tbody>
+      </table>
+    );
+  }
+
+  let entryTableTasks = (title, room, location, department) => {
+
+    let setting;
+    if (room === "") {
+      setting = location;
+    } else {
+      setting = room
+    }
+
+    return (
+      <table className="entryTable">
+        <tbody>
+        <tr>
+          <th>{title}</th>
+          <th>{setting}</th>
+          <th>{department}</th>
+        </tr>
+        </tbody>
+      </table>
+    );
+  }
+
   const [dropDownStatus, setDropDown] = useState("list1")
 
   var checkList = document.getElementById("dropDown");
@@ -74,11 +147,11 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
             <ul className="items">
               <li>
                 <input type="checkbox" />
-                Vacant
+                Test
               </li>
               <li>
                 <input type="checkbox" />
-                Cleaned
+                Test
               </li>
             </ul>
           </div>
@@ -95,19 +168,40 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
         width="100vh - 60px"
         height="calc(100vh - 260px)"
       >
-        <div id="listEntriesHeader">{titleTableRooms()}</div>
+        <div id="listEntriesHeader">{titleTable}</div>
         <div id="listEntriesContainer">
-          {roomsData.map((room) => {
-            return (
-              <ListEntry
-                table={entryTable(
-                  room.roomNumber,
-                  room.roomType,
-                  room.isOccupied,
-                  room.isClean
-                )}
-              />
-            );
+          {data.map((entity) => {
+            if (type === "room") {
+              return (
+                <ListEntry
+                  table={entryTableRooms(
+                    entity.roomNumber,
+                    entity.roomType,
+                    entity.isOccupied,
+                    entity.isClean
+                  )} type="room"
+                />
+              );
+            } else if (type === "employee") {
+              return ( <ListEntry
+                table={entryTableEmployees(
+                  entity.firstName,
+                  entity.lastName,
+                  entity.position,
+                  entity.weekHours,
+                  entity.wage
+                )} type="employee"
+              />)
+            } else if (type === "task") {
+              return ( <ListEntry
+                table={entryTableTasks(
+                  entity.taskTitle,
+                  entity.roomNumber,
+                  entity.location,
+                  entity.department
+                )} type="task"
+              />)
+            }
           })}
         </div>
       </HalfRoundDiv>

@@ -144,3 +144,73 @@ exports.roomsData = [
     ]
   },
 ]
+
+exports.employeeData = [{
+  "_id": "1",
+  "firstName": "John",
+  "lastName": "Smith",
+  "address1": "123 Hackreactor Rd",
+  "address2": "",
+  "city": "New York",
+  "state": "NY",
+  "zipcode": 10002,
+  "country": "United States",
+  "phone": "123-456-7890",
+  "email": "jsmith@gmail.com",
+  "wage": 15.00,
+  "startDate": "2021-02-13",
+  "position": "Front Desk",
+  "weekHours": 30,
+  "isActive": true
+},
+{
+  "_id": "2",
+  "firstName": "Jim",
+  "lastName": "Smoth",
+  "address1": "124 Hackreactor Rd",
+  "address2": "",
+  "city": "New York",
+  "state": "NY",
+  "zipcode": 10013,
+  "country": "United States",
+  "phone": "123-456-7890",
+  "email": "jsmoth@gmail.com",
+  "wage": 15.00,
+  "startDate": "2021-02-14",
+  "position": "Housekeeping",
+  "weekHours": 30,
+  "isActive": true
+}
+]
+
+exports.taskData = [{
+    "task_id": "60108729ffefc9bae107564d",
+    "room_id": "507c7f79bcf86cd7994f6c0e",
+    "roomNumber": "110",
+    "location": "",
+    "employeeCompleted": "John Smith",
+    "employeeCreated": "Jane Doe",
+    "department": "Housekeeping",
+    "taskTitle": "Clean dirty spot",
+    "taskDescription": "Behind the nightstand on the right side of the bed. Don't ask me how a guest got that there.",
+    "createdAt": "2021-02-13T13:44:00.000Z",
+    "dueBy": "2021-02-14T10:00:00.000Z",
+    "isCompleted": true,
+    "completedAt": "2021-02-13T16:15:00.000Z"
+  },
+  {
+  "task_id": "60108729ffefc9bae107564d",
+  "room_id": "507c7f79bcf86cd7994f6c0e",
+  "roomNumber": "",
+  "location": "Pool",
+  "employeeCompleted": "John Smith",
+  "employeeCreated": "Jane Doe",
+  "department": "Housekeeping",
+  "taskTitle": "Dirty water",
+  "taskDescription": "Something appears to be broken with in the filter.",
+  "createdAt": "2021-02-13T13:44:00.000Z",
+  "dueBy": "2021-02-14T10:00:00.000Z",
+  "isCompleted": false,
+  "completedAt": "2021-02-13T16:15:00.000Z"
+}
+]
