@@ -50,6 +50,7 @@ Body {
 
 .listHeader {
   margin: 20px 30px 20px 30px;
+  display: flex;
 }
 
 .listHeaderSearch {
@@ -127,7 +128,7 @@ Body {
   display: inline-block;
 }
 
-.list1 .anchor {
+.list1 .filterAnchor {
   position: relative;
 }
 
@@ -151,10 +152,5 @@ Body {
 
 .list1.visible .items {
   display: block;
-}
-
-input[type=checkbox]:checked label {
-  color: #f3f3f3;
-  background-color: #FF2063;
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import HalfRoundDiv from "../styledElements/HalfRoundDiv.jsx";
-import { reservationData } from '../../SampleData/sampleData.js'
+import { reservationData } from '../../SampleData/SampleData.js'
 
 
 let TitleTableCheckIn = () => {

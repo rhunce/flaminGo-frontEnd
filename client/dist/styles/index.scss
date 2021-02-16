@@ -247,3 +247,43 @@ input[type=checkbox]:checked label {
   justify-content: center;
   align-items: center;
 }
+
+.sortBy {
+  font-size: 14px;
+  width: 160px;
+  height: 40px;
+  border: none;
+  color: white;
+  background-color: $clementine;
+  border-radius: 30px;
+}
+
+
+.filterBy {
+  font-size: 14px;
+  width: 160px;
+  height: 40px;
+  border: none;
+  color: white;
+  background-color: $clementine;
+  border-radius: 30px;
+  margin: 0 30px 0 0;
+}
+
+select {
+  text-align: center;
+  text-align-last: center;
+  outline: none;
+}
+
+option {
+  text-align: left;
+  /* reset to left*/
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}

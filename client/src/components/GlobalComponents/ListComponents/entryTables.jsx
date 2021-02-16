@@ -24,12 +24,14 @@ let entryTableRooms = (entity) => {
 
   return (
     <table className="entryTable">
+      <tbody>
       <tr>
         <th>{roomNumber}</th>
         <th>{roomType}</th>
         <th>{occupStatus}</th>
         <th>{cleanStatus}</th>
       </tr>
+      </tbody>
     </table>
   );
 };
