@@ -4,8 +4,6 @@ import TextAreaForm from './styledElements/TextAreaForm.jsx'
 import MainHeader from './GlobalComponents/Header.jsx'
 import Landing from './landingPage/MainLanding';
 
-import TextAreaForm from './styledElements/TextAreaForm.jsx';
-
 
 class App extends React.Component {
   constructor(props) {

@@ -35,7 +35,7 @@ const SearchForReservations = () => {
         return <ReservationResults name={name} resId={resId}/>
     }
     return (
-        <HalfRoundDiv className="mainBox">
+        <HalfRoundDiv className="mainBox" margin={'0 auto'}>
                 <div className="checkInTitleDiv"> Check-In Search for Reservations</div>
                 <div className="centeredInputBars">
                     <label className="checkinLabels"> Name</label> <br/>
