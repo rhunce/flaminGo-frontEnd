@@ -61,7 +61,13 @@ const ManagementLanding = ({ back }) => {
             handleBackChange={setBackColor}
             handleBackgroundChange={setListBackground}
           />
-        ) : paths.viewRooms ? (
+        ) : // <FlexCenterContainer>
+        //   <EmployeeContainer
+        //     employee={sampleEmployee}
+        //     sampleData={timeSheetSample}
+        //   />
+        // </FlexCenterContainer>
+        paths.viewRooms ? (
           // place holder for room view component
           <ListMaster
             type='room'
