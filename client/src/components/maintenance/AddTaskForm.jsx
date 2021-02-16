@@ -10,6 +10,8 @@ import axios from 'axios';
 class AddTaskForm extends React.Component {
   constructor(props) {
     super(props);
+
+    //each input field has its own state property and event handler
     this.state = {
       taskTitle: '',
       roomNumber: 0,
@@ -43,6 +45,7 @@ class AddTaskForm extends React.Component {
     this.setState({taskType: event.target.value});
   }
 
+  //sends all form info to server in request body
   submitAddTaskForm(event) {
     event.preventDefault();
     //from API docs: POST '/tasks' to add a new task
@@ -63,6 +66,8 @@ class AddTaskForm extends React.Component {
           <h2 className="textAreaTitle">Task Description</h2>
           <TextAreaForm onChange={this.inputDescription} className="textArea" placeholder={'Task Description'} />
           <h2 className="radioTitle">Department</h2>
+
+          {/* radio button options are not shown as selected when I add the click handlers */}
           <form className="ticketType">
             <label for="Housekeeping">
               <input
