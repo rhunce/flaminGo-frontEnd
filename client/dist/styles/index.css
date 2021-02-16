@@ -3,12 +3,11 @@ h1 {
 }
 
 Body {
-  font-family: "Open Sans, sans-serif";
+  font-family: Open Sans, sans-serif;
   height: 100%;
 }
 
 .main {
-  background-image: linear-gradient(135deg, #ff4f03, #ff2063);
   height: 98vh;
   width: 100%;
 }
@@ -44,13 +43,14 @@ Body {
 }
 
 #listContainer {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-weight: 400;
   font-size: 18px;
 }
 
 .listHeader {
-  margin: 0 30px 20px 30px;
+  margin: 20px 30px 20px 30px;
+  display: flex;
 }
 
 .listHeaderSearch {
@@ -73,7 +73,7 @@ Body {
   height: 38px;
   width: 60%;
   outline: none;
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-size: 14px;
 }
 
@@ -128,7 +128,7 @@ Body {
   display: inline-block;
 }
 
-.list1 .anchor {
+.list1 .filterAnchor {
   position: relative;
 }
 
@@ -154,20 +154,13 @@ Body {
   display: block;
 }
 
-input[type=checkbox]:checked label {
+input[type='checkbox']:checked label {
   color: #f3f3f3;
   background-color: #ff2063;
 }
 
-.landingContainer {
+.fdLandingContainer {
   height: 100%;
   width: 100%;
+  background-color: #ff2063;
 }
-
-.listBgContainer {
-  height: 100%;
-  width: 100%;
-  background-color: white;
-}
-
-/*# sourceMappingURL=index.css.map */

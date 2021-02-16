@@ -11,9 +11,11 @@ env/config.js
 ## ETC ##
 !client/dist/index.html
 !client/dist/styles/
+!client/dist/svg/
 .cache/
 *.log
 package-lock.json
+JStesting.js
 
 # OS generated files
 .DS_Store
