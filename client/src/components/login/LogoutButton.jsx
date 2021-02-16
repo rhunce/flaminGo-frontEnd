@@ -6,7 +6,7 @@ const LogoutButton = (authenticated) => {
   const { logout } = useAuth0();
 
   return (
-    <FormButton color='berry' onClick={() => logout()}>
+    <FormButton backgroundColor='berry' onClick={() => logout()}>
       Log Out
     </FormButton>
   );
