@@ -4,6 +4,7 @@ import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
 import ListMaster from '../GlobalComponents/ListMaster'
+import AddTaskForm from './AddTaskForm.jsx';
 
 // flex container
 const BtnContainer = styled.div`
@@ -56,7 +57,7 @@ const HMLanding = ({ back }) => {
         <ListMaster type="room" handleBackChange={setBackColor} handleBackgroundChange={setListBackground}/>
       ) : paths.addTask ? (
         // place holder for add task component
-        <div>place holder for add task component</div>
+        <AddTaskForm/>
       ) : (
         <BtnContainer>
           <LandingButtons routs={routs} />
