@@ -56,6 +56,8 @@ const ManagementLanding = ({ back }) => {
         {paths.viewEmployees ? (
           // place holder for employee view component
           <ListMaster
+            onClick1={(e) => console.log(e)}
+            onClick2={(e) => console.log('working2')}
             type='employee'
             handleBackChange={setBackColor}
             handleBackgroundChange={setListBackground}
