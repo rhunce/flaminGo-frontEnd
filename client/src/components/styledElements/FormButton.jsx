@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { colors, fonts } from './styleGuid';
 
 const Button = styled.button`
+  font-size: 14px;
   font-family: ${fonts.mainFont};
-  font-size: 16px;
   font-weight: ${fonts.plain};
   color: ${colors.white};
   background-color: ${(props) =>
@@ -13,6 +13,7 @@ const Button = styled.button`
   border-radius: 20px;
   width: ${(props) => (props.width ? props.width : '160px')};
   height: 40px;
+  outline: none;
   margin: ${(props) => (props.margin ? props.margin : 0)};
 
   &:active {
