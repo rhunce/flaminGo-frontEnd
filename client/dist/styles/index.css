@@ -180,6 +180,12 @@ input[type=checkbox]:checked label {
 .addTask .formTitle {
   grid-area: 2/2/3/7;
 }
+.addTask .employeeId {
+  grid-area: 2/8/3/12;
+}
+.addTask .employeeIdInput {
+  grid-area: 3/8/4/12;
+}
 .addTask .taskInputTitle {
   grid-area: 4/2/5/7;
 }
@@ -204,6 +210,12 @@ input[type=checkbox]:checked label {
 .addTask .ticketType {
   grid-area: 20/2/24/7;
   display: grid;
+}
+.addTask .dueByTitle {
+  grid-area: 19/5/20/8;
+}
+.addTask .dueBy {
+  grid-area: 20/5/22/8;
 }
 .addTask .submitButton {
   grid-area: 20/9/22/12;
