@@ -3,12 +3,11 @@ import FormButton from '../styledElements/FormButton.jsx'
 import RoomDetailsModal from './RoomDetailsModal';
 
 
-const ListEntry = ({table, type}) => {
+const ListEntry = ({table, type, allRmData}) => {
 
   const [modalStatus, setModalStatus] = useState(false);
 
   const toggleRoomDetailsModal = () => {
-    console.log('open!')
     if(modalStatus) {
       setModalStatus(false)
     } else {
@@ -44,6 +43,7 @@ const ListEntry = ({table, type}) => {
       <RoomDetailsModal
         isOpen={modalStatus}
         toggle={toggleRoomDetailsModal}
+        allRmData={allRmData}
       />
     </div>
 

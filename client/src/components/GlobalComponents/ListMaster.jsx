@@ -95,7 +95,7 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
         <div id="listEntriesContainer">
           {data.map((entity) => {
             if (type === "room") {
-              return <ListEntry table={entryTableRooms(entity)} type="room" />;
+              return <ListEntry table={entryTableRooms(entity)} type="room" allRmData={entity} />;
             } else if (type === "employee") {
               return <ListEntry table={entryTableEmployees(entity)} type="employee" />
             } else if (type === "task") {
