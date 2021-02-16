@@ -41,7 +41,14 @@ const HMLanding = ({ back }) => {
   return (
     <div className='landingContainer'>
       <div className={listBackground}>
-        <BackArrow margin={'40px 40px'} onClick={clickBack} color={backColor} />
+        <BackArrow
+          margin={'40px 40px'}
+          onClick={clickBack}
+          color={backColor}
+          location={
+            paths.landing ? 'Main Homepage' : 'Housekeeping/Maintenance'
+          }
+        />
         {paths.viewTask ? (
           // place holder for task view component
           <ListMaster
