@@ -4,15 +4,15 @@
   grid-template-rows: repeat(24, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-}
 
-.formTitle { grid-area: 2 / 2 / 3 / 7; }
-.roomInputTitle { grid-area: 4 / 2 / 5 / 7; }
-.roomInput { grid-area: 5 / 2 / 6 / 7; }
-.taskInputTitle { grid-area: 4 / 8 / 5 / 12; }
-.taskInput { grid-area: 5 / 8 / 6 / 12; }
-.textAreaTitle { grid-area: 7 / 2 / 8 / 7; }
-.textArea { grid-area: 8 / 2 / 18 / 12; }
-.radioTitle { grid-area: 19 / 2 / 20 / 7; }
-.ticketType { grid-area: 20 / 2 / 24 / 7; display:grid;}
-.submitButton { grid-area: 20 / 9 / 22 / 12; }
+  .formTitle { grid-area: 2 / 2 / 3 / 7; }
+  .taskInputTitle { grid-area: 4 / 2 / 5 / 7; }
+  .taskInput { grid-area: 5 / 2 / 6 / 7; }
+  .roomInputTitle { grid-area: 4 / 8 / 5 / 12; }
+  .roomInput { grid-area: 5 / 8 / 6 / 12; }
+  .textAreaTitle { grid-area: 7 / 2 / 8 / 7; }
+  .textArea { grid-area: 8 / 2 / 18 / 12; }
+  .radioTitle { grid-area: 19 / 2 / 20 / 7; }
+  .ticketType { grid-area: 20 / 2 / 24 / 7; display:grid;}
+  .submitButton { grid-area: 20 / 9 / 22 / 12; }
+}

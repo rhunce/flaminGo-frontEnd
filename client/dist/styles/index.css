@@ -13,45 +13,35 @@ Body {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
-
-.formTitle {
+.addTask .formTitle {
   grid-area: 2/2/3/7;
 }
-
-.roomInputTitle {
+.addTask .taskInputTitle {
   grid-area: 4/2/5/7;
 }
-
-.roomInput {
+.addTask .taskInput {
   grid-area: 5/2/6/7;
 }
-
-.taskInputTitle {
+.addTask .roomInputTitle {
   grid-area: 4/8/5/12;
 }
-
-.taskInput {
+.addTask .roomInput {
   grid-area: 5/8/6/12;
 }
-
-.textAreaTitle {
+.addTask .textAreaTitle {
   grid-area: 7/2/8/7;
 }
-
-.textArea {
+.addTask .textArea {
   grid-area: 8/2/18/12;
 }
-
-.radioTitle {
+.addTask .radioTitle {
   grid-area: 19/2/20/7;
 }
-
-.ticketType {
+.addTask .ticketType {
   grid-area: 20/2/24/7;
   display: grid;
 }
-
-.submitButton {
+.addTask .submitButton {
   grid-area: 20/9/22/12;
 }
 
