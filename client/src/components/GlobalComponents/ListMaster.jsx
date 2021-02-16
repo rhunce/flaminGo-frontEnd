@@ -81,7 +81,7 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
           <FormButton children="Sort By" />
           <div className="listHeaderSearch">
             <input type="text" placeholder={searchParam}></input>
-            <img src="/search.svg" height="20px"></img>
+            <img src="svg/search.svg" height="20px"></img>
           </div>
         </div>
       </div>
