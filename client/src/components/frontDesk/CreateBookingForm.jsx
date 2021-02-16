@@ -4,12 +4,11 @@ import HalfRoundDiv from '../styledElements/HalfRoundDiv.jsx';
 import InputTypeText from '../styledElements/InputTypeText.jsx';
 import InputTypeRadio from '../styledElements/InputTypeRadio.jsx';
 import TextAreaForm from '../styledElements/TextAreaForm.jsx';
-import {gradient} from '../styledElements/styleGuid.js';
 
 let CreateBookingForm = () => {
   return (
     <div>
-      <HalfRoundDiv gradient={gradient.clementineToCarrot} className={'createBooking'}>
+      <HalfRoundDiv className={'createBooking'}>
         <h1 className="bookingForm">Create Booking</h1>
         <h2 className="firstName">First Name</h2>
         <InputTypeText className="firstNameInput" placeholder={'First Name'}/>
