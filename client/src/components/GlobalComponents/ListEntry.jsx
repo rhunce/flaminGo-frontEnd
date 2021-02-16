@@ -23,7 +23,12 @@ const ListEntry = ({table, type, allRmData}) => {
     </span>
   } else if (type === "room") {
     entryButtons = <span className="listEntryButtons">
-    <FormButton margin="0 30px 0 20px">See Details</FormButton>
+    <FormButton onClick={toggleRoomDetailsModal} margin="0 30px 0 20px">See Details</FormButton>
+    <RoomDetailsModal
+      isOpen={modalStatus}
+      toggle={toggleRoomDetailsModal}
+      allRmData={allRmData}
+    />
     </span>
   } else if (type === "guest") {
     entryButtons = <span className="listEntryButtons">
