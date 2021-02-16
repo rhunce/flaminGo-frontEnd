@@ -1,18 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import FrontDeskLanding from '../frontDesk/FrontDeskLanding';
 import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import HMLanding from '../maintenance/HMLanding';
 import ManagementLanding from '../management/ManagementLanding';
-
-// flex container
-const BtnContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-`;
+import FlexCenterContainer from './FlexCenterContainer';
+import TimeSheet from '../GlobalComponents/timeSheet/TimeSheetContainer';
 
 const MainLanding = () => {
   // set state to toggle for conditional rendering
@@ -34,7 +27,6 @@ const MainLanding = () => {
     {
       title: 'Management',
       onClick: () => {
-        console.log('Here');
         setPaths('management');
       },
     },
@@ -52,12 +44,11 @@ const MainLanding = () => {
       ) : paths.management ? (
         <ManagementLanding back={clickBack} />
       ) : paths.timeSheet ? (
-        // place holder for time sheet component (is going to need back button)
-        <div>place holder for time sheet component</div>
+        <TimeSheet back={clickBack} />
       ) : (
-        <BtnContainer>
+        <FlexCenterContainer>
           <LandingButtons routs={routs} />
-        </BtnContainer>
+        </FlexCenterContainer>
       )}
     </div>
   );

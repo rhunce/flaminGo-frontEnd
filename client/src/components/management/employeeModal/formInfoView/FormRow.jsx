@@ -1,19 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import FormInput from '../../styledElements/InputTypeText';
-
-const FlexRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  margin-top: 15px;
-  width: 328px;
-`;
-
-const FormLabel = styled.label`
-  margin-right: 15px;
-`;
+import { FlexRow, FormLabel } from './EmployFormPositioning';
+import FormInput from '../../../styledElements/InputTypeText';
 
 const FormRow = ({
   label,
@@ -22,17 +9,20 @@ const FormRow = ({
   defaultValue,
   onChange,
   editMode,
+  margin,
 }) => {
   return (
-    <FlexRow>
+    <FlexRow margin={margin}>
       <FormLabel>{`${label}:`}</FormLabel>
       <FormInput
         name={name}
         defaultValue={defaultValue}
         onChange={onChange}
-        placeholder={editMode && placeholder}
+        placeholder={editMode ? placeholder : undefined}
         border={!editMode && 'none'}
         disabled={!editMode}
+        type={name === 'startDate' ? 'date' : 'text'}
+        width={name === 'startDate' ? '169px' : undefined}
       />
     </FlexRow>
   );

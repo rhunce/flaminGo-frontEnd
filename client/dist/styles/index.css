@@ -29,7 +29,7 @@ Body {
 #mainHeader {
   height: 100px;
   padding: 0 0 0 30px;
-  color: #FF2063;
+  color: #ff2063;
   background-color: white;
 }
 
@@ -43,7 +43,7 @@ Body {
 }
 
 #listContainer {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-weight: 400;
   font-size: 18px;
 }
@@ -54,7 +54,7 @@ Body {
 }
 
 .listHeaderSearch {
-  border: 1px #FF2063 solid;
+  border: 1px #ff2063 solid;
   height: 40px;
   width: 450px;
   display: block;
@@ -73,7 +73,7 @@ Body {
   height: 38px;
   width: 60%;
   outline: none;
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-size: 14px;
 }
 
@@ -136,7 +136,7 @@ Body {
   padding: 2px;
   display: none;
   margin: 0;
-  background-color: #FF8B03;
+  background-color: #ff8b03;
   border-top: none;
   position: absolute;
   width: 140px;
@@ -154,3 +154,13 @@ Body {
   display: block;
 }
 
+input[type='checkbox']:checked label {
+  color: #f3f3f3;
+  background-color: #ff2063;
+}
+
+.fdLandingContainer {
+  height: 100%;
+  width: 100%;
+  background-color: #ff2063;
+}
