@@ -3,7 +3,7 @@ h1 {
 }
 
 Body {
-  font-family: Open Sans, sans-serif;
+  font-family: "Open Sans, sans-serif";
   height: 100%;
 }
 
@@ -11,6 +11,163 @@ Body {
   background-image: linear-gradient(135deg, #ff4f03, #ff2063);
   height: 98vh;
   width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+  opacity: 0;
+}
+
+#mainHeader {
+  height: 100px;
+  padding: 0 0 0 30px;
+  color: #ff2063;
+  background-color: white;
+}
+
+#menuIcon {
+  float: right;
+  margin: 20px 20px 0 0;
+}
+
+#backButton {
+  margin: 0 0 0 30px;
+}
+
+#listContainer {
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.listHeader {
+  margin: 0 30px 20px 30px;
+}
+
+.listHeaderSearch {
+  border: 1px #ff2063 solid;
+  height: 40px;
+  width: 450px;
+  display: block;
+  float: right;
+  padding: 0 0 0 10px;
+}
+
+.listHeaderSearch img {
+  float: right;
+  margin: 10px 10px 0 0;
+}
+
+.listHeaderSearch input {
+  border: none;
+  margin: auto;
+  height: 38px;
+  width: 60%;
+  outline: none;
+  font-family: "Open Sans";
+  font-size: 14px;
+}
+
+#listEntriesContainer {
+  margin: auto;
+  height: calc(100% - 80px);
+  width: calc(100% - 40px);
+  overflow: scroll;
+}
+
+#listEntriesHeader {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 60px;
+  font-weight: 600;
+}
+
+.titleTable th {
+  width: 200px;
+  border-right: solid 1px white;
+  font-weight: 600;
+}
+
+#listEntry {
+  height: 100px;
+  width: calc(100% - 40px);
+  margin: 0 20px 20px 20px;
+  border-radius: 30px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entryTable th {
+  font-weight: 400;
+  width: 200px;
+}
+
+.listEntryText {
+  color: black;
+  margin: 0 0 0 20px;
+}
+
+.listEntryButtons {
+  float: right;
+}
+
+/*Dropdown Test*/
+.list1 {
+  display: inline-block;
+}
+
+.list1 .anchor {
+  position: relative;
+}
+
+.list1 ul.items {
+  padding: 2px;
+  display: none;
+  margin: 0;
+  background-color: #ff8b03;
+  border-top: none;
+  position: absolute;
+  width: 140px;
+  border-radius: 0 20px 0 20px;
+  padding: 10px;
+}
+
+.list1 ul.items li {
+  list-style: none;
+  color: white;
+  font-size: 14px;
+}
+
+.list1.visible .items {
+  display: block;
+}
+
+input[type=checkbox]:checked label {
+  color: #f3f3f3;
+  background-color: #ff2063;
+}
+
+.landingContainer {
+  height: 100%;
+  width: 100%;
+}
+
+.listBgContainer {
+  height: 100%;
+  width: 100%;
+  background-color: white;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -34,7 +34,6 @@ const MainLanding = () => {
     {
       title: 'Management',
       onClick: () => {
-        console.log('Here');
         setPaths('management');
       },
     },
