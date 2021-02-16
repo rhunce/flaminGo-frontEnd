@@ -1,11 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import FrontDeskLanding from '../frontDesk/FrontDeskLanding';
 import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import HMLanding from '../maintenance/HMLanding';
 import ManagementLanding from '../management/ManagementLanding';
 import FlexCenterContainer from './FlexCenterContainer';
+import TimeSheet from '../GlobalComponents/timeSheet/TimeSheetContainer';
 
 const MainLanding = () => {
   // set state to toggle for conditional rendering
@@ -44,8 +44,7 @@ const MainLanding = () => {
       ) : paths.management ? (
         <ManagementLanding back={clickBack} />
       ) : paths.timeSheet ? (
-        // place holder for time sheet component (is going to need back button)
-        <div>place holder for time sheet component</div>
+        <TimeSheet back={clickBack} />
       ) : (
         <FlexCenterContainer>
           <LandingButtons routs={routs} />
