@@ -54,21 +54,6 @@ const FrontDeskLanding = ({ back }) => {
   return (
     <div className='landingContainer'>
       <div className={listBackground}>
-      <BackArrow margin={'40px 40px'} onClick={clickBack} color={backColor}/>
-      {paths.checkIn ? (
-        // place holder for check-in component
-        <SearchForReservations />
-      ) : paths.checkOut ? (
-        // place holder for check-out component
-        <div>place holder for check-out component</div>
-      ) : paths.viewRooms ? (
-        // place holder for room view component
-        <ListMaster type="room" handleBackChange={setBackColor} handleBackgroundChange={setListBackground}/>
-      ) : (
-        <BtnContainer>
-          <LandingButtons routs={routs} />
-        </BtnContainer>
-      )}
         <BackArrow
           margin={'40px 40px'}
           onClick={clickBack}
@@ -77,7 +62,7 @@ const FrontDeskLanding = ({ back }) => {
         />
         {paths.checkIn ? (
           // place holder for check-in component
-          <div>place holder for check-in component</div>
+          <SearchForReservations />
         ) : paths.checkOut ? (
           // place holder for check-out component
           <div>place holder for check-out component</div>
