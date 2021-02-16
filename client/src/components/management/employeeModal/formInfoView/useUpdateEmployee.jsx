@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useEmployeeData = ({ initialState }) => {
+const useUpdateEmployee = ({ initialState }) => {
   const [state, setState] = useState(initialState);
 
   const editState = (e) => {
@@ -13,4 +13,4 @@ const useEmployeeData = ({ initialState }) => {
   return [state, setState, editState];
 };
 
-export default useEmployeeData;
+export default useUpdateEmployee;

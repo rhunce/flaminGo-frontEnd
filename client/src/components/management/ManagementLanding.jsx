@@ -4,9 +4,12 @@ import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
 import EmployeeContainer from './employeeModal/EmployeeContainer';
-
+import {
+  sampleEmployee,
+  timeSheetSample,
+} from './employeeModal/sampleEmployeeData';
 // flex container
-const BtnContainer = styled.div`
+const FlexCenterContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,7 +46,12 @@ const ManagementLanding = ({ back }) => {
       <BackArrow margin={'40px 40px'} onClick={clickBack} />
       {paths.viewEmployees ? (
         // place holder for employee view component
-        <EmployeeContainer />
+        <FlexCenterContainer>
+          <EmployeeContainer
+            employee={sampleEmployee}
+            sampleData={timeSheetSample}
+          />
+        </FlexCenterContainer>
       ) : paths.viewRooms ? (
         // place holder for room view component
         <div>place holder for room view component</div>
@@ -51,9 +59,9 @@ const ManagementLanding = ({ back }) => {
         // place holder for Guest List component
         <div>place holder for Guest List component</div>
       ) : (
-        <BtnContainer>
+        <FlexCenterContainer>
           <LandingButtons routs={routs} />
-        </BtnContainer>
+        </FlexCenterContainer>
       )}
     </div>
   );

@@ -1,40 +1,47 @@
-import React, { useState } from 'react';
-import { colors } from '../../../styledElements/styleGuid';
+import React, { useContext, useEffect, useState } from 'react';
+import { EmployeeContext } from '../EmployeeContext';
 import ModalTitle from '../../../styledElements/ModalTitle';
 import FormRow from './FormRow';
-import useEmployeeInfo from './useEmployeeData';
+import useUpdateEmployee from './useUpdateEmployee';
 import FormButton from '../../../styledElements/FormButton';
 import PositionDropDown from './PositionDropDown';
 import { fields, mandatory } from './employeeFormConstants';
 import axios from 'axios';
 
-const EmployeeForm = ({ employee, newEmployee }) => {
-  const [employeeInfo, setEmployeeInfo, editEmployeeInfo] = useEmployeeInfo(
-    employee
-  );
-  const [editMode, setEditMode] = useState(employeeInfo ? false : true);
+const EmployeeForm = () => {
+  const { useEmployeeData, useNewEmployee } = useContext(EmployeeContext);
+  const [newEmployee] = useNewEmployee;
+  const [employee, setEmployee] = useEmployeeData;
+  const editEmployee = (e) => {
+    setEmployee((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const [editMode, setEditMode] = useState(newEmployee ? true : false);
   const [invalidEntry, setInvalidEntry] = useState(false);
 
-  const dataChecker = (employeeInfo) => {
+  const dataChecker = (employee) => {
     for (const row of mandatory) {
       const field = row.field;
-      if (!employeeInfo.hasOwnProperty(field)) return false;
+      if (!employee.hasOwnProperty(field)) return false;
     }
     return true;
   };
 
   const saveEmployee = () => {
     setInvalidEntry(false);
-    if (dataChecker(employeeInfo)) {
-      employeeInfo.country = 'Bermuda';
-      employeeInfo.isActive = true;
+    if (dataChecker(employee)) {
+      employee.country = 'Bermuda';
+      employee.isActive = true;
 
       if (newEmployee) {
-        // axios.post(`/employees`, employeeInfo).then(() => setEditMode(true));
+        // axios.post(`/employees`, employee).then(() => setEditMode(true));
       } else {
         // axios.put(`/employees/${employee._id}`).then(() => setEditMode(true));;
       }
-      console.log('this will be posted', employeeInfo);
+      console.log('this will be posted', employee);
       setEditMode(false);
     } else {
       setInvalidEntry(true);
@@ -44,9 +51,9 @@ const EmployeeForm = ({ employee, newEmployee }) => {
   return (
     <div>
       <ModalTitle margin='0'>
-        {employeeInfo && (employeeInfo.firstName || employeeInfo.lastName)
-          ? `${employeeInfo.firstName ? employeeInfo.firstName : ''} ${
-              employeeInfo.lastName ? employeeInfo.lastName : ''
+        {employee && (employee.firstName || employee.lastName)
+          ? `${employee.firstName ? employee.firstName : ''} ${
+              employee.lastName ? employee.lastName : ''
             }`
           : `New Employee`}
       </ModalTitle>
@@ -56,16 +63,16 @@ const EmployeeForm = ({ employee, newEmployee }) => {
             key={i + row.field}
             name={row.field}
             placeholder={row.placeholder}
-            defaultValue={employeeInfo && employeeInfo[row.field]}
+            defaultValue={employee && employee[row.field]}
             editMode={editMode}
-            onChange={editEmployeeInfo}
+            onChange={editEmployee}
             label={row.name}
           />
         );
       })}
       <PositionDropDown
-        onChange={editEmployeeInfo}
-        employeeInfo={employeeInfo}
+        onChange={editEmployee}
+        employee={employee}
         editMode={editMode}
       />
       {editMode ? (
@@ -77,7 +84,7 @@ const EmployeeForm = ({ employee, newEmployee }) => {
           <FormButton
             margin={'10px'}
             backgroundColor='berry'
-            onClick={() => setEmployeeInfo(employee)}
+            onClick={() => console.log(employee)}
           >
             Cancel
           </FormButton>

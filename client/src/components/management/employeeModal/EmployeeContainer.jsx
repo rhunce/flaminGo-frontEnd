@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { colors } from '../../styledElements/styleGuid';
 import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
 import EmployeeForm from './formInfoView/EmployeeForm';
-import SummeryContainer from './workSummery/WorkSummeryContainer';
+import SummaryContainer from './workSummary/WorkSummaryContainer';
+import { EmployeeProvider } from './EmployeeContext';
 
 const FlexDiv = styled.div`
   display: flex;
@@ -20,18 +21,18 @@ const Bar = styled.div`
   margin-right: 40px;
 `;
 
-const EmployeeContainer = ({ employee = {}, newEmployee }) => (
-  <div>
+const EmployeeContainer = ({ employee, sampleData }) => (
+  <EmployeeProvider employee={employee} sampleData={sampleData}>
     <HalfRoundDiv padding='40px' height='650px' width='975px'>
       <div>
         <FlexDiv>
-          <EmployeeForm employee={employee} newEmployee={newEmployee} />
+          <EmployeeForm />
           <Bar />
-          <SummeryContainer />
+          <SummaryContainer />
         </FlexDiv>
       </div>
     </HalfRoundDiv>
-  </div>
+  </EmployeeProvider>
 );
 
 export default EmployeeContainer;

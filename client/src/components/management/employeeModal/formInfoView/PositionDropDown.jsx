@@ -4,7 +4,7 @@ import DropDown from '../../../styledElements/DropDown';
 import positions from '../../../../lib/positionsConstant';
 import FormRow from './FormRow';
 
-const PositionDropDown = ({ onChange, editMode, employeeInfo }) => {
+const PositionDropDown = ({ onChange, editMode, employee }) => {
   return (
     <FlexRow>
       {editMode ? (
@@ -12,7 +12,7 @@ const PositionDropDown = ({ onChange, editMode, employeeInfo }) => {
           <FormLabel>Position:</FormLabel>
           <DropDown width={'211px'} name='position' onChange={onChange}>
             <option value='' disabled selected hidden>
-              {employeeInfo ? employeeInfo.position : 'Position...'}
+              {employee ? employee.position : 'Position...'}
             </option>
             {positions.map((position, i) => (
               <option key={position.variable + i} value={position.variable}>
@@ -23,10 +23,10 @@ const PositionDropDown = ({ onChange, editMode, employeeInfo }) => {
         </div>
       ) : (
         <div>
-          {employeeInfo ? (
+          {employee ? (
             <FormRow
-              name={employeeInfo.position}
-              defaultValue={employeeInfo && employeeInfo.position}
+              name={employee.position}
+              defaultValue={employee && employee.position}
               label={'Position'}
             />
           ) : null}

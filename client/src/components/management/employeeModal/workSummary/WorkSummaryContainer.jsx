@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ModalTitle from '../../../styledElements/ModalTitle';
-import WorkSummeryList from './WorkSummeryList';
+import WorkSummaryList from './WorkSummaryList';
 
 const Holder = styled.section`
   display: flex;
@@ -11,11 +11,11 @@ const Holder = styled.section`
   flex-direction: column;
 `;
 
-const SummeryContainer = () => (
+const SummaryContainer = () => (
   <Holder>
     <ModalTitle margin='0px 0px 0px 0px'>Work Summary</ModalTitle>
-    <WorkSummeryList />
+    <WorkSummaryList />
   </Holder>
 );
 
-export default SummeryContainer;
+export default SummaryContainer;

@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, fonts } from '../../../styledElements/styleGuid';
+import { colors } from '../../../styledElements/styleGuid';
 
 const ListRow = styled.div`
-  /* width: 100%; */
   height: 80px;
   border-radius: 20px;
   background-color: ${colors.white};
@@ -14,7 +13,7 @@ const ListRow = styled.div`
   margin-bottom: 20px;
 `;
 
-const WorkSummeryListItem = ({ week }) => (
+const WorkSummaryListItem = ({ week }) => (
   <ListRow>
     <span>{`${week.week} | `}</span>
     <span>{`Hrs ${week.hours} | `}</span>
@@ -23,4 +22,4 @@ const WorkSummeryListItem = ({ week }) => (
   </ListRow>
 );
 
-export default WorkSummeryListItem;
+export default WorkSummaryListItem;
