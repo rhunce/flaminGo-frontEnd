@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
+import Search from './checkout/Search';
 
 // flex container
 const BtnContainer = styled.div`
@@ -45,7 +46,7 @@ const FrontDeskLanding = ({ back }) => {
         <div>place holder for check-in component</div>
       ) : paths.checkOut ? (
         // place holder for check-out component
-        <div>place holder for check-out component</div>
+        <Search />
       ) : paths.viewRooms ? (
         // place holder for room view component
         <div>place holder for room view component</div>
