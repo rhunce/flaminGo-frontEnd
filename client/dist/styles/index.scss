@@ -1,12 +1,201 @@
-$primary-color: rgb(110, 0, 125);
-$left-padding: 20px;
+// colors
+$grape: #a91cff;
+$berry: #ff2063;
+$white: #ffffff;
+$clementine: #ff8b03;
+$carrot: #ff4f03;
+$black: #252b2e;
+
+// gradients
+$clementineToCarrot: linear-gradient(135deg, #ff8b03, #ff4f03);
+$carrotToBerry: linear-gradient(135deg, #ff4f03, #ff2063);
+$berryToGrape: linear-gradient(135deg, #ff2063, #a91cff);
+
+// fonts
+$mainFont: "Open Sans, sans-serif";
+$plain: 400;
+$semiBold: 600;
+$bold: 700;
 
 h1 {
-  color: $primary-color;
+  color: $grape;
 }
 
 Body {
-  padding :$left-padding
+  font-family: $mainFont;
+  height: 100%;
 }
 
+.main {
+  background-image: $carrotToBerry;
+  height: 98vh;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+  opacity: 0;
+  }
+
+
+#mainHeader {
+  height: 100px;
+  padding: 0 0 0 30px;
+  color: $berry;
+  background-color: white;
+}
+
+#menuIcon {
+  float: right;
+  margin: 20px 20px 0 0;
+}
+
+#backButton {
+  margin: 0 0 0 30px;
+}
+
+#listContainer {
+  font-family: 'Open Sans';
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.listHeader {
+  margin: 0 30px 20px 30px;
+}
+
+.listHeaderSearch {
+  border: 1px $berry solid;
+  height: 40px;
+  width: 450px;
+  display: block;
+  float: right;
+  padding: 0 0 0 10px;
+}
+
+.listHeaderSearch img {
+  float: right;
+  margin: 10px 10px 0 0;
+}
+
+.listHeaderSearch input {
+  border: none;
+  margin: auto;
+  height: 38px;
+  width: 60%;
+  outline: none;
+  font-family: 'Open Sans';
+  font-size: 14px;
+}
+
+#listEntriesContainer {
+  margin: auto;
+  height: calc(100% - 80px);
+  width: calc(100% - 40px);
+  overflow: scroll;
+}
+
+#listEntriesHeader {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 60px;
+  font-weight: 600;
+}
+
+<<<<<<< HEAD
 @import 'addTask';
+=======
+.titleTable th {
+  width: 200px;
+  border-right: solid 1px white;
+  font-weight: 600;
+}
+
+#listEntry {
+  height: 100px;
+  width: calc(100% - 40px);
+  margin: 0 20px 20px 20px;
+  border-radius: 30px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entryTable th {
+  font-weight: 400;
+  width: 200px;
+}
+
+.listEntryText {
+  color: black;
+  margin: 0 0 0 20px;
+}
+
+.listEntryButtons {
+  float: right;
+}
+
+/*Dropdown Test*/
+
+.list1 {
+  display: inline-block;
+}
+
+.list1 .anchor {
+  position: relative;
+}
+
+
+.list1 ul.items {
+  padding: 2px;
+  display: none;
+  margin: 0;
+  background-color: $clementine;
+  border-top: none;
+  position: absolute;
+  width: 140px;
+  border-radius: 0 20px 0 20px;
+  padding: 10px;
+}
+
+.list1 ul.items li {
+  list-style: none;
+  color: white;
+  font-size: 14px;
+
+}
+
+
+.list1.visible .items {
+  display: block;
+}
+
+input[type=checkbox]:checked label {
+  color: #f3f3f3;
+  background-color:$berry;
+
+  }
+
+.landingContainer {
+  height: 100%;
+  width: 100%;
+}
+
+  .listBgContainer {
+    height:100%;
+    width: 100%;
+    background-color: white;
+  }
+
+>>>>>>> dev
