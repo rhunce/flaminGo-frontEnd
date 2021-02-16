@@ -13,16 +13,25 @@ class AddTaskForm extends React.Component {
 
     //each input field has its own state property and event handler
     this.state = {
+      employeeCreated: 0,
       taskTitle: '',
       roomNumber: 0,
       taskDescription: '',
-      taskType: ''
+      taskType: '',
+      dueBy: ''
     };
+    this.inputEmployeeID = this.inputEmployeeID.bind(this);
     this.inputTaskTitle = this.inputTaskTitle.bind(this);
     this.inputRoom = this.inputRoom.bind(this);
     this.inputDescription = this.inputDescription.bind(this);
     this.selectType = this.selectType.bind(this);
+    this.inputDueDate = this.inputDueDate.bind(this);
     this.submitAddTaskForm = this.submitAddTaskForm.bind(this);
+  }
+
+  inputEmployeeID(event) {
+    event.preventDefault();
+    this.setState({employeeCreated: event.target.value});
   }
 
   inputTaskTitle(event) {
@@ -45,6 +54,11 @@ class AddTaskForm extends React.Component {
     this.setState({taskType: event.target.value});
   }
 
+  inputDueDate(event) {
+    event.preventDefault();
+    this.setState({dueBy: event.target.value});
+  }
+
   //sends all form info to server in request body
   submitAddTaskForm(event) {
     event.preventDefault();
@@ -59,6 +73,8 @@ class AddTaskForm extends React.Component {
       <div>
         <HalfRoundDiv className={'addTask'}>
           <h1 className="formTitle">Add a Task</h1>
+          <h2 className="employeeId">Employee ID</h2>
+          <InputTypeText onChange={this.inputEmployeeID} className="employeeIdInput" placeholder={'Employee ID'} />
           <h2 className="taskInputTitle">Task Title</h2>
           <InputTypeText onChange={this.inputTaskTitle} className="taskInput" placeholder={'Task Title'} />
           <h2 className="roomInputTitle">Room Number</h2>
@@ -90,6 +106,8 @@ class AddTaskForm extends React.Component {
               Maintenance
             </label>
           </form>
+          <h2 className="dueByTitle" >Due By</h2>
+          <InputTypeText type="date" className="dueBy" onChange={this.inputDueDate} />
           <FormButton onClick={this.submitAddTaskForm} className="submitButton">Submit</FormButton>
         </HalfRoundDiv>
       </div>
