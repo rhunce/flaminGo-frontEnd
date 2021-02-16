@@ -170,4 +170,49 @@ input[type=checkbox]:checked label {
   background-color: white;
 }
 
+.createBooking {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(24, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.createBooking .bookingForm {
+  grid-area: 2/2/3/6;
+}
+.createBooking .firstName {
+  grid-area: 3/2/4/6;
+}
+.createBooking .firstNameInput {
+  grid-area: 4/2/5/6;
+}
+.createBooking .lastName {
+  grid-area: 3/7/4/12;
+}
+.createBooking .lastNameInput {
+  grid-area: 4/7/5/12;
+}
+.createBooking .datesStayed {
+  grid-area: 9/2/10/6;
+}
+.createBooking .dateRange {
+  grid-area: 10/2/12/6;
+  display: grid;
+}
+.createBooking .roomType {
+  grid-area: 14/2/15/6;
+}
+.createBooking .roomDropdown {
+  grid-area: 15/2/16/6;
+}
+.createBooking .addGuestsTitle {
+  grid-area: 9/7/10/12;
+}
+.createBooking .addGuests {
+  grid-area: 10/7/16/12;
+}
+.createBooking .submitButton {
+  grid-area: 21/7/22/12;
+}
+
 /*# sourceMappingURL=index.css.map */
