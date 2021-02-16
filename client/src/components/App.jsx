@@ -1,33 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import TextAreaForm from './styledElements/TextAreaForm.jsx';
+
 import MainHeader from './GlobalComponents/Header.jsx';
 import Landing from './landingPage/MainLanding';
 import Login from './landingPage/Login.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      color: 'berry',
-    };
-  }
+import LogoutButton from './login/LogoutButton';
+import { useAuth0 } from '@auth0/auth0-react';
 
-  componentDidMount() {
-    this.getData();
-  }
+const App = () => {
+  const [color, setColor] = useState('berry');
 
-  getData() {}
+  const {
+    isLoading,
+    isAuthenticated,
+    error,
+    user,
+    loginWithRedirect,
+    logout,
+  } = useAuth0();
 
-  render() {
-    return (
-      <Login />
-      // <main className='main'>
-      //   <MainHeader />
-      //   <Landing />
-      // </main>
-    );
-  }
-}
+  return (
+    <div>
+      {isAuthenticated ? (
+        <main className='main'>
+          <MainHeader />
+          <Landing />
+          <LogoutButton />
+        </main>
+      ) : (
+        <Login />
+      )}
+    </div>
+  );
+};
 
 export default App;
