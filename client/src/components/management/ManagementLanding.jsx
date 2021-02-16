@@ -59,7 +59,7 @@ const ManagementLanding = ({ back }) => {
         <ListMaster type="room" handleBackChange={setBackColor} handleBackgroundChange={setListBackground}/>
       ) : paths.guestList ? (
         // place holder for Guest List component
-        <div>place holder for Guest List component</div>
+        <ListMaster type="guest" handleBackChange={setBackColor} handleBackgroundChange={setListBackground}/>
       ) : (
         <BtnContainer>
           <LandingButtons routs={routs} />

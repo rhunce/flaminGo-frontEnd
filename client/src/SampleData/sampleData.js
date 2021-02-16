@@ -143,6 +143,33 @@ exports.roomsData = [
       },
     ]
   },
+  {
+    "_id": "507c7f79bcf86cd7994f6c0e",
+    "roomNumber": "115",
+    "floorNumber": 1,
+    "roomType": "Suite",
+    "amenities": [
+      "Non-Smoking",
+      "Pool Side",
+      "Mini-Fridge"
+    ],
+    "isClean":true,
+    "isOccupied": true,
+    "currentGuests": [
+    ],
+    "tasks": [
+      {
+        "_id":"5febcfb988e5d76e417427c6",
+        "taskTitle": "Daily cleaning",
+        "department":"Housekeeping"
+      },
+      {
+        "_id":"5febcfc488e5d76e417427c7",
+        "taskTitle": "Shower needs new caulk",
+        "department":"Maintenance"
+      },
+    ]
+  },
 ]
 
 exports.employeeData = [{
@@ -199,8 +226,8 @@ exports.taskData = [{
     "completedAt": "2021-02-13T16:15:00.000Z"
   },
   {
-  "task_id": "60108729ffefc9bae107564d",
-  "room_id": "507c7f79bcf86cd7994f6c0e",
+  "task_id": "60108729ffefc9bae103reg",
+  "room_id": "507c7f79bcf86cd7994f6g45",
   "roomNumber": "",
   "location": "Pool",
   "employeeCompleted": "John Smith",
@@ -213,4 +240,44 @@ exports.taskData = [{
   "isCompleted": false,
   "completedAt": "2021-02-13T16:15:00.000Z"
 }
+]
+
+exports.reservationData = [
+  {
+    "_id": "5ffa25a6a13f985fdeda9e70",
+    "bookingGuest": "John Smith",
+    "roomNumber": "111",
+    "roomType": "Single Queen",
+    "totalCost": 150.00,
+    "checkIn": "2021-10-22",
+    "checkOut": "2021-10-28",
+    "guestList": [
+      "Jane Smith",
+      "Richard Long"
+    ]
+  },
+  {
+    "_id": "60108729ffefc9bae107564c",
+    "bookingGuest": "Soo Yung",
+    "roomNumber": "110",
+    "roomType": "Single Queen",
+    "totalCost": 150.00,
+    "checkIn": "2021-05-03",
+    "checkOut": "2021-05-10",
+    "guestList": [
+      "Soo Yung"
+    ]
+  },
+  {
+    "_id": "60108729ffefc9bae107564c",
+    "bookingGuest": "Pippa Lewis",
+    "roomNumber": "112",
+    "roomType": "Single Queen",
+    "totalCost": 150.00,
+    "checkIn": "2021-02-16",
+    "checkOut": "2021-02-28",
+    "guestList": [
+      "Pippa Lewis"
+    ]
+  }
 ]
