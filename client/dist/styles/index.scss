@@ -61,7 +61,27 @@ Body {
   line-height: 41px;
 }
 
-.searchButtonPlacement {
+.checkinLabels {
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+  
+}
+
+#checkInGuestName {
+  margin-bottom: 40px;
+}
+
+.centeredInputBars {
   margin: auto;
   width: 50%;
+  height: 50%;
+  padding-top: 10%;
+}
+
+.searchButtonPlacement {
+  margin: auto;
+  width: 158px;
 }
