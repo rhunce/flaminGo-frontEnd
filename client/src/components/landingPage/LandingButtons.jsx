@@ -9,8 +9,8 @@ const BtnContainer = styled.div`
 
 const LandingPage = ({ routs }) => (
   <BtnContainer>
-    {routs.map((rout) => (
-      <BigButton margin={'27.5px 0'} onClick={rout.onClick}>
+    {routs.map((rout, i) => (
+      <BigButton key={rout + i} margin={'27.5px 0'} onClick={rout.onClick}>
         {rout.title}
       </BigButton>
     ))}

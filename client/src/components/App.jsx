@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import Landing from './landingPage/MainLanding';
-
 import TextAreaForm from './styledElements/TextAreaForm.jsx';
+import MainHeader from './GlobalComponents/Header.jsx';
+import Landing from './landingPage/MainLanding';
 
 
 class App extends React.Component {
@@ -22,6 +22,7 @@ class App extends React.Component {
   render() {
     return (
       <main className='main'>
+        <MainHeader />
         <Landing />
       </main>
     );
