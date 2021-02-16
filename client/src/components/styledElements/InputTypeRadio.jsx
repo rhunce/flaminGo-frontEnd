@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, font } from './styleGuid';
+import { colors, fonts } from './styleGuid';
 
 const FormInput = styled.input`
-  font-family: ${font.mainFont};
+  font-family: ${fonts.mainFont};
   font-size: 16px;
   color: ${colors.black};
   border: 1px solid ${colors.berry};
