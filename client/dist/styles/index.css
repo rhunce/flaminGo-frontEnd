@@ -2,14 +2,21 @@ h1 {
   color: #a91cff;
 }
 
+html {
+  height: 100%;
+  width: 100%;
+}
+
 Body {
   font-family: "Open Sans, sans-serif";
   height: 100%;
+  background-image: linear-gradient(135deg, #ff4f03, #ff2063);
+  margin: 0;
 }
 
 .main {
   background-image: linear-gradient(135deg, #ff4f03, #ff2063);
-  height: 98vh;
+  height: 100%;
   width: 100%;
 }
 
@@ -296,6 +303,45 @@ input[type=checkbox]:checked label {
 #listEntryMini:active {
   background-color: #ff2063;
   cursor: pointer;
+}
+#listEntryMini:active .sortBy {
+  font-size: 14px;
+  width: 160px;
+  height: 40px;
+  border: none;
+  color: white;
+  background-color: #ff8b03;
+  border-radius: 30px;
+}
+#listEntryMini:active .filterBy {
+  font-size: 14px;
+  width: 160px;
+  height: 40px;
+  border: none;
+  color: white;
+  background-color: #ff8b03;
+  border-radius: 30px;
+  margin: 0 30px 0 0;
+}
+#listEntryMini:active select {
+  text-align: center;
+  text-align-last: center;
+  outline: none;
+}
+#listEntryMini:active option {
+  text-align: left;
+  /* reset to left*/
+}
+#listEntryMini:active select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+#listEntryMini:active .listBgContainer {
+  height: 100%;
+  width: 100%;
+  background-color: white;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -4,6 +4,8 @@ import FormButton from '../styledElements/FormButton.jsx'
 
 const ListEntry = ({table, type}) => {
 
+  console.log("ListEntryType", type);
+
   let entryButtons;
   if (type === "employee") {
     entryButtons = <span className="listEntryButtons">

@@ -12,7 +12,7 @@ $carrotToBerry: linear-gradient(135deg, #ff4f03, #ff2063);
 $berryToGrape: linear-gradient(135deg, #ff2063, #a91cff);
 
 // fonts
-$mainFont: "Open Sans, sans-serif";
+$mainFont: 'Open Sans, sans-serif';
 $plain: 400;
 $semiBold: 600;
 $bold: 700;
@@ -20,15 +20,22 @@ $bold: 700;
 h1 {
   color: $grape;
 }
-
+html {
+  height: 100%;
+  width: 100%;
+}
 Body {
   font-family: $mainFont;
   height: 100%;
+
+  background-image: $carrotToBerry;
+  margin: 0;
 }
 
 .main {
+  // border: 1px solid black;
   background-image: $carrotToBerry;
-  height: 98vh;
+  height: 100%;
   width: 100%;
 }
 
@@ -44,8 +51,7 @@ Body {
 
 ::-webkit-scrollbar-corner {
   opacity: 0;
-  }
-
+}
 
 #mainHeader {
   height: 100px;
@@ -154,7 +160,6 @@ Body {
   position: relative;
 }
 
-
 .list1 ul.items {
   padding: 2px;
   display: none;
@@ -171,19 +176,16 @@ Body {
   list-style: none;
   color: white;
   font-size: 14px;
-
 }
-
 
 .list1.visible .items {
   display: block;
 }
 
-input[type=checkbox]:checked label {
+input[type='checkbox']:checked label {
   color: #f3f3f3;
-  background-color:$berry;
-
-  }
+  background-color: $berry;
+}
 
 .landingContainer {
   height: 100%;
@@ -324,4 +326,51 @@ input[type=checkbox]:checked label {
 #listEntryMini:active{
   background-color: $berry;
   cursor:pointer;
+
+.sortBy {
+  font-size: 14px;
+  width: 160px;
+  height: 40px;
+  border: none;
+  color: white;
+  background-color: $clementine;
+  border-radius: 30px;
+}
+
+
+.filterBy {
+  font-size: 14px;
+  width: 160px;
+  height: 40px;
+  border: none;
+  color: white;
+  background-color: $clementine;
+  border-radius: 30px;
+  margin: 0 30px 0 0;
+}
+
+select {
+  text-align: center;
+  text-align-last: center;
+  outline: none;
+}
+
+option {
+  text-align: left;
+  /* reset to left*/
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+.listBgContainer {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+
 }

@@ -10,6 +10,11 @@ module.exports = {
     path: DIST_DIR,
     filename: 'bundle.js',
   },
+  plugins: [
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify('development')
+    })
+],
   module: {
     rules: [
       {
