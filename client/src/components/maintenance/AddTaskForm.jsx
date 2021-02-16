@@ -13,7 +13,7 @@ class AddTaskForm extends React.Component {
 
     //each input field has its own state property and event handler
     this.state = {
-      employeeCreated: 0,
+      employeeCreated: '',
       taskTitle: '',
       roomNumber: 0,
       taskDescription: '',
@@ -63,6 +63,7 @@ class AddTaskForm extends React.Component {
   submitAddTaskForm(event) {
     event.preventDefault();
     //from API docs: POST '/tasks' to add a new task
+    //need to add user ID from authentication cookies to add to request object
     axios.post('/tasks', this.state)
       .then((results) => { console.log('Form successfully submitted'); })
       .catch((error) => { console.log(error); });
