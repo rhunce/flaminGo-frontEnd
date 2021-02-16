@@ -4,7 +4,7 @@ import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
 import ListMaster from '../GlobalComponents/ListMaster'
-
+import CreateBookingForm from './CreateBookingForm.jsx';
 
 // flex container
 const BtnContainer = styled.div`
@@ -22,6 +22,7 @@ const FrontDeskLanding = ({ back }) => {
     checkIn: false,
     checkOut: false,
     viewRooms: false,
+    createBooking: false,
     landing: true,
   });
 
@@ -38,6 +39,7 @@ const FrontDeskLanding = ({ back }) => {
     },
     { title: 'Check-Out', onClick: () => setPaths('checkOut') },
     { title: 'View Rooms', onClick: () => setPaths('viewRooms') },
+    { title: 'Create Booking', onClick: () => setPaths('createBooking') }
   ];
 
   // return to main landing
@@ -61,6 +63,8 @@ const FrontDeskLanding = ({ back }) => {
       ) : paths.viewRooms ? (
         // place holder for room view component
         <ListMaster type="room" handleBackChange={setBackColor} handleBackgroundChange={setListBackground}/>
+      ) : paths.createBooking ? (
+        <CreateBookingForm/>
       ) : (
         <BtnContainer>
           <LandingButtons routs={routs} />
