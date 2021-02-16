@@ -8,7 +8,7 @@ const ListEntry = ({table, type}) => {
   if (type === "employee") {
     entryButtons = <span className="listEntryButtons">
     <FormButton margin="0 30px 0 20px">See Details</FormButton>
-    <FormButton margin="0 20px 0 0">Remove</FormButton>
+    <FormButton margin="0 20px 0 0" backgroundColor="#ff2063">Remove</FormButton>
     </span>
   } else if (type === "room") {
     entryButtons = <span className="listEntryButtons">
