@@ -5,14 +5,7 @@ import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import HMLanding from '../maintenance/HMLanding';
 import ManagementLanding from '../management/ManagementLanding';
-
-// flex container
-const BtnContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-`;
+import FlexCenterContainer from './FlexCenterContainer';
 
 const MainLanding = () => {
   // set state to toggle for conditional rendering
@@ -54,9 +47,9 @@ const MainLanding = () => {
         // place holder for time sheet component (is going to need back button)
         <div>place holder for time sheet component</div>
       ) : (
-        <BtnContainer>
+        <FlexCenterContainer>
           <LandingButtons routs={routs} />
-        </BtnContainer>
+        </FlexCenterContainer>
       )}
     </div>
   );
