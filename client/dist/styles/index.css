@@ -6,45 +6,6 @@ Body {
   padding: 20px;
 }
 
-.addTask {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(24, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
-.addTask .formTitle {
-  grid-area: 2/2/3/7;
-}
-.addTask .roomInputTitle {
-  grid-area: 4/2/5/7;
-}
-.addTask .roomInput {
-  grid-area: 5/2/6/7;
-}
-.addTask .taskInputTitle {
-  grid-area: 4/8/5/12;
-}
-.addTask .taskInput {
-  grid-area: 5/8/6/12;
-}
-.addTask .textAreaTitle {
-  grid-area: 7/2/8/7;
-}
-.addTask .textArea {
-  grid-area: 8/2/18/12;
-}
-.addTask .radioTitle {
-  grid-area: 19/2/20/7;
-}
-.addTask .ticketType {
-  grid-area: 20/2/24/7;
-  display: grid;
-}
-.addTask .submitButton {
-  grid-area: 20/9/22/12;
-}
-
 .createBooking {
   display: grid;
   grid-template-columns: repeat(12, 1fr);

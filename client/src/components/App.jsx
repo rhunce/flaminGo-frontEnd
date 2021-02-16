@@ -22,7 +22,6 @@ class App extends React.Component {
         HrNYC34 PROJECT
         <h1> {this.props.projectName} </h1>
         <TextAreaForm />
-        <AddTaskForm/>
         <CreateBookingForm/>
       </div>
     );
