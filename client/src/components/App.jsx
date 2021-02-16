@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import TextAreaForm from './styledElements/TextAreaForm.jsx'
-import MainHeader from './GlobalComponents/Header.jsx'
+import TextAreaForm from './styledElements/TextAreaForm.jsx';
+import MainHeader from './GlobalComponents/Header.jsx';
 import Landing from './landingPage/MainLanding';
+import Login from './landingPage/Login.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,10 +21,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <main className='main'>
-        <MainHeader />
-        <Landing />
-      </main>
+      <Login />
+      // <main className='main'>
+      //   <MainHeader />
+      //   <Landing />
+      // </main>
     );
   }
 }
