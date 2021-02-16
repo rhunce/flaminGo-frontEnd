@@ -52,7 +52,6 @@ class Search extends React.Component {
             id="searchButtonPlacement"
             onClick={(e) => {
               this.props.nextPageClickHandler(e, this.state.nameInput, this.state.reservationIdInput, this.state.roomNumberInput);
-
             }}>Search
           </FormButton>
         </div>

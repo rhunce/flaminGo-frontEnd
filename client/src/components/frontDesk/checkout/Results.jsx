@@ -80,11 +80,11 @@ class Results extends React.Component {
         <div className="buttonContainer">
           <FormButton
             id="checkoutButton1"
-            onClick={(e) => { console.log('CLICKAROO!'); }}>Invoice
+            onClick={(e) => { console.log('CLICKAROOOOOO!'); }}>Invoice
           </FormButton>
           <FormButton
             id="checkoutButton2"
-            onClick={(e) => { console.log('CLICKAWHO?!?!'); }}>Check Out
+            onClick={this.props.nextPageClickHandler}>Check Out
           </FormButton>
         </div>
       </HalfRoundDiv>
