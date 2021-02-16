@@ -4,7 +4,18 @@ import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
 import ListMaster from '../GlobalComponents/ListMaster';
+import CheckInReservationList from './checkIn2.jsx';
+
+// flex container
+const BtnContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+`;
+
 import FlexCenterContainer from '../landingPage/FlexCenterContainer';
+
 
 const FrontDeskLanding = ({ back }) => {
   // set state to toggle for conditional rendering
