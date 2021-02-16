@@ -9,9 +9,10 @@ const FormRow = ({
   defaultValue,
   onChange,
   editMode,
+  margin,
 }) => {
   return (
-    <FlexRow>
+    <FlexRow margin={margin}>
       <FormLabel>{`${label}:`}</FormLabel>
       <FormInput
         name={name}
