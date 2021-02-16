@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import MainHeader from './GlobalComponents/Header.jsx';
 import Landing from './landingPage/MainLanding';
-import Login from './landingPage/Login.jsx';
+import Login from './login/Login.jsx';
 
 import LogoutButton from './login/LogoutButton';
 import { useAuth0 } from '@auth0/auth0-react';

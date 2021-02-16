@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import FormButton from '../styledElements/FormButton';
 import { colors } from '../styledElements/styleGuid';
+import LoginButton from './LoginButton';
 
 const Wrapper = styled.main`
   position: absolute;
@@ -52,7 +53,7 @@ const Login = () => {
           height='150px'
           style={{ margin: '50px' }}
         ></img>
-        <FormButton margin='100px 0'>Hi</FormButton>
+        <LoginButton />
       </BigSide>
     </Wrapper>
   );
