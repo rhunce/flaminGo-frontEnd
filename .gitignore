@@ -6,13 +6,16 @@ client/dist/*
 
 ## API keys ##
 env/config.js
+.env
 
 ## ETC ##
 !client/dist/index.html
 !client/dist/styles/
+!client/dist/svg/
 .cache/
 *.log
 package-lock.json
+JStesting.js
 
 # OS generated files
 .DS_Store
