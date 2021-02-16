@@ -1,15 +1,20 @@
-import React from 'react';
-import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
+import React, {useState} from 'react';
 
+import CheckInReservationList from './checkIn2'
+import AvailableRooms from './03availableRooms'
 
 const ReservationResults = ({name, resId}) => {
+    const [page, setPage] = useState(0);
+    const addPage = () => {
+        setPage((prevPage) => (prevPage + 1))
+    };
+
+    if (page === 1){
+        return <AvailableRooms/>
+    }
+
     return (
-        <HalfRoundDiv className="mainBox" margin={'0 auto'}>
-            <div className="insidePurpleThing">
-                <div> reservation Number | Guest Name | DD/MM - DD/MM</div>
-                Search results for: {name} {resId}
-            </div>
-        </HalfRoundDiv>
+        <CheckInReservationList /> 
     )
 }
 export default ReservationResults;

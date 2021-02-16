@@ -203,17 +203,6 @@ input[type=checkbox]:checked label {
   margin: 0 auto;
 }
 
-.insidePurpleThing {
-  position: relative;
-  width: 916px;
-  height: 594px;
-  left: 262px;
-  top: 221px;
-
-  background: $berryToGrape;
-  border-radius: 30px;
-}
-
 .checkInTitleDiv {
   padding-top: 40px;
   text-align: center;
@@ -247,7 +236,6 @@ input[type=checkbox]:checked label {
   width: 158px;
 }
 
-=======
 #reservationOuterContainer {
   margin: auto;
   display: flex;
@@ -298,4 +286,14 @@ input[type=checkbox]:checked label {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#listEntryMini:hover{
+  background-color: $grape;
+  cursor:pointer;
+}
+
+#listEntryMini:active{
+  background-color: $berry;
+  cursor:pointer;
 }

@@ -1,10 +1,15 @@
 import React from 'react';
 
-const AvailableRooms = () => {
+import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
+
+const AvailableRooms = (props) => {
     return (
-        <HalfRoundDiv className="mainBox">
-            <div className="insidePurpleThing">
-                <div> reservation Number | Guest Name | DD/MM - DD/MM</div>
+        <HalfRoundDiv
+            margin="0 30px 0 30px"
+            id="reservationOuterContainer"
+        >
+            <div id="reservationInnerContainer">
+
             </div>
         </HalfRoundDiv>
     )

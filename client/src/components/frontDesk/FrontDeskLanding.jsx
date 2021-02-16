@@ -4,7 +4,6 @@ import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
 import ListMaster from '../GlobalComponents/ListMaster';
-import CheckInReservationList from './checkIn2.jsx';
 
 
 //checkin imports
@@ -59,7 +58,6 @@ const FrontDeskLanding = ({ back }) => {
       {paths.checkIn ? (
         // place holder for check-in component
         <SearchForReservations />
-        <CheckInReservationList/>
       ) : paths.checkOut ? (
         // place holder for check-out component
         <div>place holder for check-out component</div>

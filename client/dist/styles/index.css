@@ -1,17 +1,273 @@
-/* Error: expected selector.
- *     ,
- * 250 | =======
- *     | ^
- *     '
- *   client/dist/styles/index.scss 250:1  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: expected selector.\a     \2577 \a 250 \2502  =======\a     \2502  ^\a     \2575 \a   client/dist/styles/index.scss 250:1  root stylesheet";
+h1 {
+  color: #a91cff;
 }
+
+Body {
+  font-family: "Open Sans, sans-serif";
+  height: 100%;
+}
+
+.main {
+  background-image: linear-gradient(135deg, #ff4f03, #ff2063);
+  height: 98vh;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+  opacity: 0;
+}
+
+#mainHeader {
+  height: 100px;
+  padding: 0 0 0 30px;
+  color: #ff2063;
+  background-color: white;
+}
+
+#menuIcon {
+  float: right;
+  margin: 20px 20px 0 0;
+}
+
+#backButton {
+  margin: 0 0 0 30px;
+}
+
+#listContainer {
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.listHeader {
+  margin: 0 30px 20px 30px;
+}
+
+.listHeaderSearch {
+  border: 1px #ff2063 solid;
+  height: 40px;
+  width: 450px;
+  display: block;
+  float: right;
+  padding: 0 0 0 10px;
+}
+
+.listHeaderSearch img {
+  float: right;
+  margin: 10px 10px 0 0;
+}
+
+.listHeaderSearch input {
+  border: none;
+  margin: auto;
+  height: 38px;
+  width: 60%;
+  outline: none;
+  font-family: "Open Sans";
+  font-size: 14px;
+}
+
+#listEntriesContainer {
+  margin: auto;
+  height: calc(100% - 80px);
+  width: calc(100% - 40px);
+  overflow: scroll;
+}
+
+#listEntriesHeader {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 60px;
+  font-weight: 600;
+  color: white;
+}
+
+.titleTable th {
+  width: 200px;
+  border-right: solid 1px white;
+  font-weight: 600;
+}
+
+#listEntry {
+  height: 100px;
+  width: calc(100% - 40px);
+  margin: 0 20px 20px 20px;
+  border-radius: 30px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entryTable th {
+  font-weight: 400;
+  width: 200px;
+}
+
+.listEntryText {
+  color: black;
+  margin: 0 0 0 20px;
+}
+
+.listEntryButtons {
+  float: right;
+}
+
+/*Dropdown Test*/
+.list1 {
+  display: inline-block;
+}
+
+.list1 .anchor {
+  position: relative;
+}
+
+.list1 ul.items {
+  padding: 2px;
+  display: none;
+  margin: 0;
+  background-color: #ff8b03;
+  border-top: none;
+  position: absolute;
+  width: 140px;
+  border-radius: 0 20px 0 20px;
+  padding: 10px;
+}
+
+.list1 ul.items li {
+  list-style: none;
+  color: white;
+  font-size: 14px;
+}
+
+.list1.visible .items {
+  display: block;
+}
+
+input[type=checkbox]:checked label {
+  color: #f3f3f3;
+  background-color: #ff2063;
+}
+
+.landingContainer {
+  height: 100%;
+  width: 100%;
+}
+
+.listBgContainer {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+
+.mainBox {
+  display: block;
+  margin: 0 auto;
+}
+
+.checkInTitleDiv {
+  padding-top: 40px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 41px;
+}
+
+.checkinLabels {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+}
+
+#checkInGuestName {
+  margin-bottom: 40px;
+}
+
+.centeredInputBars {
+  margin: auto;
+  width: 50%;
+  height: 50%;
+  padding-top: 10%;
+}
+
+.searchButtonPlacement {
+  margin: auto;
+  width: 158px;
+}
+
+#reservationOuterContainer {
+  margin: auto;
+  display: flex;
+}
+
+#reservationInnerContainer {
+  width: 840px;
+  height: 440px;
+  background-image: linear-gradient(135deg, #ff2063, #a91cff);
+  margin: auto;
+  border-radius: 30px;
+}
+
+.entryTableMini {
+  margin: auto;
+}
+
+.entryTableMini th {
+  font-weight: 400;
+  width: 220px;
+}
+
+.titleTableMini {
+  margin: auto;
+}
+
+.titleTableMini th {
+  width: 220px;
+  border-right: solid 1px white;
+  font-weight: 600;
+}
+
+#listEntriesHeaderMini {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: white;
+}
+
+#listEntryMini {
+  height: 100px;
+  width: calc(100% - 40px);
+  margin: 0 20px 20px 20px;
+  border-radius: 30px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#listEntryMini:hover {
+  background-color: #a91cff;
+  cursor: pointer;
+}
+
+#listEntryMini:active {
+  background-color: #ff2063;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=index.css.map */
