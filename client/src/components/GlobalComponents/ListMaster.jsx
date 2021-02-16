@@ -20,19 +20,37 @@ import {
   taskData,
   reservationData,
 } from "../../SampleData/SampleData.js";
+import axios from 'axios';
 
 const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
+
   useEffect(() => {
     handleBackChange("black");
     handleBackgroundChange("listBgContainer");
   });
 
-  console.log("ListType", type)
+  const [dataSet, setDataSet] = useState([])
+  useEffect(() => {
+    if (type ==="room") {
+      axios.get("http://localhost:3232/rooms")
+      .then((data) => {setDataSet(data.data)})
+    } else if (type ==="employee") {
+      axios.get("http://localhost:3232/employee")
+      .then((data) => {setDataSet(data.data)})
+    } else if (type ==="task") {
+      axios.get("http://localhost:3232/tasks")
+      .then((data) => {setDataSet(data.data)})
+    }
+  });
 
-  let data, titleTable, searchParam;
+  let data = dataSet;
+
+
+
+  let titleTable, searchParam;
 
   if (type === "room") {
-    data = roomsData;
+
     titleTable = titleTableRooms();
     searchParam = "Search by room number";
   } else if (type === "employee") {
@@ -49,17 +67,7 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
     searchParam = "Search by guest name"
   }
 
-  const [dropDownStatus, setDropDown] = useState("list1");
-
-  var checkList = document.getElementById("dropDown");
-
-  let handleFilterDropdown = (e) => {
-    if (dropDownStatus === "list1") setDropDown("list1 visible");
-    else setDropDown("list1");
-  };
-
   //Search Functionality
-
   const [searchTerm, setSearch] = useState('');
 
   const handleSearch = (e) => {
@@ -91,31 +99,32 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
   let handleSort = () => {
     let sortBy = document.getElementsByClassName("sortBy")[0].value;
     setSort(sortBy)
-    if (sortBy === "roomType" || sortBy === "lastName" || sortBy === "position") {
-      data.sort(function(a, b){
-        if(a[sortBy] < b[sortBy]) { return -1; }
-        if(a[sortBy] > b[sortBy]) { return 1; }
-        return 0;
-    })
-    } else if (sortBy === "roomNumber") {
-      data.sort(function(a, b){
-        if(parseInt(a[sortBy]) < parseInt(b[sortBy])) { return -1; }
-        if(parseInt(a[sortBy]) > parseInt(b[sortBy])) { return 1; }
-        return 0;
-    })
-    }
+  }
+
+  if (sortTerm === "roomType" || sortTerm === "lastName" || sortTerm === "position") {
+    data.sort(function(a, b){
+      if(a[sortTerm] < b[sortTerm]) { return -1; }
+      if(a[sortTerm] > b[sortTerm]) { return 1; }
+      return 0;
+  })
+  } else if (sortTerm === "roomNumber") {
+    data.sort(function(a, b){
+      if(parseInt(a[sortTerm]) < parseInt(b[sortTerm])) { return -1; }
+      if(parseInt(a[sortTerm]) > parseInt(b[sortTerm])) { return 1; }
+      return 0;
+  })
   }
 
   let sortOptions;
   if (type === "room") {
-    sortOptions =   <select className="sortBy" onChange={handleSort}>
-    <option value="" selected disabled hidden>Sort By</option>
+    sortOptions =   <select className="sortBy" defaultValue="" onChange={handleSort}>
+    <option value="" disabled hidden>Sort By</option>
     <option value="roomNumber">Room Number</option>
     <option value="roomType">Room Type</option>
   </select>
   } else if (type === "employee") {
-    sortOptions = <select className="sortBy" onChange={handleSort}>
-    <option value="" selected disabled hidden>Sort By</option>
+    sortOptions = <select className="sortBy" defaultValue="" onChange={handleSort}>
+    <option value="" disabled hidden>Sort By</option>
     <option value="position">Position</option>
     <option value="lastName">Last Name</option>
   </select>
@@ -136,7 +145,6 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
   if (filterTerm === "vacancy") {
     data = data.filter((room) => {
       let vacant = !room.isOccupied;
-      console.log(room.roomNumber, " is ", vacant)
       return vacant}
     );
   } else if (filterTerm === "cleaned") {
@@ -163,21 +171,21 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
 
   let filterOptions;
   if (type === "room") {
-    filterOptions = <select className="filterBy" onChange={handleFilter}>
-    <option value="" selected disabled hidden>Filter</option>
+    filterOptions = <select className="filterBy" defaultValue="" onChange={handleFilter}>
+    <option value="" disabled hidden>Filter</option>
     <option value="">See All Rooms</option>
     <option value="vacancy">Vacant</option>
     <option value="cleaned">Cleaned</option>
   </select>
   } else if (type === "employee") {
-    filterOptions = <select className="filterBy" onChange={handleFilter}>
-    <option value="" selected disabled hidden>Filter</option>
+    filterOptions = <select className="filterBy" defaultValue="" onChange={handleFilter}>
+    <option value="" disabled hidden>Filter</option>
     <option value="">See All Employees</option>
     <option value="worked">Worked This Week</option>
     </select>
   } else if (type === "task") {
-    sortOptions = <select className="filterBy" onChange={handleFilter}>
-    <option value="" selected disabled hidden>Filter</option>
+     filterOptions = <select className="filterBy" defaultValue="" onChange={handleFilter}>
+    <option value="" disabled hidden>Filter</option>
     <option value="">See All Tasks</option>
     <option value="housekeeping">Housekeeping</option>
     <option value="maintenance">Maintenance</option>
@@ -206,13 +214,13 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
         <div id="listEntriesContainer">
           {data.map((entity) => {
             if (type === "room") {
-              return <ListEntry table={entryTableRooms(entity)} type="room" />;
+              return <ListEntry table={entryTableRooms(entity)} type="room" key={entity._id} />;
             } else if (type === "employee") {
-              return <ListEntry table={entryTableEmployees(entity)} type="employee" />
+              return <ListEntry table={entryTableEmployees(entity)} type="employee" key={entity._id} />
             } else if (type === "task") {
-              return <ListEntry table={entryTableTasks(entity)} type="task" />;
+              return <ListEntry table={entryTableTasks(entity)} type="task" key={entity._id} />;
             } else if (type === "guest") {
-              return <ListEntry table={entryTableGuests(entity)} type="guest" />;
+              return <ListEntry table={entryTableGuests(entity)} type="guest" key={entity._id} />;
             }
           })}
         </div>
