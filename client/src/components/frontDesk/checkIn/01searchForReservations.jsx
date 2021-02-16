@@ -25,8 +25,7 @@ const SearchForReservations = () => {
     //     console.log('name changed')
     // }, [name])
 
-
-
+    // unfinished method for data validation
     let nameValidate = null;
     if (name === "blob") {
         nameValidate = <div> your input is a blob </div>
