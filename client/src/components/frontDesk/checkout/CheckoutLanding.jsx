@@ -2,6 +2,7 @@ import React from 'react';
 import Search from './Search';
 import Results from './Results';
 import Confirmation from './Confirmation';
+import axios from 'axios';
 
 // import styled from 'styled-components';
 // import LandingButtons from '../landingPage/LandingButtons';
@@ -25,6 +26,8 @@ class CheckoutLanding extends React.Component {
 
   nextPageClickHandler(e, name, reservationId, roomNumber) {
     if (this.state.searchPage === true) {
+
+
       this.setState({
         searchPage: !this.state.searchPage,
         resultsPage: !this.state.resultsPage,
