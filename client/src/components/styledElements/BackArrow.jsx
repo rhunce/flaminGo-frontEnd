@@ -10,8 +10,8 @@ const Button = styled.button`
   padding: 0;
   border: none;
   height: 40px;
+  outline: none;
   position: relative;
-
   &:hover ${ToolTip} {
     visibility: visible;
   }
