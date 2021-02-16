@@ -12,7 +12,7 @@ $carrotToBerry: linear-gradient(135deg, #ff4f03, #ff2063);
 $berryToGrape: linear-gradient(135deg, #ff2063, #a91cff);
 
 // fonts
-$mainFont: Open Sans, sans-serif;
+$mainFont: "Open Sans, sans-serif";
 $plain: 400;
 $semiBold: 600;
 $bold: 700;
@@ -50,7 +50,7 @@ Body {
 #mainHeader {
   height: 100px;
   padding: 0 0 0 30px;
-  color:#FF2063;
+  color: $berry;
   background-color: white;
 }
 
@@ -74,7 +74,7 @@ Body {
 }
 
 .listHeaderSearch {
-  border: 1px #FF2063 solid;
+  border: 1px $berry solid;
   height: 40px;
   width: 450px;
   display: block;
@@ -158,7 +158,7 @@ Body {
   padding: 2px;
   display: none;
   margin: 0;
-  background-color: #FF8B03;
+  background-color: $clementine;
   border-top: none;
   position: absolute;
   width: 140px;
@@ -180,7 +180,7 @@ Body {
 
 input[type=checkbox]:checked label {
   color: #f3f3f3;
-  background-color:#FF2063;
+  background-color:$berry;
 
   }
 
