@@ -4,18 +4,20 @@ import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
 import InputTypeText from '../../styledElements/InputTypeText';
 import CheckInReservationList from './checkIn2'
 import AvailableRooms from './03availableRooms';
+import ConfirmationPage from './04confirmationPage'
+import axios from 'axios';
 
 
 const SearchForReservations = () => {
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
     const [name, setName] = useState('');
     const [resId, setResId] = useState('');
     const [reservations, setReservations] = useState([])
 
     const addPage = () => {
-        console.log('in addPage')
         setPage((prevPage) => (prevPage + 1))
         //GET request in axios
+        // axios.get()
 
     };
     const updateName = (e) => {
@@ -36,19 +38,28 @@ const SearchForReservations = () => {
         nameValidate = <div> your input is a blob </div>
     }
 
-    if (page === 1){
+    //page navigation
+    if (page === 2){
         return <CheckInReservationList 
             name={name} 
             resId={resId}
             addPage={addPage}/>
     }
 
-    if (page === 2){
+    if (page === 3){
         return <AvailableRooms 
             name={name} 
             resId={resId}
             addPage={addPage}/>
     }
+
+    if (page === 4){
+        return <ConfirmationPage 
+            name={name} 
+            resId={resId}
+            addPage={addPage}/>
+    }
+
 
     return (
         <HalfRoundDiv className="mainBox" margin={'0 auto'}>

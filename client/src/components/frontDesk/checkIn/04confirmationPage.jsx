@@ -1,10 +1,16 @@
 import React from 'react';
 
+import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
+
 const ConfirmationPage = () => {
     return (
-        <HalfRoundDiv className="mainBox">
-            <div className="insidePurpleThing">
-                <div> reservation Number | Guest Name | DD/MM - DD/MM</div>
+        <HalfRoundDiv
+            className="mainBox"
+            margin={'0 auto'}
+        >
+            <div>
+            <div className="checkInTitleDiv"> Confirmation Page</div>
+
             </div>
         </HalfRoundDiv>
     )
