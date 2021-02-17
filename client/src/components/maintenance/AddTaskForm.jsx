@@ -14,14 +14,13 @@ class AddTaskForm extends React.Component {
     //each input field has its own state property and event handler
     this.state = {
       employeeCreated: '',
-      employeeID: 0,
       taskTitle: '',
       roomNumber: 0,
       taskDescription: '',
       taskType: '',
       dueBy: ''
     };
-    this.inputEmployeeID = this.inputEmployeeID.bind(this);
+    this.inputEmployeeName = this.inputEmployeeName.bind(this);
     this.inputTaskTitle = this.inputTaskTitle.bind(this);
     this.inputRoom = this.inputRoom.bind(this);
     this.inputDescription = this.inputDescription.bind(this);
@@ -30,7 +29,7 @@ class AddTaskForm extends React.Component {
     this.submitAddTaskForm = this.submitAddTaskForm.bind(this);
   }
 
-  inputEmployeeID(event) {
+  inputEmployeeName(event) {
     event.preventDefault();
     this.setState({employeeCreated: event.target.value});
   }
@@ -65,7 +64,11 @@ class AddTaskForm extends React.Component {
     event.preventDefault();
     //from API docs: POST '/tasks' to add a new task
     //need to add user ID from authentication cookies to add to request object
-    axios.post('/tasks', this.state)
+
+    const data = {employeeId: this.props.employeeId};
+    Object.assign(data, this.state);
+
+    axios.post('/tasks', data)
       .then((results) => { console.log('Form successfully submitted'); })
       .catch((error) => { console.log(error); });
   }
@@ -75,8 +78,8 @@ class AddTaskForm extends React.Component {
       <div>
         <HalfRoundDiv className={'addTask'}>
           <h1 className="formTitle">Add a Task</h1>
-          <h2 className="employeeId">Employee ID</h2>
-          <InputTypeText onChange={this.inputEmployeeID} className="employeeIdInput" placeholder={'Employee ID'} />
+          <h2 className="employeeName">Employee Name</h2>
+          <InputTypeText onChange={this.inputEmployeeName} className="employeeNameInput" placeholder={'Employee Name'} />
           <h2 className="taskInputTitle">Task Title</h2>
           <InputTypeText onChange={this.inputTaskTitle} className="taskInput" placeholder={'Task Title'} />
           <h2 className="roomInputTitle">Room Number</h2>
