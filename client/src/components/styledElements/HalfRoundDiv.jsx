@@ -14,6 +14,7 @@ const HalfRound = styled.section`
   height: ${(props) => (props.height ? props.height : '600px')};
   margin: ${(props) => (props.margin ? props.margin : 0)};
   padding: ${(props) => (props.padding ? props.padding : 0)};
+  border: 5px solid ${colors.berry};
 `;
 
 /**

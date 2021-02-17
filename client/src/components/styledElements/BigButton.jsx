@@ -11,8 +11,9 @@ const Button = styled.button`
     props.backgroundColor ? props.backgroundColor : colors.white};
   border: none;
   border-radius: 50px;
-  width: 647px;
+  width: 650px;
   height: 110px;
+  outline: none;
   margin: ${(props) => (props.margin ? props.margin : 0)};
 `;
 
