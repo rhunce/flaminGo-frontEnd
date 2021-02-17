@@ -43,7 +43,7 @@ class RoomDetailsModal extends React.Component {
               Room Number (if applicable): {this.props.allTaskData.roomNumber}
             </div>
             <div>
-              Location: {this.props.allTaskData.location}
+              Location (if applicable): {this.props.allTaskData.location}
             </div>
             <div>
               Task Description: {this.props.allTaskData.taskDescription}
@@ -61,7 +61,7 @@ class RoomDetailsModal extends React.Component {
               Task Due Date: {this.props.allTaskData.dueBy.substring(0, 10)}
             </div>
             <div>
-              Task Completed: {this.props.allTaskData.isCompleted}
+              Task Completed: {this.props.allTaskData.isCompleted ? 'True' : 'False'}
             </div>
             <div>
               Task Completion Date: {this.props.allTaskData.completedAt.substring(0, 10)}
