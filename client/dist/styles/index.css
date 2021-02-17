@@ -275,4 +275,28 @@ select {
   background-color: white;
 }
 
+#roomEntriesContainer {
+  margin: auto;
+  height: calc(90% - 80px);
+  width: calc(70% - 40px);
+  overflow: scroll;
+}
+
+#roomEntry {
+  height: 100px;
+  width: calc(100% - 40px);
+  margin: 0 20px 20px 20px;
+  border-radius: 30px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.roomEntryText {
+  color: black;
+  font-weight: bold;
+  margin: 0 0 0 20px;
+}
+
 /*# sourceMappingURL=index.css.map */

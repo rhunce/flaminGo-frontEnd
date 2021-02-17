@@ -5,19 +5,19 @@ let AddHeader = () => {
     <table className="titleTable">
       <thead>
         <tr>
-          <th>Add amenities</th>
+          <th>Add Room</th>
         </tr>
       </thead>
     </table>
   );
 };
 
-let DeleteHeader = () => {
+let EditHeader = () => {
   return (
     <table className="titleTable">
       <thead>
         <tr>
-          <th>Delete amenities</th>
+          <th>Edit Room</th>
         </tr>
       </thead>
     </table>
@@ -26,5 +26,5 @@ let DeleteHeader = () => {
 
 export {
   AddHeader,
-  DeleteHeader
+  EditHeader
 };

@@ -6,6 +6,8 @@ import BackArrow from '../styledElements/BackArrow';
 import ListMaster from '../GlobalComponents/ListMaster';
 import FlexCenterContainer from '../landingPage/FlexCenterContainer';
 import EmployeeContainer from './employeeModal/EmployeeContainer';
+import AddEditRooms from './roomModal/AddEditRooms.jsx';
+
 import {
   sampleEmployee,
   timeSheetSample,
@@ -70,8 +72,10 @@ const ManagementLanding = ({ back }) => {
         // </FlexCenterContainer>
         paths.viewRooms ? (
           // place holder for room view component
-          <ListMaster
-            type='room'
+          <AddEditRooms
+            type='ADD'
+            onClick1={(e) => console.log(e)}
+            onClick2={(e) => console.log('working2')}
             handleBackChange={setBackColor}
             handleBackgroundChange={setListBackground}
           />
