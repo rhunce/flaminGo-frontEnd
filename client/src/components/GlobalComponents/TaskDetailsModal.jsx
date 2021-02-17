@@ -49,25 +49,25 @@ class RoomDetailsModal extends React.Component {
               Task Description: {this.props.allTaskData.taskDescription}
             </div>
             <div>
-              Ticket Creator: {this.props.allTaskData.employeeCreated}
+              Task Creator: {this.props.allTaskData.employeeCreated}
             </div>
             <div>
-              Ticket Creation Date: {this.props.allTaskData.createdAt}
+              Task Creation Date: {this.props.allTaskData.createdAt.substring(0, 10)}
             </div>
             <div>
               Department: {this.props.allTaskData.department}
             </div>
             <div>
-              Task Due Date: {this.props.allTaskData.dueBy}
+              Task Due Date: {this.props.allTaskData.dueBy.substring(0, 10)}
             </div>
             <div>
               Task Completed: {this.props.allTaskData.isCompleted}
             </div>
             <div>
-              Ticket Completion Date: {this.props.allTaskData.completedAt}
+              Task Completion Date: {this.props.allTaskData.completedAt.substring(0, 10)}
             </div>
             <div>
-              Ticket Completed By: {this.props.allTaskData.employeeCompleted}
+              Task Completed By: {this.props.allTaskData.employeeCompleted}
             </div>
           </div>
           <button className='closeRmDetails' onClick={this.props.toggle}>

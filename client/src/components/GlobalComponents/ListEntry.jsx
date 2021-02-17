@@ -19,7 +19,6 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
   }
 
   const toggleTaskDetailsModal = () => {
-    console.log('toggle task details modal');
     if(taskModalStatus) {
       setTaskModalStatus(false)
     } else {
