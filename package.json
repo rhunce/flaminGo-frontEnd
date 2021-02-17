@@ -1,5 +1,5 @@
 {
-  "name": "flaminGo",
+  "name": "flaminGo_front-end",
   "version": "1.0.0",
   "description": "Property Management Solution",
   "main": "../flaminGo-backEnd/server/index.js",
@@ -7,8 +7,7 @@
     "test": "jest",
     "build-prod": "webpack --mode production",
     "build-dev": "webpack -w --mode development",
-    "sass": "sass --watch client/dist/styles/index.scss:client/dist/styles/index.css",
-    "start": "nodemon server/index.js"
+    "sass": "sass --watch client/dist/styles/index.scss:client/dist/styles/index.css"
   },
   "keywords": [],
   "author": "Claire Sujin Kim",
@@ -43,5 +42,6 @@
     "react-router-dom": "^5.2.0",
     "sass": "^1.32.7",
     "styled-components": "^5.2.1"
+
   }
 }
