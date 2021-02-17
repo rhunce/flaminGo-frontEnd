@@ -286,7 +286,10 @@ input[type='checkbox']:checked label {
     background-color: white;
   }
 
-  //checkin CSS
+  //created separate stylesheet for AddTaskForm
+@import 'addTask';
+
+  // checkin CSS
 
 .mainBox {
   display: block;
