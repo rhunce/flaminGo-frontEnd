@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
-import CreateBookingForm from './CreateBookingForm.jsx';
+import CreateBookingForm from './CreateBooking/CreateBookingForm.jsx';
 import ListMaster from '../GlobalComponents/ListMaster';
 import CheckoutLanding from './checkout/CheckoutLanding';
 import Search from './checkout/Search';
@@ -57,25 +57,6 @@ const FrontDeskLanding = ({ back }) => {
   return (
     <div className='landingContainer'>
       <div className={listBackground}>
-<<<<<<< HEAD
-      <BackArrow margin={'40px 40px'} onClick={clickBack} color={backColor}/>
-      {paths.checkIn ? (
-        // place holder for check-in component
-        <div>place holder for check-in component</div>
-      ) : paths.checkOut ? (
-        // place holder for check-out component
-        <div>place holder for check-out component</div>
-      ) : paths.viewRooms ? (
-        // place holder for room view component
-        <ListMaster type="room" handleBackChange={setBackColor} handleBackgroundChange={setListBackground}/>
-      ) : paths.createBooking ? (
-        <CreateBookingForm/>
-      ) : (
-        <BtnContainer>
-          <LandingButtons routs={routs} />
-        </BtnContainer>
-      )}
-=======
         <BackArrow
           margin={'40px 40px'}
           onClick={clickBack}
@@ -95,12 +76,15 @@ const FrontDeskLanding = ({ back }) => {
             handleBackChange={setBackColor}
             handleBackgroundChange={setListBackground}
           />
+        ) : paths.createBooking ? (
+          <FlexCenterContainer>
+            <CreateBookingForm/>
+          </FlexCenterContainer>
         ) : (
           <FlexCenterContainer>
             <LandingButtons routs={routs} />
           </FlexCenterContainer>
         )}
->>>>>>> dev
       </div>
     </div>
   );

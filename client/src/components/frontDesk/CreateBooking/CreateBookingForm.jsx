@@ -1,5 +1,5 @@
 import React from "react";
-import HalfRoundDiv from "../styledElements/HalfRoundDiv.jsx";
+import HalfRoundDiv from "../../styledElements/HalfRoundDiv.jsx";
 import SearchByDate from "./SearchByDate.jsx";
 import AvailableRooms from './AvailableRooms.jsx';
 import GuestInfo from './GuestInfo.jsx';

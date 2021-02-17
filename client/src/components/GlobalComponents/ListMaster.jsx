@@ -19,7 +19,7 @@ import {
   employeeData,
   taskData,
   reservationData,
-} from '../../SampleData/SampleData.js';
+} from '../../SampleData/sampleData.js';
 
 const ListMaster = ({
   type,

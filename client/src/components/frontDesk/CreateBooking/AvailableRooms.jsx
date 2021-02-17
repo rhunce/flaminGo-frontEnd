@@ -1,7 +1,7 @@
 import React from "react";
-import { roomsData } from "../../SampleData/SampleData.js";
-import HalfRoundDiv from "../styledElements/HalfRoundDiv.jsx";
-import FormButton from '../styledElements/FormButton.jsx';
+import { roomsData } from "../../../SampleData/sampleData.js";
+import HalfRoundDiv from "../../styledElements/HalfRoundDiv.jsx";
+import FormButton from '../../styledElements/FormButton.jsx';
 
 let AvailableRooms = (props) => {
   return (

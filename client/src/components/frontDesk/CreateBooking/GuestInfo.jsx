@@ -1,7 +1,7 @@
 import React from 'react';
-import FormButton from "../styledElements/FormButton.jsx";
-import HalfRoundDiv from "../styledElements/HalfRoundDiv.jsx";
-import InputTypeText from "../styledElements/InputTypeText.jsx";
+import FormButton from "../../styledElements/FormButton.jsx";
+import HalfRoundDiv from "../../styledElements/HalfRoundDiv.jsx";
+import InputTypeText from "../../styledElements/InputTypeText.jsx";
 
 let GuestInfo = (props) => {
   return (
