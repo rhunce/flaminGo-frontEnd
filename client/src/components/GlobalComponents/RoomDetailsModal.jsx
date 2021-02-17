@@ -75,7 +75,7 @@ class RoomDetailsModal extends React.Component {
             </div>
 
           </div>
-          </br>
+          <br/>
           <button className='closeRmDetails' onClick={this.props.toggle}>
             Close Details Page
           </button>
