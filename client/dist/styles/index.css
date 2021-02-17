@@ -188,10 +188,10 @@ input[type=checkbox]:checked label {
 .addTask .formTitle {
   grid-area: 2/2/3/7;
 }
-.addTask .employeeId {
+.addTask .employeeName {
   grid-area: 2/8/3/12;
 }
-.addTask .employeeIdInput {
+.addTask .employeeNameInput {
   grid-area: 3/8/4/12;
 }
 .addTask .taskInputTitle {

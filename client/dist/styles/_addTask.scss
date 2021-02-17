@@ -6,8 +6,8 @@
   grid-row-gap: 0px;
 
   .formTitle { grid-area: 2 / 2 / 3 / 7; }
-  .employeeId { grid-area: 2 / 8 / 3 / 12; }
-  .employeeIdInput { grid-area: 3 / 8 / 4 / 12; }
+  .employeeName { grid-area: 2 / 8 / 3 / 12; }
+  .employeeNameInput { grid-area: 3 / 8 / 4 / 12; }
   .taskInputTitle { grid-area: 4 / 2 / 5 / 7; }
   .taskInput { grid-area: 5 / 2 / 6 / 7; }
   .roomInputTitle { grid-area: 4 / 8 / 5 / 12; }
