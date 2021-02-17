@@ -9,7 +9,7 @@
     "build-dev": "webpack -w --mode development",
     "sass": "sass --watch client/dist/styles/index.scss:client/dist/styles/index.css",
     "start": "nodemon server/index.js",
-    "docs": "jsdoc client -r"
+    "docs": "jsdoc client -r -d ./docs"
   },
   "keywords": [],
   "author": "Claire Sujin Kim",
