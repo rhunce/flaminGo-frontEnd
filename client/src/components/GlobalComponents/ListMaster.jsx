@@ -34,7 +34,7 @@ const ListMaster = ({
   useEffect(() => {
     handleBackChange('black');
     handleBackgroundChange('listBgContainer');
-  });
+  }, []);
 
   const { position } = useContext(MainContext);
 
