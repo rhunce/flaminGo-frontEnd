@@ -10,6 +10,7 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
   const [modalStatus, setModalStatus] = useState(false);
 
   const toggleRoomDetailsModal = () => {
+    console.log('toggle');
     if(modalStatus) {
       setModalStatus(false)
     } else {
@@ -30,7 +31,7 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
   } else if (type === 'room') {
     entryButtons = (
       <span className='listEntryButtons'>
-        <FormButton margin='0 30px 0 20px' onClick={toggleRoomDetailsModal} onClick={() => onClick1(entity)}>
+        <FormButton margin='0 30px 0 20px' onClick={toggleRoomDetailsModal}>
           See Details
         </FormButton>
         <RoomDetailsModal
