@@ -5,6 +5,7 @@ import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
 import EmployeeForm from './formInfoView/EmployeeForm';
 import SummaryContainer from './workSummary/WorkSummaryContainer';
 import { EmployeeProvider } from './EmployeeContext';
+import XButton from '../../styledElements/Xbutton';
 
 const FlexDiv = styled.div`
   display: flex;
@@ -21,18 +22,21 @@ const Bar = styled.div`
   margin-right: 40px;
 `;
 
-const EmployeeContainer = ({ employee, sampleData }) => (
-  <EmployeeProvider employee={employee} sampleData={sampleData}>
-    <HalfRoundDiv padding='40px' height='650px' width='975px'>
-      <div>
-        <FlexDiv>
-          <EmployeeForm />
-          <Bar />
-          <SummaryContainer />
-        </FlexDiv>
-      </div>
-    </HalfRoundDiv>
-  </EmployeeProvider>
-);
+const EmployeeContainer = ({ employee, sampleData, back }) => {
+  return (
+    <EmployeeProvider employee={employee} sampleData={sampleData}>
+      <HalfRoundDiv padding='40px' height='650px' width='975px'>
+        <div style={{ position: 'relative' }}>
+          <XButton onClick={back} />
+          <FlexDiv>
+            <EmployeeForm />
+            <Bar />
+            <SummaryContainer />
+          </FlexDiv>
+        </div>
+      </HalfRoundDiv>
+    </EmployeeProvider>
+  );
+};
 
 export default EmployeeContainer;
