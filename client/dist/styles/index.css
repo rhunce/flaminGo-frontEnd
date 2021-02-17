@@ -170,7 +170,6 @@ input[type=checkbox]:checked label {
 .landingContainer {
   height: 100%;
   width: 100%;
-<<<<<<< HEAD
 }
 
 .listBgContainer {
@@ -228,15 +227,6 @@ input[type=checkbox]:checked label {
 }
 .addTask .submitButton {
   grid-area: 20/9/22/12;
-}
-
-=======
-}
-
-.listBgContainer {
-  height: 100%;
-  width: 100%;
-  background-color: white;
 }
 
 .mainBox {
@@ -448,5 +438,4 @@ select {
   float: right;
 }
 
->>>>>>> dev
 /*# sourceMappingURL=index.css.map */

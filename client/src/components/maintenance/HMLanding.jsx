@@ -42,23 +42,6 @@ const HMLanding = ({ back }) => {
   return (
     <div className='landingContainer'>
       <div className={listBackground}>
-<<<<<<< HEAD
-      <BackArrow margin={'40px 40px'} onClick={clickBack} color={backColor}/>
-      {paths.viewTask ? (
-        // place holder for task view component
-        <ListMaster type="task" handleBackChange={setBackColor} handleBackgroundChange={setListBackground}/>
-      ) : paths.viewRooms ? (
-        // place holder for room view component
-        <ListMaster type="room" handleBackChange={setBackColor} handleBackgroundChange={setListBackground}/>
-      ) : paths.addTask ? (
-        // place holder for add task component
-        <AddTaskForm/>
-      ) : (
-        <BtnContainer>
-          <LandingButtons routs={routs} />
-        </BtnContainer>
-      )}
-=======
         <BackArrow
           margin={'40px 40px'}
           onClick={clickBack}
@@ -83,13 +66,12 @@ const HMLanding = ({ back }) => {
           />
         ) : paths.addTask ? (
           // place holder for add task component
-          <div>place holder for add task component</div>
+          <AddTaskForm/>
         ) : (
           <FlexCenterContainer>
             <LandingButtons routs={routs} />
           </FlexCenterContainer>
         )}
->>>>>>> dev
       </div>
     </div>
   );
