@@ -16,6 +16,7 @@ env/config.js
 *.log
 package-lock.json
 JStesting.js
+out
 
 # OS generated files
 .DS_Store
