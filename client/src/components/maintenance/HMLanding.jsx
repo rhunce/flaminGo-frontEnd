@@ -6,7 +6,9 @@ import BackArrow from '../styledElements/BackArrow';
 import ListMaster from '../GlobalComponents/ListMaster'
 import AddTaskForm from './AddTaskForm.jsx';
 import FlexCenterContainer from '../landingPage/FlexCenterContainer';
+import ViewAddEditRoom from '../management/ViewAddEditRoom.jsx';
 import {MainContext} from '../landingPage/MainContext.jsx';
+
 // flex container
 
 const HMLanding = ({ back }) => {
@@ -62,11 +64,10 @@ const HMLanding = ({ back }) => {
           />
         ) : paths.viewRooms ? (
           // place holder for room view component
-          <ListMaster
-            type='room'
-            handleBackChange={setBackColor}
-            handleBackgroundChange={setListBackground}
-          />
+          <ViewAddEditRoom
+          setBackColor={setBackColor}
+          setListBackground={setListBackground}
+        />
         ) : paths.addTask ? (
           // place holder for add task component
           <FlexCenterContainer>

@@ -12,7 +12,7 @@ $carrotToBerry: linear-gradient(135deg, #ff4f03, #ff2063);
 $berryToGrape: linear-gradient(135deg, #ff2063, #a91cff);
 
 // fonts
-$mainFont: 'Open Sans, sans-serif';
+$mainFont: 'Open Sans', sans-serif;
 $plain: 400;
 $semiBold: 600;
 $bold: 700;
@@ -150,7 +150,7 @@ td {
 
 #menuIcon {
   float: right;
-  margin: 20px 20px 0 0;
+  margin: 30px 30px 0 0;
 }
 
 #backButton {
@@ -310,7 +310,6 @@ input[type='checkbox']:checked label {
   font-weight: 600;
   font-size: 24px;
   line-height: 33px;
-
 }
 
 #checkInGuestName {
@@ -477,10 +476,25 @@ select {
 
 .roomDetails {
   line-height: 2;
+  font-family: $mainFont;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.roomDetails div {
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 .roomDetailsHeader {
   text-align: center;
+  font-family: $mainFont;
+  font-weight: 700;
+  color: black;
+}
+
+.detailsTitle {
+  font-weight: 600;
 }
 
 .closeRmDetails {
@@ -500,4 +514,87 @@ select {
 
 .listEntryButtons {
   float: right;
+}
+
+//RoomAddEdit
+
+#roomContainer {
+  font-family: $mainFont;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+
+#roomEntriesContainer {
+  padding: 20px;
+  margin: auto;
+  height: calc(90% - 80px);
+  width: calc(60% - 40px);
+  // display: flex;
+  // flex-wrap: nowrap;
+  // flex-direction: column;
+  // justify-content: start;
+  // align-items: center;
+  // align-content: space-between
+}
+
+#roomBox {
+  border: #e000ce solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  // margin: 20px 20px 20px 20px;
+  flex: 1 0 auto;
+}
+
+.roomTable {
+  border: #00ff0d solid;
+  margin: 0 auto;
+  height: calc(80% - 80px);
+  width: calc(48% - 40px);
+  border-radius: 30px;
+  background-color: $berry;
+  overflow: scroll;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  // margin: 0 20px 20px 20px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
+
+#roomInnerTable1 {
+  border: #d0ff00 solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  height: calc(100% - 80px);
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+#roomInnerTable2 {
+  border: #d0ff00 solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  height: calc(50% - 80px);
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+//amenity List button bar
+#roomEntry {
+  border: #1900ff solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  margin: 20px 20px 20px 20px;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: white;
+  text-align: center;
+}
+
+#room_H3 {
+  color: rgb(0, 0, 0);
 }

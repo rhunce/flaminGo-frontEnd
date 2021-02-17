@@ -15,7 +15,7 @@ const customStyles = {
     height: '70%',
     transform: 'translate(-50%, -50%)',
     border: '5px #ff2063 solid'
-  },
+  }
 };
 
 class TaskDetailsModal extends React.Component {
@@ -53,28 +53,29 @@ class TaskDetailsModal extends React.Component {
           <h1 className='roomDetailsHeader'>Room Details</h1>
           <div className='roomDetails'>
             <div>
-              Room Number: {this.props.allRmData.roomNumber}
+              <span className="detailsTitle">Room Number:</span> {this.props.allRmData.roomNumber}
             </div>
             <div>
-              Floor: {this.props.allRmData.floorNumber}
+            <span className="detailsTitle"> Floor:</span> {this.props.allRmData.floorNumber}
             </div>
             <div>
-              Roomtype: {this.props.allRmData.roomType}
+            <span className="detailsTitle">Roomtype: </span> {this.props.allRmData.roomType}
             </div>
             <div>
-              Cleanliness Status: {cleanStatus}
+            <span className="detailsTitle">Cleanliness Status:</span> {cleanStatus}
             </div>
             <div>
-              Occupation Status: {occStatus}
+            <span className="detailsTitle">Occupation Status:</span> {occStatus}
             </div>
             <div>
-              Amenities: {amenArr}
+            <span className="detailsTitle"> Amenities:</span> {amenArr}
             </div>
             <div>
-              Open Tasks: {taskArr}
+            <span className="detailsTitle">Open Tasks:</span> {taskArr}
             </div>
 
           </div>
+          <br/>
           <button className='closeRmDetails' onClick={this.props.toggle}>
             Close Details Page
           </button>
