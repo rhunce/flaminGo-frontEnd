@@ -13,7 +13,7 @@ const AvailableRooms = (props) => {
             <div className="checkInTitleDiv"> Check-In: Available Rooms</div>
                 <div id="roomsListInnerContainer">
 
-                    <div className='roomBox'> 112 </div>
+                    <div className='roomBox' onClick={props.addPage}> 112 </div>
                     <div className='roomBox'> 113 </div>
                     <div className='roomBox'> 108 </div>
                     <div className='roomBox'> 110 </div>

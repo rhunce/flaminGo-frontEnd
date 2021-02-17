@@ -18,7 +18,7 @@ const SearchForReservations = () => {
         setPage((prevPage) => (prevPage + 1))
         //GET request in axios
         // axios.get()
-
+        
     };
 
     const subtractPage = () => {
@@ -28,7 +28,6 @@ const SearchForReservations = () => {
 
     };
 
-
     const updateName = (e) => {
         setName(e.target.value)
     }
@@ -37,9 +36,20 @@ const SearchForReservations = () => {
         setResId(e.target.value)
     }
 
-    // useEffect(() => {
-    //     console.log('name changed')
-    // }, [name])
+    useEffect(() => {
+        console.log('component did mount')
+        //axios request here
+    }, [])
+
+    useEffect(() => {
+        console.log('name changed')
+        //axios request here
+    }, [name])
+
+    useEffect(() => {
+        console.log('name or resid changed')
+        //axios request here
+    }, [name, resId])
 
     // unfinished method for data validation
     let nameValidate = null;

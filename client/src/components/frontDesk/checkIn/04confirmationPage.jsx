@@ -10,7 +10,9 @@ const ConfirmationPage = () => {
         >
             <div>
             <div className="checkInTitleDiv"> Confirmation Page</div>
+                <div> 
 
+                </div>
             </div>
         </HalfRoundDiv>
     )
