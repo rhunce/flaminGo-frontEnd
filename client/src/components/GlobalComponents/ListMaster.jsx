@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import FormButton from "../styledElements/FormButton.jsx";
-import HalfRoundDiv from "../styledElements/HalfRoundDiv.jsx";
-import ListEntry from "../GlobalComponents/ListEntry.jsx";
+import React, { useState, useEffect, useContext } from 'react';
+import FormButton from '../styledElements/FormButton.jsx';
+import HalfRoundDiv from '../styledElements/HalfRoundDiv.jsx';
+import ListEntry from '../GlobalComponents/ListEntry.jsx';
 import {
   titleTableRooms,
   titleTableTasks,
   titleTableEmployees,
   titleTableGuests,
-} from "./ListComponents/titleTables.jsx";
+} from './ListComponents/titleTables.jsx';
 import {
   entryTableRooms,
   entryTableTasks,
   entryTableEmployees,
   entryTableGuests,
-} from "./ListComponents/entryTables.jsx";
+} from './ListComponents/entryTables.jsx';
 import {
   roomsData,
   employeeData,
@@ -21,13 +21,22 @@ import {
   reservationData,
 } from "../../SampleData/SampleData.js";
 import axios from 'axios';
+import { MainContext } from '../landingPage/MainContext';
 
-const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
+const ListMaster = ({
+  type,
+  handleBackChange,
+  handleBackgroundChange,
+  onClick1,
+  onClick2,
+}) => {
 
   useEffect(() => {
-    handleBackChange("black");
-    handleBackgroundChange("listBgContainer");
+    handleBackChange('black');
+    handleBackgroundChange('listBgContainer');
   });
+
+  const { position } = useContext(MainContext);
 
   const [dataSet, setDataSet] = useState([])
   useEffect(() => {
@@ -35,7 +44,7 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
       axios.get("http://localhost:3232/rooms")
       .then((data) => {setDataSet(data.data)})
     } else if (type ==="employee") {
-      axios.get("http://localhost:3232/employee")
+      axios.get("http://localhost:3232/employees")
       .then((data) => {setDataSet(data.data)})
     } else if (type ==="task") {
       axios.get("http://localhost:3232/tasks")
@@ -46,47 +55,43 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
   let data = dataSet;
 
 
-
   let titleTable, searchParam;
 
-  if (type === "room") {
-
+  if (type === 'room') {
     titleTable = titleTableRooms();
-    searchParam = "Search by room number";
-  } else if (type === "employee") {
-    data = employeeData;
+    searchParam = 'Search by room number';
+  } else if (type === 'employee') {
     titleTable = titleTableEmployees();
-    searchParam = "Search by employee name";
-  } else if (type === "task") {
-    data = taskData;
+    searchParam = 'Search by employee name';
+  } else if (type === 'task') {
     titleTable = titleTableTasks();
-    searchParam = "Search";
-  } else if (type === "guest") {
-    data = reservationData;
+    searchParam = 'Search';
+  } else if (type === 'guest') {
     titleTable = titleTableGuests();
-    searchParam = "Search by guest name"
+    searchParam = 'Search by guest name';
   }
 
   //Search Functionality
   const [searchTerm, setSearch] = useState('');
 
   const handleSearch = (e) => {
-    let search = document.getElementById("searchBar").value;
+    let search = document.getElementById('searchBar').value;
     setSearch(search);
   };
 
- let searched = [];
+  let searched = [];
   if (searchTerm !== '') {
-    if (type === "room") {
+    if (type === 'room') {
       searched = data.filter((room) => {
         let roomNumber = room.roomNumber;
-        return roomNumber.includes(searchTerm)
+        return roomNumber.includes(searchTerm);
       });
       data = searched;
-    } else if (type === "employee") {
+    } else if (type === 'employee') {
       searched = data.filter((employee) => {
-        let name = employee.firstName.toLowerCase() + employee.lastName.toLowerCase()
-        return name.includes(searchTerm)
+        let name =
+          employee.firstName.toLowerCase() + employee.lastName.toLowerCase();
+        return name.includes(searchTerm);
       });
       data = searched;
     }
@@ -132,40 +137,40 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
     sortOptions = "";
   }
 
-//Filter functionality
+  //Filter functionality
 
   const [filterTerm, setFilter] = useState('');
 
-
   let handleFilter = () => {
-    let filterBy = document.getElementsByClassName("filterBy")[0].value;
-    setFilter(filterBy)
-  }
+    let filterBy = document.getElementsByClassName('filterBy')[0].value;
+    setFilter(filterBy);
+  };
 
-  if (filterTerm === "vacancy") {
+  if (filterTerm === 'vacancy') {
     data = data.filter((room) => {
       let vacant = !room.isOccupied;
+
       return vacant}
     );
   } else if (filterTerm === "cleaned") {
     data = data.filter((room) => {
       let cleaned = room.isClean;
-      return cleaned}
-    );
-  } else if (filterTerm === "worked") {
+      return cleaned;
+    });
+  } else if (filterTerm === 'worked') {
     data = data.filter((employee) => {
-      let hours = employee.weekHours
-      return (hours > 0)}
-    );
-  } else if (filterTerm === "housekeeping") {
+      let hours = employee.weekHours;
+      return hours > 0;
+    });
+  } else if (filterTerm === 'housekeeping') {
     data = data.filter((task) => {
-      return (task.department === "Housekeeping")}
-    );
-  } else if (filterTerm === "maintenance") {
+      return task.department === 'Housekeeping';
+    });
+  } else if (filterTerm === 'maintenance') {
     data = data.filter((task) => {
-      return (task.department === "Maintenance")}
-    );
-  }  else if (filterTerm === "") {
+      return task.department === 'Maintenance';
+    });
+  } else if (filterTerm === '') {
     data = data;
   }
 
@@ -192,35 +197,77 @@ const ListMaster = ({ type, handleBackChange, handleBackgroundChange }) => {
     </select>
   }
 
+  let addRoom = ''
+  if (position === "management" && type === "room") {
+    addRoom = <FormButton backgroundColor="berry" margin="0 30px 0 0">Add Room</FormButton>
+  }
+
   return (
-    <div id="listContainer">
-      <div className="listHeader">
-        <div className="listHeaderButtons">
-       {filterOptions}
-       {sortOptions}
-          <div className="listHeaderSearch">
-            <input id ="searchBar" type="text" placeholder={searchParam}></input>
-            <img src="svg/search.svg" height="20px" onClick={handleSearch}></img>
+    <div id='listContainer'>
+      <div className='listHeader'>
+        <div className='listHeaderButtons'>
+          {addRoom}
+          {filterOptions}
+          {sortOptions}
+          <div className='listHeaderSearch'>
+            <input id='searchBar' type='text' placeholder={searchParam}></input>
+            <img
+              src='svg/search.svg'
+              height='20px'
+              onClick={handleSearch}
+            ></img>
           </div>
         </div>
       </div>
       <HalfRoundDiv
         gradients={true}
-        margin="0 30px 0 30px"
-        width="100vh - 60px"
-        height="calc(100vh - 260px)"
+        margin='0 30px 0 30px'
+        width='100vh - 60px'
+        height='calc(100vh - 260px)'
       >
-        <div id="listEntriesHeader">{titleTable}</div>
-        <div id="listEntriesContainer">
+        <div id='listEntriesHeader'>{titleTable}</div>
+        <div id='listEntriesContainer'>
           {data.map((entity) => {
-            if (type === "room") {
-              return <ListEntry table={entryTableRooms(entity)} type="room" key={entity._id} />;
-            } else if (type === "employee") {
-              return <ListEntry table={entryTableEmployees(entity)} type="employee" key={entity._id} />
-            } else if (type === "task") {
-              return <ListEntry table={entryTableTasks(entity)} type="task" key={entity._id} />;
-            } else if (type === "guest") {
-              return <ListEntry table={entryTableGuests(entity)} type="guest" key={entity._id} />;
+            if (type === 'room') {
+              return (
+                <ListEntry
+                  entity={entity}
+                  onClick1={onClick1}
+                  onClick2={onClick2}
+                  table={entryTableRooms(entity)}
+                  type='room'
+                />
+              );
+            } else if (type === 'employee') {
+              return (
+                <ListEntry
+                  entity={entity}
+                  onClick1={onClick1}
+                  onClick2={onClick2}
+                  table={entryTableEmployees(entity)}
+                  type='employee'
+                />
+              );
+            } else if (type === 'task') {
+              return (
+                <ListEntry
+                  entity={entity}
+                  onClick1={onClick1}
+                  onClick2={onClick2}
+                  table={entryTableTasks(entity)}
+                  type='task'
+                />
+              );
+            } else if (type === 'guest') {
+              return (
+                <ListEntry
+                  entity={entity}
+                  onClick1={onClick1}
+                  onClick2={onClick2}
+                  table={entryTableGuests(entity)}
+                  type='guest'
+                />
+              );
             }
           })}
         </div>

@@ -1,13 +1,16 @@
 import React from 'react';
 import FrontDeskLanding from '../frontDesk/FrontDeskLanding';
-import LandingButtons from '../landingPage/LandingButtons';
+import LandingButtons from '../landingPage/MainLandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import HMLanding from '../maintenance/HMLanding';
 import ManagementLanding from '../management/ManagementLanding';
 import FlexCenterContainer from './FlexCenterContainer';
 import TimeSheet from '../GlobalComponents/timeSheet/TimeSheetContainer';
+import { MainProvider } from './MainContext';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const MainLanding = () => {
+  const { user } = useAuth0();
   // set state to toggle for conditional rendering
   const [paths, setPaths] = useChoosePath({
     management: false,
@@ -17,26 +20,65 @@ const MainLanding = () => {
     landing: true,
   });
 
-  // static object of this Landing routs and flipping for conditional rendering
-  const routs = [
-    {
-      title: 'Front Desk',
-      onClick: () => setPaths('frontDesk'),
-    },
-    { title: 'Housekeeping / Maintenance', onClick: () => setPaths('hm') },
-    {
-      title: 'Management',
-      onClick: () => {
-        setPaths('management');
+  const routs = {
+    frontDesk: [
+      {
+        title: 'Front Desk',
+        onClick: () => setPaths('frontDesk'),
       },
-    },
-    { title: 'Time Sheet', onClick: () => setPaths('timeSheet') },
-  ];
+
+      { title: 'Time Sheet', onClick: () => setPaths('timeSheet') },
+    ],
+    housekeeping: [
+      {
+        title: 'Housekeeping',
+        onClick: () => setPaths('hm'),
+      },
+
+      { title: 'Time Sheet', onClick: () => setPaths('timeSheet') },
+    ],
+    maintenance: [
+      {
+        title: 'Maintenance',
+        onClick: () => setPaths('hm'),
+      },
+
+      { title: 'Time Sheet', onClick: () => setPaths('timeSheet') },
+    ],
+    management: [
+      {
+        title: 'Front Desk',
+        onClick: () => setPaths('frontDesk'),
+      },
+      { title: 'Housekeeping / Maintenance', onClick: () => setPaths('hm') },
+      {
+        title: 'Management',
+        onClick: () => {
+          setPaths('management');
+        },
+      },
+      { title: 'Time Sheet', onClick: () => setPaths('timeSheet') },
+    ],
+    systemAdministration: [
+      {
+        title: 'Front Desk',
+        onClick: () => setPaths('frontDesk'),
+      },
+      { title: 'Housekeeping / Maintenance', onClick: () => setPaths('hm') },
+      {
+        title: 'Management',
+        onClick: () => {
+          setPaths('management');
+        },
+      },
+      { title: 'Time Sheet', onClick: () => setPaths('timeSheet') },
+    ],
+  };
 
   const clickBack = () => setPaths('landing');
 
   return (
-    <div>
+    <MainProvider authUser={user}>
       {paths.frontDesk ? (
         <FrontDeskLanding back={clickBack} />
       ) : paths.hm ? (
@@ -50,7 +92,7 @@ const MainLanding = () => {
           <LandingButtons routs={routs} />
         </FlexCenterContainer>
       )}
-    </div>
+    </MainProvider>
   );
 };
 
