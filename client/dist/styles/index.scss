@@ -12,7 +12,7 @@ $carrotToBerry: linear-gradient(135deg, #ff4f03, #ff2063);
 $berryToGrape: linear-gradient(135deg, #ff2063, #a91cff);
 
 // fonts
-$mainFont: 'Open Sans, sans-serif';
+$mainFont: 'Open Sans', sans-serif;
 $plain: 400;
 $semiBold: 600;
 $bold: 700;
@@ -298,10 +298,25 @@ select {
 
 .roomDetails {
   line-height: 2;
+  font-family: $mainFont;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.roomDetails div {
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 .roomDetailsHeader {
   text-align: center;
+  font-family: $mainFont;
+  font-weight: 700;
+  color: black;
+}
+
+.detailsTitle {
+  font-weight: 600;
 }
 
 .closeRmDetails {
