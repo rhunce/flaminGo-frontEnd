@@ -5,10 +5,10 @@ export const FlexRow = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  margin: ${(props) => (props.margin ? props.margin : '10px 0px 0px 0px')};
+  margin-top: 10px;
   width: 328px;
 `;
 
 export const FormLabel = styled.label`
-  margin: 15px;
+  margin-right: 15px;
 `;
