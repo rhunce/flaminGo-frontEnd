@@ -33,7 +33,7 @@ const ListMaster = ({
     handleBackgroundChange('listBgContainer');
   }, []);
 
-  console.log('ListType', type);
+  // console.log('ListType', type);
 
   let data, titleTable, searchParam;
 
