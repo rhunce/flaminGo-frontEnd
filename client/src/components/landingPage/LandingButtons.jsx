@@ -5,7 +5,6 @@ import BigButton from '../styledElements/BigButton';
 const BtnContainer = styled.div`
   display: flex;
   flex-direction: column;
-  outline: none;
 `;
 
 const LandingPage = ({ routs }) => (
