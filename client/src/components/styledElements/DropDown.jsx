@@ -14,4 +14,13 @@ const DropDown = styled.select`
   width: ${(props) => props.width && props.width};
 `;
 
+/**
+ *
+ * @param {String} border - changing the border property - default is '1px solid berry'
+ * @param {String} margin - set the margins for the element - default is 0
+ * this is using margin shorthand property https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#margin_and_padding_properties
+ * @param {String} width - change the width of the button - default is 160px and should work for the majority of buttons
+ */
+const DropDownForm = ({ border, margin, width }) => {};
+
 export default DropDown;
