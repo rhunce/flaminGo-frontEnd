@@ -11,6 +11,7 @@ import {
   timeSheetSample,
 } from './employeeModal/sampleEmployeeData';
 import ViewEmployeeList from './viewEmployeeList';
+import ViewAddEditRoom from './ViewAddEditRoom.jsx';
 
 // flex container
 
@@ -75,10 +76,9 @@ const ManagementLanding = ({ back }) => {
           />
         ) : paths.viewRooms ? (
           // place holder for room view component
-          <ListMaster
-            type='room'
-            handleBackChange={setBackColor}
-            handleBackgroundChange={setListBackground}
+          <ViewAddEditRoom
+            setBackColor={setBackColor}
+            setListBackground={setListBackground}
           />
         ) : paths.guestList ? (
           // place holder for Guest List component

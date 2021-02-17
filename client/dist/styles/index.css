@@ -387,4 +387,115 @@ select {
   float: right;
 }
 
+.sortBy {
+  font-size: 14px;
+  width: 160px;
+  height: 40px;
+  border: none;
+  color: white;
+  background-color: #ff8b03;
+  border-radius: 30px;
+}
+
+.filterBy {
+  font-size: 14px;
+  width: 160px;
+  height: 40px;
+  border: none;
+  color: white;
+  background-color: #ff8b03;
+  border-radius: 30px;
+  margin: 0 30px 0 0;
+}
+
+select {
+  text-align: center;
+  text-align-last: center;
+  outline: none;
+}
+
+option {
+  text-align: left;
+  /* reset to left*/
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+
+.listBgContainer {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+
+#roomContainer {
+  font-family: "Open Sans, sans-serif";
+  font-weight: 400;
+  font-size: 18px;
+}
+
+#roomEntriesContainer {
+  padding: 20px;
+  margin: auto;
+  height: calc(90% - 80px);
+  width: calc(60% - 40px);
+}
+
+#roomBox {
+  border: #e000ce solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  flex: 1 0 auto;
+}
+
+.roomTable {
+  border: #00ff0d solid;
+  margin: 0 auto;
+  height: calc(80% - 80px);
+  width: calc(48% - 40px);
+  border-radius: 30px;
+  background-color: #ff2063;
+  overflow: scroll;
+}
+
+#roomInnerTable1 {
+  border: #d0ff00 solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  height: calc(100% - 80px);
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+#roomInnerTable2 {
+  border: #d0ff00 solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  height: calc(50% - 80px);
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+#roomEntry {
+  border: #1900ff solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  margin: 20px 20px 20px 20px;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: white;
+  text-align: center;
+}
+
+#room_H3 {
+  color: black;
+
+}
+
 /*# sourceMappingURL=index.css.map */

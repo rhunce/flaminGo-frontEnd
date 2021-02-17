@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import FormButton from '../styledElements/FormButton.jsx'
 import RoomDetailsModal from './RoomDetailsModal';
+import { MainContext } from '../landingPage/MainContext';
 
 
 
 const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
 
   let entryButtons;
+
+  const { position } = useContext(MainContext);
 
   const [modalStatus, setModalStatus] = useState(false);
 
@@ -29,7 +32,24 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
         </FormButton>
       </span>
     );
-  } else if (type === 'room') {
+  } else if (type === 'room' && position === 'management') {
+    entryButtons = (
+      <span className='listEntryButtons'>
+        <FormButton margin='0 30px 0 20px' onClick={toggleRoomDetailsModal}>
+          See Details
+        </FormButton>
+        <FormButton margin='0 30px 0 20px' onClick={onClick2}>
+          Edit Room
+        </FormButton>
+        <RoomDetailsModal
+          isOpen={modalStatus}
+          toggle={toggleRoomDetailsModal}
+          allRmData={entity}
+        />
+      </span>
+    );
+  }
+  else if (type === 'room') {
     entryButtons = (
       <span className='listEntryButtons'>
         <FormButton margin='0 30px 0 20px' onClick={toggleRoomDetailsModal}>

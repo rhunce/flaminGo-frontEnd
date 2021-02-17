@@ -12,9 +12,9 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('development')
+      'process.env.NODE_ENV': JSON.stringify('development')
     })
-],
+  ],
   module: {
     rules: [
       {
@@ -24,19 +24,26 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       },
       {
         test: /\.svg$/,
-        use: 'file-loader',
-      },
+        use: 'file-loader'
+      }
     ],
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-  },
+  }
 };

@@ -199,7 +199,7 @@ const ListMaster = ({
 
   let addRoom = ''
   if (position === "management" && type === "room") {
-    addRoom = <FormButton backgroundColor="berry" margin="0 30px 0 0">Add Room</FormButton>
+    addRoom = <FormButton backgroundColor="berry" margin="0 30px 0 0" onClick={onClick1}>Add Room</FormButton>
   }
 
   return (
