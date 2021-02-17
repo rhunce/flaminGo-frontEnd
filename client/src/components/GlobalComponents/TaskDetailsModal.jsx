@@ -27,22 +27,6 @@ class RoomDetailsModal extends React.Component {
   }
 
   render() {
-
-    // var amenArr = this.props.allRmData.amenities.map((amen) => (
-    //     <li>
-    //       {amen}
-    //     </li>
-    //   ))
-
-    // var taskArr = this.props.allRmData.tasks.map((task) => (
-    //   <li>
-    //     {task.taskTitle}
-    //   </li>
-    // ))
-
-    // const cleanStatus = this.props.allRmData.isClean ? 'Clean' : 'Dirty';
-    // const occStatus = this.props.allRmData.isOccupied ? 'Occupied' : 'Vacant';
-
     return (
       <div>
         <Modal
@@ -51,33 +35,44 @@ class RoomDetailsModal extends React.Component {
           contentLabel='Minimal Modal Example'
         >
           <h1 className='roomDetailsHeader'>Task Details</h1>
-          {/* <div className='roomDetails'>
-            <div>
-              Room Number: {this.props.allRmData.roomNumber}
+          <div className='roomDetails'>
+          <div>
+              Task Title: {this.props.allTaskData.taskTitle}
             </div>
             <div>
-              Floor: {this.props.allRmData.floorNumber}
+              Room Number (if applicable): {this.props.allTaskData.roomNumber}
             </div>
             <div>
-              Roomtype: {this.props.allRmData.roomType}
+              Location: {this.props.allTaskData.location}
             </div>
             <div>
-              Cleanliness Status: {cleanStatus}
+              Task Description: {this.props.allTaskData.taskDescription}
             </div>
             <div>
-              Occupation Status: {occStatus}
+              Ticket Creator: {this.props.allTaskData.employeeCreated}
             </div>
             <div>
-              Amenities: {amenArr}
+              Ticket Creation Date: {this.props.allTaskData.createdAt}
             </div>
             <div>
-              Open Tasks: {taskArr}
+              Department: {this.props.allTaskData.department}
             </div>
-
+            <div>
+              Task Due Date: {this.props.allTaskData.dueBy}
+            </div>
+            <div>
+              Task Completed: {this.props.allTaskData.isCompleted}
+            </div>
+            <div>
+              Ticket Completion Date: {this.props.allTaskData.completedAt}
+            </div>
+            <div>
+              Ticket Completed By: {this.props.allTaskData.employeeCompleted}
+            </div>
           </div>
           <button className='closeRmDetails' onClick={this.props.toggle}>
             Close Details Page
-          </button> */}
+          </button>
         </Modal>
       </div>
     );
@@ -85,3 +80,19 @@ class RoomDetailsModal extends React.Component {
 }
 
 export default RoomDetailsModal;
+
+
+// "taskTitle": "Clean dirty spot",
+// "roomNumber": "110",
+// "location": "",
+// "taskDescription": "Behind the nightstand on the right side of the bed. Don't ask me how a guest got that there.",
+// "employeeCreated": "Jane Doe",
+// "createdAt": "2021-02-13T13:44:00.000Z",
+// "department": "Housekeeping",
+// "dueBy": "2021-02-14T10:00:00.000Z",
+// "isCompleted": true,
+// "completedAt": "2021-02-13T16:15:00.000Z"
+// "employeeCompleted": "John Smith",
+
+// "task_id": "60108729ffefc9bae107564d",
+// "room_id": "507c7f79bcf86cd7994f6c0e",
