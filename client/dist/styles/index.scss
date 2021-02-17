@@ -300,11 +300,25 @@ select {
 
 
 //RoomAddEdit
+
+#roomContainer {
+  font-family: $mainFont;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+
 #roomEntriesContainer {
+  padding: 20px;
   margin: auto;
   height: calc(90% - 80px);
-  width: calc(80% - 40px);
-  // overflow: scroll;
+  width: calc(60% - 40px);
+  // display: flex;
+  // flex-wrap: nowrap;
+  // flex-direction: column;
+  // justify-content: start;
+  // align-items: center;
+  // align-content: space-between
 }
 
 #roomBox {
@@ -312,14 +326,16 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 20px 20px 20px;
+  margin: 0 auto;
+  // margin: 20px 20px 20px 20px;
+  flex: 1 0 auto;
 }
 
-#roomTable {
+.roomTable {
   border: #00ff0d solid;
-  margin: auto;
+  margin: 0 auto;
   height: calc(80% - 80px);
-  width: calc(40% - 40px);
+  width: calc(48% - 40px);
   border-radius: 30px;
   background-color: $berry;
   overflow: scroll;
@@ -332,12 +348,21 @@ select {
   // align-items: center;
 }
 
-#roomInnerTable {
+#roomInnerTable1 {
   border: #d0ff00 solid;
   height: 100px;
   width: calc(100% - 40px);
   height: calc(100% - 80px);
-  // margin: 0 20px 20px 20px;
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+#roomInnerTable2 {
+  border: #d0ff00 solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  height: calc(50% - 80px);
+  margin: 0 auto;
   border-radius: 30px;
 }
 
@@ -347,18 +372,13 @@ select {
   height: 100px;
   width: calc(100% - 40px);
   margin: 20px 20px 20px 20px;
+  padding: 5px;
   border-radius: 30px;
   background-color: white;
   text-align: center;
 }
 
-.roomEntryText {
-  color: black;
-  font-weight: bold;
-  margin: 0 0 0 20px;
-}
 
-// .listEntryText {
-//   color: black;
-//   margin: 0 0 0 20px;
-// }
+#room_H3 {
+  color: rgb(0, 0, 0);
+}

@@ -5,7 +5,7 @@ const RoomTypeList = ({ onClick1, listType, entity, type }) => {
 
   return (
     <div id='roomEntry' onClick1={(e) => onClick1(onClick1)}>
-      <span className='roomEntryText'>{listType}</span>
+      <h3 id='room_H3'>{listType}</h3>
     </div>
   );
 };
