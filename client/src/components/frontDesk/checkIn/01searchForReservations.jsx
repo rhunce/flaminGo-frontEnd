@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import FormButton from '../../styledElements/FormButton';
 import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
 import InputTypeText from '../../styledElements/InputTypeText';
-import CheckInReservationList from './checkIn2'
+import CheckInReservationList from './02checkIn2'
 import AvailableRooms from './03availableRooms';
 import ConfirmationPage from './04confirmationPage'
 import axios from 'axios';
@@ -20,6 +20,15 @@ const SearchForReservations = () => {
         // axios.get()
 
     };
+
+    const subtractPage = () => {
+        setPage((prevPage) => (prevPage - 1))
+        //GET request in axios
+        // axios.get()
+
+    };
+
+
     const updateName = (e) => {
         setName(e.target.value)
     }
@@ -43,21 +52,24 @@ const SearchForReservations = () => {
         return <CheckInReservationList 
             name={name} 
             resId={resId}
-            addPage={addPage}/>
+            addPage={addPage}
+            subtractPage={subtractPage}/>
     }
 
     if (page === 3){
         return <AvailableRooms 
             name={name} 
             resId={resId}
-            addPage={addPage}/>
+            addPage={addPage}
+            subtractPage={subtractPage}/>
     }
 
     if (page === 4){
         return <ConfirmationPage 
             name={name} 
             resId={resId}
-            addPage={addPage}/>
+            addPage={addPage}
+            subtractPage={subtractPage}/>
     }
 
 

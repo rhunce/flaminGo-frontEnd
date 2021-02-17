@@ -279,6 +279,16 @@ input[type='checkbox']:checked label {
   border-radius: 30px;
 }
 
+.roomBox:hover{
+  background-color: $grape;
+  cursor:pointer;
+}
+
+.roomBox:active {
+  background-color: $berry;
+  cursor:pointer;
+}
+
 .entryTableMini {
   margin: auto;
 }
@@ -323,9 +333,10 @@ input[type='checkbox']:checked label {
   cursor:pointer;
 }
 
-#listEntryMini:active{
+#listEntryMini:active {
   background-color: $berry;
   cursor:pointer;
+}
 
 .sortBy {
   font-size: 14px;
@@ -373,4 +384,3 @@ select {
   background-color: white;
 }
 
-}

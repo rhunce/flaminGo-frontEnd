@@ -76,7 +76,7 @@ const CheckInReservationList = (props) => {
             <div id="listEntriesHeaderMini"><TitleTableCheckIn/></div>
                 no results found
           </div>
-          <FormButton className='searchButtonPlacement' onClick={props.addPage}> Back</FormButton>
+          <FormButton className='searchButtonPlacement' onClick={props.subtractPage}> Back</FormButton>
         </HalfRoundDiv>
     );
   }
