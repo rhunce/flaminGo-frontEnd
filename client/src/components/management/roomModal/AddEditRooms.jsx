@@ -10,14 +10,14 @@ import { colors } from '../../styledElements/styleGuid';
 import AmenityList from './RoomsComponents/AmenityList.jsx';
 import RoomTypeList from './RoomsComponents/RoomTypeList.jsx';
 
-import {
-  AddHeader,
-  EditHeader
-} from './RoomsComponents/HeaderRooms.jsx';
+// import {
+//   AddHeader,
+//   EditHeader
+// } from './RoomsComponents/HeaderRooms.jsx';
 // import {
 //   AddTables,
 //   EditTables
-// } from '../RoomsComponents/AddEditRooms.jsx';
+// } from '../RoomsComponents/AddEditTables.jsx';
 import {
   amenitiesData,
   roomTypeData
@@ -43,13 +43,11 @@ const AddEditRooms = ({
   if (type === 'ADD') {
     aData = amenitiesData;
     rData = roomTypeData;
-    titleHeader = AddHeader();
     queryPlaceHolderLeft = 'New Amenity';
     queryPlaceHolderRight = 'New Type';
   } else if (type === 'EDIT') {
     aData = amenitiesData;
     rData = roomTypeData;
-    titleHeader = DeleteHeader();
     queryPlaceHolderLeft = 'Choose Amenity';
     queryPlaceHolderRight = 'Choose Type';
   }
@@ -73,7 +71,7 @@ const AddEditRooms = ({
   // </FormButton>
 
   return (
-    <div id='listContainer'>
+    <div id='roomContainer'>
       <HalfRoundDiv
         gradients={true}
         margin='0 30px 0 30px'
@@ -84,30 +82,32 @@ const AddEditRooms = ({
         <div>
           <HalfRoundDiv
             id='roomEntriesContainer'
-            // gradients={false}
             margin='0 30px 0 30px'
             width='100vh - 60px'
             height='calc(100vh - 260px)'
           >
             <div>
               <ModalTitle>{
-                type === 'ADD' ? AddHeader : EditHeader}
-                ADD ROOM
+                type === 'ADD' ? 'ADD ROOM' : 'EDIT ROOM'}
               </ModalTitle>
             </div>
 
             <div id='roomBox'>
-              <div id='roomTable'>
-                <div id='roomInnerTable'>
+              <div className='roomTable'>
+
+                <div id='roomInnerTable1'>
                   <div>
-                    ADD Amenity <br />
+                    <ModalTitle color= 'white' >
+                      {type === 'ADD' ? 'ADD Amenity' : 'EDIT Amenity'}
+                    </ModalTitle>
                     <InputTypeText></InputTypeText>
                     <FormButton margin='0 20px 0 0' onClick1={(e) => onClick1(onClick1)}>
                       ADD
                     </FormButton>
                   </div>
                 </div>
-                <div id='roomInnerTable'>
+
+                <div id='roomInnerTable2'>
                   {aData.map((oneAmenity) => {
                     console.log('oneAmenity:', oneAmenity);
                     if (type === 'ADD') {
@@ -131,19 +131,20 @@ const AddEditRooms = ({
                   })}
                 </div>
               </div>
-
-
-              <div id='roomTable'>
-                <div id='roomInnerTable'>
+              <div className='roomTable'>
+                <div id='roomInnerTable1'>
                   <div>
-                    ADD RoomType <br />
+                    <ModalTitle color= 'white' >
+                      {type === 'ADD' ? 'ADD RoomType' : 'EDIT RoomType'}
+                    </ModalTitle>
+
                     <InputTypeText></InputTypeText>
                     <FormButton margin='0 20px 0 0' onClick1={(e) => onClick1(onClick1)}>
                       ADD
                     </FormButton>
                   </div>
                 </div>
-                <div id='roomInnerTable'>
+                <div id='roomInnerTable2'>
                   {rData.map((oneRoomType) => {
                     console.log('oneRoomType:', oneRoomType);
                     if (type === 'ADD') {
@@ -167,7 +168,6 @@ const AddEditRooms = ({
                   })}
                 </div>
               </div>
-
             </div>
 
             <div>
