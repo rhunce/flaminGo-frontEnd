@@ -1,9 +1,23 @@
-import React from 'react';
-import FormButton from '../styledElements/FormButton.jsx';
+import React, { useState, useEffect } from "react";
+import FormButton from '../styledElements/FormButton.jsx'
+import RoomDetailsModal from './RoomDetailsModal';
+
+
 
 const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
 
   let entryButtons;
+
+  const [modalStatus, setModalStatus] = useState(false);
+
+  const toggleRoomDetailsModal = () => {
+    console.log('toggle');
+    if(modalStatus) {
+      setModalStatus(false)
+    } else {
+      setModalStatus(true)
+    }
+  }
   if (type === 'employee') {
     entryButtons = (
       <span className='listEntryButtons'>
@@ -18,9 +32,14 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
   } else if (type === 'room') {
     entryButtons = (
       <span className='listEntryButtons'>
-        <FormButton margin='0 30px 0 20px' onClick={() => onClick1(entity)}>
+        <FormButton margin='0 30px 0 20px' onClick={toggleRoomDetailsModal}>
           See Details
         </FormButton>
+        <RoomDetailsModal
+          isOpen={modalStatus}
+          toggle={toggleRoomDetailsModal}
+          allRmData={entity}
+        />
       </span>
     );
   } else if (type === 'guest') {
