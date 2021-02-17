@@ -1,50 +1,55 @@
-import React from 'react';
-import FormButton from '../styledElements/FormButton.jsx';
-import HalfRoundDiv from '../styledElements/HalfRoundDiv.jsx';
-import InputTypeText from '../styledElements/InputTypeText.jsx';
-import InputTypeRadio from '../styledElements/InputTypeRadio.jsx';
-import TextAreaForm from '../styledElements/TextAreaForm.jsx';
+import React from "react";
+import HalfRoundDiv from "../styledElements/HalfRoundDiv.jsx";
+import SearchByDate from "./SearchByDate.jsx";
+import AvailableRooms from './AvailableRooms.jsx';
+import GuestInfo from './GuestInfo.jsx';
 
 class CreateBookingForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      dateForm: true,
+      roomList: false,
+      guestInfo: false,
+      checkInDate: '',
+      checkOutDate: ''
+    };
+    this.inputDate = this.inputDate.bind(this);
+    this.goToNext = this.goToNext.bind(this);
+  }
+
+  goToNext(event) {
+    event.preventDefault();
+    if (event.target.id === 'dateForm') {
+      this.setState({dateForm: false, roomList: true});
+      //also need to set state of event.target.value
+    } else if (event.target.id === 'roomList') {
+      this.setState({roomList: false, guestInfo: true});
+      //also need to set state of event.target.value
+    } else {
+      this.setState({guestInfo: false});
+    }
+  }
+
+  inputDate(event) {
+    event.preventDefault();
+    console.log(event.target.name);
+    if (event.target.name === 'checkInDate') {
+      this.setState({checkInDate: event.target.value});
+    } else if (event.target.name === 'checkOutDate') {
+      this.setState({checkOutDate: event.target.value});
+    }
   }
 
   render() {
     return (
-      <div>
-        <HalfRoundDiv className={'createBooking'}>
-          <h1 className="bookingForm">Create Booking</h1>
-          <h2 className="firstName">First Name</h2>
-          <InputTypeText className="firstNameInput" placeholder={'First Name'}/>
-          <h2 className="lastName">Last Name</h2>
-          <InputTypeText className="lastNameInput" placeholder={'Last Name'}/>
-          <h2 className="datesStayed">Desired Dates</h2>
-          <form className="dateRange">
-            <label for="checkIn">Check-In:<input type="date"/></label>
-            <label for="checkOut">Check-Out:<input type="date"/></label>
-          </form>
-          <h2 className="roomType">Room Type</h2>
-          <select className="roomDropdown">
-            <option>Single</option>
-            <option>Double</option>
-            <option>Queen</option>
-            <option>King</option>
-          </select>
-          <h2 className="addGuestsTitle">Additional Guests</h2>
-          <form className="addGuests">
-            <InputTypeText className="guest2" placeholder={'First Name'}/>
-            <InputTypeText className="guest2" placeholder={'Last Name'}/>
-            <InputTypeText className="guest3" placeholder={'First Name'}/>
-            <InputTypeText className="guest3" placeholder={'Last Name'}/>
-            <InputTypeText className="guest4" placeholder={'First Name'}/>
-            <InputTypeText className="guest4" placeholder={'Last Name'}/>
-          </form>
-          <FormButton className="submitButton">
-            Submit
-          </FormButton>
-        </HalfRoundDiv>
-      </div>);
+      <HalfRoundDiv>
+        {this.state.dateForm ? <SearchByDate inputDate={this.inputDate} goToNext={this.goToNext}/>
+          : this.state.roomList ? <AvailableRooms goToNext={this.goToNext}/>
+            : this.state.guestInfo ? <GuestInfo goToNext={this.goToNext}/>
+              : <div>Placeholder for Confirmation Page</div>}
+      </HalfRoundDiv>
+    );
   }
 }
 
