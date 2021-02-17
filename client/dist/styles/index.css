@@ -360,4 +360,31 @@ select {
   background-color: white;
 }
 
+.roomDetails {
+  line-height: 2;
+}
+
+.roomDetailsHeader {
+  text-align: center;
+}
+
+.closeRmDetails {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-size: 14px;
+  font-family: Open Sans, sans-serif;
+  font-weight: 400;
+  color: #FFFFFF;
+  background-color: #FF8B03;
+  border: none;
+  border-radius: 20px;
+  width: 160px;
+  height: 40px;
+}
+
+.listEntryButtons {
+  float: right;
+}
+
 /*# sourceMappingURL=index.css.map */
