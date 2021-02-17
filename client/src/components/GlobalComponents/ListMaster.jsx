@@ -37,6 +37,7 @@ const ListMaster = ({
   }, []);
 
   const { position } = useContext(MainContext);
+  console.log('Position', position)
 
   const [dataSet, setDataSet] = useState([])
   useEffect(() => {
@@ -52,7 +53,7 @@ const ListMaster = ({
     }
   });
 
-  let data = dataSet;
+  var data = JSON.parse(JSON.stringify(dataSet))
 
 
   let titleTable, searchParam;
@@ -81,7 +82,6 @@ const ListMaster = ({
         searched = data.filter((room) => {
           let amenitiesString = room.amenities.join();
           let amenitiesLower = amenitiesString.toLowerCase();
-          console.log('amenities', amenitiesLower)
           return amenitiesLower.includes(searchTerm);
         });
         data = searched;
@@ -107,7 +107,6 @@ const ListMaster = ({
       searched = data.filter((room) => {
         let amenitiesString = room.amenities.join();
         let amenitiesLower = amenitiesString.toLowerCase();
-        console.log('amenities', amenitiesLower)
         return amenitiesLower.includes(searchTerm);
       });
       data = searched;
@@ -222,7 +221,7 @@ const ListMaster = ({
   }
 
   let addRoom = ''
-  if (position === "management" && type === "room") {
+  if (position === "systemAdministration" && type === "room") {
     addRoom = <FormButton backgroundColor="berry" margin="0 30px 0 0" onClick={onClick1}>Add Room</FormButton>
   }
 
