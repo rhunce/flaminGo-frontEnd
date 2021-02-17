@@ -24,6 +24,7 @@ const FormInput = styled.input`
  * @param {Boolean} disabled - set the element to disabled - default is false
  * @param {String} className - add class or list of classes to element
  * @param {String} id - add an id to the element
+ * @param {String} type - change the type of your form - default is text
  */
 const InputTypeText = ({
   placeholder,

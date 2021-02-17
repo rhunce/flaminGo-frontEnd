@@ -280,6 +280,46 @@ input[type='checkbox']:checked label {
     background-color: white;
   }
 
+  //checkin CSS
+
+.mainBox {
+  display: block;
+  margin: 0 auto;
+}
+
+.checkInTitleDiv {
+  padding-top: 40px;
+  text-align: center;
+  font-style: normal;
+  font-weight: $bold;
+  font-size: 30px;
+  line-height: 41px;
+}
+
+.checkinLabels {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+  
+}
+
+#checkInGuestName {
+  margin-bottom: 40px;
+}
+
+.centeredInputBars {
+  margin: auto;
+  width: 50%;
+  height: 50%;
+  padding-top: 10%;
+}
+
+.searchButtonPlacement {
+  margin: auto;
+  width: 158px;
+}
+
 #reservationOuterContainer {
   margin: auto;
   display: flex;
@@ -289,8 +329,46 @@ input[type='checkbox']:checked label {
   width: 840px;
   height: 440px;
   background-image: $berryToGrape;
-  margin: auto;
+  margin: 0 auto;
   border-radius: 30px;
+}
+
+#roomsListInnerContainer {
+  width: 840px;
+  height: 440px;
+  background-image: $berryToGrape;
+  margin: 0 auto;
+  border-radius: 30px;
+  display: flex;
+  align-items: flex-start;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  justify-content: start;
+  overflow: scroll;
+}
+
+.roomBox{
+  background: $white;
+  width: 125px;
+  height: 125px;
+  margin-top: 10px;
+  margin-left: 10px;
+  line-height: 65px;
+  color: $black;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+  border-radius: 30px;
+}
+
+.roomBox:hover{
+  background-color: $grape;
+  cursor:pointer;
+}
+
+.roomBox:active {
+  background-color: $berry;
+  cursor:pointer;
 }
 
 .entryTableMini {
@@ -330,6 +408,16 @@ input[type='checkbox']:checked label {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#listEntryMini:hover{
+  background-color: $grape;
+  cursor:pointer;
+}
+
+#listEntryMini:active {
+  background-color: $berry;
+  cursor:pointer;
 }
 
 .sortBy {
@@ -376,4 +464,31 @@ select {
   height: 100%;
   width: 100%;
   background-color: white;
+}
+
+.roomDetails {
+  line-height: 2;
+}
+
+.roomDetailsHeader {
+  text-align: center;
+}
+
+.closeRmDetails {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-size: 14px;
+  font-family: Open Sans,sans-serif;
+  font-weight: 400;
+  color: #FFFFFF;
+  background-color: #FF8B03;
+  border: none;
+  border-radius: 20px;
+  width: 160px;
+  height: 40px;
+}
+
+.listEntryButtons {
+  float: right;
 }

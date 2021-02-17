@@ -7,6 +7,7 @@ import ListMaster from '../GlobalComponents/ListMaster';
 import CheckoutLanding from './checkout/CheckoutLanding';
 import Search from './checkout/Search';
 import CheckInReservationList from './checkIn2.jsx';
+import SearchForReservations from './checkIn/01searchForReservations';
 
 // flex container
 const BtnContainer = styled.div`
@@ -61,7 +62,7 @@ const FrontDeskLanding = ({ back }) => {
         />
         {paths.checkIn ? (
           // place holder for check-in component
-          <div>place holder for check-in component</div>
+          <SearchForReservations />
         ) : paths.checkOut ? (
           // place holder for check-out component
           <CheckoutLanding />
