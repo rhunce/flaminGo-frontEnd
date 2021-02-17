@@ -11,14 +11,6 @@ import AmenityList from './RoomsComponents/AmenityList.jsx';
 import RoomTypeList from './RoomsComponents/RoomTypeList.jsx';
 
 import {
-  AddHeader,
-  EditHeader
-} from './RoomsComponents/HeaderRooms.jsx';
-// import {
-//   AddTables,
-//   EditTables
-// } from '../RoomsComponents/AddEditRooms.jsx';
-import {
   amenitiesData,
   roomTypeData
 } from '../../../SampleData/AmenitiesRoomType.js';
@@ -60,18 +52,6 @@ const AddEditRooms = ({
     setSearch(query);
   };
 
-  // <button onClick={handleSearch}>Submit</button>
-
-  // <div className='listHeader'></div>
-  // <div className='listHeaderButtons'></div>
-  // <div className='listHeaderSearch'>
-  //   <input type='text' placeholder={searchParam}></input>
-  // </div>;
-
-  //   <FormButton margin='0 20px 0 0' onClick1={(e) => onClick1(onClick1)}>
-  //   ADD
-  // </FormButton>
-
   return (
     <div id='listContainer'>
       <HalfRoundDiv
@@ -84,7 +64,6 @@ const AddEditRooms = ({
         <div>
           <HalfRoundDiv
             id='roomEntriesContainer'
-            // gradients={false}
             margin='0 30px 0 30px'
             width='100vh - 60px'
             height='calc(100vh - 260px)'
