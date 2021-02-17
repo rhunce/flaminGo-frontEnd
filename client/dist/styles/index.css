@@ -144,7 +144,8 @@ td {
 }
 
 .listHeader {
-  margin: 0 30px 20px 30px;
+  margin: 20px 30px 20px 30px;
+  display: flex;
 }
 
 .listHeaderSearch {
@@ -222,7 +223,7 @@ td {
   display: inline-block;
 }
 
-.list1 .anchor {
+.list1 .filterAnchor {
   position: relative;
 }
 
@@ -256,12 +257,5 @@ input[type=checkbox]:checked label {
 .landingContainer {
   height: 100%;
   width: 100%;
+  background-color: #ff2063;
 }
-
-.listBgContainer {
-  height: 100%;
-  width: 100%;
-  background-color: white;
-}
-
-/*# sourceMappingURL=index.css.map */

@@ -207,6 +207,42 @@ exports.employeeData = [{
   "position": "Housekeeping",
   "weekHours": 30,
   "isActive": true
+},
+{
+  "_id": "3",
+  "firstName": "Louise",
+  "lastName": "Luna",
+  "address1": "124 Hackreactor Rd",
+  "address2": "",
+  "city": "New York",
+  "state": "NY",
+  "zipcode": 10013,
+  "country": "United States",
+  "phone": "123-456-7890",
+  "email": "jsmoth@gmail.com",
+  "wage": 15.00,
+  "startDate": "2021-02-14",
+  "position": "Management",
+  "weekHours": 40,
+  "isActive": true
+},
+{
+  "_id": "4",
+  "firstName": "Evan",
+  "lastName": "Bishop",
+  "address1": "124 Hackreactor Rd",
+  "address2": "",
+  "city": "New York",
+  "state": "NY",
+  "zipcode": 10013,
+  "country": "United States",
+  "phone": "123-456-7890",
+  "email": "jsmoth@gmail.com",
+  "wage": 15.00,
+  "startDate": "2021-02-14",
+  "position": "Housekeeping",
+  "weekHours": 0,
+  "isActive": true
 }
 ]
 
@@ -232,7 +268,7 @@ exports.taskData = [{
   "location": "Pool",
   "employeeCompleted": "John Smith",
   "employeeCreated": "Jane Doe",
-  "department": "Housekeeping",
+  "department": "Maintenance",
   "taskTitle": "Dirty water",
   "taskDescription": "Something appears to be broken with in the filter.",
   "createdAt": "2021-02-13T13:44:00.000Z",

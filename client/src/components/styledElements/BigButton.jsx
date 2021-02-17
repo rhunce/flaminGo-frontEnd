@@ -13,6 +13,7 @@ const Button = styled.button`
   border-radius: 50px;
   width: 650px;
   height: 110px;
+  outline: none;
   margin: ${(props) => (props.margin ? props.margin : 0)};
 `;
 

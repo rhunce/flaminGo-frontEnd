@@ -4,7 +4,7 @@ import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
 import ListMaster from '../GlobalComponents/ListMaster';
-
+import FlexCenterContainer from '../landingPage/FlexCenterContainer';
 import EmployeeContainer from './employeeModal/EmployeeContainer';
 import {
   sampleEmployee,
@@ -12,12 +12,6 @@ import {
 } from './employeeModal/sampleEmployeeData';
 
 // flex container
-const FlexCenterContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-`;
 
 const ManagementLanding = ({ back }) => {
   // set state to toggle for conditional rendering
@@ -53,10 +47,17 @@ const ManagementLanding = ({ back }) => {
   return (
     <div className='landingContainer'>
       <div className={listBackground}>
-        <BackArrow margin={'40px 40px'} onClick={clickBack} color={backColor} />
+        <BackArrow
+          margin={'40px 40px'}
+          onClick={clickBack}
+          color={backColor}
+          location={paths.landing ? 'Main Homepage' : 'Management'}
+        />
         {paths.viewEmployees ? (
           // place holder for employee view component
           <ListMaster
+            onClick1={(e) => console.log(e)}
+            onClick2={(e) => console.log('working2')}
             type='employee'
             handleBackChange={setBackColor}
             handleBackgroundChange={setListBackground}
