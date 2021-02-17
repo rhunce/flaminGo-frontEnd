@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
 let AddTables = (entity) => {
 
   return (
     <table className="entryTable">
       <tbody>
-        <tr>
-          {/* {amenity} */}
-        </tr>
+      <tr>
+        {/* {amenity} */}
+      </tr>
       </tbody>
     </table>
   );
@@ -18,15 +18,15 @@ let EditTables = (entity) => {
   return (
     <table className="entryTable">
       <tbody>
-        <tr>
-          {/* {roomType} */}
-        </tr>
+      <tr>
+        {/* {roomType} */}
+      </tr>
       </tbody>
     </table>
   );
-};
+}
 
 export {
   AddTables,
   EditTables
-};
+}

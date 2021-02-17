@@ -296,23 +296,60 @@ select {
   background-color: white;
 }
 
+
+
+
 //RoomAddEdit
 #roomEntriesContainer {
   margin: auto;
   height: calc(90% - 80px);
-  width: calc(70% - 40px);
-  overflow: scroll;
+  width: calc(80% - 40px);
+  // overflow: scroll;
 }
 
-#roomEntry {
+#roomBox {
+  border: #e000ce solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 20px 20px 20px;
+}
+
+#roomTable {
+  border: #00ff0d solid;
+  margin: auto;
+  height: calc(80% - 80px);
+  width: calc(40% - 40px);
+  border-radius: 30px;
+  background-color: $berry;
+  overflow: scroll;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  // margin: 0 20px 20px 20px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
+
+#roomInnerTable {
+  border: #d0ff00 solid;
   height: 100px;
   width: calc(100% - 40px);
-  margin: 0 20px 20px 20px;
+  height: calc(100% - 80px);
+  // margin: 0 20px 20px 20px;
+  border-radius: 30px;
+}
+
+//amenity List button bar
+#roomEntry {
+  border: #1900ff solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  margin: 20px 20px 20px 20px;
   border-radius: 30px;
   background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 
 .roomEntryText {
@@ -320,3 +357,8 @@ select {
   font-weight: bold;
   margin: 0 0 0 20px;
 }
+
+// .listEntryText {
+//   color: black;
+//   margin: 0 0 0 20px;
+// }

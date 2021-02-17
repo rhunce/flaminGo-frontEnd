@@ -5,7 +5,7 @@ import HalfRoundDiv from '../../styledElements/HalfRoundDiv.jsx';
 import BigButton from '../../styledElements/BigButton.jsx';
 import ModalTitle from '../../styledElements/ModalTitle.jsx';
 import InputTypeText from '../../styledElements/InputTypeText.jsx';
-
+import { colors } from '../../styledElements/styleGuid';
 
 import AmenityList from './RoomsComponents/AmenityList.jsx';
 import RoomTypeList from './RoomsComponents/RoomTypeList.jsx';
@@ -80,73 +80,108 @@ const AddEditRooms = ({
         width='100vh - 60px'
         height='calc(100vh - 260px)'
       >
-        <div>{type === 'ADD' ? AddHeader : EditHeader}</div>
-        <div id='roomEntriesContainer'>
+
+        <div>
           <HalfRoundDiv
-            gradients={false}
+            id='roomEntriesContainer'
+            // gradients={false}
             margin='0 30px 0 30px'
             width='100vh - 60px'
             height='calc(100vh - 260px)'
           >
+            <div>
+              <ModalTitle>{
+                type === 'ADD' ? AddHeader : EditHeader}
+                ADD ROOM
+              </ModalTitle>
+            </div>
+
+            <div id='roomBox'>
+              <div id='roomTable'>
+                <div id='roomInnerTable'>
+                  <div>
+                    ADD Amenity <br />
+                    <InputTypeText></InputTypeText>
+                    <FormButton margin='0 20px 0 0' onClick1={(e) => onClick1(onClick1)}>
+                      ADD
+                    </FormButton>
+                  </div>
+                </div>
+                <div id='roomInnerTable'>
+                  {aData.map((oneAmenity) => {
+                    console.log('oneAmenity:', oneAmenity);
+                    if (type === 'ADD') {
+                      return (
+                        <div>
+                          <AmenityList
+                            key={oneAmenity._id}
+                            onClick1={onClick1}
+                            onClick2={onClick2}
+                            entity={oneAmenity}
+                            listType={oneAmenity.amenity}
+                            type='ADD'
+                          />
+                        </div>
+                      );
+                    } else if (type === 'EDIT') {
+                      return (
+                        <>EDIT</>
+                      );
+                    }
+                  })}
+                </div>
+              </div>
+
+
+              <div id='roomTable'>
+                <div id='roomInnerTable'>
+                  <div>
+                    ADD RoomType <br />
+                    <InputTypeText></InputTypeText>
+                    <FormButton margin='0 20px 0 0' onClick1={(e) => onClick1(onClick1)}>
+                      ADD
+                    </FormButton>
+                  </div>
+                </div>
+                <div id='roomInnerTable'>
+                  {rData.map((oneRoomType) => {
+                    console.log('oneRoomType:', oneRoomType);
+                    if (type === 'ADD') {
+                      return (
+                        <div>
+                          <RoomTypeList
+                            key={oneRoomType._id}
+                            onClick1={onClick1}
+                            onClick2={onClick2}
+                            entity={oneRoomType}
+                            listType={oneRoomType.roomType}
+                            type='ADD'
+                          />
+                        </div>
+                      );
+                    } else if (type === 'EDIT') {
+                      return (
+                        <>EDIT</>
+                      );
+                    }
+                  })}
+                </div>
+              </div>
+
+            </div>
+
+            <div>
+              <BigButton
+                // margin={margin}
+                // onClick={onClick}
+                // type={type}
+                // disabled={disabled}
+                backgroundColor={colors.berry}
+                color='white'>SUBMIT</BigButton>
+            </div>
+
           </HalfRoundDiv>
         </div>
-
-        <div><BigButton>HI</BigButton></div>
-        <div><ModalTitle>HI2</ModalTitle></div>
-        <div><InputTypeText>for floor num, room num</InputTypeText></div>
-
-
-
-
-        <div>
-          {aData.map((oneAmenity) => {
-            console.log('oneAmenity:', oneAmenity);
-            if (type === 'ADD') {
-              return (
-                <div>
-                  <AmenityList
-                    key={oneAmenity._id}
-                    onClick1={onClick1}
-                    onClick2={onClick2}
-                    entity={oneAmenity}
-                    listType={oneAmenity.amenity}
-                    type='ADD'
-                  />
-                </div>
-              );
-            } else if (type === 'EDIT') {
-              return (
-                <>EDIT</>
-              );
-            }
-          })}
-          {rData.map((oneRoomType) => {
-            console.log('oneRoomType:', oneRoomType);
-            if (type === 'ADD') {
-              return (
-                <div>
-
-                  <RoomTypeList
-                    key={oneRoomType._id}
-                    onClick1={onClick1}
-                    onClick2={onClick2}
-                    entity={oneRoomType}
-                    listType={oneRoomType.roomType}
-                    type='ADD'
-                  />
-
-                </div>
-              );
-            } else if (type === 'EDIT') {
-              return (
-                <>EDIT</>
-              );
-            }
-          })}
-        </div>
-        <FormButton margin='0 20px 0 0' onClick1={(e) => onClick1(onClick1)}>
-          SUBMIT
-        </FormButton>
 
       </HalfRoundDiv>
     </div>

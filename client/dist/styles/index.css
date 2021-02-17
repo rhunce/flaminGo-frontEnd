@@ -278,19 +278,43 @@ select {
 #roomEntriesContainer {
   margin: auto;
   height: calc(90% - 80px);
-  width: calc(70% - 40px);
+  width: calc(80% - 40px);
+}
+
+#roomBox {
+  border: #e000ce solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 20px 20px 20px;
+}
+
+#roomTable {
+  border: #00ff0d solid;
+  margin: auto;
+  height: calc(80% - 80px);
+  width: calc(40% - 40px);
+  border-radius: 30px;
+  background-color: #ff2063;
   overflow: scroll;
 }
 
-#roomEntry {
+#roomInnerTable {
+  border: #d0ff00 solid;
   height: 100px;
   width: calc(100% - 40px);
-  margin: 0 20px 20px 20px;
+  height: calc(100% - 80px);
+  border-radius: 30px;
+}
+
+#roomEntry {
+  border: #1900ff solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  margin: 20px 20px 20px 20px;
   border-radius: 30px;
   background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 
 .roomEntryText {

@@ -1,25 +1,33 @@
 exports.amenitiesData = [
   {
-    '_id': '5ff90d07450a752b55cbf9fc',
+    '_id': '5ff90d07450a752b55cbf9fc1',
     'amenity': 'Fridge'
   },
   {
-    '_id': '5ff90d07450a752b55cbf9fc',
+    '_id': '5ff90d07450a752b55cbf9fc2',
     'amenity': 'TV'
   },
   {
-    '_id': '5ff90d07450a752b55cbf9fc',
+    '_id': '5ff90d07450a752b55cbf9fc3',
     'amenity': 'Handicapped Shower'
   },
   {
-    '_id': '5ff90d07450a752b55cbf9fc',
+    '_id': '5ff90d07450a752b55cbf9fc4',
     'amenity': 'Non-Smoking'
+  },
+  {
+    '_id': '5ff90d07450a752b55cbf9fc5',
+    'amenity': 'Ocean-view'
+  },
+  {
+    '_id': '5ff90d07450a752b55cbf9fc6',
+    'amenity': 'kitchen'
   }
 ];
 
 exports.roomTypeData = [
   {
-    '_id': '5ff8c7b6aa12892093205486',
+    '_id': '5ff8c7b6aa128920932054861',
     'roomType': 'Single Queen',
     'price': 150.00,
     'amenities': [
@@ -29,7 +37,7 @@ exports.roomTypeData = [
     ]
   },
   {
-    '_id': '5ff8c7b6aa12892093205486',
+    '_id': '5ff8c7b6aa128920932054862',
     'roomType': 'Single King',
     'price': 200.00,
     'amenities': [
@@ -39,7 +47,7 @@ exports.roomTypeData = [
     ]
   },
   {
-    '_id': '5ff8c7b6aa12892093205486',
+    '_id': '5ff8c7b6aa128920932054863',
     'roomType': 'Suite',
     'price': 400.00,
     'amenities': [
@@ -50,7 +58,7 @@ exports.roomTypeData = [
     ]
   },
   {
-    '_id': '5ff8c7b6aa12892093205486',
+    '_id': '5ff8c7b6aa128920932054864',
     'roomType': 'Double Twin',
     'price': 100.00,
     'amenities': [
