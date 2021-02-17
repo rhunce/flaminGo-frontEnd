@@ -24,7 +24,7 @@ class Search extends React.Component {
     return (
       <HalfRoundDiv id="mainBox">
         <div className="checkInTitleDiv">Check-Out: Search for Reservations</div>
-        <div className="centeredInputBars">
+        <div id="centeredInputBars">
           <label htmlFor="nameInput" className="checkOutLabels">Name</label> <br/>
           <InputTypeText
             name="nameInput"

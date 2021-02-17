@@ -6,7 +6,7 @@ import BackArrow from '../styledElements/BackArrow';
 import ListMaster from '../GlobalComponents/ListMaster';
 import CheckoutLanding from './checkout/CheckoutLanding';
 import Search from './checkout/Search';
-import CheckInReservationList from './checkIn2.jsx';
+// import CheckInReservationList from './checkIn2.jsx';
 import SearchForReservations from './checkIn/01searchForReservations';
 
 // flex container

@@ -64,6 +64,13 @@ input.inputs {
   padding-top: 6%;
 }
 
+#centeredInputBars {
+  margin: auto;
+  width: 50%;
+  height: 50%;
+  padding-top: 6%;
+}
+
 .searchButtonPlacement {
   margin: auto;
   width: 158px;
@@ -406,9 +413,6 @@ input[type=checkbox]:checked label {
 
 #listEntryMini:active {
   background-color: #ff2063;
-<<<<<<< HEAD
-}
-=======
   cursor: pointer;
 }
 
@@ -485,4 +489,3 @@ select {
 }
 
 /*# sourceMappingURL=index.css.map */
->>>>>>> dev

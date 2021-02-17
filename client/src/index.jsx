@@ -12,6 +12,6 @@ ReactDOM.render(
     // audience={REACT_APP_AUDIENCE}
     redirectUri={window.location.origin}
   >
-        <App projectName="flaminGo" />
-    </Auth0Provider>
-, document.getElementById('app'));
+    <App projectName="flaminGo" />
+  </Auth0Provider>
+  , document.getElementById('app'));
