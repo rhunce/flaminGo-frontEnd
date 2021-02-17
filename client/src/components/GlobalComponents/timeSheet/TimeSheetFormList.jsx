@@ -13,6 +13,11 @@ const FlexContainer = styled.div`
   align-items: center;
 `;
 
+const Spacer = styled.div`
+  width: 1px;
+  height: 25px;
+`;
+
 const Centered = styled.div`
   position: absolute;
 
@@ -39,22 +44,24 @@ const TimeSheetFormList = ({ userId, selectedWeek, back }) => {
     <Centered>
       <FlexContainer>
         {timeSheetTemplate.map((day) => (
-          <FormRow
-            margin='0px 0px 20px 0px'
-            label={day.name}
-            editMode={editMode}
-            key={day.name + day.day}
-            name={day.day}
-            defaultValue={timeSheet[day.day] || ''}
-            onChange={(e) => {
-              setTimeSheet((prevState) => ({
-                ...prevState,
-                [e.target.name]: e.target.value,
-              }));
-            }}
-          />
+          <FlexContainer>
+            <FormRow
+              label={day.name}
+              editMode={editMode}
+              key={day.name + day.day}
+              name={day.day}
+              defaultValue={timeSheet[day.day] || ''}
+              onChange={(e) => {
+                setTimeSheet((prevState) => ({
+                  ...prevState,
+                  [e.target.name]: e.target.value,
+                }));
+              }}
+            />
+            <Spacer />
+          </FlexContainer>
         ))}
-        <FormButton onClick={submit} margin={'0'} backgroundColor={'berry'}>
+        <FormButton onClick={submit} margin='15px' backgroundColor={'berry'}>
           Submit
         </FormButton>
       </FlexContainer>

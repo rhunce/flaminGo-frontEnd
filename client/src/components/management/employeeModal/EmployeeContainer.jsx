@@ -21,18 +21,22 @@ const Bar = styled.div`
   margin-right: 40px;
 `;
 
-const EmployeeContainer = ({ employee, sampleData }) => (
-  <EmployeeProvider employee={employee} sampleData={sampleData}>
-    <HalfRoundDiv padding='40px' height='650px' width='975px'>
-      <div>
-        <FlexDiv>
-          <EmployeeForm />
-          <Bar />
-          <SummaryContainer />
-        </FlexDiv>
-      </div>
-    </HalfRoundDiv>
-  </EmployeeProvider>
-);
+const EmployeeContainer = ({ test, employee, sampleData }) => {
+  console.log('test', test);
+  console.log('employee', employee);
+  return (
+    <EmployeeProvider employee={employee} sampleData={sampleData}>
+      <HalfRoundDiv padding='40px' height='650px' width='975px'>
+        <div>
+          <FlexDiv>
+            <EmployeeForm />
+            <Bar />
+            <SummaryContainer />
+          </FlexDiv>
+        </div>
+      </HalfRoundDiv>
+    </EmployeeProvider>
+  );
+};
 
 export default EmployeeContainer;
