@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import FormRow from '../../management/employeeModal/formInfoView/FormRow';
 import FormButton from '../../styledElements/FormButton';
 import timeSheetTemplate from './timeSheetTemplate';
 import useTimeSheet from './useTimeSheet';
+import { MainContext } from '../../landingPage/MainContext';
 import axios from 'axios';
 
 const FlexContainer = styled.div`
@@ -25,10 +26,12 @@ const Centered = styled.div`
   transform: translate(-50%);
 `;
 
-const TimeSheetFormList = ({ userId, selectedWeek, back }) => {
+const TimeSheetFormList = ({ selectedWeek, back }) => {
+  const { id } = useContext(MainContext);
+
   const [editMode, setEditMode] = useState(selectedWeek ? false : true);
   const [timeSheet, setTimeSheet] = useTimeSheet({
-    userId,
+    userId: !selectedWeek ? id : null,
     initialState: selectedWeek,
   });
 

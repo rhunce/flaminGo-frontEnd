@@ -31,7 +31,7 @@ const ListMaster = ({
   useEffect(() => {
     handleBackChange('black');
     handleBackgroundChange('listBgContainer');
-  });
+  }, []);
 
   console.log('ListType', type);
 

@@ -11,6 +11,11 @@ const ViewEmployeeList = ({ setBackColor, setListBackground }) => {
   const [toggleModals, setToggleModal] = useState(true);
   const [selectedData, setSelectedData] = useState(null);
 
+  const closeModal = () => {
+    setBackColor('black');
+    setListBackground('listBgContainer');
+    setToggleModal(true);
+  };
   const openModal1 = (data) => {
     console.log(selectedData);
     setSelectedData(data);
@@ -31,9 +36,9 @@ const ViewEmployeeList = ({ setBackColor, setListBackground }) => {
       ) : (
         <FlexCenterContainer>
           <EmployeeContainer
-            test={selectedData}
-            employee={sampleEmployee}
+            employee={selectedData}
             sampleData={timeSheetSample}
+            back={closeModal}
           />
         </FlexCenterContainer>
       )}
