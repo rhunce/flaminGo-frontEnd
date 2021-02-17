@@ -6,7 +6,6 @@ exports.roomsData = [
     "roomType": "Double Queen",
     "amenities": [
       "Non-Smoking",
-      "Pool Side",
       "Mini-Fridge"
     ],
     "isClean":true,
@@ -36,7 +35,6 @@ exports.roomsData = [
     "roomType": "Single Queen",
     "amenities": [
       "Non-Smoking",
-      "Pool Side",
       "Mini-Fridge"
     ],
     "isClean": false,

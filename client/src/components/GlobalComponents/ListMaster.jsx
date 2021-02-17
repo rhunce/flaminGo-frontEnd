@@ -59,7 +59,7 @@ const ListMaster = ({
 
   if (type === 'room') {
     titleTable = titleTableRooms();
-    searchParam = 'Search by room number';
+    searchParam = 'Search by amenity';
   } else if (type === 'employee') {
     titleTable = titleTableEmployees();
     searchParam = 'Search by employee name';
@@ -74,6 +74,28 @@ const ListMaster = ({
   //Search Functionality
   const [searchTerm, setSearch] = useState('');
 
+  useEffect(() => {
+    let searched = [];
+    if (searchTerm !== '') {
+      if (type === 'room') {
+        searched = data.filter((room) => {
+          let amenitiesString = room.amenities.join();
+          let amenitiesLower = amenitiesString.toLowerCase();
+          console.log('amenities', amenitiesLower)
+          return amenitiesLower.includes(searchTerm);
+        });
+        data = searched;
+      } else if (type === 'employee') {
+        searched = data.filter((employee) => {
+          let name =
+            employee.firstName.toLowerCase() + employee.lastName.toLowerCase();
+          return name.includes(searchTerm);
+        });
+        data = searched;
+      }
+    }
+  })
+
   const handleSearch = (e) => {
     let search = document.getElementById('searchBar').value;
     setSearch(search);
@@ -83,8 +105,10 @@ const ListMaster = ({
   if (searchTerm !== '') {
     if (type === 'room') {
       searched = data.filter((room) => {
-        let roomNumber = room.roomNumber;
-        return roomNumber.includes(searchTerm);
+        let amenitiesString = room.amenities.join();
+        let amenitiesLower = amenitiesString.toLowerCase();
+        console.log('amenities', amenitiesLower)
+        return amenitiesLower.includes(searchTerm);
       });
       data = searched;
     } else if (type === 'employee') {

@@ -35,10 +35,10 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
   } else if (type === 'room' && position === 'management') {
     entryButtons = (
       <span className='listEntryButtons'>
-        <FormButton margin='0 30px 0 20px' onClick={toggleRoomDetailsModal}>
+        <FormButton margin='0 30px 0 30px' onClick={toggleRoomDetailsModal}>
           See Details
         </FormButton>
-        <FormButton margin='0 30px 0 20px' onClick={onClick2}>
+        <FormButton margin='0 30px 0 0' onClick={onClick2}>
           Edit Room
         </FormButton>
         <RoomDetailsModal

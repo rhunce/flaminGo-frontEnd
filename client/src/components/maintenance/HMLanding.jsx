@@ -5,6 +5,7 @@ import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
 import ListMaster from '../GlobalComponents/ListMaster';
 import FlexCenterContainer from '../landingPage/FlexCenterContainer';
+import ViewAddEditRoom from '../management/ViewAddEditRoom.jsx';
 // flex container
 
 const HMLanding = ({ back }) => {
@@ -58,11 +59,10 @@ const HMLanding = ({ back }) => {
           />
         ) : paths.viewRooms ? (
           // place holder for room view component
-          <ListMaster
-            type='room'
-            handleBackChange={setBackColor}
-            handleBackgroundChange={setListBackground}
-          />
+          <ViewAddEditRoom
+          setBackColor={setBackColor}
+          setListBackground={setListBackground}
+        />
         ) : paths.addTask ? (
           // place holder for add task component
           <div>place holder for add task component</div>

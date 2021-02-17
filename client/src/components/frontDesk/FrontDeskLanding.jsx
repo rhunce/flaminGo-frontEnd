@@ -4,6 +4,8 @@ import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
 import ListMaster from '../GlobalComponents/ListMaster';
+import FlexCenterContainer from '../landingPage/FlexCenterContainer';
+import ViewAddEditRoom from '../management/ViewAddEditRoom.jsx';
 
 
 //checkin imports
@@ -17,7 +19,6 @@ const BtnContainer = styled.div`
   height: 100%;
 `;
 
-import FlexCenterContainer from '../landingPage/FlexCenterContainer';
 
 
 const FrontDeskLanding = ({ back }) => {
@@ -68,11 +69,10 @@ const FrontDeskLanding = ({ back }) => {
           <div>place holder for check-out component</div>
         ) : paths.viewRooms ? (
           // place holder for room view component
-          <ListMaster
-            type='room'
-            handleBackChange={setBackColor}
-            handleBackgroundChange={setListBackground}
-          />
+          <ViewAddEditRoom
+          setBackColor={setBackColor}
+          setListBackground={setListBackground}
+        />
         ) : (
           <FlexCenterContainer>
             <LandingButtons routs={routs} />
