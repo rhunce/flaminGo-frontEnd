@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import TextAreaForm from './styledElements/TextAreaForm.jsx'
-import MainHeader from './GlobalComponents/Header.jsx'
-import Landing from './landingPage/MainLanding';
-import LoginButton from './login/LoginButton';
-import LogoutButton from './login/LogoutButton';
-import { useAuth0 } from "@auth0/auth0-react";
 
+import MainHeader from './GlobalComponents/Header.jsx';
+import Landing from './landingPage/MainLanding';
+import Login from './login/Login.jsx';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const App = () => {
   const [color, setColor] = useState('berry');
@@ -20,19 +18,18 @@ const App = () => {
     logout,
   } = useAuth0();
 
-  // useEffect(() => {getData()} , [])
-
-    return (
-      <main className='main'>
-        {isAuthenticated ?
-          <LogoutButton />
-          :
-          <LoginButton />
-        }
-        <MainHeader />
-        <Landing />
-      </main>
-    );
-}
+  return (
+    <div>
+      {isAuthenticated ? (
+        <main className='main'>
+          <MainHeader />
+          <Landing user={user} />
+        </main>
+      ) : (
+        <Login />
+      )}
+    </div>
+  );
+};
 
 export default App;
