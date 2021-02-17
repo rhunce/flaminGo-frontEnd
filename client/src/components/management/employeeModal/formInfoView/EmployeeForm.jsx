@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { EmployeeContext } from '../EmployeeContext';
 import ModalTitle from '../../../styledElements/ModalTitle';
 import FormRow from './FormRow';
@@ -6,6 +6,14 @@ import FormButton from '../../../styledElements/FormButton';
 import PositionDropDown from './PositionDropDown';
 import { fields, mandatory } from './employeeFormConstants';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const FlexDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const EmployeeForm = () => {
   const { useEmployeeData, useNewEmployee } = useContext(EmployeeContext);
@@ -48,7 +56,7 @@ const EmployeeForm = () => {
   };
 
   return (
-    <div>
+    <FlexDiv>
       <ModalTitle margin='0'>
         {employee && (employee.firstName || employee.lastName)
           ? `${employee.firstName ? employee.firstName : ''} ${
@@ -100,7 +108,7 @@ const EmployeeForm = () => {
           Edit
         </FormButton>
       )}
-    </div>
+    </FlexDiv>
   );
 };
 
