@@ -4,29 +4,16 @@ import { colors, fonts } from './styleGuid';
 
 const FormInput = styled.input`
   font-family: ${fonts.mainFont};
-  font-weight: ${fonts.plain};
   font-size: 16px;
   color: ${colors.black};
-  border: ${(props) =>
-    props.border ? props.border : `1px solid ${colors.berry}`};
+  border: 1px solid ${colors.berry};
   margin: ${(props) => (props.margin ? props.margin : 0)};
   border-radius: 4px;
   padding: 5px 20px 5px 20px;
   width: ${(props) => props.width && props.width};
 `;
 
-/**
- * input bar for forms
- * @param {Function} onChange - set onChange function
- * @param {String} margin - set the margins for the element - default is 0
- * this is using margin shorthand property https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#margin_and_padding_properties
- * @param {String} width - change the width of the button - default is html default
- * @param {Boolean} disabled - set the element to disabled - default is false
- * @param {String} className - add class or list of classes to element
- * @param {String} id - add an id to the element
- * @param {String} type - change the type of your form - default is text
- */
-const InputTypeText = ({
+const TextInput = ({
   placeholder,
   name,
   onChange,
@@ -40,8 +27,6 @@ const InputTypeText = ({
   maxlength,
   minlength,
   id,
-  border,
-  type = 'text',
 }) => (
   <FormInput
     id={id}
@@ -49,7 +34,7 @@ const InputTypeText = ({
     maxlength={maxlength}
     placeholder={placeholder}
     name={name}
-    type={type}
+    type='radio'
     margin={margin}
     onChange={onChange}
     disabled={disabled}
@@ -59,7 +44,6 @@ const InputTypeText = ({
     value={value}
     defaultValue={defaultValue}
     width={width}
-    border={border}
   />
 );
-export default InputTypeText;
+export default TextInput;

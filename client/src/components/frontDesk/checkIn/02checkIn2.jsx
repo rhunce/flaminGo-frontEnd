@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import HalfRoundDiv from "../../styledElements/HalfRoundDiv.jsx";
-import { reservationData } from '../../../SampleData/sampleData.js'
+import { reservationData } from '../../../SampleData/SampleData.js'
 import FormButton from "../../styledElements/FormButton.jsx";
 
 
@@ -30,8 +30,8 @@ const ListEntryMini = ({reservation, addPage}) => {
   }
 
   return (
-    <div 
-    id="listEntryMini" 
+    <div
+    id="listEntryMini"
     onClick={(e) => {
       updateClicked();
       addPage();

@@ -10,6 +10,7 @@ import {
   sampleEmployee,
   timeSheetSample,
 } from './employeeModal/sampleEmployeeData';
+import ViewEmployeeList from './viewEmployeeList';
 
 // flex container
 
@@ -28,7 +29,7 @@ const ManagementLanding = ({ back }) => {
 
   // static object of this Landing routs and flipping for conditional rendering
   const routs = [
-    { title: 'Guest List', onClick: () => setPaths('guestList') },
+    // { title: 'Guest List', onClick: () => setPaths('guestList') },
     {
       title: 'View Employees',
       onClick: () => setPaths('viewEmployees'),
@@ -55,20 +56,24 @@ const ManagementLanding = ({ back }) => {
         />
         {paths.viewEmployees ? (
           // place holder for employee view component
-          <ListMaster
-            onClick1={(e) => console.log(e)}
-            onClick2={(e) => console.log('working2')}
-            type='employee'
-            handleBackChange={setBackColor}
-            handleBackgroundChange={setListBackground}
+          // <ListMaster
+          //   onClick1={(e) => console.log(e)}
+          //   onClick2={(e) => console.log('working2')}
+          //   type='employee'
+          //   handleBackChange={setBackColor}
+          //   handleBackgroundChange={setListBackground}
+          // />
+          // <FlexCenterContainer>
+          //   <EmployeeContainer
+          //     employee={sampleEmployee}
+          //     sampleData={timeSheetSample}
+          //   />
+          // </FlexCenterContainer>
+          <ViewEmployeeList
+            setBackColor={setBackColor}
+            setListBackground={setListBackground}
           />
-        ) : // <FlexCenterContainer>
-        //   <EmployeeContainer
-        //     employee={sampleEmployee}
-        //     sampleData={timeSheetSample}
-        //   />
-        // </FlexCenterContainer>
-        paths.viewRooms ? (
+        ) : paths.viewRooms ? (
           // place holder for room view component
           <ListMaster
             type='room'
