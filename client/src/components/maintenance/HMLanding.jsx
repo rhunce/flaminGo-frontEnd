@@ -69,7 +69,9 @@ const HMLanding = ({ back }) => {
           />
         ) : paths.addTask ? (
           // place holder for add task component
-          <AddTaskForm employeeId={id}/>
+          <FlexCenterContainer>
+            <AddTaskForm employeeId={id}/>
+          </FlexCenterContainer>
         ) : (
           <FlexCenterContainer>
             <LandingButtons routs={routs} />
