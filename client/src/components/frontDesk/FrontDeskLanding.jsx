@@ -6,9 +6,8 @@ import BackArrow from '../styledElements/BackArrow';
 import ListMaster from '../GlobalComponents/ListMaster';
 import FlexCenterContainer from '../landingPage/FlexCenterContainer';
 import ViewAddEditRoom from '../management/ViewAddEditRoom.jsx';
-
-
-//checkin imports
+import CheckoutLanding from './checkout/CheckoutLanding';
+import Search from './checkout/Search';
 import SearchForReservations from './checkIn/01searchForReservations';
 
 // flex container
@@ -66,7 +65,7 @@ const FrontDeskLanding = ({ back }) => {
           <SearchForReservations />
         ) : paths.checkOut ? (
           // place holder for check-out component
-          <div>place holder for check-out component</div>
+          <CheckoutLanding />
         ) : paths.viewRooms ? (
           // place holder for room view component
           <ViewAddEditRoom

@@ -31,6 +31,7 @@ const ManagementLanding = ({ back }) => {
   // static object of this Landing routs and flipping for conditional rendering
   const routs = [
     //{ title: 'Guest List', onClick: () => setPaths('guestList') },
+
     {
       title: 'View Employees',
       onClick: () => setPaths('viewEmployees'),

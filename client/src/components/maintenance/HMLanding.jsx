@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
-import ListMaster from '../GlobalComponents/ListMaster';
+import ListMaster from '../GlobalComponents/ListMaster'
+import AddTaskForm from './AddTaskForm.jsx';
 import FlexCenterContainer from '../landingPage/FlexCenterContainer';
 import ViewAddEditRoom from '../management/ViewAddEditRoom.jsx';
+import {MainContext} from '../landingPage/MainContext.jsx';
+
 // flex container
 
 const HMLanding = ({ back }) => {
@@ -16,6 +19,8 @@ const HMLanding = ({ back }) => {
     viewRooms: false,
     landing: true,
   });
+
+  const {id} = useContext(MainContext);
 
   //set up for transition to room list page
   const [backColor, setBackColor] = useState('white');
@@ -65,7 +70,9 @@ const HMLanding = ({ back }) => {
         />
         ) : paths.addTask ? (
           // place holder for add task component
-          <div>place holder for add task component</div>
+          <FlexCenterContainer>
+            <AddTaskForm employeeId={id}/>
+          </FlexCenterContainer>
         ) : (
           <FlexCenterContainer>
             <LandingButtons routs={routs} />

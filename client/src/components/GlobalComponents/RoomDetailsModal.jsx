@@ -18,7 +18,7 @@ const customStyles = {
   }
 };
 
-class RoomDetailsModal extends React.Component {
+class TaskDetailsModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -85,4 +85,4 @@ class RoomDetailsModal extends React.Component {
   }
 }
 
-export default RoomDetailsModal;
+export default TaskDetailsModal;

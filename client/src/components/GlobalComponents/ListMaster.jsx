@@ -31,46 +31,77 @@ const ListMaster = ({
   onClick2,
 }) => {
 
-  useEffect(() => {
-    handleBackChange('black');
-    handleBackgroundChange('listBgContainer');
-  }, []);
+  // useEffect(() => {
+  //   handleBackChange('black');
+  //   handleBackgroundChange('listBgContainer');
+  // });
+
+  let titleTable, searchParam;
 
   const { position } = useContext(MainContext);
-  console.log('Position', position)
 
   const [dataSet, setDataSet] = useState([])
   useEffect(() => {
-    if (type ==="room") {
-      axios.get("http://localhost:3232/rooms")
-      .then((data) => {setDataSet(data.data)})
-    } else if (type ==="employee") {
-      axios.get("http://localhost:3232/employees")
-      .then((data) => {setDataSet(data.data)})
-    } else if (type ==="task") {
-      axios.get("http://localhost:3232/tasks")
-      .then((data) => {setDataSet(data.data)})
+    handleBackChange('black');
+    handleBackgroundChange('listBgContainer');
+    // if (type ==="room") {
+    //   axios.get("http://localhost:3232/rooms")
+    //   .then((data) => {setDataSet(data.data)})
+    // } else if (type ==="employee") {
+    //   axios.get("http://localhost:3232/employees")
+    //   .then((data) => {setDataSet(data.data)})
+    // } else if (type ==="task") {
+    //   axios.get("http://localhost:3232/tasks")
+    //   .then((data) => {setDataSet(data.data)})
+    // }
+    if (type === 'room') {
+      titleTable = titleTableRooms();
+      searchParam = 'Search by amenity';
+      setDataSet(roomsData)
+    } else if (type === 'employee') {
+      titleTable = titleTableEmployees();
+      searchParam = 'Search by employee name';
+      setDataSet(employeeData)
+    } else if (type === 'task') {
+      titleTable = titleTableTasks();
+      searchParam = 'Search';
+      setDataSet(taskData)
+    } else if (type === 'guest') {
+      titleTable = titleTableGuests();
+      searchParam = 'Search by guest name';
     }
   });
 
   var data = JSON.parse(JSON.stringify(dataSet))
 
-
-  let titleTable, searchParam;
-
   if (type === 'room') {
-    titleTable = titleTableRooms();
     searchParam = 'Search by amenity';
   } else if (type === 'employee') {
-    titleTable = titleTableEmployees();
     searchParam = 'Search by employee name';
   } else if (type === 'task') {
-    titleTable = titleTableTasks();
     searchParam = 'Search';
   } else if (type === 'guest') {
-    titleTable = titleTableGuests();
     searchParam = 'Search by guest name';
   }
+
+ // let titleTable, searchParam;
+
+  // if (type === 'room') {
+  //   titleTable = titleTableRooms();
+  //   searchParam = 'Search by amenity';
+  //   setDataSet(roomsData)
+  // } else if (type === 'employee') {
+  //   titleTable = titleTableEmployees();
+  //   searchParam = 'Search by employee name';
+  //   setDataSet(employeeData)
+  // } else if (type === 'task') {
+  //   titleTable = titleTableTasks();
+  //   searchParam = 'Search';
+  //   setDataSet(taskData)
+  // } else if (type === 'guest') {
+  //   titleTable = titleTableGuests();
+  //   searchParam = 'Search by guest name';
+  // }
 
   //Search Functionality
   const [searchTerm, setSearch] = useState('');
@@ -82,6 +113,7 @@ const ListMaster = ({
         searched = data.filter((room) => {
           let amenitiesString = room.amenities.join();
           let amenitiesLower = amenitiesString.toLowerCase();
+          console.log(searchTerm)
           return amenitiesLower.includes(searchTerm);
         });
         data = searched;
