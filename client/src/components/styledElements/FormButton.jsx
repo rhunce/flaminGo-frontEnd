@@ -18,7 +18,7 @@ const Button = styled.button`
 
   &:active {
     background-color: ${(props) =>
-      props.color ? colors.grape : colors.carrot};
+    props.color ? colors.grape : colors.carrot};
   }
 `;
 /**

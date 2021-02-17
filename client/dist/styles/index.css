@@ -20,6 +20,107 @@ Body {
   width: 100%;
 }
 
+/***************************************************************
+
+CHECK-IN / CHECK-OUT
+
+***************************************************************/
+.mainBox {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#mainBox {
+  margin: auto;
+  height: 500px;
+}
+
+.checkInTitleDiv {
+  padding-top: 40px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 41px;
+}
+
+.checkOutLabels {
+  font-family: "Open Sans, sans-serif";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+}
+
+input.inputs {
+  margin-bottom: 40px;
+}
+
+.centeredInputBars {
+  margin: auto;
+  width: 50%;
+  height: 50%;
+  padding-top: 6%;
+}
+
+#centeredInputBars {
+  margin: auto;
+  width: 50%;
+  height: 50%;
+  padding-top: 6%;
+}
+
+.searchButtonPlacement {
+  margin: auto;
+  width: 158px;
+  margin-top: 30px;
+}
+
+#searchButtonPlacement {
+  margin: auto;
+  width: 158px;
+  margin-top: 50px;
+  background-color: #ff2063;
+}
+
+.tables {
+  width: fit-content;
+  margin: auto;
+}
+
+.headings {
+  margin-top: 25px;
+}
+
+td {
+  padding-right: 50px;
+}
+
+#checkoutButton1 {
+  margin: auto;
+  background-color: #ff2063;
+  margin-right: 25px;
+}
+
+#checkoutButton2 {
+  margin: auto;
+  background-color: #ff2063;
+  margin-left: 25px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.redirectMessage {
+  text-align: center;
+  margin-top: 25px;
+}
+
+/***************************************************************/
 ::-webkit-scrollbar {
   width: 20px;
 }
@@ -176,6 +277,57 @@ input[type=checkbox]:checked label {
   height: 100%;
   width: 100%;
   background-color: white;
+}
+
+.addTask {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(24, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.addTask .formTitle {
+  grid-area: 2/2/3/7;
+}
+.addTask .employeeName {
+  grid-area: 2/8/3/12;
+}
+.addTask .employeeNameInput {
+  grid-area: 3/8/4/12;
+}
+.addTask .taskInputTitle {
+  grid-area: 4/2/5/7;
+}
+.addTask .taskInput {
+  grid-area: 5/2/6/7;
+}
+.addTask .roomInputTitle {
+  grid-area: 4/8/5/12;
+}
+.addTask .roomInput {
+  grid-area: 5/8/6/12;
+}
+.addTask .textAreaTitle {
+  grid-area: 7/2/8/7;
+}
+.addTask .textArea {
+  grid-area: 8/2/18/12;
+}
+.addTask .radioTitle {
+  grid-area: 19/2/20/7;
+}
+.addTask .ticketType {
+  grid-area: 20/2/24/7;
+  display: grid;
+}
+.addTask .dueByTitle {
+  grid-area: 19/5/20/8;
+}
+.addTask .dueBy {
+  grid-area: 20/5/22/8;
+}
+.addTask .submitButton {
+  grid-area: 20/9/22/12;
 }
 
 .mainBox {
@@ -385,6 +537,117 @@ select {
 
 .listEntryButtons {
   float: right;
+}
+
+.sortBy {
+  font-size: 14px;
+  width: 160px;
+  height: 40px;
+  border: none;
+  color: white;
+  background-color: #ff8b03;
+  border-radius: 30px;
+}
+
+.filterBy {
+  font-size: 14px;
+  width: 160px;
+  height: 40px;
+  border: none;
+  color: white;
+  background-color: #ff8b03;
+  border-radius: 30px;
+  margin: 0 30px 0 0;
+}
+
+select {
+  text-align: center;
+  text-align-last: center;
+  outline: none;
+}
+
+option {
+  text-align: left;
+  /* reset to left*/
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+
+.listBgContainer {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+
+#roomContainer {
+  font-family: "Open Sans, sans-serif";
+  font-weight: 400;
+  font-size: 18px;
+}
+
+#roomEntriesContainer {
+  padding: 20px;
+  margin: auto;
+  height: calc(90% - 80px);
+  width: calc(60% - 40px);
+}
+
+#roomBox {
+  border: #e000ce solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  flex: 1 0 auto;
+}
+
+.roomTable {
+  border: #00ff0d solid;
+  margin: 0 auto;
+  height: calc(80% - 80px);
+  width: calc(48% - 40px);
+  border-radius: 30px;
+  background-color: #ff2063;
+  overflow: scroll;
+}
+
+#roomInnerTable1 {
+  border: #d0ff00 solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  height: calc(100% - 80px);
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+#roomInnerTable2 {
+  border: #d0ff00 solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  height: calc(50% - 80px);
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+#roomEntry {
+  border: #1900ff solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  margin: 20px 20px 20px 20px;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: white;
+  text-align: center;
+}
+
+#room_H3 {
+  color: black;
+
 }
 
 /*# sourceMappingURL=index.css.map */
