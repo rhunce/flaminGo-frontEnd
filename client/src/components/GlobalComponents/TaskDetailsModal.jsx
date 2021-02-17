@@ -18,7 +18,7 @@ const customStyles = {
   },
 };
 
-class TaskDetailsModal extends React.Component {
+class RoomDetailsModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,20 +28,20 @@ class TaskDetailsModal extends React.Component {
 
   render() {
 
-    var amenArr = this.props.allRmData.amenities.map((amen) => (
-        <li>
-          {amen}
-        </li>
-      ))
+    // var amenArr = this.props.allRmData.amenities.map((amen) => (
+    //     <li>
+    //       {amen}
+    //     </li>
+    //   ))
 
-    var taskArr = this.props.allRmData.tasks.map((task) => (
-      <li>
-        {task.taskTitle}
-      </li>
-    ))
+    // var taskArr = this.props.allRmData.tasks.map((task) => (
+    //   <li>
+    //     {task.taskTitle}
+    //   </li>
+    // ))
 
-    const cleanStatus = this.props.allRmData.isClean ? 'Clean' : 'Dirty';
-    const occStatus = this.props.allRmData.isOccupied ? 'Occupied' : 'Vacant';
+    // const cleanStatus = this.props.allRmData.isClean ? 'Clean' : 'Dirty';
+    // const occStatus = this.props.allRmData.isOccupied ? 'Occupied' : 'Vacant';
 
     return (
       <div>
@@ -50,8 +50,8 @@ class TaskDetailsModal extends React.Component {
           isOpen={this.props.isOpen}
           contentLabel='Minimal Modal Example'
         >
-          <h1 className='roomDetailsHeader'>Room Details</h1>
-          <div className='roomDetails'>
+          <h1 className='roomDetailsHeader'>Task Details</h1>
+          {/* <div className='roomDetails'>
             <div>
               Room Number: {this.props.allRmData.roomNumber}
             </div>
@@ -77,11 +77,11 @@ class TaskDetailsModal extends React.Component {
           </div>
           <button className='closeRmDetails' onClick={this.props.toggle}>
             Close Details Page
-          </button>
+          </button> */}
         </Modal>
       </div>
     );
   }
 }
 
-export default TaskDetailsModal;
+export default RoomDetailsModal;
