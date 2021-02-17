@@ -14,6 +14,7 @@ class AddTaskForm extends React.Component {
     //each input field has its own state property and event handler
     this.state = {
       employeeCreated: '',
+      employeeID: 0,
       taskTitle: '',
       roomNumber: 0,
       taskDescription: '',
@@ -84,7 +85,7 @@ class AddTaskForm extends React.Component {
           <TextAreaForm onChange={this.inputDescription} className="textArea" placeholder={'Task Description'} />
           <h2 className="radioTitle">Department</h2>
 
-          {/* radio button options are not shown as selected when I add the click handlers */}
+          {/* radio button options do not have selected when I add the click handlers */}
           <form className="ticketType">
             <label for="Housekeeping">
               <input
