@@ -43,37 +43,37 @@ class RoomDetailsModal extends React.Component {
           <h1 className='roomDetailsHeader'>Task Details</h1>
           <div className='roomDetails'>
           <div>
-          <span className="detailsTitle">Task Title:</span> {this.props.allTaskData.taskTitle}
+          <span className="detailsTitle">Task Title:</span> <span className="detailsContent">{this.props.allTaskData.taskTitle} </span>
             </div>
             <div>
-            <span className="detailsTitle">Room Number</span> (if applicable): {this.props.allTaskData.roomNumber}
+            <span className="detailsTitle">Location (if applicable):</span><span className="detailsContent"> {this.props.allTaskData.location}</span>
             </div>
             <div>
-            <span className="detailsTitle">Location (if applicable):</span>  {this.props.allTaskData.location}
+            <span className="detailsTitle">Task Description:</span> <span className="detailsContent"> {this.props.allTaskData.taskDescription}</span>
             </div>
             <div>
-            <span className="detailsTitle">Task Description:</span>  {this.props.allTaskData.taskDescription}
+            <span className="detailsTitle">Task Creator:</span> <span className="detailsContent"> {this.props.allTaskData.employeeCreated} </span>
             </div>
             <div>
-            <span className="detailsTitle">Task Creator:</span>  {this.props.allTaskData.employeeCreated}
+            <span className="detailsTitle">Task Creation Date:</span> <span className="detailsContent">{this.props.allTaskData.createdAt.substring(0, 10)}</span>
             </div>
             <div>
-            <span className="detailsTitle">Task Creation Date:</span>  {this.props.allTaskData.createdAt.substring(0, 10)}
+            <span className="detailsTitle">Department:</span><span className="detailsContent"> {this.props.allTaskData.department}</span>
             </div>
             <div>
-            <span className="detailsTitle">Department:</span>  {this.props.allTaskData.department}
+            <span className="detailsTitle">Task Due Date:</span><span className="detailsContent"> {this.props.allTaskData.dueBy.substring(0, 10)}</span>
             </div>
             <div>
-            <span className="detailsTitle">Task Due Date:</span>  {this.props.allTaskData.dueBy.substring(0, 10)}
+            <span className="detailsTitle">Assigned To:</span><span className="detailsContent"> {this.props.allTaskData.employeeAssigned}</span>
             </div>
             <div>
-            <span className="detailsTitle">Task Completed:</span>  {this.props.allTaskData.isCompleted ? 'True' : 'False'}
+            <span className="detailsTitle">Task Completed:</span><span className="detailsContent"> {this.props.allTaskData.isCompleted ? 'True' : 'False'}</span>
             </div>
             <div>
-            <span className="detailsTitle">Task Completion Date:</span>  {this.props.allTaskData.completedAt.substring(0, 10)}
+            <span className="detailsContent">{this.props.allTaskData.completedAt.substring(0, 10)}</span>
             </div>
             <div>
-            <span className="detailsTitle">Task Completed By:</span>  {this.props.allTaskData.employeeCompleted}
+            <span className="detailsContent"> {this.props.allTaskData.employeeCompleted}</span>
             </div>
           </div>
           </div>

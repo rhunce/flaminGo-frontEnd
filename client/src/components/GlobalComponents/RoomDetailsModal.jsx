@@ -60,28 +60,29 @@ class TaskDetailsModal extends React.Component {
           <h1 className='roomDetailsHeader'>Room Details</h1>
           <div className='roomDetails'>
             <div>
-              <span className="detailsTitle">Room Number:</span> {this.props.allRmData.roomNumber}
+              <span className="detailsTitle">Room Number:</span><span className="detailsContent"> {this.props.allRmData.roomNumber}</span>
             </div>
             <div>
-            <span className="detailsTitle"> Floor:</span> {this.props.allRmData.floorNumber}
+            <span className="detailsTitle"> Floor:</span><span className="detailsContent"> {this.props.allRmData.floorNumber}</span>
             </div>
             <div>
-            <span className="detailsTitle">Roomtype: </span> {this.props.allRmData.roomType}
+            <span className="detailsTitle">Roomtype: </span><span className="detailsContent"> {this.props.allRmData.roomType}</span>
             </div>
             <div>
-            <span className="detailsTitle">Cleanliness Status:</span> {cleanStatus}
+            <span className="detailsTitle">Cleanliness Status:</span><span className="detailsContent"> {cleanStatus}</span>
             </div>
             <div>
-            <span className="detailsTitle">Occupation Status:</span> {occStatus}
+            <span className="detailsTitle">Occupation Status:</span><span className="detailsContent"> {occStatus}</span>
             </div>
             <div>
-            <span className="detailsTitle"> Amenities:</span> {amenArr}
+            <span className="detailsTitle"> Amenities:</span><span className="detailsContent"> {amenArr}</span>
             </div>
             <div>
-            <span className="detailsTitle">Open Tasks:</span> {taskArr}
+            <span className="detailsTitle">Open Tasks:</span><span className="detailsContent"> {taskArr}</span>
             </div>
           </div>
           </div>
+
         </Modal>
       </div>
     );
