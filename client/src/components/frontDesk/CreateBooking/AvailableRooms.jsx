@@ -6,27 +6,29 @@ import InputTypeText from "../../styledElements/InputTypeText.jsx";
 
 let AvailableRooms = (props) => {
   return (
-    <HalfRoundDiv>
-      {roomsData.map((room) => {
-        if (!room.isOccupied) {
-          return (
-            <div id="listEntry" key={room._id}>
-              {room.roomNumber}
-              <FormButton
-                name={room._id}
-                onClick={(event) => {
-                  props.goToNext(event);
-                  props.selectRoom(event);
-                }}
-                id={"roomList"}
-              >
-                Select Room
-              </FormButton>
-            </div>
-          );
-        }
-      })}
-    </HalfRoundDiv>
+    <div >
+      <HalfRoundDiv className={'availabileRoomsList'} id={'listContainer'}>
+        {props.availableRooms.map((room) => {
+          if (!room.isOccupied) {
+            return (
+              <div id="roomListEntry" key={room._id}>
+                {room.roomNumber}
+                <FormButton
+                  name={room._id}
+                  onClick={(event) => {
+                    props.goToNext(event);
+                    props.selectRoom(event);
+                  }}
+                  id={"roomList"}
+                >
+                  Select Room
+                </FormButton>
+              </div>
+            );
+          }
+        })}
+      </HalfRoundDiv>
+      </div>
   );
 };
 
