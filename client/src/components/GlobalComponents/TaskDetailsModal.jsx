@@ -82,17 +82,3 @@ class RoomDetailsModal extends React.Component {
 export default RoomDetailsModal;
 
 
-// "taskTitle": "Clean dirty spot",
-// "roomNumber": "110",
-// "location": "",
-// "taskDescription": "Behind the nightstand on the right side of the bed. Don't ask me how a guest got that there.",
-// "employeeCreated": "Jane Doe",
-// "createdAt": "2021-02-13T13:44:00.000Z",
-// "department": "Housekeeping",
-// "dueBy": "2021-02-14T10:00:00.000Z",
-// "isCompleted": true,
-// "completedAt": "2021-02-13T16:15:00.000Z"
-// "employeeCompleted": "John Smith",
-
-// "task_id": "60108729ffefc9bae107564d",
-// "room_id": "507c7f79bcf86cd7994f6c0e",

@@ -3,6 +3,7 @@ import FormButton from '../styledElements/FormButton.jsx'
 import RoomDetailsModal from './RoomDetailsModal';
 import { MainContext } from '../landingPage/MainContext';
 import TaskDetailsModal from './TaskDetailsModal';
+import axios from 'axios';
 
 
 
@@ -10,7 +11,7 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
 
   let entryButtons;
 
-
+  const user = useContext(MainContext)
   const { position } = useContext(MainContext);
   const [modalStatus, setModalStatus] = useState(false);
   const [rmModalStatus, setRmModalStatus] = useState(false);
@@ -30,6 +31,23 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
     } else {
       setTaskModalStatus(true)
     }
+  }
+
+  const markTaskComplete = () => {
+
+    axios
+      .put(`http://localhost:7777/tasks/${entity.task_id}`, {
+        "employeeCompleted": user.name,
+        "employeeCompleted_id": user.id,
+        "isComplete": true
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+
   }
 
   if (type === 'employee') {
@@ -53,7 +71,7 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
           Edit Room
         </FormButton>
         <RoomDetailsModal
-          isOpen={modalStatus}
+          isOpen={rmModalStatus}
           toggle={toggleRoomDetailsModal}
           allRmData={entity}
         />
@@ -87,7 +105,7 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
         <FormButton margin='0 30px 0 20px' onClick={toggleTaskDetailsModal}>
           See Details
         </FormButton>
-        <FormButton margin='0 20px 0 0' onClick={() => onClick2(entity)}>
+        <FormButton margin='0 20px 0 0' onClick={markTaskComplete}>
           Mark as Complete
         </FormButton>
         <TaskDetailsModal

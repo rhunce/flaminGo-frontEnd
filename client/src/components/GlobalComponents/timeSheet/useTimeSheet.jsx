@@ -8,14 +8,18 @@ const useTimeSheet = ({ userId, initialState = {} }) => {
     useEffect(() => {
       {
         axios
-          .get(`/timesheet/${userId}`, { params: { count: 1 } })
+          .get(`/timesheets/${userId}`, { params: { count: 1 } })
           .then(({ data }) => {
             const today = parseInt(
               new Date().toISOString().slice(0, 10).split('-').join('')
             );
-            const weekEnd = parseInt(data.weekEnd.split('-').join(''));
+            const weekEnd = parseInt(data[0].weekEnd.split('-').join(''));
             if (weekEnd > today) {
-              setState(data);
+              setState(data[0]);
+            } else {
+              setState({
+                employee_id: useId,
+              });
             }
           });
       }
