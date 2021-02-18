@@ -15,9 +15,9 @@ class AddTaskForm extends React.Component {
     this.state = {
       employeeCreated: '',
       taskTitle: '',
-      roomNumber: 0,
+      location: '',
       taskDescription: '',
-      taskType: '',
+      department: '',
       dueBy: ''
     };
     this.inputEmployeeName = this.inputEmployeeName.bind(this);
@@ -41,7 +41,7 @@ class AddTaskForm extends React.Component {
 
   inputRoom(event) {
     event.preventDefault();
-    this.setState({roomNumber: event.target.value});
+    this.setState({location: event.target.value});
   }
 
   inputDescription(event) {
@@ -51,7 +51,7 @@ class AddTaskForm extends React.Component {
 
   selectType(event) {
     event.preventDefault();
-    this.setState({taskType: event.target.value});
+    this.setState({department: event.target.value});
   }
 
   inputDueDate(event) {
@@ -65,11 +65,11 @@ class AddTaskForm extends React.Component {
     //from API docs: POST '/tasks' to add a new task
     //need to add user ID from authentication cookies to add to request object
 
-    const data = {employeeId: this.props.employeeId};
+    const data = {employeeCreated_id: this.props.employeeId};
     Object.assign(data, this.state);
 
-    axios.post('/tasks', data)
-      .then((results) => { console.log('Form successfully submitted'); })
+    axios.post('http://localhost:5000/tasks', data)
+      .then((results) => { console.log('Form successfully submitted:', results); })
       .catch((error) => { console.log(error); });
   }
 
@@ -112,7 +112,7 @@ class AddTaskForm extends React.Component {
             </label>
           </form>
           <h2 className="dueByTitle" >Due By</h2>
-          <InputTypeText type="date" className="dueBy" onChange={this.inputDueDate} />
+          <InputTypeText type="datetime-local" className="dueBy" onChange={this.inputDueDate} />
           <FormButton onClick={this.submitAddTaskForm} className="submitButton">Submit</FormButton>
         </HalfRoundDiv>
       </div>
