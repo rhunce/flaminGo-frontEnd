@@ -15,7 +15,7 @@ const FlexDiv = styled.div`
   align-items: center;
 `;
 
-const EmployeeForm = () => {
+const EmployeeForm = ({ back }) => {
   const { useEmployeeData, useNewEmployee } = useContext(EmployeeContext);
   const [newEmployee] = useNewEmployee;
   const [employee, setEmployee] = useEmployeeData;
@@ -46,9 +46,9 @@ const EmployeeForm = () => {
       if (newEmployee) {
         // axios.post(`/employees`, employee).then(() => setEditMode(true));
       } else {
+        console.log('this will be posted', employee);
         // axios.put(`/employees/${employee._id}`).then(() => setEditMode(true));;
       }
-      console.log('this will be posted', employee);
       setEditMode(false);
     } else {
       setInvalidEntry(true);
@@ -88,11 +88,7 @@ const EmployeeForm = () => {
           <FormButton margin={'10px'} onClick={saveEmployee}>
             Save
           </FormButton>
-          <FormButton
-            margin={'10px'}
-            backgroundColor='berry'
-            onClick={() => console.log(employee)}
-          >
+          <FormButton margin={'10px'} backgroundColor='berry' onClick={back}>
             Cancel
           </FormButton>
         </div>

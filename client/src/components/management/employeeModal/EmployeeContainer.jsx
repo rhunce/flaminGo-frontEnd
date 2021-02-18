@@ -24,15 +24,12 @@ const Bar = styled.div`
 
 const EmployeeContainer = ({ employee, back }) => {
   return (
-    <EmployeeProvider
-      employee={employee}
-      sampleId={'auth0|602c2317c8851c0069021c2c'}
-    >
+    <EmployeeProvider employee={employee}>
       <HalfRoundDiv padding='40px' height='650px' width='975px'>
         <div style={{ position: 'relative' }}>
           <XButton onClick={back} />
           <FlexDiv>
-            <EmployeeForm />
+            <EmployeeForm back={back} />
             <Bar />
             <SummaryContainer />
           </FlexDiv>

@@ -15,19 +15,28 @@ const dataMapper = (data, employee) =>
 
 export const EmployeeContext = createContext();
 
-export const EmployeeProvider = ({ children, employee, sampleId }) => {
-  const [employeeData, setEmployeeData] = useState(employee ? employee : {});
-  const [timeSheetList, setTimeSheetList] = useState([]);
+export const EmployeeProvider = ({ children, employee }) => {
   const [newEmployee, setNewEmployee] = useState(employee ? false : true);
 
-  let id = employee._id;
-  if (sampleId) {
-    id = sampleId;
+  let firstName;
+  let lastName;
+  if (!newEmployee) {
+    [firstName, lastName] = employee.name.split(' ');
   }
+
+  console.log('firstName ', firstName);
+  console.log('lastName ', lastName);
+
+  const [employeeData, setEmployeeData] = useState(
+    employee ? { ...employee, firstName, lastName } : {}
+  );
+  const [timeSheetList, setTimeSheetList] = useState([]);
+
   useEffect(() => {
     if (!newEmployee) {
+      console.log(employeeData);
       axios
-        .get(`/timesheets/${id}`, { params: { count: 20 } })
+        .get(`/timesheets/${employee.id}`, { params: { count: 20 } })
         .then(({ data }) => {
           setTimeSheetList(dataMapper(data, employeeData));
         });
