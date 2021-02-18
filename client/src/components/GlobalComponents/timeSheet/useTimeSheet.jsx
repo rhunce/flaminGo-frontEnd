@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-const useTimeSheet = ({ userId, initialState = {} }) => {
+const useTimeSheet = ({ userId, initialState = {} }, back) => {
   const [state, setState] = useState(initialState);
 
   if (userId) {
@@ -21,6 +21,10 @@ const useTimeSheet = ({ userId, initialState = {} }) => {
                 employee_id: useId,
               });
             }
+          })
+          .catch((err) => {
+            console.error(error);
+            back();
           });
       }
     }, []);
