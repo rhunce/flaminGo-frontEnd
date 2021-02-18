@@ -8,7 +8,7 @@ const useTimeSheet = ({ userId, initialState = {} }) => {
     useEffect(() => {
       {
         axios
-          .get(`/timesheets/602afeb2541461fcab3686a3`, { params: { count: 1 } })
+          .get(`/timesheets/${userId}`, { params: { count: 1 } })
           .then(({ data }) => {
             const today = parseInt(
               new Date().toISOString().slice(0, 10).split('-').join('')

@@ -62,9 +62,10 @@ const TimeSheetFormList = ({ selectedWeek, back }) => {
                 name={day.day}
                 value={timeSheet[day.day]}
                 onChange={(e) => {
+                  const update = parseInt(e.target.value);
                   setTimeSheet((prevState) => ({
                     ...prevState,
-                    [e.target.name]: e.target.value,
+                    [e.target.name]: update,
                   }));
                 }}
               />
