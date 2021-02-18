@@ -170,7 +170,7 @@ td {
 .listHeaderSearch {
   border: 1px $berry solid;
   height: 40px;
-  width: 450px;
+  width: 300px;
   display: block;
   float: right;
   padding: 0 0 0 10px;
@@ -236,6 +236,7 @@ td {
 
 .listEntryButtons {
   float: right;
+  justify-content: right;
 }
 
 /*Dropdown Test*/
@@ -324,8 +325,7 @@ input[type='checkbox']:checked label {
 }
 
 .searchButtonPlacement {
-  margin: auto;
-  width: 158px;
+
 }
 
 #reservationOuterContainer {
@@ -514,9 +514,6 @@ select {
   height: 40px;
 }
 
-.listEntryButtons {
-  float: right;
-}
 
 //RoomAddEdit
 
@@ -600,3 +597,18 @@ select {
 #room_H3 {
   color: rgb(0, 0, 0);
 }
+
+@media only screen and (max-width: 1300px) {
+  .titleTable th {
+    width: 120px;
+    border-right: solid 1px white;
+    font-weight: 600;
+  }
+
+  .entryTable th {
+    font-weight: 400;
+    width: 120px;
+  }
+
+}
+
