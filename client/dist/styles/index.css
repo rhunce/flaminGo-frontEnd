@@ -1,9 +1,9 @@
 /* Error: expected "{".
  *     ,
- * 316 | >>>>>>> connected
- *     |                  ^
+ * 605 | <<<<<<< HEAD
+ *     |             ^
  *     '
- *   client/dist/styles/index.scss 316:18  root stylesheet */
+ *   client/dist/styles/index.scss 605:13  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -13,5 +13,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: 'Error: expected "{".\a     \2577 \a 316 \2502  >>>>>>> connected\a     \2502                   ^\a     \2575 \a   client/dist/styles/index.scss 316:18  root stylesheet';
+  content: 'Error: expected "{".\a     \2577 \a 605 \2502  <<<<<<< HEAD\a     \2502              ^\a     \2575 \a   client/dist/styles/index.scss 605:13  root stylesheet';
 }
