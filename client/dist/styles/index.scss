@@ -222,7 +222,6 @@ td {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 1200px;
 }
 
 .entryTable th {
@@ -237,6 +236,7 @@ td {
 
 .listEntryButtons {
   float: right;
+  justify-content: right;
 }
 
 /*Dropdown Test*/
@@ -325,8 +325,7 @@ input[type='checkbox']:checked label {
 }
 
 .searchButtonPlacement {
-  margin: auto;
-  width: 158px;
+
 }
 
 #reservationOuterContainer {
@@ -515,9 +514,6 @@ select {
   height: 40px;
 }
 
-.listEntryButtons {
-  float: right;
-}
 
 //RoomAddEdit
 
