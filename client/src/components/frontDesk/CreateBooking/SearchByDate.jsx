@@ -7,12 +7,12 @@ import TextAreaForm from '../../styledElements/TextAreaForm.jsx';
 
 let SearchByDate = (props) => {
   return (
-    <HalfRoundDiv>
+    <HalfRoundDiv className={'dateForm'}>
       <h1>Desired Dates</h1>
       <h2>From:</h2>
-      <InputTypeText type='date' name={'checkInDate'} onChange={props.inputDate}/>
+      <InputTypeText type='date' name={'checkIn'} onChange={props.inputDate}/>
       <h2>To:</h2>
-      <InputTypeText type='date' name={'checkOutDate'} onChange={props.inputDate}/>
+      <InputTypeText type='date' name={'checkOut'} onChange={props.inputDate}/>
       <FormButton onClick={props.goToNext} id={'dateForm'}>
         Submit
       </FormButton>
