@@ -36,34 +36,42 @@ const TimeSheetFormList = ({ selectedWeek, back }) => {
   });
 
   const submit = (e) => {
-    // axios.put(`/timesheets`, timeSheet).then(() => {
-    //   back()
-    // });
-    console.log(timeSheet);
-    back();
+    axios
+      .put(`/timesheets`, timeSheet)
+      .then(() => {
+        console.log('yay');
+        back();
+      })
+      .catch((err) => {
+        console.error(err);
+        console.log(timeSheet);
+        back();
+      });
   };
 
   return (
     <Centered>
       <FlexContainer>
-        {timeSheetTemplate.map((day) => (
-          <FlexContainer>
-            <FormRow
-              label={day.name}
-              editMode={editMode}
-              key={day.name + day.day}
-              name={day.day}
-              defaultValue={timeSheet[day.day] || ''}
-              onChange={(e) => {
-                setTimeSheet((prevState) => ({
-                  ...prevState,
-                  [e.target.name]: e.target.value,
-                }));
-              }}
-            />
-            <Spacer />
-          </FlexContainer>
-        ))}
+        {timeSheetTemplate.map((day) => {
+          return (
+            <FlexContainer>
+              <FormRow
+                label={day.name}
+                editMode={editMode}
+                key={day.name + day.day}
+                name={day.day}
+                value={timeSheet[day.day]}
+                onChange={(e) => {
+                  setTimeSheet((prevState) => ({
+                    ...prevState,
+                    [e.target.name]: e.target.value,
+                  }));
+                }}
+              />
+              <Spacer />
+            </FlexContainer>
+          );
+        })}
         <FormButton onClick={submit} margin='15px' backgroundColor={'berry'}>
           Submit
         </FormButton>

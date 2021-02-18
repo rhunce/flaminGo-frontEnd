@@ -8,7 +8,7 @@ html {
 }
 
 Body {
-  font-family: "Open Sans, sans-serif";
+  font-family: "Open Sans", sans-serif;
   height: 100%;
   background-image: linear-gradient(135deg, #ff4f03, #ff2063);
   margin: 0;
@@ -46,7 +46,7 @@ CHECK-IN / CHECK-OUT
 }
 
 .checkOutLabels {
-  font-family: "Open Sans, sans-serif";
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -144,7 +144,7 @@ td {
 
 #menuIcon {
   float: right;
-  margin: 20px 20px 0 0;
+  margin: 30px 30px 0 0;
 }
 
 #backButton {
@@ -515,10 +515,25 @@ select {
 
 .roomDetails {
   line-height: 2;
+  font-family: "Open Sans", sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.roomDetails div {
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 .roomDetailsHeader {
   text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  color: black;
+}
+
+.detailsTitle {
+  font-weight: 600;
 }
 
 .closeRmDetails {
@@ -538,6 +553,71 @@ select {
 
 .listEntryButtons {
   float: right;
+}
+
+#roomContainer {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+#roomEntriesContainer {
+  padding: 20px;
+  margin: auto;
+  height: calc(90% - 80px);
+  width: calc(60% - 40px);
+}
+
+#roomBox {
+  border: #e000ce solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  flex: 1 0 auto;
+}
+
+.roomTable {
+  border: #00ff0d solid;
+  margin: 0 auto;
+  height: calc(80% - 80px);
+  width: calc(48% - 40px);
+  border-radius: 30px;
+  background-color: #ff2063;
+  overflow: scroll;
+}
+
+#roomInnerTable1 {
+  border: #d0ff00 solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  height: calc(100% - 80px);
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+#roomInnerTable2 {
+  border: #d0ff00 solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  height: calc(50% - 80px);
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+#roomEntry {
+  border: #1900ff solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  margin: 20px 20px 20px 20px;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: white;
+  text-align: center;
+}
+
+#room_H3 {
+  color: black;
 }
 
 /*# sourceMappingURL=index.css.map */
