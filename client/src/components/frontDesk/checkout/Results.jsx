@@ -1,22 +1,11 @@
 import React from 'react';
 import FormButton from '../../styledElements/FormButton';
 import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
-import InputTypeText from '../../styledElements/InputTypeText';
-
-// import styled from 'styled-components';
-// import LandingButtons from '../landingPage/LandingButtons';
-// import useChoosePath from '../landingPage/useChoosePath';
-// import BackArrow from '../styledElements/BackArrow';
-// import ListMaster from '../GlobalComponents/ListMaster';
-
 
 class Results extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      searchPage: true,
-      resultsPage: false
-    };
+    this.state = {};
   }
 
   render() {
@@ -37,7 +26,7 @@ class Results extends React.Component {
               </tr>
               <tr>
                 <td>NAME</td>
-                <td>{this.props.inputName.toUpperCase()}</td>
+                <td>{this.props.inputFirstName.toUpperCase()} {' '} {this.props.inputLastName.toUpperCase()}</td>
               </tr>
             </tbody>
           </table>
