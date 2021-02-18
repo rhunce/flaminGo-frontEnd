@@ -1,11 +1,15 @@
 import React from "react";
+import axios from 'axios';
 
 let entryTableRooms = (entity) => {
 
   let roomNumber = entity.roomNumber;
-  let roomType = entity.roomType;
+  let roomType;
   let occupied = entity.isOccupied;
   let cleaned = entity.isClean
+
+  axios.get(`/rooms/${entity._id}`)
+  .then((result) => {roomType = result.data.roomType})
 
 
   let occupStatus, cleanStatus;
@@ -38,10 +42,22 @@ let entryTableRooms = (entity) => {
 
 let entryTableEmployees = (entity) => {
 
-  let name = `${entity.firstName} ${entity.lastName}`;
+  let name = entity.name;
   let position = entity.position;
   let hours = entity.weekHours;
   let wage = entity.wage;
+
+  if (position === "systemAdministration") {
+    position = "System Admin";
+  } else if (position === "management") {
+    position = "Management";
+  } else if (position === "maintenance") {
+    position = "Maintenance";
+  } else if (position === "housekeeping") {
+    position = "Housekeeping";
+  } else if (position === "frontDesk") {
+    position = "Front Desk";
+  }
 
   return (
     <table className="entryTable">
@@ -61,13 +77,7 @@ let entryTableTasks = (entity) => {
 
   let title = entity.taskTitle;
   let department = entity.department;
-
-  let setting;
-  if (entity.roomNumber === "") {
-    setting = entity.location;
-  } else {
-    setting = `Room ${entity.roomNumber}`
-  }
+  let setting = `Room ${entity.location}`
 
   return (
     <table className="entryTable">
