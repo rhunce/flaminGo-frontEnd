@@ -597,3 +597,18 @@ select {
 #room_H3 {
   color: rgb(0, 0, 0);
 }
+
+@media only screen and (max-width: 1300px) {
+  .titleTable th {
+    width: 120px;
+    border-right: solid 1px white;
+    font-weight: 600;
+  }
+
+  .entryTable th {
+    font-weight: 400;
+    width: 120px;
+  }
+
+}
+
