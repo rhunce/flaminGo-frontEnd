@@ -16,6 +16,7 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
   const [modalStatus, setModalStatus] = useState(false);
   const [rmModalStatus, setRmModalStatus] = useState(false);
   const [taskModalStatus, setTaskModalStatus] = useState(false);
+  const [taskCompletedStatus, setTaskCompletedStatus] = useState(false);
 
   const toggleRoomDetailsModal = () => {
     if(rmModalStatus) {
@@ -34,7 +35,6 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
   }
 
   const markTaskComplete = () => {
-
     axios
       .put(`http://localhost:7777/tasks/${entity.task_id}`, {
         "employeeCompleted": user.name,
@@ -42,13 +42,15 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
         "isComplete": true
       })
       .then(function (response) {
-        console.log(response);
+        console.log('success', response);
+        setTaskCompletedStatus(true);
       })
       .catch(function (error) {
-        console.log(error);
+        console.error(error);
       })
-
   }
+
+
 
   if (type === 'employee') {
     entryButtons = (
@@ -106,7 +108,7 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
           See Details
         </FormButton>
         <FormButton margin='0 20px 0 0' onClick={markTaskComplete}>
-          Mark as Complete
+          {!(taskCompletedStatus) ?  'Mark as Complete' : 'Completed'}
         </FormButton>
         <TaskDetailsModal
           isOpen={taskModalStatus}
