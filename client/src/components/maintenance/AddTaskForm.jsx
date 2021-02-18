@@ -69,7 +69,7 @@ class AddTaskForm extends React.Component {
     const data = {employeeCreated_id: this.props.employeeId};
     Object.assign(data, this.state);
 
-    axios.post('http://localhost:5000/tasks', data)
+    axios.post('/tasks/', data)
       .then((results) => {
         alert('Task successfully added to task list');
         console.log('Form successfully submitted:', results);
