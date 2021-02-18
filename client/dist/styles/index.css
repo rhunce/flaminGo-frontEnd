@@ -279,11 +279,6 @@ input[type=checkbox]:checked label {
   background-color: white;
 }
 
-.createBooking {
-  display: grid;
-  margin: auto;
-}
-
 .mainBox {
   display: block;
   margin: 0 auto;
