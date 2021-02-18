@@ -56,7 +56,8 @@ class AddTaskForm extends React.Component {
 
   inputDueDate(event) {
     event.preventDefault();
-    this.setState({dueBy: event.target.value});
+    let dueDate = new Date(event.target.value);
+    this.setState({dueBy: dueDate});
   }
 
   //sends all form info to server in request body
