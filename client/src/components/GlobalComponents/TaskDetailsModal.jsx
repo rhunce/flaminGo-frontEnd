@@ -15,10 +15,10 @@ const customStyles = {
     height: '70%',
     transform: 'translate(-50%, -50%)',
     border: '5px #ff2063 solid'
-  }
+  },
 };
 
-class TaskDetailsModal extends React.Component {
+class RoomDetailsModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,22 +27,6 @@ class TaskDetailsModal extends React.Component {
   }
 
   render() {
-
-    var amenArr = this.props.allRmData.amenities.map((amen) => (
-        <li>
-          {amen}
-        </li>
-      ))
-
-    var taskArr = this.props.allRmData.tasks.map((task) => (
-      <li>
-        {task.taskTitle}
-      </li>
-    ))
-
-    const cleanStatus = this.props.allRmData.isClean ? 'Clean' : 'Dirty';
-    const occStatus = this.props.allRmData.isOccupied ? 'Occupied' : 'Vacant';
-
     return (
       <div>
         <Modal
@@ -50,32 +34,42 @@ class TaskDetailsModal extends React.Component {
           isOpen={this.props.isOpen}
           contentLabel='Minimal Modal Example'
         >
-          <h1 className='roomDetailsHeader'>Room Details</h1>
+          <h1 className='roomDetailsHeader'>Task Details</h1>
           <div className='roomDetails'>
-            <div>
-              <span className="detailsTitle">Room Number:</span> {this.props.allRmData.roomNumber}
+          <div>
+              Task Title: {this.props.allTaskData.taskTitle}
             </div>
             <div>
-            <span className="detailsTitle"> Floor:</span> {this.props.allRmData.floorNumber}
+              Room Number (if applicable): {this.props.allTaskData.roomNumber}
             </div>
             <div>
-            <span className="detailsTitle">Roomtype: </span> {this.props.allRmData.roomType}
+              Location (if applicable): {this.props.allTaskData.location}
             </div>
             <div>
-            <span className="detailsTitle">Cleanliness Status:</span> {cleanStatus}
+              Task Description: {this.props.allTaskData.taskDescription}
             </div>
             <div>
-            <span className="detailsTitle">Occupation Status:</span> {occStatus}
+              Task Creator: {this.props.allTaskData.employeeCreated}
             </div>
             <div>
-            <span className="detailsTitle"> Amenities:</span> {amenArr}
+              Task Creation Date: {this.props.allTaskData.createdAt.substring(0, 10)}
             </div>
             <div>
-            <span className="detailsTitle">Open Tasks:</span> {taskArr}
+              Department: {this.props.allTaskData.department}
             </div>
-
+            <div>
+              Task Due Date: {this.props.allTaskData.dueBy.substring(0, 10)}
+            </div>
+            <div>
+              Task Completed: {this.props.allTaskData.isCompleted ? 'True' : 'False'}
+            </div>
+            <div>
+              Task Completion Date: {this.props.allTaskData.completedAt.substring(0, 10)}
+            </div>
+            <div>
+              Task Completed By: {this.props.allTaskData.employeeCompleted}
+            </div>
           </div>
-          <br/>
           <button className='closeRmDetails' onClick={this.props.toggle}>
             Close Details Page
           </button>
@@ -85,4 +79,6 @@ class TaskDetailsModal extends React.Component {
   }
 }
 
-export default TaskDetailsModal;
+export default RoomDetailsModal;
+
+

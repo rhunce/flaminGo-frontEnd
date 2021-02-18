@@ -10,11 +10,13 @@ const FormRow = ({
   onChange,
   editMode,
   margin,
+  value,
 }) => {
   return (
     <FlexRow margin={margin}>
       <FormLabel>{`${label}:`}</FormLabel>
       <FormInput
+        value={value}
         name={name}
         defaultValue={defaultValue}
         onChange={onChange}

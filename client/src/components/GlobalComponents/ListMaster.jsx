@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import FormButton from '../styledElements/FormButton.jsx';
 import HalfRoundDiv from '../styledElements/HalfRoundDiv.jsx';
 import ListEntry from '../GlobalComponents/ListEntry.jsx';
@@ -19,7 +19,9 @@ import {
   employeeData,
   taskData,
   reservationData,
-} from '../../SampleData/SampleData.js';
+} from "../../SampleData/SampleData.js";
+import axios from 'axios';
+import { MainContext } from '../landingPage/MainContext';
 
 const ListMaster = ({
   type,
@@ -28,45 +30,103 @@ const ListMaster = ({
   onClick1,
   onClick2,
 }) => {
+
+  // useEffect(() => {
+  //   handleBackChange('black');
+  //   handleBackgroundChange('listBgContainer');
+  // });
+
+  let titleTable, searchParam;
+
+  const { position } = useContext(MainContext);
+
+  const [dataSet, setDataSet] = useState([])
   useEffect(() => {
     handleBackChange('black');
     handleBackgroundChange('listBgContainer');
+    if (type ==="room") {
+      axios.get("/rooms/")
+      .then((data) => {setDataSet(data.data)})
+      // .then(({ data }) => {
+      //   console.log('Data:', data)
+      //   return data.map((room) => {
+      //     console.log('Room:', room)
+      //     axios.get(`/rooms/${room._id}`)
+      //     .then(({ data }) => {room.roomType = data.roomType;
+      //     return room})
+      //   })
+      // })
+      // .then((fullData) => {return Promise.all(fullData)})
+      // .then((result) => {setDataSet(result)})
+    } else if (type ==="employee") {
+      axios.get("/employees/")
+      .then((data) => {setDataSet(data.data)})
+    } else if (type ==="task") {
+      axios.get("/tasks/")
+      .then((data) => {setDataSet(data.data)})
+    }
   }, []);
 
-  console.log('ListType', type);
-
-  let data, titleTable, searchParam;
+  console.log('dataset:', dataSet)
 
   if (type === 'room') {
-    data = roomsData;
     titleTable = titleTableRooms();
-    searchParam = 'Search by room number';
+    searchParam = 'Search by amenity';
+    // setDataSet(roomsData)
   } else if (type === 'employee') {
-    data = employeeData;
     titleTable = titleTableEmployees();
     searchParam = 'Search by employee name';
+    // setDataSet(employeeData)
   } else if (type === 'task') {
-    data = taskData;
     titleTable = titleTableTasks();
-    searchParam = 'Search';
-  } else if (type === 'guest') {
-    data = reservationData;
-    titleTable = titleTableGuests();
-    searchParam = 'Search by guest name';
+    searchParam = 'Search by assigned';
+    // setDataSet(taskData)
   }
 
-  const [dropDownStatus, setDropDown] = useState('list1');
+  var data = JSON.parse(JSON.stringify(dataSet))
 
-  var checkList = document.getElementById('dropDown');
 
-  let handleFilterDropdown = (e) => {
-    if (dropDownStatus === 'list1') setDropDown('list1 visible');
-    else setDropDown('list1');
-  };
+ // let titleTable, searchParam;
+
+  // if (type === 'room') {
+  //   titleTable = titleTableRooms();
+  //   searchParam = 'Search by amenity';
+  //   setDataSet(roomsData)
+  // } else if (type === 'employee') {
+  //   titleTable = titleTableEmployees();
+  //   searchParam = 'Search by employee name';
+  //   setDataSet(employeeData)
+  // } else if (type === 'task') {
+  //   titleTable = titleTableTasks();
+  //   searchParam = 'Search';
+  //   setDataSet(taskData)
+  // } else if (type === 'guest') {
+  //   titleTable = titleTableGuests();
+  //   searchParam = 'Search by guest name';
+  // }
 
   //Search Functionality
-
   const [searchTerm, setSearch] = useState('');
+
+  // useEffect(() => {
+  //   let searched = [];
+  //   if (searchTerm !== '') {
+  //     if (type === 'room') {
+  //       searched = data.filter((room) => {
+  //         let amenitiesString = room.amenities.join();
+  //         let amenitiesLower = amenitiesString.toLowerCase();
+  //         return amenitiesLower.includes(searchTerm);
+  //       });
+  //       data = searched;
+  //     } else if (type === 'employee') {
+  //       searched = data.filter((employee) => {
+  //         let name = employee.name.toLowerCase();
+  //         return name.includes(searchTerm);
+  //       });
+  //       data = searched;
+  //     }
+  //   }
+  // })
 
   const handleSearch = (e) => {
     let search = document.getElementById('searchBar').value;
@@ -77,14 +137,14 @@ const ListMaster = ({
   if (searchTerm !== '') {
     if (type === 'room') {
       searched = data.filter((room) => {
-        let roomNumber = room.roomNumber;
-        return roomNumber.includes(searchTerm);
+        let amenitiesString = room.amenities.join();
+        let amenitiesLower = amenitiesString.toLowerCase();
+        return amenitiesLower.includes(searchTerm);
       });
       data = searched;
     } else if (type === 'employee') {
       searched = data.filter((employee) => {
-        let name =
-          employee.firstName.toLowerCase() + employee.lastName.toLowerCase();
+        let name = employee.name.toLowerCase();
         return name.includes(searchTerm);
       });
       data = searched;
@@ -96,58 +156,39 @@ const ListMaster = ({
   const [sortTerm, setSort] = useState('');
 
   let handleSort = () => {
-    let sortBy = document.getElementsByClassName('sortBy')[0].value;
-    setSort(sortBy);
-    if (
-      sortBy === 'roomType' ||
-      sortBy === 'lastName' ||
-      sortBy === 'position'
-    ) {
-      data.sort(function (a, b) {
-        if (a[sortBy] < b[sortBy]) {
-          return -1;
-        }
-        if (a[sortBy] > b[sortBy]) {
-          return 1;
-        }
-        return 0;
-      });
-    } else if (sortBy === 'roomNumber') {
-      data.sort(function (a, b) {
-        if (parseInt(a[sortBy]) < parseInt(b[sortBy])) {
-          return -1;
-        }
-        if (parseInt(a[sortBy]) > parseInt(b[sortBy])) {
-          return 1;
-        }
-        return 0;
-      });
-    }
-  };
+    let sortBy = document.getElementsByClassName("sortBy")[0].value;
+    setSort(sortBy)
+  }
+
+  if (sortTerm === "roomType" || sortTerm === "name" || sortTerm === "position") {
+    data.sort(function(a, b){
+      if(a[sortTerm] < b[sortTerm]) { return -1; }
+      if(a[sortTerm] > b[sortTerm]) { return 1; }
+      return 0;
+  })
+  } else if (sortTerm === "roomNumber") {
+    data.sort(function(a, b){
+      if(parseInt(a[sortTerm]) < parseInt(b[sortTerm])) { return -1; }
+      if(parseInt(a[sortTerm]) > parseInt(b[sortTerm])) { return 1; }
+      return 0;
+  })
+  }
 
   let sortOptions;
-  if (type === 'room') {
-    sortOptions = (
-      <select className='sortBy' onChange={handleSort}>
-        <option value='' selected disabled hidden>
-          Sort By
-        </option>
-        <option value='roomNumber'>Room Number</option>
-        <option value='roomType'>Room Type</option>
-      </select>
-    );
-  } else if (type === 'employee') {
-    sortOptions = (
-      <select className='sortBy' onChange={handleSort}>
-        <option value='' selected disabled hidden>
-          Sort By
-        </option>
-        <option value='position'>Position</option>
-        <option value='lastName'>Last Name</option>
-      </select>
-    );
-  } else if (type === 'task') {
-    sortOptions = '';
+  if (type === "room") {
+    sortOptions =   <select className="sortBy" defaultValue="" onChange={handleSort}>
+    <option value="" disabled hidden>Sort By</option>
+    <option value="roomNumber">Room Number</option>
+    <option value="roomType">Room Type</option>
+  </select>
+  } else if (type === "employee") {
+    sortOptions = <select className="sortBy" defaultValue="" onChange={handleSort}>
+    <option value="" disabled hidden>Sort By</option>
+    <option value="position">Position</option>
+    <option value="name">Name</option>
+  </select>
+  } else if (type === "task") {
+    sortOptions = "";
   }
 
   //Filter functionality
@@ -162,10 +203,10 @@ const ListMaster = ({
   if (filterTerm === 'vacancy') {
     data = data.filter((room) => {
       let vacant = !room.isOccupied;
-      console.log(room.roomNumber, ' is ', vacant);
-      return vacant;
-    });
-  } else if (filterTerm === 'cleaned') {
+
+      return vacant}
+    );
+  } else if (filterTerm === "cleaned") {
     data = data.filter((room) => {
       let cleaned = room.isClean;
       return cleaned;
@@ -188,44 +229,40 @@ const ListMaster = ({
   }
 
   let filterOptions;
-  if (type === 'room') {
-    filterOptions = (
-      <select className='filterBy' onChange={handleFilter}>
-        <option value='' selected disabled hidden>
-          Filter
-        </option>
-        <option value=''>See All Rooms</option>
-        <option value='vacancy'>Vacant</option>
-        <option value='cleaned'>Cleaned</option>
-      </select>
-    );
-  } else if (type === 'employee') {
-    filterOptions = (
-      <select className='filterBy' onChange={handleFilter}>
-        <option value='' selected disabled hidden>
-          Filter
-        </option>
-        <option value=''>See All Employees</option>
-        <option value='worked'>Worked This Week</option>
-      </select>
-    );
-  } else if (type === 'task') {
-    sortOptions = (
-      <select className='filterBy' onChange={handleFilter}>
-        <option value='' selected disabled hidden>
-          Filter
-        </option>
-        <option value=''>See All Tasks</option>
-        <option value='housekeeping'>Housekeeping</option>
-        <option value='maintenance'>Maintenance</option>
-      </select>
-    );
+  if (type === "room") {
+    filterOptions = <select className="filterBy" defaultValue="" onChange={handleFilter}>
+    <option value="" disabled hidden>Filter</option>
+    <option value="">See All Rooms</option>
+    <option value="vacancy">Vacant</option>
+    <option value="cleaned">Cleaned</option>
+  </select>
+  } else if (type === "employee") {
+    filterOptions = <select className="filterBy" defaultValue="" onChange={handleFilter}>
+    <option value="" disabled hidden>Filter</option>
+    <option value="">See All Employees</option>
+    <option value="worked">Worked This Week</option>
+    </select>
+  } else if (type === "task") {
+     filterOptions = <select className="filterBy" defaultValue="" onChange={handleFilter}>
+    <option value="" disabled hidden>Filter</option>
+    <option value="">See All Tasks</option>
+    <option value="housekeeping">Housekeeping</option>
+    <option value="maintenance">Maintenance</option>
+    </select>
+  }
+
+  let addButton = ''
+  if (position === "systemAdministration" && type === "room") {
+    addButton = <FormButton backgroundColor="berry" margin="0 30px 0 0" onClick={onClick1}>Add Room</FormButton>
+  } else if (position === "systemAdministration" && type === "employee") {
+    addButton = <FormButton backgroundColor="berry" margin="0 30px 0 0">Add Employee</FormButton>
   }
 
   return (
     <div id='listContainer'>
       <div className='listHeader'>
         <div className='listHeaderButtons'>
+          {addButton}
           {filterOptions}
           {sortOptions}
           <div className='listHeaderSearch'>

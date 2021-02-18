@@ -10,14 +10,6 @@ import { colors } from '../../styledElements/styleGuid';
 import AmenityList from './RoomsComponents/AmenityList.jsx';
 import RoomTypeList from './RoomsComponents/RoomTypeList.jsx';
 
-// import {
-//   AddHeader,
-//   EditHeader
-// } from './RoomsComponents/HeaderRooms.jsx';
-// import {
-//   AddTables,
-//   EditTables
-// } from '../RoomsComponents/AddEditTables.jsx';
 import {
   amenitiesData,
   roomTypeData
@@ -25,16 +17,10 @@ import {
 
 const AddEditRooms = ({
   type,
-  handleBackChange,
-  handleBackgroundChange,
   onClick1,
   onClick2
 }) => {
 
-  useEffect(() => {
-    handleBackChange('black');
-    handleBackgroundChange('listBgContainer');
-  });
 
   console.log('componentType', type);
 
@@ -57,18 +43,6 @@ const AddEditRooms = ({
     let query = document.getElementById('searchBar').value;
     setSearch(query);
   };
-
-  // <button onClick={handleSearch}>Submit</button>
-
-  // <div className='listHeader'></div>
-  // <div className='listHeaderButtons'></div>
-  // <div className='listHeaderSearch'>
-  //   <input type='text' placeholder={searchParam}></input>
-  // </div>;
-
-  //   <FormButton margin='0 20px 0 0' onClick1={(e) => onClick1(onClick1)}>
-  //   ADD
-  // </FormButton>
 
   return (
     <div id='roomContainer'>

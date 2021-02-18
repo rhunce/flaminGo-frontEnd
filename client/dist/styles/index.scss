@@ -12,7 +12,7 @@ $carrotToBerry: linear-gradient(135deg, #ff4f03, #ff2063);
 $berryToGrape: linear-gradient(135deg, #ff2063, #a91cff);
 
 // fonts
-$mainFont: 'Open Sans, sans-serif';
+$mainFont: 'Open Sans', sans-serif;
 $plain: 400;
 $semiBold: 600;
 $bold: 700;
@@ -39,6 +39,94 @@ Body {
   width: 100%;
 }
 
+/***************************************************************
+
+CHECK-IN / CHECK-OUT
+
+***************************************************************/
+
+.mainBox {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#mainBox {
+  margin: auto;
+  height: 500px
+}
+.checkInTitleDiv {
+  padding-top: 40px;
+  text-align: center;
+  // font-family: $mainFont;
+  font-style: normal;
+  font-weight: $bold;
+  font-size: 30px;
+  line-height: 41px;
+}
+.checkOutLabels {
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+}
+input.inputs {
+  margin-bottom: 40px;
+}
+.centeredInputBars {
+  margin: auto;
+  width: 50%;
+  height: 50%;
+  padding-top: 6%;
+}
+#centeredInputBars {
+  margin: auto;
+  width: 50%;
+  height: 50%;
+  padding-top: 6%;
+}
+.searchButtonPlacement {
+  margin: auto;
+  width: 158px;
+  margin-top: 30px;
+}
+#searchButtonPlacement {
+  margin: auto;
+  width: 158px;
+  margin-top: 50px;
+  background-color: $berry;
+}
+.tables {
+  width: fit-content;
+  margin: auto;
+}
+.headings {
+  margin-top: 25px;
+}
+td {
+  padding-right: 50px;
+}
+#checkoutButton1 {
+  margin: auto;
+  background-color: $berry;
+  margin-right: 25px;
+}
+#checkoutButton2 {
+  margin: auto;
+  background-color: $berry;
+  margin-left: 25px;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+.redirectMessage {
+  text-align: center;
+  margin-top: 25px;
+}
+/***************************************************************/
+
 ::-webkit-scrollbar {
   width: 20px;
 }
@@ -62,7 +150,7 @@ Body {
 
 #menuIcon {
   float: right;
-  margin: 20px 20px 0 0;
+  margin: 30px 30px 0 0;
 }
 
 #backButton {
@@ -198,7 +286,10 @@ input[type='checkbox']:checked label {
     background-color: white;
   }
 
-  //checkin CSS
+  //created separate stylesheet for AddTaskForm
+@import 'addTask';
+
+  // checkin CSS
 
 .mainBox {
   display: block;
@@ -219,7 +310,10 @@ input[type='checkbox']:checked label {
   font-weight: 600;
   font-size: 24px;
   line-height: 33px;
+<<<<<<< HEAD
 
+=======
+>>>>>>> connected
 }
 
 #checkInGuestName {
@@ -247,8 +341,9 @@ input[type='checkbox']:checked label {
   width: 840px;
   height: 440px;
   background-image: $berryToGrape;
-  margin: 0 auto;
+  margin: auto;
   border-radius: 30px;
+  overflow: scroll;
 }
 
 #roomsListInnerContainer {
@@ -315,6 +410,7 @@ input[type='checkbox']:checked label {
   align-items: center;
   font-weight: 600;
   color: white;
+
 }
 
 #listEntryMini {
@@ -384,6 +480,50 @@ select {
   background-color: white;
 }
 
+<<<<<<< HEAD
+=======
+.roomDetails {
+  line-height: 2;
+  font-family: $mainFont;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.roomDetails div {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.roomDetailsHeader {
+  text-align: center;
+  font-family: $mainFont;
+  font-weight: 700;
+  color: black;
+}
+
+.detailsTitle {
+  font-weight: 600;
+}
+
+.closeRmDetails {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-size: 14px;
+  font-family: Open Sans,sans-serif;
+  font-weight: 400;
+  color: #FFFFFF;
+  background-color: #FF8B03;
+  border: none;
+  border-radius: 20px;
+  width: 160px;
+  height: 40px;
+}
+
+.listEntryButtons {
+  float: right;
+}
+>>>>>>> connected
 
 //RoomAddEdit
 
@@ -466,6 +606,7 @@ select {
 
 #room_H3 {
   color: rgb(0, 0, 0);
+<<<<<<< HEAD
 }
 
 .roomDetails {
@@ -494,3 +635,6 @@ select {
 .listEntryButtons {
   float: right;
 }
+=======
+}
+>>>>>>> connected

@@ -6,12 +6,12 @@ import BackArrow from '../styledElements/BackArrow';
 import ListMaster from '../GlobalComponents/ListMaster';
 import FlexCenterContainer from '../landingPage/FlexCenterContainer';
 import EmployeeContainer from './employeeModal/EmployeeContainer';
-import AddEditRooms from './roomModal/AddEditRooms.jsx';
-
 import {
   sampleEmployee,
   timeSheetSample,
 } from './employeeModal/sampleEmployeeData';
+import ViewEmployeeList from './viewEmployeeList';
+import ViewAddEditRoom from './ViewAddEditRoom.jsx';
 
 // flex container
 
@@ -30,7 +30,6 @@ const ManagementLanding = ({ back }) => {
 
   // static object of this Landing routs and flipping for conditional rendering
   const routs = [
-    { title: 'Guest List', onClick: () => setPaths('guestList') },
     {
       title: 'View Employees',
       onClick: () => setPaths('viewEmployees'),
@@ -57,27 +56,28 @@ const ManagementLanding = ({ back }) => {
         />
         {paths.viewEmployees ? (
           // place holder for employee view component
-          <ListMaster
-            onClick1={(e) => console.log(e)}
-            onClick2={(e) => console.log('working2')}
-            type='employee'
-            handleBackChange={setBackColor}
-            handleBackgroundChange={setListBackground}
+          // <ListMaster
+          //   onClick1={(e) => console.log(e)}
+          //   onClick2={(e) => console.log('working2')}
+          //   type='employee'
+          //   handleBackChange={setBackColor}
+          //   handleBackgroundChange={setListBackground}
+          // />
+          // <FlexCenterContainer>
+          //   <EmployeeContainer
+          //     employee={sampleEmployee}
+          //     sampleData={timeSheetSample}
+          //   />
+          // </FlexCenterContainer>
+          <ViewEmployeeList
+            setBackColor={setBackColor}
+            setListBackground={setListBackground}
           />
-        ) : // <FlexCenterContainer>
-        //   <EmployeeContainer
-        //     employee={sampleEmployee}
-        //     sampleData={timeSheetSample}
-        //   />
-        // </FlexCenterContainer>
-        paths.viewRooms ? (
+        ) : paths.viewRooms ? (
           // place holder for room view component
-          <AddEditRooms
-            type='ADD'
-            onClick1={(e) => console.log(e)}
-            onClick2={(e) => console.log('working2')}
-            handleBackChange={setBackColor}
-            handleBackgroundChange={setListBackground}
+          <ViewAddEditRoom
+            setBackColor={setBackColor}
+            setListBackground={setListBackground}
           />
         ) : paths.guestList ? (
           // place holder for Guest List component
