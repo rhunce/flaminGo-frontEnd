@@ -44,21 +44,11 @@ const ListMaster = ({
   useEffect(() => {
     handleBackChange('black');
     handleBackgroundChange('listBgContainer');
+
     if (type === 'room') {
       axios.get('/rooms/').then((data) => {
         setDataSet(data.data);
       });
-      // .then(({ data }) => {
-      //   console.log('Data:', data)
-      //   return data.map((room) => {
-      //     console.log('Room:', room)
-      //     axios.get(`/rooms/${room._id}`)
-      //     .then(({ data }) => {room.roomType = data.roomType;
-      //     return room})
-      //   })
-      // })
-      // .then((fullData) => {return Promise.all(fullData)})
-      // .then((result) => {setDataSet(result)})
     } else if (type === 'employee') {
       axios.get('/employees/').then((data) => {
         setDataSet(data.data);
@@ -70,11 +60,9 @@ const ListMaster = ({
     }
   }, []);
 
-  console.log('dataset:', dataSet);
-
   if (type === 'room') {
     titleTable = titleTableRooms();
-    searchParam = 'Search by amenity';
+    searchParam = 'Search by amenity or type';
     // setDataSet(roomsData)
   } else if (type === 'employee') {
     titleTable = titleTableEmployees();
@@ -141,13 +129,21 @@ const ListMaster = ({
       searched = data.filter((room) => {
         let amenitiesString = room.amenities.join();
         let amenitiesLower = amenitiesString.toLowerCase();
-        return amenitiesLower.includes(searchTerm);
+        let roomType = room.roomType.toLowerCase();
+        let searchString = amenitiesLower + roomType;
+        return searchString.includes(searchTerm);
       });
       data = searched;
     } else if (type === 'employee') {
       searched = data.filter((employee) => {
         let name = employee.name.toLowerCase();
         return name.includes(searchTerm);
+      });
+      data = searched;
+    } else if (type === 'task') {
+      searched = data.filter((task) => {
+        let assignedTo = task.employeeAssigned.toLowerCase();
+        return assignedTo.includes(searchTerm);
       });
       data = searched;
     }
