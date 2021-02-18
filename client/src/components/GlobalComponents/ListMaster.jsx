@@ -44,45 +44,47 @@ const ListMaster = ({
   useEffect(() => {
     handleBackChange('black');
     handleBackgroundChange('listBgContainer');
-    // if (type ==="room") {
-    //   axios.get("http://localhost:3232/rooms")
-    //   .then((data) => {setDataSet(data.data)})
-    // } else if (type ==="employee") {
-    //   axios.get("http://localhost:3232/employees")
-    //   .then((data) => {setDataSet(data.data)})
-    // } else if (type ==="task") {
-    //   axios.get("http://localhost:3232/tasks")
-    //   .then((data) => {setDataSet(data.data)})
-    // }
-    if (type === 'room') {
-      titleTable = titleTableRooms();
-      searchParam = 'Search by amenity';
-      setDataSet(roomsData)
-    } else if (type === 'employee') {
-      titleTable = titleTableEmployees();
-      searchParam = 'Search by employee name';
-      setDataSet(employeeData)
-    } else if (type === 'task') {
-      titleTable = titleTableTasks();
-      searchParam = 'Search';
-      setDataSet(taskData)
-    } else if (type === 'guest') {
-      titleTable = titleTableGuests();
-      searchParam = 'Search by guest name';
+    if (type ==="room") {
+      axios.get("/rooms/")
+      .then((data) => {setDataSet(data.data)})
+      // .then(({ data }) => {
+      //   console.log('Data:', data)
+      //   return data.map((room) => {
+      //     console.log('Room:', room)
+      //     axios.get(`/rooms/${room._id}`)
+      //     .then(({ data }) => {room.roomType = data.roomType;
+      //     return room})
+      //   })
+      // })
+      // .then((fullData) => {return Promise.all(fullData)})
+      // .then((result) => {setDataSet(result)})
+    } else if (type ==="employee") {
+      axios.get("/employees/")
+      .then((data) => {setDataSet(data.data)})
+    } else if (type ==="task") {
+      axios.get("/tasks/")
+      .then((data) => {setDataSet(data.data)})
     }
-  });
+  }, []);
+
+  console.log('dataset:', dataSet)
+
+  if (type === 'room') {
+    titleTable = titleTableRooms();
+    searchParam = 'Search by amenity';
+    // setDataSet(roomsData)
+  } else if (type === 'employee') {
+    titleTable = titleTableEmployees();
+    searchParam = 'Search by employee name';
+    // setDataSet(employeeData)
+  } else if (type === 'task') {
+    titleTable = titleTableTasks();
+    searchParam = 'Search by assigned';
+    // setDataSet(taskData)
+  }
 
   var data = JSON.parse(JSON.stringify(dataSet))
 
-  if (type === 'room') {
-    searchParam = 'Search by amenity';
-  } else if (type === 'employee') {
-    searchParam = 'Search by employee name';
-  } else if (type === 'task') {
-    searchParam = 'Search';
-  } else if (type === 'guest') {
-    searchParam = 'Search by guest name';
-  }
 
  // let titleTable, searchParam;
 
@@ -106,27 +108,25 @@ const ListMaster = ({
   //Search Functionality
   const [searchTerm, setSearch] = useState('');
 
-  useEffect(() => {
-    let searched = [];
-    if (searchTerm !== '') {
-      if (type === 'room') {
-        searched = data.filter((room) => {
-          let amenitiesString = room.amenities.join();
-          let amenitiesLower = amenitiesString.toLowerCase();
-          console.log(searchTerm)
-          return amenitiesLower.includes(searchTerm);
-        });
-        data = searched;
-      } else if (type === 'employee') {
-        searched = data.filter((employee) => {
-          let name =
-            employee.firstName.toLowerCase() + employee.lastName.toLowerCase();
-          return name.includes(searchTerm);
-        });
-        data = searched;
-      }
-    }
-  })
+  // useEffect(() => {
+  //   let searched = [];
+  //   if (searchTerm !== '') {
+  //     if (type === 'room') {
+  //       searched = data.filter((room) => {
+  //         let amenitiesString = room.amenities.join();
+  //         let amenitiesLower = amenitiesString.toLowerCase();
+  //         return amenitiesLower.includes(searchTerm);
+  //       });
+  //       data = searched;
+  //     } else if (type === 'employee') {
+  //       searched = data.filter((employee) => {
+  //         let name = employee.name.toLowerCase();
+  //         return name.includes(searchTerm);
+  //       });
+  //       data = searched;
+  //     }
+  //   }
+  // })
 
   const handleSearch = (e) => {
     let search = document.getElementById('searchBar').value;
@@ -144,8 +144,7 @@ const ListMaster = ({
       data = searched;
     } else if (type === 'employee') {
       searched = data.filter((employee) => {
-        let name =
-          employee.firstName.toLowerCase() + employee.lastName.toLowerCase();
+        let name = employee.name.toLowerCase();
         return name.includes(searchTerm);
       });
       data = searched;
@@ -161,7 +160,7 @@ const ListMaster = ({
     setSort(sortBy)
   }
 
-  if (sortTerm === "roomType" || sortTerm === "lastName" || sortTerm === "position") {
+  if (sortTerm === "roomType" || sortTerm === "name" || sortTerm === "position") {
     data.sort(function(a, b){
       if(a[sortTerm] < b[sortTerm]) { return -1; }
       if(a[sortTerm] > b[sortTerm]) { return 1; }
@@ -186,7 +185,7 @@ const ListMaster = ({
     sortOptions = <select className="sortBy" defaultValue="" onChange={handleSort}>
     <option value="" disabled hidden>Sort By</option>
     <option value="position">Position</option>
-    <option value="lastName">Last Name</option>
+    <option value="name">Name</option>
   </select>
   } else if (type === "task") {
     sortOptions = "";
@@ -252,16 +251,18 @@ const ListMaster = ({
     </select>
   }
 
-  let addRoom = ''
+  let addButton = ''
   if (position === "systemAdministration" && type === "room") {
-    addRoom = <FormButton backgroundColor="berry" margin="0 30px 0 0" onClick={onClick1}>Add Room</FormButton>
+    addButton = <FormButton backgroundColor="berry" margin="0 30px 0 0" onClick={onClick1}>Add Room</FormButton>
+  } else if (position === "systemAdministration" && type === "employee") {
+    addButton = <FormButton backgroundColor="berry" margin="0 30px 0 0">Add Employee</FormButton>
   }
 
   return (
     <div id='listContainer'>
       <div className='listHeader'>
         <div className='listHeaderButtons'>
-          {addRoom}
+          {addButton}
           {filterOptions}
           {sortOptions}
           <div className='listHeaderSearch'>
