@@ -55,10 +55,10 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
   if (type === 'employee') {
     entryButtons = (
       <span className='listEntryButtons'>
-        <FormButton margin='0 30px 0 20px' onClick={() => onClick1(entity)}>
+        <FormButton margin='0 15px 10px 15px' onClick={() => onClick1(entity)}>
           See Details
         </FormButton>
-        <FormButton onClick={() => onClick2(entity)} margin='0 20px 0 0'>
+        <FormButton onClick={() => onClick2(entity)} margin='0 30px 0 15px' backgroundColor="berry">
           Remove
         </FormButton>
       </span>
@@ -66,10 +66,10 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
   } else if (type === 'room' && position === 'systemAdministration') {
     entryButtons = (
       <span className='listEntryButtons'>
-        <FormButton margin='0 30px 0 30px' onClick={toggleRoomDetailsModal}>
+        <FormButton margin='0 15px 10px 15px' onClick={toggleRoomDetailsModal}>
           See Details
         </FormButton>
-        <FormButton margin='0 30px 0 0' onClick={onClick2}>
+        <FormButton margin='0 30px 0 15px' onClick={onClick2}>
           Edit Room
         </FormButton>
         <RoomDetailsModal
@@ -104,10 +104,10 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
   } else if (type === 'task') {
     entryButtons = (
       <span className='listEntryButtons'>
-        <FormButton margin='0 30px 0 20px' onClick={toggleTaskDetailsModal}>
+        <FormButton margin='0 15px 10px 15px' onClick={toggleTaskDetailsModal}>
           See Details
         </FormButton>
-        <FormButton margin='0 20px 0 0' onClick={markTaskComplete}>
+        <FormButton margin='0 30px 0 15px' backgroundColor="berry" onClick={markTaskComplete}>
           {!(taskCompletedStatus) ?  'Mark as Complete' : 'Completed'}
         </FormButton>
         <TaskDetailsModal

@@ -54,7 +54,7 @@ CHECK-IN / CHECK-OUT
 }
 
 input.inputs {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .centeredInputBars {
@@ -68,7 +68,7 @@ input.inputs {
   margin: auto;
   width: 50%;
   height: 50%;
-  padding-top: 6%;
+  padding-top: 3%;
 }
 
 .searchButtonPlacement {
@@ -80,7 +80,7 @@ input.inputs {
 #searchButtonPlacement {
   margin: auto;
   width: 158px;
-  margin-top: 50px;
+  margin-top: 70px;
   background-color: #ff2063;
 }
 
