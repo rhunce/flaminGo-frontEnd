@@ -8,7 +8,7 @@ html {
 }
 
 Body {
-  font-family: "Open Sans, sans-serif";
+  font-family: "Open Sans", sans-serif;
   height: 100%;
   background-image: linear-gradient(135deg, #ff4f03, #ff2063);
   margin: 0;
@@ -46,7 +46,7 @@ CHECK-IN / CHECK-OUT
 }
 
 .checkOutLabels {
-  font-family: "Open Sans, sans-serif";
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -144,7 +144,7 @@ td {
 
 #menuIcon {
   float: right;
-  margin: 20px 20px 0 0;
+  margin: 30px 30px 0 0;
 }
 
 #backButton {
@@ -279,6 +279,57 @@ input[type=checkbox]:checked label {
   background-color: white;
 }
 
+.addTask {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(24, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.addTask .formTitle {
+  grid-area: 2/2/3/7;
+}
+.addTask .employeeName {
+  grid-area: 2/8/3/12;
+}
+.addTask .employeeNameInput {
+  grid-area: 3/8/4/12;
+}
+.addTask .taskInputTitle {
+  grid-area: 4/2/5/7;
+}
+.addTask .taskInput {
+  grid-area: 5/2/6/7;
+}
+.addTask .roomInputTitle {
+  grid-area: 4/8/5/12;
+}
+.addTask .roomInput {
+  grid-area: 5/8/6/12;
+}
+.addTask .textAreaTitle {
+  grid-area: 7/2/8/7;
+}
+.addTask .textArea {
+  grid-area: 8/2/18/12;
+}
+.addTask .radioTitle {
+  grid-area: 19/2/20/7;
+}
+.addTask .ticketType {
+  grid-area: 20/2/24/7;
+  display: grid;
+}
+.addTask .dueByTitle {
+  grid-area: 19/5/20/8;
+}
+.addTask .dueBy {
+  grid-area: 20/5/22/8;
+}
+.addTask .submitButton {
+  grid-area: 20/9/22/12;
+}
+
 .mainBox {
   display: block;
   margin: 0 auto;
@@ -325,8 +376,9 @@ input[type=checkbox]:checked label {
   width: 840px;
   height: 440px;
   background-image: linear-gradient(135deg, #ff2063, #a91cff);
-  margin: 0 auto;
+  margin: auto;
   border-radius: 30px;
+  overflow: scroll;
 }
 
 #roomsListInnerContainer {
@@ -463,10 +515,25 @@ select {
 
 .roomDetails {
   line-height: 2;
+  font-family: "Open Sans", sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.roomDetails div {
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 .roomDetailsHeader {
   text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  color: black;
+}
+
+.detailsTitle {
+  font-weight: 600;
 }
 
 .closeRmDetails {
@@ -486,6 +553,71 @@ select {
 
 .listEntryButtons {
   float: right;
+}
+
+#roomContainer {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+#roomEntriesContainer {
+  padding: 20px;
+  margin: auto;
+  height: calc(90% - 80px);
+  width: calc(60% - 40px);
+}
+
+#roomBox {
+  border: #e000ce solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  flex: 1 0 auto;
+}
+
+.roomTable {
+  border: #00ff0d solid;
+  margin: 0 auto;
+  height: calc(80% - 80px);
+  width: calc(48% - 40px);
+  border-radius: 30px;
+  background-color: #ff2063;
+  overflow: scroll;
+}
+
+#roomInnerTable1 {
+  border: #d0ff00 solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  height: calc(100% - 80px);
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+#roomInnerTable2 {
+  border: #d0ff00 solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  height: calc(50% - 80px);
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+#roomEntry {
+  border: #1900ff solid;
+  height: 100px;
+  width: calc(100% - 40px);
+  margin: 20px 20px 20px 20px;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: white;
+  text-align: center;
+}
+
+#room_H3 {
+  color: black;
 }
 
 /*# sourceMappingURL=index.css.map */

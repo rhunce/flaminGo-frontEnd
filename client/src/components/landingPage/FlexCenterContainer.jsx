@@ -4,7 +4,7 @@ const FlexCenterContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  margin-top: ${(props) => (props.marginTop ? props.marginTop : 0)};
 `;
 
 export default FlexCenterContainer;
