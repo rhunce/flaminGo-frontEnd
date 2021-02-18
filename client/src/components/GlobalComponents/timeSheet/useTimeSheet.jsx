@@ -16,10 +16,6 @@ const useTimeSheet = ({ userId, initialState = {} }, back) => {
           const weekEnd = parseInt(data[0].weekEnd.split('-').join(''));
           if (weekEnd > today) {
             setState(data[0]);
-          } else {
-            setState({
-              employee_id: useId,
-            });
           }
         })
         .catch((err) => {
