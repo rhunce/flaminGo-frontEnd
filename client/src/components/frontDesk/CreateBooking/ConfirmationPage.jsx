@@ -1,13 +1,13 @@
 import React from 'react';
 
-let ConfirmationPage = ({bookingInfo}) => {
+let ConfirmationPage = (props) => {
   return (
     <ul>
-      {Object.values(bookingInfo).map((bookingItem) => {
+      {Object.values(props).map((prop) => {
         return (
-          <li>
-            {bookingItem}
-          </li>
+          <div>
+            {prop}
+          </div>
         )
       })}
     </ul>

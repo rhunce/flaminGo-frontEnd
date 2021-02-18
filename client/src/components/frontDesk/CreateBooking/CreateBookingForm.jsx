@@ -69,13 +69,29 @@ class CreateBookingForm extends React.Component {
     this.setState({room_id: event.target.name});
   }
 
+  submitBooking() {
+    axios.post()
+      .then()
+      .catch();
+  }
+
   render() {
     return (
       <HalfRoundDiv>
         {this.state.dateForm ? <SearchByDate inputDate={this.inputDate} goToNext={this.goToNext}/>
           : this.state.roomList ? <AvailableRooms selectRoom={this.selectRoom} goToNext={this.goToNext}/>
             : this.state.guestInfo ? <GuestInfo getGuestInfo={this.getGuestInfo} goToNext={this.goToNext}/>
-              : <ConfirmationPage bookingInfo={this.state}/>}
+              : <ConfirmationPage
+                firstName={this.state.bookingClient.firstName}
+                lastName={this.state.bookingClient.lastName}
+                phone={this.state.bookingClient.phone}
+                email={this.state.bookingClient.email}
+                room_id={this.state.room_id}
+                roomType_id={this.state.roomType_id}
+                checkIn={this.state.checkIn}
+                checkOut={this.state.checkOut}
+                guestList={this.state.guestList}
+              />}
       </HalfRoundDiv>
     );
   }
