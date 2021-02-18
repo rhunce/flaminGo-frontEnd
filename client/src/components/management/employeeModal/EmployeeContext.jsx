@@ -18,18 +18,7 @@ export const EmployeeContext = createContext();
 export const EmployeeProvider = ({ children, employee }) => {
   const [newEmployee, setNewEmployee] = useState(employee ? false : true);
 
-  let firstName;
-  let lastName;
-  if (!newEmployee) {
-    [firstName, lastName] = employee.name.split(' ');
-  }
-
-  console.log('firstName ', firstName);
-  console.log('lastName ', lastName);
-
-  const [employeeData, setEmployeeData] = useState(
-    employee ? { ...employee, firstName, lastName } : {}
-  );
+  const [employeeData, setEmployeeData] = useState(employee ? employee : {});
   const [timeSheetList, setTimeSheetList] = useState([]);
 
   useEffect(() => {
