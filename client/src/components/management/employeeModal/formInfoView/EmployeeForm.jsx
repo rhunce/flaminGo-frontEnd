@@ -35,6 +35,7 @@ const EmployeeForm = ({ back }) => {
       const field = row.field;
       if (!employee.hasOwnProperty(field)) return false;
     }
+    if (employee.name.split(' ').length < 2) return false;
     return true;
   };
 
@@ -50,22 +51,19 @@ const EmployeeForm = ({ back }) => {
         lastName,
       };
       if (newEmployee) {
-        axios.post(`/employees`, user).then(({ data }) => {
-          console.log('this was posted', data);
-          setEditMode(true);
+        axios.post(`/employees`, user).then(() => {
+          back();
         });
       } else {
         axios
           .put(`/employees/${employee.id}`, user)
-          .then(({ data }) => {
-            console.log('this was updated', data);
+          .then(() => {
             back();
           })
           .catch((err) => {
             console.error(err);
           });
       }
-      setEditMode(false);
     } else {
       setInvalidEntry(true);
     }
