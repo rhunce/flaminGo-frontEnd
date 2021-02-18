@@ -32,7 +32,7 @@ const TimeSheetFormList = ({ selectedWeek, back }) => {
   const [editMode, setEditMode] = useState(selectedWeek ? false : true);
   const [timeSheet, setTimeSheet] = useTimeSheet(
     {
-      userId: !selectedWeek ? id : null,
+      userId: id,
       initialState: selectedWeek,
     },
     back
@@ -40,7 +40,7 @@ const TimeSheetFormList = ({ selectedWeek, back }) => {
 
   const submit = (e) => {
     axios
-      .put(`/timesheets`, timeSheet)
+      .put(`/timesheets`, { ...timeSheet, employee_id: id })
       .then(() => {
         console.log('yay');
         back();

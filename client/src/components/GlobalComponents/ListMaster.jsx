@@ -345,7 +345,19 @@ const ListMaster = ({
                 <ListEntry
                   entity={entity}
                   onClick1={onClick1}
-                  onClick2={onClick2}
+                  onClick2={(entity) => {
+                    console.log(entity);
+                    axios
+                      .delete(`/employees/${entity.id}`)
+                      .then(() => {
+                        axios.get('/employees/').then(({ data }) => {
+                          setDataSet(data);
+                        });
+                      })
+                      .catch((err) => {
+                        console.error(err);
+                      });
+                  }}
                   table={entryTableEmployees(entity)}
                   type='employee'
                 />
