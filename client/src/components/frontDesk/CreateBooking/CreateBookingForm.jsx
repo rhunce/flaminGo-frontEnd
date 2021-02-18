@@ -3,6 +3,7 @@ import HalfRoundDiv from "../../styledElements/HalfRoundDiv.jsx";
 import SearchByDate from "./SearchByDate.jsx";
 import AvailableRooms from './AvailableRooms.jsx';
 import GuestInfo from './GuestInfo.jsx';
+import ConfirmationPage from './ConfirmationPage.jsx';
 
 class CreateBookingForm extends React.Component {
   constructor(props) {
@@ -74,7 +75,7 @@ class CreateBookingForm extends React.Component {
         {this.state.dateForm ? <SearchByDate inputDate={this.inputDate} goToNext={this.goToNext}/>
           : this.state.roomList ? <AvailableRooms selectRoom={this.selectRoom} goToNext={this.goToNext}/>
             : this.state.guestInfo ? <GuestInfo getGuestInfo={this.getGuestInfo} goToNext={this.goToNext}/>
-              : <div>Placeholder for Confirmation Page</div>}
+              : <ConfirmationPage bookingInfo={this.state}/>}
       </HalfRoundDiv>
     );
   }

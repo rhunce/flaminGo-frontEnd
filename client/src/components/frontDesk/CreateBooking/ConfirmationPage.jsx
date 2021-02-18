@@ -1,9 +1,17 @@
-// import React from 'react';
+import React from 'react';
 
-// let ConfirmationPage = () => {
-//   return (
+let ConfirmationPage = ({bookingInfo}) => {
+  return (
+    <ul>
+      {Object.values(bookingInfo).map((bookingItem) => {
+        return (
+          <li>
+            {bookingItem}
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
 
-//   )
-// }
-
-// export default ConfirmationPage;
+export default ConfirmationPage;
