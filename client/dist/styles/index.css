@@ -279,6 +279,25 @@ input[type=checkbox]:checked label {
   background-color: white;
 }
 
+.availabileRoomsList {
+  width: 75%;
+  height: 75%;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: linear-gradient(135deg, #ff8b03, #ff4f03);
+}
+
+#roomListEntry {
+  height: 75px;
+  width: calc(100% - 40px);
+  margin: 0 20px 20px 20px;
+  border-radius: 30px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .mainBox {
   display: block;
   margin: 0 auto;

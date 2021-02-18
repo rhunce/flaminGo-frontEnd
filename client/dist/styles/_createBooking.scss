@@ -1,0 +1,18 @@
+.availabileRoomsList {
+  width: 75%;
+  height: 75%;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: $clementineToCarrot;
+}
+
+#roomListEntry {
+  height: 75px;
+  width: calc(100% - 40px);
+  margin: 0 20px 20px 20px;
+  border-radius: 30px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
