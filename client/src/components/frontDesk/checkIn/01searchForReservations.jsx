@@ -18,7 +18,6 @@ const SearchForReservations = () => {
 //functions
 
     const axiosRequestForName = () => {
-        //GET request in axios
         axios.get('/reservations', {
             params: {
               firstName: name
@@ -28,43 +27,36 @@ const SearchForReservations = () => {
             setReservations(results.data);
             return;
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err, 'you have an error'))
     
 };
 
     const axiosRequestForResId = () => {
-    //GET request in axios
-    axios.get('/reservations', {
-        params: {
-          reservation_id: resId
-        }
-      })
-    .then(results => {
-        setReservations(results.data);
-        return;
-    })
-    .catch(err => console.log(err))
+        axios.get('/reservations', {
+            params: {
+            reservation_id: resId
+            }
+        })
+        .then(results => {
+            setReservations(results.data);
+            return;
+        })
+        .catch(err => console.log(err, 'you have an error'))
 
 };
 
 
 
     const addPage = (jumpTo) => {
-        console.log(jumpTo)
         if (jumpTo) {
-            setPage((prevPage) => (jumpTo));
+            setPage(() => (jumpTo));
         } else {
         setPage((prevPage) => (prevPage + 1))
-        //GET request in axios
-        // axios.get()
         }
     };
 
     const subtractPage = () => {
         setPage((prevPage) => (prevPage - 1))
-        //GET request in axios
-        // axios.get()
-
     };
 
     const updateName = (e) => {
@@ -139,11 +131,12 @@ const SearchForReservations = () => {
                 backgroundColor="berry" 
                 className="searchButtonPlacement"
                 onClick={(e) => { 
-                    addPage();
                     if (name.length !== 0) {
                         axiosRequestForName();
+                        addPage();
                     } else {
                         axiosRequestForResId();
+                        addPage();
                     }
                  }}
                 margin={'0 auto'}> Search </FormButton>
