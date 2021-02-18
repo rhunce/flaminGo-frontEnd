@@ -13,6 +13,7 @@ const SearchForReservations = () => {
     const [name, setName] = useState('');
     const [resId, setResId] = useState('');
     const [reservations, setReservations] = useState([])
+    const [selectedReservation, setSelectedReservation] = useState({})
 
 //functions
 
@@ -30,6 +31,24 @@ const SearchForReservations = () => {
         .catch(err => console.log(err))
     
 };
+
+    const axiosRequestForResId = () => {
+    //GET request in axios
+    axios.get('/reservations', {
+        params: {
+          reservation_id: resId
+        }
+      })
+    .then(results => {
+        setReservations(results.data);
+        return;
+    })
+    .catch(err => console.log(err))
+
+};
+
+
+
     const addPage = () => {
         setPage((prevPage) => (prevPage + 1))
         //GET request in axios
@@ -52,6 +71,10 @@ const SearchForReservations = () => {
         setResId(e.target.value)
     }
 
+    const updateSelectedReservation = (index) => {
+        setSelectedReservation(reservations[index])
+    }
+
     useEffect(() => {
         // console.log('component did mount')
         //axios request here
@@ -70,7 +93,8 @@ const SearchForReservations = () => {
             resId={resId}
             addPage={addPage}
             subtractPage={subtractPage}
-            reservationData={reservations}/>
+            reservationData={reservations}
+            updateSelectedReservation={updateSelectedReservation}/>
     }
 
     if (page === 3){
@@ -78,7 +102,8 @@ const SearchForReservations = () => {
             name={name} 
             resId={resId}
             addPage={addPage}
-            subtractPage={subtractPage}/>
+            subtractPage={subtractPage}
+            />
     }
 
     if (page === 4){
@@ -86,7 +111,9 @@ const SearchForReservations = () => {
             name={name} 
             resId={resId}
             addPage={addPage}
-            subtractPage={subtractPage}/>
+            subtractPage={subtractPage}
+            reservationData={reservations}
+            selectedReservation={selectedReservation}/>
     }
 
 
@@ -107,7 +134,11 @@ const SearchForReservations = () => {
                 className="searchButtonPlacement"
                 onClick={(e) => { 
                     addPage();
-                    axiosRequestForName();
+                    if (name.length !== 0) {
+                        axiosRequestForName();
+                    } else {
+                        axiosRequestForResId();
+                    }
                  }}
                 margin={'0 auto'}> Search </FormButton>
                 </div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
 
-const ConfirmationPage = () => {
+const ConfirmationPage = (props) => {
     return (
         <HalfRoundDiv
             className="mainBox"
@@ -11,7 +11,7 @@ const ConfirmationPage = () => {
             <div>
             <div className="checkInTitleDiv"> Confirmation Page</div>
                 <div> 
-
+                    {props.name}
                 </div>
             </div>
         </HalfRoundDiv>

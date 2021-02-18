@@ -21,14 +21,14 @@ let TitleTableCheckIn = () => {
   );
 };
 
-const ListEntryMini = ({reservation, addPage}) => {
+const ListEntryMini = ({reservation, addPage, updateSelectedReservation, value}) => {
   const [clicked, setClicked] = useState(false);
   const updateClicked = () => {
     setClicked((prevClicked) => !prevClicked)
   }
 
   if (clicked) {
-    console.log('clicked')
+    console.log('clicked', "index:", value)
   }
 
   return (
@@ -36,6 +36,7 @@ const ListEntryMini = ({reservation, addPage}) => {
     id="listEntryMini"
     onClick={(e) => {
       updateClicked();
+      updateSelectedReservation(value);
       addPage();
     }}>
       <span className="listEntryText"><EntryTableReservations reservation={reservation}/></span>
@@ -66,7 +67,7 @@ let EntryTableReservations = ({reservation}) => {
   );
 }
 
-const CheckInReservationList = ({reservationData, addPage, subtractPage}) => {
+const CheckInReservationList = ({reservationData, addPage, subtractPage, updateSelectedReservation}) => {
 
   // console.log(props, 'this is props')
 
@@ -93,8 +94,12 @@ const CheckInReservationList = ({reservationData, addPage, subtractPage}) => {
       >
         <div id="reservationInnerContainer">
           <div id="listEntriesHeaderMini"><TitleTableCheckIn/></div>
-          {reservationData.map((reservation) => {
-            return <ListEntryMini reservation={reservation} addPage={addPage}/>
+          {reservationData.map((reservation, index) => {
+            return <ListEntryMini 
+            reservation={reservation} 
+            addPage={addPage} 
+            updateSelectedReservation={updateSelectedReservation} 
+            value={index}/>
           })}
         </div>
         <FormButton className='searchButtonPlacement' onClick={subtractPage}> Back</FormButton>
