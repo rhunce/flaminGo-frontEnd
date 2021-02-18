@@ -7,7 +7,8 @@ const FormInput = styled.input`
   font-weight: ${fonts.plain};
   font-size: 16px;
   color: ${colors.black};
-  border: 1px solid ${colors.berry};
+  border: ${(props) =>
+    props.border ? props.border : `1px solid ${colors.berry}`};
   margin: ${(props) => (props.margin ? props.margin : 0)};
   border-radius: 4px;
   padding: 5px 20px 5px 20px;
@@ -23,6 +24,7 @@ const FormInput = styled.input`
  * @param {Boolean} disabled - set the element to disabled - default is false
  * @param {String} className - add class or list of classes to element
  * @param {String} id - add an id to the element
+ * @param {String} type - change the type of your form - default is text
  */
 const InputTypeText = ({
   placeholder,
@@ -38,6 +40,8 @@ const InputTypeText = ({
   maxlength,
   minlength,
   id,
+  border,
+  type = 'text',
 }) => (
   <FormInput
     id={id}
@@ -45,7 +49,7 @@ const InputTypeText = ({
     maxlength={maxlength}
     placeholder={placeholder}
     name={name}
-    type='text'
+    type={type}
     margin={margin}
     onChange={onChange}
     disabled={disabled}
@@ -55,6 +59,7 @@ const InputTypeText = ({
     value={value}
     defaultValue={defaultValue}
     width={width}
+    border={border}
   />
 );
 export default InputTypeText;
