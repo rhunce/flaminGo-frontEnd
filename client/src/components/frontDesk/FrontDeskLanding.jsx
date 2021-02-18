@@ -3,22 +3,10 @@ import styled from 'styled-components';
 import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
-import ListMaster from '../GlobalComponents/ListMaster';
 import FlexCenterContainer from '../landingPage/FlexCenterContainer';
 import ViewAddEditRoom from '../management/ViewAddEditRoom.jsx';
 import CheckoutLanding from './checkout/CheckoutLanding';
-import Search from './checkout/Search';
 import SearchForReservations from './checkIn/01searchForReservations';
-
-// flex container
-const BtnContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-`;
-
-
 
 const FrontDeskLanding = ({ back }) => {
   // set state to toggle for conditional rendering
@@ -69,9 +57,9 @@ const FrontDeskLanding = ({ back }) => {
         ) : paths.viewRooms ? (
           // place holder for room view component
           <ViewAddEditRoom
-          setBackColor={setBackColor}
-          setListBackground={setListBackground}
-        />
+            setBackColor={setBackColor}
+            setListBackground={setListBackground}
+          />
         ) : (
           <FlexCenterContainer>
             <LandingButtons routs={routs} />

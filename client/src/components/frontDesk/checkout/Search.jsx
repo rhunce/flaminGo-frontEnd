@@ -7,9 +7,10 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nameInput: '',
+      firstNameInput: '',
+      lastNameInput: '',
       reservationIdInput: '',
-      roomNumberInput: ''
+      checkOutDateInput: ''
     };
     this.inputChangeHandler = this.inputChangeHandler.bind(this);
   }
@@ -25,33 +26,44 @@ class Search extends React.Component {
       <HalfRoundDiv id="mainBox">
         <div className="checkInTitleDiv">Check-Out: Search for Reservations</div>
         <div id="centeredInputBars">
-          <label htmlFor="nameInput" className="checkOutLabels">Name</label> <br/>
+          <label htmlFor="firstNameInput" className="checkOutLabels">First Name</label> <br/>
           <InputTypeText
-            name="nameInput"
+            name="firstNameInput"
             className="inputs"
             width={'90%'}
             onChange={this.inputChangeHandler}
-          /> <br/>
+            placeholder="i.e. Adam"
+          />
+          <label htmlFor="lastNameInput" className="checkOutLabels">Last Name</label> <br/>
+          <InputTypeText
+            name="lastNameInput"
+            className="inputs"
+            width={'90%'}
+            onChange={this.inputChangeHandler}
+            placeholder="i.e. Pollock"
+          />
           <label htmlFor="reservationIdInput" className="checkOutLabels">Reservation ID</label> <br/>
           <InputTypeText
             name="reservationIdInput"
             className="inputs"
             width={'90%'}
             onChange={this.inputChangeHandler}
+            placeholder="i.e. last few/several digits such as 85debb"
           />
-          <label htmlFor="roomNumberInput" className="checkOutLabels">Room Number</label> <br/>
+          <label htmlFor="checkOutDateInput" className="checkOutLabels">Check Out Date</label> <br/>
           <InputTypeText
-            name="roomNumberInput"
+            name="checkOutDateInput"
             className="inputs"
             width={'90%'}
             onChange={this.inputChangeHandler}
+            placeholder="YYYY-MM-DD i.e. 2021-02-21"
           />
         </div>
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <FormButton
             id="searchButtonPlacement"
             onClick={(e) => {
-              this.props.nextPageClickHandler(e, this.state.nameInput, this.state.reservationIdInput, this.state.roomNumberInput);
+              this.props.nextPageClickHandler(e, this.state.firstNameInput, this.state.lastNameInput, this.state.reservationIdInput, this.state.checkOutDateInput);
             }}>Search
           </FormButton>
         </div>

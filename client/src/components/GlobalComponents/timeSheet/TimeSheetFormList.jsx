@@ -30,10 +30,13 @@ const TimeSheetFormList = ({ selectedWeek, back }) => {
   const { id } = useContext(MainContext);
 
   const [editMode, setEditMode] = useState(selectedWeek ? false : true);
-  const [timeSheet, setTimeSheet] = useTimeSheet({
-    userId: !selectedWeek ? id : null,
-    initialState: selectedWeek,
-  });
+  const [timeSheet, setTimeSheet] = useTimeSheet(
+    {
+      userId: !selectedWeek ? id : null,
+      initialState: selectedWeek,
+    },
+    back
+  );
 
   const submit = (e) => {
     axios
@@ -44,7 +47,6 @@ const TimeSheetFormList = ({ selectedWeek, back }) => {
       })
       .catch((err) => {
         console.error(err);
-        console.log(timeSheet);
         back();
       });
   };
@@ -81,16 +83,3 @@ const TimeSheetFormList = ({ selectedWeek, back }) => {
 };
 
 export default TimeSheetFormList;
-// {
-//   "timesheet_id": "60108729ffefc9bae1075652",
-//   "employee_id": "60108729ffefc9bae1075651",
-//   "monday": 8,
-//   "tuesday": 7,
-//   "wednesday": 8,
-//   "thursday": 5,
-//   "friday": 9,
-//   "saturday": 0,
-//   "sunday": 0,
-//   "weekStart": "2021-02-08",
-//   "weekEnd": "2021-02-14"
-// }

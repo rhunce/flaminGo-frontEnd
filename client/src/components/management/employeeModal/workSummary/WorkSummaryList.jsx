@@ -21,7 +21,6 @@ const WorkSummaryList = () => {
   const { useTimeSheetList, useNewEmployee } = useContext(EmployeeContext);
   const [newEmployee] = useNewEmployee;
   const [timeSheetList] = useTimeSheetList;
-
   return (
     <ListContainer>
       {!newEmployee ? (
