@@ -1,13 +1,5 @@
 import React from 'react';
-import Search from './Search';
-import Results from './Results';
 import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
-
-// import styled from 'styled-components';
-// import LandingButtons from '../landingPage/LandingButtons';
-// import useChoosePath from '../landingPage/useChoosePath';
-// import BackArrow from '../styledElements/BackArrow';
-// import ListMaster from '../GlobalComponents/ListMaster';
 
 class Confirmation extends React.Component {
   constructor(props) {
