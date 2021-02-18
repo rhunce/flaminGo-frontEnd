@@ -340,6 +340,7 @@ input[type='checkbox']:checked label {
   background-image: $berryToGrape;
   margin: auto;
   border-radius: 30px;
+  overflow: scroll;
 }
 
 #roomsListInnerContainer {
@@ -406,6 +407,7 @@ input[type='checkbox']:checked label {
   align-items: center;
   font-weight: 600;
   color: white;
+
 }
 
 #listEntryMini {

@@ -14,6 +14,22 @@ const SearchForReservations = () => {
     const [resId, setResId] = useState('');
     const [reservations, setReservations] = useState([])
 
+//functions
+
+    const axiosRequestForName = () => {
+        //GET request in axios
+        axios.get('/reservations', {
+            params: {
+              firstName: name
+            }
+          })
+        .then(results => {
+            setReservations(results.data);
+            return;
+        })
+        .catch(err => console.log(err))
+    
+};
     const addPage = () => {
         setPage((prevPage) => (prevPage + 1))
         //GET request in axios
@@ -37,24 +53,14 @@ const SearchForReservations = () => {
     }
 
     useEffect(() => {
-        console.log('component did mount')
+        // console.log('component did mount')
         //axios request here
     }, [])
 
-    useEffect(() => {
-        console.log('name changed')
-        //axios request here
-    }, [name])
-
-    useEffect(() => {
-        console.log('name or resid changed')
-        //axios request here
-    }, [name, resId])
-
     // unfinished method for data validation
     let nameValidate = null;
-    if (name === "blob") {
-        nameValidate = <div> your input is a blob </div>
+    if (name === "blop") {
+        nameValidate = <div> your input is a blop </div>
     }
 
     //page navigation
@@ -63,7 +69,8 @@ const SearchForReservations = () => {
             name={name} 
             resId={resId}
             addPage={addPage}
-            subtractPage={subtractPage}/>
+            subtractPage={subtractPage}
+            reservationData={reservations}/>
     }
 
     if (page === 3){
@@ -98,7 +105,10 @@ const SearchForReservations = () => {
                 <FormButton 
                 backgroundColor="berry" 
                 className="searchButtonPlacement"
-                onClick={(e) => { addPage() }}
+                onClick={(e) => { 
+                    addPage();
+                    axiosRequestForName();
+                 }}
                 margin={'0 auto'}> Search </FormButton>
                 </div>
         </HalfRoundDiv>

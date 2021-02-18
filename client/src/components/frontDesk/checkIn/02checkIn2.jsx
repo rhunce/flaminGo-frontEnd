@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import HalfRoundDiv from "../../styledElements/HalfRoundDiv.jsx";
-import { reservationData } from '../../../SampleData/SampleData.js'
+
+
+// import { reservationData } from '../../../SampleData/SampleData.js'
 import FormButton from "../../styledElements/FormButton.jsx";
 
 
@@ -64,7 +66,9 @@ let EntryTableReservations = ({reservation}) => {
   );
 }
 
-const CheckInReservationList = (props) => {
+const CheckInReservationList = ({reservationData, addPage, subtractPage}) => {
+
+  // console.log(props, 'this is props')
 
   if (reservationData.length === 0) {
     return (
@@ -76,7 +80,7 @@ const CheckInReservationList = (props) => {
             <div id="listEntriesHeaderMini"><TitleTableCheckIn/></div>
                 no results found
           </div>
-          <FormButton className='searchButtonPlacement' onClick={props.subtractPage}> Back</FormButton>
+          <FormButton className='searchButtonPlacement' onClick={subtractPage}> Back</FormButton>
         </HalfRoundDiv>
     );
   }
@@ -90,9 +94,10 @@ const CheckInReservationList = (props) => {
         <div id="reservationInnerContainer">
           <div id="listEntriesHeaderMini"><TitleTableCheckIn/></div>
           {reservationData.map((reservation) => {
-            return <ListEntryMini reservation={reservation} addPage={props.addPage}/>
+            return <ListEntryMini reservation={reservation} addPage={addPage}/>
           })}
         </div>
+        <FormButton className='searchButtonPlacement' onClick={subtractPage}> Back</FormButton>
       </HalfRoundDiv>
 
   );
