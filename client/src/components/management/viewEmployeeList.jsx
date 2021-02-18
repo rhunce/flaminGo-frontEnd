@@ -41,7 +41,6 @@ const ViewEmployeeList = ({ setBackColor, setListBackground }) => {
         <ListMaster
           onClick1={openModal1}
           openNewEmployee={openModal2}
-          // onClick2={(data) => console.log(data)}
           type='employee'
           handleBackChange={setBackColor}
           handleBackgroundChange={setListBackground}
