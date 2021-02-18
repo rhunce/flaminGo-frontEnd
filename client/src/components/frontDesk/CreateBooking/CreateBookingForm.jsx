@@ -4,11 +4,13 @@ import SearchByDate from "./SearchByDate.jsx";
 import AvailableRooms from './AvailableRooms.jsx';
 import GuestInfo from './GuestInfo.jsx';
 import ConfirmationPage from './ConfirmationPage.jsx';
+import axios from 'axios';
 
 class CreateBookingForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      availableRooms: [],
       dateForm: true,
       roomList: false,
       guestInfo: false,
@@ -55,7 +57,6 @@ class CreateBookingForm extends React.Component {
 
   inputDate(event) {
     event.preventDefault();
-    console.log(event.target.name);
     if (event.target.name === 'checkIn') {
       this.setState({checkIn: event.target.value});
     } else if (event.target.name === 'checkOut') {
@@ -69,17 +70,30 @@ class CreateBookingForm extends React.Component {
     this.setState({room_id: event.target.name});
   }
 
+  getAvailableRooms() {
+    axios.get('/rooms/')
+      .then((rooms) => {
+        console.log(rooms.data);
+        this.setState({availableRooms: rooms.data});
+      })
+      .catch((error) => { console.log(error); });
+  }
+
   submitBooking() {
     axios.post()
       .then()
       .catch();
   }
 
+  componentDidMount() {
+    this.getAvailableRooms();
+  }
+
   render() {
     return (
       <HalfRoundDiv>
         {this.state.dateForm ? <SearchByDate inputDate={this.inputDate} goToNext={this.goToNext}/>
-          : this.state.roomList ? <AvailableRooms selectRoom={this.selectRoom} goToNext={this.goToNext}/>
+          : this.state.roomList ? <AvailableRooms selectRoom={this.selectRoom} goToNext={this.goToNext} availableRooms={this.state.availableRooms}/>
             : this.state.guestInfo ? <GuestInfo getGuestInfo={this.getGuestInfo} goToNext={this.goToNext}/>
               : <ConfirmationPage
                 firstName={this.state.bookingClient.firstName}
