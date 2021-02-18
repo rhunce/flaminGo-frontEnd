@@ -62,7 +62,7 @@ class AddTaskForm extends React.Component {
 
   //sends all form info to server in request body
   submitAddTaskForm(event) {
-    event.preventDefault();
+    // event.preventDefault();
     //from API docs: POST '/tasks' to add a new task
     //need to add user ID from authentication cookies to add to request object
 
@@ -70,7 +70,10 @@ class AddTaskForm extends React.Component {
     Object.assign(data, this.state);
 
     axios.post('http://localhost:5000/tasks', data)
-      .then((results) => { console.log('Form successfully submitted:', results); })
+      .then((results) => {
+        alert('Task successfully added to task list');
+        console.log('Form successfully submitted:', results);
+      })
       .catch((error) => { console.log(error); });
   }
 
@@ -83,7 +86,7 @@ class AddTaskForm extends React.Component {
           <InputTypeText onChange={this.inputEmployeeName} className="employeeNameInput" placeholder={'Employee Name'} />
           <h2 className="taskInputTitle">Task Title</h2>
           <InputTypeText onChange={this.inputTaskTitle} className="taskInput" placeholder={'Task Title'} />
-          <h2 className="roomInputTitle">Room Number</h2>
+          <h2 className="roomInputTitle">Location</h2>
           <InputTypeText onChange={this.inputRoom} className="roomInput" placeholder={'Room Number'} />
           <h2 className="textAreaTitle">Task Description</h2>
           <TextAreaForm onChange={this.inputDescription} className="textArea" placeholder={'Task Description'} />
@@ -114,7 +117,10 @@ class AddTaskForm extends React.Component {
           </form>
           <h2 className="dueByTitle" >Due By</h2>
           <InputTypeText type="datetime-local" className="dueBy" onChange={this.inputDueDate} />
-          <FormButton onClick={this.submitAddTaskForm} className="submitButton">Submit</FormButton>
+          <FormButton onClick={()=>{
+            this.submitAddTaskForm();
+            this.props.clickBack();
+          }} className="submitButton">Submit</FormButton>
         </HalfRoundDiv>
       </div>
     );
