@@ -18,7 +18,6 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
   const [taskModalStatus, setTaskModalStatus] = useState(false);
 
   const toggleRoomDetailsModal = () => {
-    console.log('toggle rooms');
     if(rmModalStatus) {
       setRmModalStatus(false)
     } else {
