@@ -20,7 +20,7 @@ const HMLanding = ({ back }) => {
     landing: true,
   });
 
-  const {id} = useContext(MainContext);
+  const {id, name} = useContext(MainContext);
 
   //set up for transition to room list page
   const [backColor, setBackColor] = useState('white');
@@ -71,7 +71,7 @@ const HMLanding = ({ back }) => {
         ) : paths.addTask ? (
           // place holder for add task component
           <FlexCenterContainer>
-            <AddTaskForm employeeId={id} clickBack={clickBack}/>
+            <AddTaskForm employeeId={id} name={name} clickBack={clickBack}/>
           </FlexCenterContainer>
         ) : (
           <FlexCenterContainer>

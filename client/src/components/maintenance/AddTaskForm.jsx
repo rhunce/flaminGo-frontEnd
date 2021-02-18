@@ -13,7 +13,7 @@ class AddTaskForm extends React.Component {
 
     //each input field has its own state property and event handler
     this.state = {
-      employeeCreated: '',
+      // employeeCreated: '',
       taskTitle: '',
       location: '',
       taskDescription: '',
@@ -56,7 +56,7 @@ class AddTaskForm extends React.Component {
 
   inputDueDate(event) {
     event.preventDefault();
-    let dueDate = new Date(event.target.value);
+    let dueDate = (new Date(event.target.value)).toISOString();
     this.setState({dueBy: dueDate});
   }
 
@@ -66,7 +66,10 @@ class AddTaskForm extends React.Component {
     //from API docs: POST '/tasks' to add a new task
     //need to add user ID from authentication cookies to add to request object
 
-    const data = {employeeCreated_id: this.props.employeeId};
+    const data = {
+      employeeCreated_id: this.props.employeeId,
+      employeeCreated: this.props.name
+    };
     Object.assign(data, this.state);
 
     axios.post('/tasks/', data)
@@ -82,8 +85,8 @@ class AddTaskForm extends React.Component {
       <div>
         <HalfRoundDiv className={'addTask'}>
           <h1 className="formTitle">Add a Task</h1>
-          <h2 className="employeeName">Employee Name</h2>
-          <InputTypeText onChange={this.inputEmployeeName} className="employeeNameInput" placeholder={'Employee Name'} />
+          {/* <h2 className="employeeName">Employee Name</h2>
+          <InputTypeText onChange={this.inputEmployeeName} className="employeeNameInput" placeholder={'Employee Name'} /> */}
           <h2 className="taskInputTitle">Task Title</h2>
           <InputTypeText onChange={this.inputTaskTitle} className="taskInput" placeholder={'Task Title'} />
           <h2 className="roomInputTitle">Location</h2>
