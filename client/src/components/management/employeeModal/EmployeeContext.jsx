@@ -7,14 +7,7 @@ const dataMapper = (data, employee) =>
     const splitEnd = sheet.weekEnd.split('-');
     const splitStart = sheet.weekStart.split('-');
     week.week = `${splitStart[1]}/${splitStart[2]} - ${splitEnd[1]}/${splitEnd[2]}/${splitEnd[0]}`;
-    week.hours =
-      sheet.monday +
-      sheet.tuesday +
-      sheet.wednesday +
-      sheet.thursday +
-      sheet.friday +
-      sheet.saturday +
-      sheet.sunday;
+    week.hours = sheet.weekHours;
     week.wage = employee.wage;
     week.total = week.hours * week.wage;
     return week;
@@ -22,21 +15,22 @@ const dataMapper = (data, employee) =>
 
 export const EmployeeContext = createContext();
 
-export const EmployeeProvider = ({ children, employee, sampleData }) => {
+export const EmployeeProvider = ({ children, employee, sampleId }) => {
   const [employeeData, setEmployeeData] = useState(employee ? employee : {});
   const [timeSheetList, setTimeSheetList] = useState([]);
   const [newEmployee, setNewEmployee] = useState(employee ? false : true);
+
+  let id = employee._id;
+  if (sampleId) {
+    id = sampleId;
+  }
   useEffect(() => {
     if (!newEmployee) {
-      if (sampleData) {
-        setTimeSheetList(dataMapper(sampleData, employeeData));
-      } else {
-        axios
-          .get(`/timesheets/${employee._id}`, { params: { count: 20 } })
-          .then(({ data }) => {
-            setTimeSheetList(dataMapper(data, employeeData));
-          });
-      }
+      axios
+        .get(`/timesheets/${id}`, { params: { count: 20 } })
+        .then(({ data }) => {
+          setTimeSheetList(dataMapper(data, employeeData));
+        });
     }
   }, []);
 

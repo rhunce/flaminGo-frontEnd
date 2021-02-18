@@ -22,9 +22,12 @@ const Bar = styled.div`
   margin-right: 40px;
 `;
 
-const EmployeeContainer = ({ employee, sampleData, back }) => {
+const EmployeeContainer = ({ employee, back }) => {
   return (
-    <EmployeeProvider employee={employee} sampleData={sampleData}>
+    <EmployeeProvider
+      employee={employee}
+      sampleId={'auth0|602c2317c8851c0069021c2c'}
+    >
       <HalfRoundDiv padding='40px' height='650px' width='975px'>
         <div style={{ position: 'relative' }}>
           <XButton onClick={back} />

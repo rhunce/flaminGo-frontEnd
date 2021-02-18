@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import ListMaster from '../GlobalComponents/ListMaster';
 import FlexCenterContainer from '../landingPage/FlexCenterContainer';
 import EmployeeContainer from './employeeModal/EmployeeContainer';
-import {
-  sampleEmployee,
-  timeSheetSample,
-} from './employeeModal/sampleEmployeeData';
 
 const ViewEmployeeList = ({ setBackColor, setListBackground }) => {
   const [toggleModals, setToggleModal] = useState(true);
@@ -35,11 +31,7 @@ const ViewEmployeeList = ({ setBackColor, setListBackground }) => {
         />
       ) : (
         <FlexCenterContainer>
-          <EmployeeContainer
-            employee={selectedData}
-            sampleData={timeSheetSample}
-            back={closeModal}
-          />
+          <EmployeeContainer employee={selectedData} back={closeModal} />
         </FlexCenterContainer>
       )}
     </div>
