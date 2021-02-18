@@ -67,7 +67,7 @@ let EntryTableReservations = ({reservation}) => {
   );
 }
 
-const CheckInReservationList = ({reservationData, addPage, subtractPage, updateSelectedReservation}) => {
+const CheckInReservationList = ({name, resId, reservationData, addPage, subtractPage, updateSelectedReservation}) => {
 
   // console.log(props, 'this is props')
 
@@ -92,6 +92,7 @@ const CheckInReservationList = ({reservationData, addPage, subtractPage, updateS
         margin="0 30px 0 30px"
         id="reservationOuterContainer"
       >
+        <div>Search results for: Name:{name} Res ID: {resId}</div>
         <div id="reservationInnerContainer">
           <div id="listEntriesHeaderMini"><TitleTableCheckIn/></div>
           {reservationData.map((reservation, index) => {

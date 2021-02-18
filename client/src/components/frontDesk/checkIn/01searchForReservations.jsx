@@ -49,11 +49,15 @@ const SearchForReservations = () => {
 
 
 
-    const addPage = () => {
+    const addPage = (jumpTo) => {
+        console.log(jumpTo)
+        if (jumpTo) {
+            setPage((prevPage) => (jumpTo));
+        } else {
         setPage((prevPage) => (prevPage + 1))
         //GET request in axios
         // axios.get()
-        
+        }
     };
 
     const subtractPage = () => {
@@ -103,17 +107,19 @@ const SearchForReservations = () => {
             resId={resId}
             addPage={addPage}
             subtractPage={subtractPage}
+            selectedReservation={selectedReservation}
             />
     }
 
     if (page === 4){
         return <ConfirmationPage 
-            name={name} 
-            resId={resId}
             addPage={addPage}
             subtractPage={subtractPage}
             reservationData={reservations}
-            selectedReservation={selectedReservation}/>
+            selectedReservation={selectedReservation}
+            setName={setName}
+            setResId={setResId}
+            />
     }
 
 
