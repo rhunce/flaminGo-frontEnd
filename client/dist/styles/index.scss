@@ -170,7 +170,7 @@ td {
 .listHeaderSearch {
   border: 1px $berry solid;
   height: 40px;
-  width: 450px;
+  width: 300px;
   display: block;
   float: right;
   padding: 0 0 0 10px;
@@ -222,6 +222,7 @@ td {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-width: 1200px;
 }
 
 .entryTable th {
