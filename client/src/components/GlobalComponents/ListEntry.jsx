@@ -18,6 +18,7 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
   const [taskModalStatus, setTaskModalStatus] = useState(false);
 
   const toggleRoomDetailsModal = () => {
+    console.log('toggle rooms');
     if(rmModalStatus) {
       setRmModalStatus(false)
     } else {
@@ -42,7 +43,7 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
         "isComplete": true
       })
       .then(function (response) {
-        console.log('my response', response);
+        console.log(response);
       })
       .catch(function (error) {
         console.log(error);
@@ -71,7 +72,7 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
           Edit Room
         </FormButton>
         <RoomDetailsModal
-          isOpen={modalStatus}
+          isOpen={rmModalStatus}
           toggle={toggleRoomDetailsModal}
           allRmData={entity}
         />
