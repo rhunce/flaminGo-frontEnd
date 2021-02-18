@@ -1,6 +1,8 @@
 import React from 'react';
 import Modal from 'react-modal';
-import FormButton from '../styledElements/FormButton'
+import FormButton from '../styledElements/FormButton';
+import XButton from '../styledElements/Xbutton';
+
 
 Modal.setAppElement('#app');
 
@@ -11,10 +13,13 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    width: '70%',
-    height: '70%',
+    width: '50%',
+    height: '80%',
     transform: 'translate(-50%, -50%)',
-    border: '5px #ff2063 solid'
+    backgroundImage: 'linear-gradient(135deg, #ff2063, #a91cff)',
+    display: 'flex',
+    justifyContent: 'center',
+    overflow: 'scroll'
   }
 };
 
@@ -50,6 +55,8 @@ class TaskDetailsModal extends React.Component {
           isOpen={this.props.isOpen}
           contentLabel='Minimal Modal Example'
         >
+          <XButton onClick={this.props.toggle} color="white" />
+          <div id="roomDetailsContainer">
           <h1 className='roomDetailsHeader'>Room Details</h1>
           <div className='roomDetails'>
             <div>
@@ -73,12 +80,8 @@ class TaskDetailsModal extends React.Component {
             <div>
             <span className="detailsTitle">Open Tasks:</span> {taskArr}
             </div>
-
           </div>
-          <br/>
-          <button className='closeRmDetails' onClick={this.props.toggle}>
-            Close Details Page
-          </button>
+          </div>
         </Modal>
       </div>
     );
