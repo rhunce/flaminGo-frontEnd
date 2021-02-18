@@ -46,7 +46,7 @@ class RoomDetailsModal extends React.Component {
           <span className="detailsTitle">Task Title:</span> <span className="detailsContent">{this.props.allTaskData.taskTitle} </span>
             </div>
             <div>
-            <span className="detailsTitle">Location (if applicable):</span><span className="detailsContent"> {this.props.allTaskData.location}</span>
+            <span className="detailsTitle">Location:</span><span className="detailsContent"> {this.props.allTaskData.location}</span>
             </div>
             <div>
             <span className="detailsTitle">Task Description:</span> <span className="detailsContent"> {this.props.allTaskData.taskDescription}</span>

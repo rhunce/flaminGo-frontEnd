@@ -230,7 +230,6 @@ td {
 }
 
 .listEntryText {
-  color: black;
   margin: 0 0 0 20px;
 }
 
@@ -330,16 +329,42 @@ input[type='checkbox']:checked label {
 
 #reservationOuterContainer {
   margin: auto;
+}
+
+#checkIn2Container {
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#reservationTitle {
+  font-family: $mainFont;
+  font-weight: 700;
+  margin: 20px 0 0 0;
+  text-align: center;
+  font-size: 30px;
+}
+
+#reservationSubTitle {
+  font-family: $mainFont;
+  font-weight: 700;
+  margin: 0 0 30px 0;
+  text-align: center;
+  font-size: 18px;
+}
+
+.resSearch {
+  font-weight: 400;
 }
 
 #reservationInnerContainer {
-  width: 840px;
-  height: 440px;
+  width: 900px;
+  height: 350px;
   background-image: $berryToGrape;
-  margin: auto;
   border-radius: 30px;
-  overflow: scroll;
+  margin: 0 0 30px 0;
 }
 
 #roomsListInnerContainer {
@@ -409,6 +434,12 @@ input[type='checkbox']:checked label {
 
 }
 
+#listEntriesScroll {
+  margin: 0 20px 20px 0;
+  height: 290px;
+  overflow: scroll;
+}
+
 #listEntryMini {
   height: 100px;
   width: calc(100% - 40px);
@@ -422,6 +453,7 @@ input[type='checkbox']:checked label {
 
 #listEntryMini:hover{
   background-color: $grape;
+  color: white;
   cursor:pointer;
 }
 

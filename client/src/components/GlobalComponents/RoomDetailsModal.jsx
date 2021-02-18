@@ -66,7 +66,7 @@ class TaskDetailsModal extends React.Component {
             <span className="detailsTitle"> Floor:</span><span className="detailsContent"> {this.props.allRmData.floorNumber}</span>
             </div>
             <div>
-            <span className="detailsTitle">Roomtype: </span><span className="detailsContent"> {this.props.allRmData.roomType}</span>
+            <span className="detailsTitle">Room Type: </span><span className="detailsContent"> {this.props.allRmData.roomType}</span>
             </div>
             <div>
             <span className="detailsTitle">Cleanliness Status:</span><span className="detailsContent"> {cleanStatus}</span>
