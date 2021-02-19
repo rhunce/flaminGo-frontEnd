@@ -5,20 +5,20 @@ import FlexCenterContainer from '../../landingPage/FlexCenterContainer.jsx';
 
 let AvailableRooms = (props) => {
   return (
-    <FlexCenterContainer>
-      <HalfRoundDiv id={'listContainer'}>
+    <HalfRoundDiv id={'roomListContainer'}>
+      <h1 className="title">Available Room Types</h1>
+      <div className="roomList">
         {props.availableRooms.map((room) => {
           return (
             <ListEntry
-              id="roomListEntry"
               onClick1={(event) => {
                 props.goToNext(event);
                 props.selectRoom(event);
               }}
               table={room}
             />)})}
-      </HalfRoundDiv>
-    </FlexCenterContainer>
+      </div>
+    </HalfRoundDiv>
   );
 };
 
