@@ -1,7 +1,8 @@
 import React from 'react';
+// import BigButton from '../../../styledElements/BigButton.jsx';
+// import { colors } from '../../../styledElements/styleGuid';
 
 const RoomTypeList = ({ handleAddRooms, listType }) => {
-  // console.log(' onClick,:', handleAddRooms, listType, entity, type);
 
   return (
     <div
@@ -10,7 +11,8 @@ const RoomTypeList = ({ handleAddRooms, listType }) => {
         handleAddRooms(listType);
       }}
     >
-      <h3 id='room_H3'>{listType}</h3>
+      <div id='room_H3'>{listType}</div>
+
     </div>
   );
 };

@@ -46,32 +46,46 @@ const AddEditRooms = ({
           width='100vh - 60px'
           height='calc(100vh - 260px)'
         >
-          <div>
+
+
+          <div id="roomHeaderBox">
             <ModalTitle>{
-              type === 'ADD' ? 'ADD ROOM' : 'EDIT ROOM'}
+              type === 'ADD ROOM'} ADD ROOM
             </ModalTitle>
           </div>
 
+
           <div id='roomBox_add'>
             <div className='roomTable'>
+
               <div id='roomInnerTable1'>
-                <div>
-                  <InputTypeText
-                    minlength='80px'
-                    maxlength='100px'
-                    placeholder='floor#'
-                    defaultValue='floor#'
-                    value={value}
-                    margin={margin}
-                    onChange={onChange}
-                    autocomplete={autocomplete}
-                    width={width}
-                    type='text'></InputTypeText>
-                  <InputTypeText placeholder='room#'></InputTypeText>
-                  {/* <FormButton margin='0 20px 0 0' onClick={(e) => onClick1(onClick1)}>
-                    ADD
-                  </FormButton> */}
+                <div id='roomInputBox'>
+                  <div>
+                    <div id='roomlabel'>
+                      new floor
+                    </div>
+                    <InputTypeText
+                      minlength='25px'
+                      maxlength='40px'
+                      placeholder='floor#'
+                      margin-top='0px'
+                      // value={value}
+                      // onChange={onChange}
+                      // width={width}
+                      type='text'></InputTypeText>
+                  </div>
+
+                  <div>
+                    <div id='roomlabel'>
+                      new room
+                    </div>
+                    <InputTypeText placeholder='room#'></InputTypeText>
+                  </div>
                 </div>
+              </div>
+
+              <div id='roomInnerTable3'>
+                <hr />
               </div>
 
               <div id='roomInnerTable2'>
@@ -89,8 +103,10 @@ const AddEditRooms = ({
                   }
                 })}
               </div>
+
             </div>
           </div>
+
 
           <div>
             <BigButton
@@ -98,6 +114,7 @@ const AddEditRooms = ({
               backgroundColor={colors.berry}
               color='white'>SUBMIT</BigButton>
           </div>
+
 
         </HalfRoundDiv>
       </div>
