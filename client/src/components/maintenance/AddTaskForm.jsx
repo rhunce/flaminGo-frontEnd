@@ -50,7 +50,6 @@ class AddTaskForm extends React.Component {
   }
 
   selectType(event) {
-    event.preventDefault();
     this.setState({department: event.target.value});
   }
 
@@ -72,7 +71,7 @@ class AddTaskForm extends React.Component {
     };
     Object.assign(data, this.state);
 
-    axios.post('/tasks/', data)
+    axios.post(`/tasks/`, data)
       .then((results) => {
         alert('Task successfully added to task list');
         console.log('Form successfully submitted:', results);
