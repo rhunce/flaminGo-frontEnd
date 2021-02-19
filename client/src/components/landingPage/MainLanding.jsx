@@ -9,16 +9,8 @@ import TimeSheet from '../GlobalComponents/timeSheet/TimeSheetContainer';
 import { MainProvider } from './MainContext';
 import { useAuth0 } from '@auth0/auth0-react';
 
-const MainLanding = () => {
+const MainLanding = ({ paths, setPaths }) => {
   const { user } = useAuth0();
-  // set state to toggle for conditional rendering
-  const [paths, setPaths] = useChoosePath({
-    management: false,
-    hm: false,
-    frontDesk: false,
-    timeSheet: false,
-    landing: true,
-  });
 
   const routs = {
     frontDesk: [
@@ -88,7 +80,7 @@ const MainLanding = () => {
       ) : paths.timeSheet ? (
         <TimeSheet back={clickBack} />
       ) : (
-        <FlexCenterContainer>
+        <FlexCenterContainer marginTop='100px'>
           <LandingButtons routs={routs} />
         </FlexCenterContainer>
       )}

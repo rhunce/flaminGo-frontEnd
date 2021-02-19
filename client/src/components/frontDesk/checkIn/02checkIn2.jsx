@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import HalfRoundDiv from "../../styledElements/HalfRoundDiv.jsx";
-import { reservationData } from '../../../SampleData/sampleData.js'
+
+
+// import { reservationData } from '../../../SampleData/SampleData.js'
 import FormButton from "../../styledElements/FormButton.jsx";
 
 
@@ -19,21 +21,22 @@ let TitleTableCheckIn = () => {
   );
 };
 
-const ListEntryMini = ({reservation, addPage}) => {
+const ListEntryMini = ({reservation, addPage, updateSelectedReservation, value}) => {
   const [clicked, setClicked] = useState(false);
   const updateClicked = () => {
     setClicked((prevClicked) => !prevClicked)
   }
 
   if (clicked) {
-    console.log('clicked')
+    console.log('clicked', "index:", value)
   }
 
   return (
-    <div 
-    id="listEntryMini" 
+    <div
+    id="listEntryMini"
     onClick={(e) => {
       updateClicked();
+      updateSelectedReservation(value);
       addPage();
     }}>
       <span className="listEntryText"><EntryTableReservations reservation={reservation}/></span>
@@ -64,7 +67,9 @@ let EntryTableReservations = ({reservation}) => {
   );
 }
 
-const CheckInReservationList = (props) => {
+const CheckInReservationList = ({name, resId, reservationData, addPage, subtractPage, updateSelectedReservation}) => {
+
+  // console.log(props, 'this is props')
 
   if (reservationData.length === 0) {
     return (
@@ -74,9 +79,9 @@ const CheckInReservationList = (props) => {
         >
           <div id="reservationInnerContainer">
             <div id="listEntriesHeaderMini"><TitleTableCheckIn/></div>
-                no results found
+                No results found
           </div>
-          <FormButton className='searchButtonPlacement' onClick={props.subtractPage}> Back</FormButton>
+          <FormButton className='searchButtonPlacement' onClick={subtractPage}> Back</FormButton>
         </HalfRoundDiv>
     );
   }
@@ -84,14 +89,26 @@ const CheckInReservationList = (props) => {
   return (
 
       <HalfRoundDiv
-        margin="0 30px 0 30px"
+        margin="0 30px 30px 30px"
         id="reservationOuterContainer"
+        width="1200px"
       >
+        <div id="checkIn2Container">
+        <div id="reservationTitle">Search Results for:</div>
+        <div id="reservationSubTitle"> Name:&nbsp;&nbsp;<span className="resSearch">{name}</span> <br/>Reservation ID:&nbsp;&nbsp; <span className="resSearch">{resId}</span></div>
         <div id="reservationInnerContainer">
           <div id="listEntriesHeaderMini"><TitleTableCheckIn/></div>
-          {reservationData.map((reservation) => {
-            return <ListEntryMini reservation={reservation} addPage={props.addPage}/>
+          <div id="listEntriesScroll">
+          {reservationData.map((reservation, index) => {
+            return <ListEntryMini
+            reservation={reservation}
+            addPage={addPage}
+            updateSelectedReservation={updateSelectedReservation}
+            value={index}/>
           })}
+          </div>
+        </div>
+        <FormButton className='searchButtonPlacement' onClick={subtractPage}> Back</FormButton>
         </div>
       </HalfRoundDiv>
 

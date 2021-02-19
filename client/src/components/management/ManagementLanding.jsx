@@ -1,18 +1,10 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
-import ListMaster from '../GlobalComponents/ListMaster';
 import FlexCenterContainer from '../landingPage/FlexCenterContainer';
-import EmployeeContainer from './employeeModal/EmployeeContainer';
-import {
-  sampleEmployee,
-  timeSheetSample,
-} from './employeeModal/sampleEmployeeData';
 import ViewEmployeeList from './viewEmployeeList';
-
-// flex container
+import ViewAddEditRoom from './ViewAddEditRoom.jsx';
 
 const ManagementLanding = ({ back }) => {
   // set state to toggle for conditional rendering
@@ -29,7 +21,6 @@ const ManagementLanding = ({ back }) => {
 
   // static object of this Landing routs and flipping for conditional rendering
   const routs = [
-    { title: 'Guest List', onClick: () => setPaths('guestList') },
     {
       title: 'View Employees',
       onClick: () => setPaths('viewEmployees'),
@@ -55,37 +46,15 @@ const ManagementLanding = ({ back }) => {
           location={paths.landing ? 'Main Homepage' : 'Management'}
         />
         {paths.viewEmployees ? (
-          // place holder for employee view component
-          // <ListMaster
-          //   onClick1={(e) => console.log(e)}
-          //   onClick2={(e) => console.log('working2')}
-          //   type='employee'
-          //   handleBackChange={setBackColor}
-          //   handleBackgroundChange={setListBackground}
-          // />
-          // <FlexCenterContainer>
-          //   <EmployeeContainer
-          //     employee={sampleEmployee}
-          //     sampleData={timeSheetSample}
-          //   />
-          // </FlexCenterContainer>
           <ViewEmployeeList
             setBackColor={setBackColor}
             setListBackground={setListBackground}
           />
         ) : paths.viewRooms ? (
-          // place holder for room view component
-          <ListMaster
-            type='room'
-            handleBackChange={setBackColor}
-            handleBackgroundChange={setListBackground}
-          />
-        ) : paths.guestList ? (
-          // place holder for Guest List component
-          <ListMaster
-            type='guest'
-            handleBackChange={setBackColor}
-            handleBackgroundChange={setListBackground}
+          // room view component
+          <ViewAddEditRoom
+            setBackColor={setBackColor}
+            setListBackground={setListBackground}
           />
         ) : (
           <FlexCenterContainer>

@@ -5,21 +5,10 @@ import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
 import CreateBookingForm from './CreateBooking/CreateBookingForm.jsx';
 import ListMaster from '../GlobalComponents/ListMaster';
-import CheckoutLanding from './checkout/CheckoutLanding';
-import Search from './checkout/Search';
-// import CheckInReservationList from './checkIn2.jsx';
-import SearchForReservations from './checkIn/01searchForReservations';
-
-// flex container
-const BtnContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-`;
-
 import FlexCenterContainer from '../landingPage/FlexCenterContainer';
-
+import ViewAddEditRoom from '../management/ViewAddEditRoom.jsx';
+import CheckoutLanding from './checkout/CheckoutLanding';
+import SearchForReservations from './checkIn/01searchForReservations';
 
 const FrontDeskLanding = ({ back }) => {
   // set state to toggle for conditional rendering
@@ -71,10 +60,9 @@ const FrontDeskLanding = ({ back }) => {
           <CheckoutLanding />
         ) : paths.viewRooms ? (
           // place holder for room view component
-          <ListMaster
-            type='room'
-            handleBackChange={setBackColor}
-            handleBackgroundChange={setListBackground}
+          <ViewAddEditRoom
+            setBackColor={setBackColor}
+            setListBackground={setListBackground}
           />
         ) : paths.createBooking ? (
           <FlexCenterContainer>

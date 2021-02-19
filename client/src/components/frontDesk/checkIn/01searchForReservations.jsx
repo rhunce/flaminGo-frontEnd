@@ -13,21 +13,51 @@ const SearchForReservations = () => {
     const [name, setName] = useState('');
     const [resId, setResId] = useState('');
     const [reservations, setReservations] = useState([])
+    const [selectedReservation, setSelectedReservation] = useState({})
 
-    const addPage = () => {
+//functions
+
+    const axiosRequestForName = () => {
+        axios.get('/reservations', {
+            params: {
+              firstName: name
+            }
+          })
+        .then(results => {
+            setReservations(results.data);
+            return;
+        })
+        .catch(err => console.log(err, 'you have an error'))
+    
+};
+
+    const axiosRequestForResId = () => {
+        axios.get('/reservations', {
+            params: {
+            reservation_id: resId
+            }
+        })
+        .then(results => {
+            setReservations(results.data);
+            return;
+        })
+        .catch(err => console.log(err, 'you have an error'))
+
+};
+
+
+
+    const addPage = (jumpTo) => {
+        if (jumpTo) {
+            setPage(() => (jumpTo));
+        } else {
         setPage((prevPage) => (prevPage + 1))
-        //GET request in axios
-        // axios.get()
-
+        }
     };
 
     const subtractPage = () => {
         setPage((prevPage) => (prevPage - 1))
-        //GET request in axios
-        // axios.get()
-
     };
-
 
     const updateName = (e) => {
         setName(e.target.value)
@@ -37,14 +67,19 @@ const SearchForReservations = () => {
         setResId(e.target.value)
     }
 
-    // useEffect(() => {
-    //     console.log('name changed')
-    // }, [name])
+    const updateSelectedReservation = (index) => {
+        setSelectedReservation(reservations[index])
+    }
+
+    useEffect(() => {
+        // console.log('component did mount')
+        //axios request here
+    }, [])
 
     // unfinished method for data validation
     let nameValidate = null;
-    if (name === "blob") {
-        nameValidate = <div> your input is a blob </div>
+    if (name === "blop") {
+        nameValidate = <div> your input is a blop </div>
     }
 
     //page navigation
@@ -53,7 +88,9 @@ const SearchForReservations = () => {
             name={name} 
             resId={resId}
             addPage={addPage}
-            subtractPage={subtractPage}/>
+            subtractPage={subtractPage}
+            reservationData={reservations}
+            updateSelectedReservation={updateSelectedReservation}/>
     }
 
     if (page === 3){
@@ -61,15 +98,20 @@ const SearchForReservations = () => {
             name={name} 
             resId={resId}
             addPage={addPage}
-            subtractPage={subtractPage}/>
+            subtractPage={subtractPage}
+            selectedReservation={selectedReservation}
+            />
     }
 
     if (page === 4){
         return <ConfirmationPage 
-            name={name} 
-            resId={resId}
             addPage={addPage}
-            subtractPage={subtractPage}/>
+            subtractPage={subtractPage}
+            reservationData={reservations}
+            selectedReservation={selectedReservation}
+            setName={setName}
+            setResId={setResId}
+            />
     }
 
 
@@ -88,7 +130,15 @@ const SearchForReservations = () => {
                 <FormButton 
                 backgroundColor="berry" 
                 className="searchButtonPlacement"
-                onClick={(e) => { addPage() }}
+                onClick={(e) => { 
+                    if (name.length !== 0) {
+                        axiosRequestForName();
+                        addPage();
+                    } else {
+                        axiosRequestForResId();
+                        addPage();
+                    }
+                 }}
                 margin={'0 auto'}> Search </FormButton>
                 </div>
         </HalfRoundDiv>

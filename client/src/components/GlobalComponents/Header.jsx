@@ -1,10 +1,12 @@
 import React from 'react';
 import LogoutButton from '../login/LogoutButton';
 
-const MainHeader = () => {
+const MainHeader = ({ back }) => {
   return (
     <div id='mainHeader'>
-      <img src='svg/flamingoLogo.svg' height='80px'></img>
+      <span onClick={back}>
+        <img src='svg/flamingoLogo.svg' height='80px'></img>
+      </span>
       <span id='menuIcon'>
         <LogoutButton />
       </span>

@@ -1,6 +1,8 @@
 import React from 'react';
 import Modal from 'react-modal';
-import FormButton from '../styledElements/FormButton'
+import FormButton from '../styledElements/FormButton';
+import XButton from '../styledElements/Xbutton';
+
 
 Modal.setAppElement('#app');
 
@@ -11,14 +13,17 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    width: '70%',
-    height: '70%',
+    width: '50%',
+    height: '80%',
     transform: 'translate(-50%, -50%)',
-    border: '5px #ff2063 solid'
-  },
+    backgroundImage: 'linear-gradient(135deg, #ff2063, #a91cff)',
+    display: 'flex',
+    justifyContent: 'center',
+    overflow: 'scroll'
+  }
 };
 
-class RoomDetailsModal extends React.Component {
+class TaskDetailsModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,38 +55,38 @@ class RoomDetailsModal extends React.Component {
           isOpen={this.props.isOpen}
           contentLabel='Minimal Modal Example'
         >
+          <XButton onClick={this.props.toggle} color="white" />
+          <div id="roomDetailsContainer">
           <h1 className='roomDetailsHeader'>Room Details</h1>
           <div className='roomDetails'>
             <div>
-              Room Number: {this.props.allRmData.roomNumber}
+              <span className="detailsTitle">Room Number:</span><span className="detailsContent"> {this.props.allRmData.roomNumber}</span>
             </div>
             <div>
-              Floor: {this.props.allRmData.floorNumber}
+            <span className="detailsTitle"> Floor:</span><span className="detailsContent"> {this.props.allRmData.floorNumber}</span>
             </div>
             <div>
-              Roomtype: {this.props.allRmData.roomType}
+            <span className="detailsTitle">Room Type: </span><span className="detailsContent"> {this.props.allRmData.roomType}</span>
             </div>
             <div>
-              Cleanliness Status: {cleanStatus}
+            <span className="detailsTitle">Cleanliness Status:</span><span className="detailsContent"> {cleanStatus}</span>
             </div>
             <div>
-              Occupation Status: {occStatus}
+            <span className="detailsTitle">Occupation Status:</span><span className="detailsContent"> {occStatus}</span>
             </div>
             <div>
-              Amenities: {amenArr}
+            <span className="detailsTitle"> Amenities:</span><span className="detailsContent"> {amenArr}</span>
             </div>
             <div>
-              Open Tasks: {taskArr}
+            <span className="detailsTitle">Open Tasks:</span><span className="detailsContent"> {taskArr}</span>
             </div>
-
           </div>
-          <button className='closeRmDetails' onClick={this.props.toggle}>
-            Close Details Page
-          </button>
+          </div>
+
         </Modal>
       </div>
     );
   }
 }
 
-export default RoomDetailsModal;
+export default TaskDetailsModal;

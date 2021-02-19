@@ -30,40 +30,50 @@ const TimeSheetFormList = ({ selectedWeek, back }) => {
   const { id } = useContext(MainContext);
 
   const [editMode, setEditMode] = useState(selectedWeek ? false : true);
-  const [timeSheet, setTimeSheet] = useTimeSheet({
-    userId: !selectedWeek ? id : null,
-    initialState: selectedWeek,
-  });
+  const [timeSheet, setTimeSheet] = useTimeSheet(
+    {
+      userId: id,
+      initialState: selectedWeek,
+    },
+    back
+  );
 
   const submit = (e) => {
-    // axios.put(`/timesheets`, timeSheet).then(() => {
-    //   back()
-    // });
-    console.log(timeSheet);
-    back();
+    axios
+      .put(`/timesheets`, { ...timeSheet, employee_id: id })
+      .then(() => {
+        console.log('yay');
+        back();
+      })
+      .catch((err) => {
+        console.error(err);
+        back();
+      });
   };
 
   return (
     <Centered>
       <FlexContainer>
-        {timeSheetTemplate.map((day) => (
-          <FlexContainer>
-            <FormRow
-              label={day.name}
-              editMode={editMode}
-              key={day.name + day.day}
-              name={day.day}
-              defaultValue={timeSheet[day.day] || ''}
-              onChange={(e) => {
-                setTimeSheet((prevState) => ({
-                  ...prevState,
-                  [e.target.name]: e.target.value,
-                }));
-              }}
-            />
-            <Spacer />
-          </FlexContainer>
-        ))}
+        {timeSheetTemplate.map((day) => {
+          return (
+            <FlexContainer>
+              <FormRow
+                label={day.name}
+                editMode={editMode}
+                key={day.name + day.day}
+                name={day.day}
+                value={timeSheet[day.day]}
+                onChange={(e) => {
+                  setTimeSheet((prevState) => ({
+                    ...prevState,
+                    [e.target.name]: e.target.value,
+                  }));
+                }}
+              />
+              <Spacer />
+            </FlexContainer>
+          );
+        })}
         <FormButton onClick={submit} margin='15px' backgroundColor={'berry'}>
           Submit
         </FormButton>
@@ -73,16 +83,3 @@ const TimeSheetFormList = ({ selectedWeek, back }) => {
 };
 
 export default TimeSheetFormList;
-// {
-//   "timesheet_id": "60108729ffefc9bae1075652",
-//   "employee_id": "60108729ffefc9bae1075651",
-//   "monday": 8,
-//   "tuesday": 7,
-//   "wednesday": 8,
-//   "thursday": 5,
-//   "friday": 9,
-//   "saturday": 0,
-//   "sunday": 0,
-//   "weekStart": "2021-02-08",
-//   "weekEnd": "2021-02-14"
-// }
