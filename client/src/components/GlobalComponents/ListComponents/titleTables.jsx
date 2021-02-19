@@ -38,6 +38,7 @@ let titleTableTasks = () => {
         <th>Task Title</th>
         <th>Location</th>
         <th>Department</th>
+        <th>Assigned To</th>
       </tr>
       </thead>
     </table>

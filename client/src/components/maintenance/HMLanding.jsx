@@ -1,15 +1,12 @@
 import React, { useState, useContext } from 'react';
-import styled from 'styled-components';
 import LandingButtons from '../landingPage/LandingButtons';
 import useChoosePath from '../landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
-import ListMaster from '../GlobalComponents/ListMaster'
+import ListMaster from '../GlobalComponents/ListMaster';
 import AddTaskForm from './AddTaskForm.jsx';
 import FlexCenterContainer from '../landingPage/FlexCenterContainer';
 import ViewAddEditRoom from '../management/ViewAddEditRoom.jsx';
-import {MainContext} from '../landingPage/MainContext.jsx';
-
-// flex container
+import { MainContext } from '../landingPage/MainContext.jsx';
 
 const HMLanding = ({ back }) => {
   // set state to toggle for conditional rendering
@@ -20,7 +17,7 @@ const HMLanding = ({ back }) => {
     landing: true,
   });
 
-  const {id} = useContext(MainContext);
+  const {id, name} = useContext(MainContext);
 
   //set up for transition to room list page
   const [backColor, setBackColor] = useState('white');
@@ -56,22 +53,22 @@ const HMLanding = ({ back }) => {
           }
         />
         {paths.viewTask ? (
-          // place holder for task view component
+          //  task view component
           <ListMaster
             type='task'
             handleBackChange={setBackColor}
             handleBackgroundChange={setListBackground}
           />
         ) : paths.viewRooms ? (
-          // place holder for room view component
+          // room view component
           <ViewAddEditRoom
-          setBackColor={setBackColor}
-          setListBackground={setListBackground}
-        />
+            setBackColor={setBackColor}
+            setListBackground={setListBackground}
+          />
         ) : paths.addTask ? (
-          // place holder for add task component
+          //  add task component
           <FlexCenterContainer>
-            <AddTaskForm employeeId={id}/>
+            <AddTaskForm employeeId={id} name={name} clickBack={clickBack}/>
           </FlexCenterContainer>
         ) : (
           <FlexCenterContainer>
