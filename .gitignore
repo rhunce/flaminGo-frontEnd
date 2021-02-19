@@ -12,7 +12,7 @@ env/config.js
 !client/dist/index.html
 !client/dist/styles/
 !client/dist/svg/
-!client/dist/bundle.js
+
 .cache/
 *.log
 package-lock.json
