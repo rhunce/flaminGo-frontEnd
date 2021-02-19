@@ -22,6 +22,7 @@ import {
 } from '../../SampleData/SampleData.js';
 import axios from 'axios';
 import { MainContext } from '../landingPage/MainContext';
+import url from '../../lib/apiPath.js';
 
 const ListMaster = ({
   type,
@@ -31,10 +32,6 @@ const ListMaster = ({
   onClick2,
   openNewEmployee,
 }) => {
-  // useEffect(() => {
-  //   handleBackChange('black');
-  //   handleBackgroundChange('listBgContainer');
-  // });
 
   let titleTable, searchParam;
 
@@ -120,7 +117,8 @@ const ListMaster = ({
 
   const handleSearch = (e) => {
     let search = document.getElementById('searchBar').value;
-    setSearch(search);
+    let searchLower = search.toLowerCase();
+    setSearch(searchLower);
   };
 
   let searched = [];
@@ -242,7 +240,13 @@ const ListMaster = ({
     data = data.filter((task) => {
       return task.department === 'Maintenance';
     });
-  } else if (filterTerm === '') {
+  } else if (filterTerm === 'completed') {
+    axios.get(`/tasks`, { params: { isComplete: true} })
+    .then((results) => {setDataSet(results.data)})
+  } else if (filterTerm === 'uncompleted') {
+    axios.get(`/tasks`, { params: { isComplete: false} })
+    .then((results) => {setDataSet(results.data)})
+  }  else if (filterTerm === '') {
     data = data;
   }
 
@@ -277,6 +281,8 @@ const ListMaster = ({
         <option value=''>See All Tasks</option>
         <option value='housekeeping'>Housekeeping</option>
         <option value='maintenance'>Maintenance</option>
+        <option value='completed'>Completed</option>
+        <option value='uncompleted'>Uncompleted</option>
       </select>
     );
   }
@@ -338,6 +344,7 @@ const ListMaster = ({
                   onClick2={onClick2}
                   table={entryTableRooms(entity)}
                   type='room'
+                  key={entity._id}
                 />
               );
             } else if (type === 'employee') {
@@ -360,6 +367,7 @@ const ListMaster = ({
                   }}
                   table={entryTableEmployees(entity)}
                   type='employee'
+                  key={entity.id}
                 />
               );
             } else if (type === 'task') {
@@ -370,6 +378,8 @@ const ListMaster = ({
                   onClick2={onClick2}
                   table={entryTableTasks(entity)}
                   type='task'
+                  key={entity.task_id}
+                  completed={entity.isComplete}
                 />
               );
             } else if (type === 'guest') {

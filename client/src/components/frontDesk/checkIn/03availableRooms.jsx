@@ -9,10 +9,9 @@ const AvailableRooms = (props) => {
             margin="0 30px 0 30px"
             id="reservationOuterContainer"
         >
-            <div>
+            <div id="checkIn3Container">
             <div className="checkInTitleDiv"> Check-In: Available Rooms</div>
                 <div id="roomsListInnerContainer">
-                    
                     <div className='roomBox' onClick={(e)=> {props.addPage()}}> {props.selectedReservation.roomNumber} </div>
                     <div className='roomBox'> 113 </div>
                     <div className='roomBox'> 108 </div>
@@ -34,10 +33,9 @@ const AvailableRooms = (props) => {
                     <div className='roomBox'> 543 </div>
                     <div className='roomBox'> 643 </div>
                     <div className='roomBox'> 743 </div>
-             
                 </div>
+                <FormButton className='searchButtonPlacement' onClick={props.subtractPage}> Back</FormButton>
             </div>
-            <FormButton className='searchButtonPlacement' onClick={props.subtractPage}> Back</FormButton>
         </HalfRoundDiv>
     )
 }
