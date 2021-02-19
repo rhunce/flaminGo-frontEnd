@@ -1014,14 +1014,14 @@ const SearchForReservations = () => {
     setPage((prevPage) => prevPage - 1);
   };
 
-  const updateName = (e) => {
-    setName(e.target.value);
-  };
-  //   };
+//   const updateName = (e) => {
+//     setName(e.target.value);
+//   };
+//   //   };
 
-  const subtractPage = () => {
-    setPage((prevPage) => prevPage - 1);
-  };
+//   const subtractPage = () => {
+//     setPage((prevPage) => prevPage - 1);
+//   };
 
   const updateName = (e) => {
     setName(e.target.value);
