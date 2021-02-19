@@ -527,10 +527,12 @@ select {
 }
 
 #roomEntriesContainer {
+  border: black;
   padding: 20px;
-  margin: auto;
+  // margin: auto;
   height: calc(90% - 80px);
-  width: calc(60% - 40px);
+  width: calc(100% - 40px);
+    overflow: scroll;
   // display: flex;
   // flex-wrap: nowrap;
   // flex-direction: column;
@@ -539,24 +541,29 @@ select {
   // align-content: space-between
 }
 
-#roomBox {
+#roomBox_add {
   border: #e000ce solid;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin: 0 auto;
+  overflow: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   // margin: 20px 20px 20px 20px;
-  flex: 1 0 auto;
+  // flex: 1 0 auto;
 }
 
 .roomTable {
   border: #00ff0d solid;
-  margin: 0 auto;
-  height: calc(80% - 80px);
-  width: calc(48% - 40px);
+
+  margin: 20px;
+  display: block;
+  height: calc(70% - 80px);
+  width: calc(70% - 40px);
   border-radius: 30px;
   background-color: $berry;
-  overflow: scroll;
   // display: flex;
   // justify-content: space-between;
   // align-items: center;
@@ -582,12 +589,13 @@ select {
   height: calc(50% - 80px);
   margin: 0 auto;
   border-radius: 30px;
+
+  overflow: scroll;
 }
 
-//amenity List button bar
-#roomEntry {
+#setTypeButton{
   border: #1900ff solid;
-  height: 100px;
+  height: 50px;
   width: calc(100% - 40px);
   margin: 20px 20px 20px 20px;
   padding: 5px;
@@ -596,6 +604,15 @@ select {
   text-align: center;
 }
 
+//amenity List button bar
+
 #room_H3 {
   color: rgb(0, 0, 0);
+}
+
+#roomSubmitButton{
+  width: 30%;
+  height: 60%;
+  font-size: 22px;
+  padding: 15px;
 }

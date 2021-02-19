@@ -1,10 +1,15 @@
 import React from 'react';
 
-const RoomTypeList = ({ onClick1, listType, entity, type }) => {
-  console.log(' onClick1,:', onClick1, listType, entity, type);
+const RoomTypeList = ({ handleAddRooms, listType }) => {
+  // console.log(' onClick,:', handleAddRooms, listType, entity, type);
 
   return (
-    <div id='roomEntry' onClick1={(e) => onClick1(onClick1)}>
+    <div
+      id ='setTypeButton'
+      onClick={(e) => {
+        handleAddRooms(listType);
+      }}
+    >
       <h3 id='room_H3'>{listType}</h3>
     </div>
   );
