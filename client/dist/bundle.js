@@ -1275,7 +1275,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***********************/
 /***/ ((module) => {
 
-eval("module.exports = {\n  REACT_APP_AUTH0_DOMAIN: 'flamingo-tonhil.us.auth0.com',\n  REACT_APP_AUTH0_CLIENT_ID: '8f1Js3pd0s5GgPVkZfjcqNP0C5xYT6uO',\n  REACT_APP_REDIRECT_URL: 'http://localhost:3000'\n};\n\n//# sourceURL=webpack://flaminGo_front-end/./env/config.js?");
+eval("module.exports = {\n  REACT_APP_AUTH0_DOMAIN: 'flamingo-tonhil.us.auth0.com',\n  REACT_APP_AUTH0_CLIENT_ID: '8f1Js3pd0s5GgPVkZfjcqNP0C5xYT6uO',\n  // REACT_APP_AUDIENCE:'602ad4869221d00041a94c0d',\n  REACT_APP_REDIRECT_URL: 'http://localhost:3000'\n};\n\n//# sourceURL=webpack://flaminGo_front-end/./env/config.js?");
 
 /***/ }),
 
@@ -1806,9 +1806,11 @@ eval("/**\n * Copyright (c) 2014-present, Facebook, Inc.\n *\n * This source cod
 /******/ 	})();
 /******/ 	
 /************************************************************************/
+/******/ 	
 /******/ 	// startup
-/******/ 	// Load entry module
-/******/ 	__webpack_require__("./client/src/index.jsx");
-/******/ 	// This entry module used 'exports' so it can't be inlined
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./client/src/index.jsx");
+/******/ 	
 /******/ })()
 ;
