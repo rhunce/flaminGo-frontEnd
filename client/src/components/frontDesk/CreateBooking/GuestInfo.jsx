@@ -5,8 +5,9 @@ import InputTypeText from "../../styledElements/InputTypeText.jsx";
 
 let GuestInfo = (props) => {
   return (
-    <HalfRoundDiv>
-      <form onSubmit={(event) => {
+    <HalfRoundDiv id={'roomListContainer'}>
+      <h1 className="guestInfo">Guest Information</h1>
+      <form className="guestForm" onSubmit={(event) => {
         props.getGuestInfo(event);
         props.goToNext(event);
       }}>
