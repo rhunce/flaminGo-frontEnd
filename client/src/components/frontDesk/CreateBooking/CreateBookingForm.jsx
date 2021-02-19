@@ -115,8 +115,7 @@ class CreateBookingForm extends React.Component {
                 lastName={this.state.bookingGuest.lastName}
                 phone={this.state.bookingGuest.phone}
                 email={this.state.bookingGuest.email}
-                room_id={this.state.room_id}
-                roomType_id={this.state.roomType_id}
+                roomType={this.state.roomType}
                 checkIn={this.state.checkIn}
                 checkOut={this.state.checkOut}
                 guestList={this.state.guestList}
