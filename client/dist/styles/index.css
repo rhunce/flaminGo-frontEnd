@@ -280,6 +280,88 @@ input[type=checkbox]:checked label {
   background-color: white;
 }
 
+.dateForm {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.title {
+  grid-area: 2/2/3/6;
+}
+
+.from {
+  grid-area: 5/2/6/6;
+}
+
+.fromDateInput {
+  grid-area: 7/2/8/6;
+}
+
+.to {
+  grid-area: 5/8/6/12;
+}
+
+.toDateInput {
+  grid-area: 7/8/8/12;
+}
+
+.submit {
+  grid-area: 10/2/11/6;
+}
+
+#roomListContainer {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+#roomListContainer .title {
+  grid-area: 2/2/3/12;
+}
+#roomListContainer .roomList {
+  grid-area: 4/2/12/12;
+}
+#roomListContainer .guestInfo {
+  grid-area: 1/2/2/12;
+}
+#roomListContainer .guestForm {
+  grid-area: 2/2/12/12;
+}
+#roomListContainer #guestInfo {
+  display: block;
+}
+#roomListContainer #listEntry {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #ff8b03;
+}
+
+.confirmation {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.confirmation .infoList {
+  grid-area: 2/5/3/9;
+  list-style-type: none;
+}
+.confirmation .title {
+  grid-area: 1/5/2/9;
+}
+.confirmation #submitConfirm {
+  grid-area: 3/5/4/9;
+}
+
+.guestForm {
+  width: 85%;
+}
+
 .mainBox {
   display: block;
   margin: 0 auto;
