@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import HalfRoundDiv from '../../styledElements/HalfRoundDiv.jsx';
 import BigButton from '../../styledElements/BigButton.jsx';
 import ModalTitle from '../../styledElements/ModalTitle.jsx';
 import InputTypeText from '../../styledElements/InputTypeText.jsx';
@@ -10,15 +10,14 @@ import RoomTypeList from './RoomsComponents/RoomTypeList.jsx';
 import {
   roomTypeData
 } from '../../../SampleData/AmenitiesRoomType.js';
+import axios from 'axios';
 
 const AddEditRooms = ({
   type
 }) => {
 
-  let rData = roomTypeData;
-  let queryPlaceHolderRight = 'Choose Type';
-
-  const [searchQuery, setSearch] = useState('');
+  const [roomTypeState, setRoomTypeData] = useState([]);
+  const [queryInfo, setComplete] = useState('');
   const [roomFloor, setFloor] = useState('');
   const [roomNumber, setRoomNumber] = useState('');
   const [roomType, setType] = useState('');
@@ -33,10 +32,20 @@ const AddEditRooms = ({
     setRoomNumber(e.target.value);
   };
   const handleSubmit = (e) => {
-    console.log('submit is working:', e);
     event.preventDefault();
-    let params = { a: roomNumber, b: roomFloor, c: roomType };
-    setSearch(params);
+    let params = { 'roomNumber': roomNumber, 'floorNumber': roomFloor, 'roomType': roomType };
+
+    setComplete(params);
+    axios.post('/rooms', params)
+      .then(() => {
+      })
+      .catch(err => console.log(err));
+
+    // need something like component did mount
+    axios.get('/rooms/types')
+      .then(res => { setRoomTypeData(res.data); })
+      .catch(err => console.log(err));
+
   };
 
   return (
@@ -100,7 +109,7 @@ const AddEditRooms = ({
               </div>
 
               <div id='roomInnerTable2'>
-                {rData.map((oneRoomType) => {
+                {roomTypeData.map((oneRoomType) => {
                   if (type === 'ADD') {
                     return (
                       <div>
