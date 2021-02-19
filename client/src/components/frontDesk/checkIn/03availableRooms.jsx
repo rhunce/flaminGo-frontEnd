@@ -1,45 +1,65 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
 import FormButton from '../../styledElements/FormButton';
+import axios from 'axios';
+import url from '../../../lib/apiPath';
 
 const AvailableRooms = (props) => {
-    return (
-        <HalfRoundDiv
-            margin="0 30px 0 30px"
-            id="reservationOuterContainer"
+  //on mount:
+  useEffect(() => {
+    axios
+      .get(`${url}/rooms`, {
+        // params: {
+        // roomType: props.selectedReservation.room_id
+        // }
+      })
+      .then((results) => {
+        let FilteredResults = results.data
+          //the rooms that arent occupied
+          .filter((room) => room.isOccupied === false)
+          //the rooms that match the room type on the reservation
+          .filter(
+            (room) => room.roomType === props.selectedReservation.roomType
+          );
+
+        props.setRoomList(FilteredResults);
+        return;
+      })
+      .catch((err) => console.log(err, 'you have an error'));
+  }, []);
+
+  return (
+    <HalfRoundDiv margin='0 30px 0 30px' id='reservationOuterContainer'>
+      <div id='checkIn3Container'>
+        <div className='checkInTitleDiv'> Check-In: Available Rooms</div>
+        <div id='roomsListInnerContainer'>
+          {/* <div className='roomBox' onClick={(e)=> {props.addPage()}}> {props.selectedReservation.roomType} </div> */}
+          {props.roomList.map((room) => {
+            return (
+              <div
+                key={room._id}
+                className='roomBox'
+                onClick={(e) => {
+                  props.setSelectedRoom(room);
+                  props.addPage();
+                }}
+              >
+                {room.roomNumber}
+              </div>
+            );
+          })}
+        </div>
+        <FormButton
+          className='searchButtonPlacement'
+          onClick={props.subtractPage}
         >
-            <div>
-            <div className="checkInTitleDiv"> Check-In: Available Rooms</div>
-                <div id="roomsListInnerContainer">
-                    
-                    <div className='roomBox' onClick={(e)=> {props.addPage()}}> {props.selectedReservation.roomNumber} </div>
-                    <div className='roomBox'> 113 </div>
-                    <div className='roomBox'> 108 </div>
-                    <div className='roomBox'> 110 </div>
-                    <div className='roomBox'> 511 </div>
-                    <div className='roomBox'> 643 </div>
-                    <div className='roomBox'> 743 </div>
-                    <div className='roomBox'> 143 </div>
-                    <div className='roomBox'> 243 </div>
-                    <div className='roomBox'> 343 </div>
-                    <div className='roomBox'> 443 </div>
-                    <div className='roomBox'> 543 </div>
-                    <div className='roomBox'> 643 </div>
-                    <div className='roomBox'> 743 </div>
-                    <div className='roomBox'> 143 </div>
-                    <div className='roomBox'> 243 </div>
-                    <div className='roomBox'> 343 </div>
-                    <div className='roomBox'> 443 </div>
-                    <div className='roomBox'> 543 </div>
-                    <div className='roomBox'> 643 </div>
-                    <div className='roomBox'> 743 </div>
-             
-                </div>
-            </div>
-            <FormButton className='searchButtonPlacement' onClick={props.subtractPage}> Back</FormButton>
-        </HalfRoundDiv>
-    )
-}
+          {' '}
+          Back
+        </FormButton>
+      </div>
+    </HalfRoundDiv>
+  );
+};
 
 export default AvailableRooms;
