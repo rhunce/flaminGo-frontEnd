@@ -1,34 +1,24 @@
 import React from "react";
-import { roomsData } from "../../../SampleData/sampleData.js";
 import HalfRoundDiv from "../../styledElements/HalfRoundDiv.jsx";
-import FormButton from "../../styledElements/FormButton.jsx";
-import InputTypeText from "../../styledElements/InputTypeText.jsx";
+import ListEntry from './ListEntry.jsx';
+import FlexCenterContainer from '../../landingPage/FlexCenterContainer.jsx';
 
 let AvailableRooms = (props) => {
   return (
-    <div >
-      <HalfRoundDiv className={'availabileRoomsList'} id={'listContainer'}>
+    <FlexCenterContainer>
+      <HalfRoundDiv id={'listContainer'}>
         {props.availableRooms.map((room) => {
-          if (!room.isOccupied) {
-            return (
-              <div id="roomListEntry" key={room._id}>
-                {room.roomNumber}
-                <FormButton
-                  name={room._id}
-                  onClick={(event) => {
-                    props.goToNext(event);
-                    props.selectRoom(event);
-                  }}
-                  id={"roomList"}
-                >
-                  Select Room
-                </FormButton>
-              </div>
-            );
-          }
-        })}
+          return (
+            <ListEntry
+              id="roomListEntry"
+              onClick1={(event) => {
+                props.goToNext(event);
+                props.selectRoom(event);
+              }}
+              table={room}
+            />)})}
       </HalfRoundDiv>
-      </div>
+    </FlexCenterContainer>
   );
 };
 
