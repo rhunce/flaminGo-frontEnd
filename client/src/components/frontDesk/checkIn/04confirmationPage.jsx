@@ -2,8 +2,25 @@ import React from 'react';
 
 import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
 import FormButton from '../../styledElements/FormButton';
+import axios from 'axios';
+
 
 const ConfirmationPage = (props) => {
+
+    const axiosCheckInGuest = () => {
+        console.log('checking in guest with info')
+        // axios.put('/reservations/checkIn/:reservation_id', {
+        //     params: {
+        //     room_id: 
+        //     }
+        // })
+        // .then(results => {
+        //     return;
+        // })
+        // .catch(err => console.log(err, 'you have an error'))
+        return;
+    }
+
     return (
         <HalfRoundDiv
             className="mainBox"
@@ -22,7 +39,7 @@ const ConfirmationPage = (props) => {
                         </tr>
                         <tr>
                             <td>ROOM NUMBER</td>
-                            <td>{props.selectedReservation.roomNumber}</td>
+                            <td>{props.selectedRoom.roomNumber}</td>
                         </tr>
                         <tr>
                             <td>RESERVATION ID</td>
@@ -50,7 +67,7 @@ const ConfirmationPage = (props) => {
                     props.setName('');
                     props.setResId('');
                     props.addPage(1);
-
+                    axiosCheckInGuest();
                 }}
                 > 
                     Confirm
