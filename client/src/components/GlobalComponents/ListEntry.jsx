@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 
-const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
+const ListEntry = ({ table, type, onClick1, onClick2, entity, completed }) => {
 
   let entryButtons;
 
@@ -36,7 +36,7 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
 
   const markTaskComplete = () => {
     axios
-      .put(`http://localhost:7777/tasks/${entity.task_id}`, {
+      .put(`/tasks/${entity.task_id}`, {
         "employeeCompleted": user.name,
         "employeeCompleted_id": user.id,
         "isComplete": true
@@ -76,6 +76,7 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
           isOpen={rmModalStatus}
           toggle={toggleRoomDetailsModal}
           allRmData={entity}
+          key={entity._id}
         />
       </span>
     );
@@ -90,6 +91,7 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
           isOpen={rmModalStatus}
           toggle={toggleRoomDetailsModal}
           allRmData={entity}
+          key={entity._id}
         />
       </span>
     );
@@ -99,6 +101,23 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
         <FormButton margin='0 30px 0 20px' onClick={() => onClick1(entity)}>
           See Details
         </FormButton>
+      </span>
+    );
+  } else if (type === 'task' && completed === true) {
+    entryButtons = (
+      <span className='listEntryButtons'>
+        <FormButton margin='0 15px 10px 15px' onClick={toggleTaskDetailsModal}>
+          See Details
+        </FormButton>
+        <FormButton margin='0 30px 0 15px' backgroundColor="berry">
+          Completed
+        </FormButton>
+        <TaskDetailsModal
+          isOpen={taskModalStatus}
+          toggle={toggleTaskDetailsModal}
+          allTaskData={entity}
+          key={entity._id}
+        />
       </span>
     );
   } else if (type === 'task') {
@@ -114,6 +133,7 @@ const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
           isOpen={taskModalStatus}
           toggle={toggleTaskDetailsModal}
           allTaskData={entity}
+          key={entity._id}
         />
       </span>
     );
