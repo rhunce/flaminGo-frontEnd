@@ -22,7 +22,7 @@ const ConfirmationPage = (props) => {
                         </tr>
                         <tr>
                             <td>ROOM NUMBER</td>
-                            <td>{props.selectedReservation.roomNumber}</td>
+                            <td>{props.selectedRoom.roomNumber}</td>
                         </tr>
                         <tr>
                             <td>RESERVATION ID</td>
