@@ -33,6 +33,7 @@ const Button = styled.button`
  * @param {String} width - change the width of the button - default is 160px and should work for the majority of buttons
  */
 const FormButton = ({
+  name,
   children,
   onClick,
   backgroundColor,
@@ -44,6 +45,7 @@ const FormButton = ({
   width,
 }) => (
   <Button
+    name={name}
     id={id}
     type={type}
     margin={margin}

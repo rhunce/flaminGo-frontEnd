@@ -222,10 +222,21 @@ const ListMaster = ({
 
       return vacant;
     });
+  } else if (filterTerm === 'occupied') {
+    data = data.filter((room) => {
+      let occupied = room.isOccupied;
+
+      return occupied;
+    });
   } else if (filterTerm === 'cleaned') {
     data = data.filter((room) => {
       let cleaned = room.isClean;
       return cleaned;
+    });
+  } else if (filterTerm === 'uncleaned') {
+    data = data.filter((room) => {
+      let notcleaned = !room.isClean;
+      return notcleaned;
     });
   } else if (filterTerm === 'worked') {
     data = data.filter((employee) => {
@@ -259,7 +270,9 @@ const ListMaster = ({
         </option>
         <option value=''>See All Rooms</option>
         <option value='vacancy'>Vacant</option>
+        <option value='occupied'>Occupied</option>
         <option value='cleaned'>Cleaned</option>
+        <option value='uncleaned'>Uncleaned</option>
       </select>
     );
   } else if (type === 'employee') {
