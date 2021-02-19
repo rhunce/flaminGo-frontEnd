@@ -291,7 +291,6 @@ const ListMaster = ({
         <option value='' disabled hidden>
           Filter
         </option>
-        <option value=''>See All Tasks</option>
         <option value='housekeeping'>Housekeeping</option>
         <option value='maintenance'>Maintenance</option>
         <option value='completed'>Completed</option>
