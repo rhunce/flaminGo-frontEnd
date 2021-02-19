@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FormButton from "../../styledElements/FormButton.jsx";
 
-
-
 const ListEntry = ({ table, type, onClick1, onClick2, entity }) => {
   return (
     <div id='listEntry'>
