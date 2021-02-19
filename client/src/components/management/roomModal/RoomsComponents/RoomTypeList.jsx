@@ -4,7 +4,7 @@ const RoomTypeList = ({ handleAddRooms, listType }) => {
 
   return (
     <div
-      id ='setTypeButton'
+      id='setTypeButton'
       onClick={(e) => {
         handleAddRooms(listType);
       }}

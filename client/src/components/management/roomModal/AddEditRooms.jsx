@@ -1,31 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import FormButton from '../../styledElements/FormButton.jsx';
-import HalfRoundDiv from '../../styledElements/HalfRoundDiv.jsx';
 
 import BigButton from '../../styledElements/BigButton.jsx';
 import ModalTitle from '../../styledElements/ModalTitle.jsx';
 import InputTypeText from '../../styledElements/InputTypeText.jsx';
 import { colors } from '../../styledElements/styleGuid';
 
-import AmenityList from './RoomsComponents/AmenityList.jsx';
 import RoomTypeList from './RoomsComponents/RoomTypeList.jsx';
 
 import {
-  amenitiesData,
   roomTypeData
 } from '../../../SampleData/AmenitiesRoomType.js';
 
 const AddEditRooms = ({
-  type,
-  onClick1,
-  onClick2
+  type
 }) => {
 
-  console.log('componentType', type);
-
-  let aData = amenitiesData;
   let rData = roomTypeData;
-  let queryPlaceHolderLeft = 'Choose Amenity';
   let queryPlaceHolderRight = 'Choose Type';
 
   const [searchQuery, setSearch] = useState('');
@@ -33,7 +23,7 @@ const AddEditRooms = ({
   const [roomNumber, setRoomNumber] = useState('');
   const [roomType, setType] = useState('');
 
-  const handleAddRooms = ( roomTypeQuery ) => {
+  const handleAddRooms = (roomTypeQuery) => {
     setType(roomTypeQuery);
   };
   const handleFloorNumber = (e) => {
@@ -46,7 +36,7 @@ const AddEditRooms = ({
     console.log('submit is working:', e);
     event.preventDefault();
     let params = { a: roomNumber, b: roomFloor, c: roomType };
-    setSearch( params );
+    setSearch(params);
   };
 
   return (
@@ -80,7 +70,7 @@ const AddEditRooms = ({
                       placeholder='floor #'
                       margin-top='0px'
                       name='floorInfo'
-                      onChange={(e)=>handleFloorNumber(e)}
+                      onChange={(e) => handleFloorNumber(e)}
                       width="200px"
                       type='text'
                     ></InputTypeText>
@@ -97,7 +87,7 @@ const AddEditRooms = ({
                       placeholder='room #'
                       margin-top='0px'
                       name='roomNumberInfo'
-                      onChange={(e)=>handleRoomNumber(e)}
+                      onChange={(e) => handleRoomNumber(e)}
                       width="200px"
                       type='text'
                     ></InputTypeText>
@@ -132,8 +122,8 @@ const AddEditRooms = ({
             <div id='buttonRight'>
               <BigButton
                 id='roomSubmitButton'
-                onClick={ handleSubmit }
-                backgroundColor={ colors.berry }
+                onClick={handleSubmit}
+                backgroundColor={colors.berry}
                 color='white'>SUBMIT</BigButton>
             </div>
           </div>

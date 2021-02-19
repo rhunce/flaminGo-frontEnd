@@ -519,7 +519,6 @@ select {
 }
 
 //RoomAddEdit
-
 #roomContainer {
   font-family: $mainFont;
   font-weight: 400;
@@ -539,7 +538,7 @@ select {
   justify-content: center;
   align-items: center;
 }
-//HEADER
+
 #roomHeaderBox {
   font-family: $mainFont;
   margin-bottom: 0;
@@ -574,14 +573,14 @@ select {
   font-weight: bold;
   color:whitesmoke;
 }
-//INPUT BOX LABEL
+
 #roomlabel {
   font-family: $mainFont;
   font-size: 14px;
   margin-bottom: 0;
   text-transform: uppercase;
 }
-//input text
+
 #roomInputQuery1, #roomInputQuery2 {
   font-family: $mainFont;
   font-size: 18px;
@@ -595,6 +594,7 @@ select {
   justify-content: end;
   align-items: center;
 }
+
 //selecting modal
 #roomInnerTable2 {
   height: 80px;
@@ -634,7 +634,7 @@ select {
   margin-right: 45px;
 }
 
-//typeList in child component
+//typeList in a child component
 #setTypeButton{
   height: 50px;
   width: calc(100% - 40px);
