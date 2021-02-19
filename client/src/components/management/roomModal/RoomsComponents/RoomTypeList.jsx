@@ -1,6 +1,4 @@
 import React from 'react';
-// import BigButton from '../../../styledElements/BigButton.jsx';
-// import { colors } from '../../../styledElements/styleGuid';
 
 const RoomTypeList = ({ handleAddRooms, listType }) => {
 
@@ -11,7 +9,7 @@ const RoomTypeList = ({ handleAddRooms, listType }) => {
         handleAddRooms(listType);
       }}
     >
-      <div id='room_H3'>{listType}</div>
+      <div id='roomSelectText'>{listType}</div>
 
     </div>
   );

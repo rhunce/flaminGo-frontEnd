@@ -33,8 +33,20 @@ const AddEditRooms = ({
   const [roomNumber, setRoomNumber] = useState('');
   const [roomType, setType] = useState('');
 
-  const handleAddRooms = (roomTypeQuery) => {
+  const handleAddRooms = ( roomTypeQuery ) => {
     setType(roomTypeQuery);
+  };
+  const handleFloorNumber = (e) => {
+    setFloor(e.target.value);
+  };
+  const handleRoomNumber = (e) => {
+    setRoomNumber(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    console.log('submit is working:', e);
+    event.preventDefault();
+    let params = { a: roomNumber, b: roomFloor, c: roomType };
+    setSearch( params );
   };
 
   return (
@@ -46,14 +58,11 @@ const AddEditRooms = ({
           width='100vh - 60px'
           height='calc(100vh - 260px)'
         >
-
-
           <div id="roomHeaderBox">
             <ModalTitle>{
               type === 'ADD ROOM'} ADD ROOM
             </ModalTitle>
           </div>
-
 
           <div id='roomBox_add'>
             <div className='roomTable'>
@@ -62,24 +71,36 @@ const AddEditRooms = ({
                 <div id='roomInputBox'>
                   <div>
                     <div id='roomlabel'>
-                      new floor
+                      floor number
                     </div>
                     <InputTypeText
-                      minlength='25px'
-                      maxlength='40px'
-                      placeholder='floor#'
+                      id="roomInputQuery1"
+                      minlength='50px'
+                      maxlength='200px'
+                      placeholder='floor #'
                       margin-top='0px'
-                      // value={value}
-                      // onChange={onChange}
-                      // width={width}
-                      type='text'></InputTypeText>
+                      name='floorInfo'
+                      onChange={(e)=>handleFloorNumber(e)}
+                      width="200px"
+                      type='text'
+                    ></InputTypeText>
                   </div>
 
                   <div>
                     <div id='roomlabel'>
-                      new room
+                      room number
                     </div>
-                    <InputTypeText placeholder='room#'></InputTypeText>
+                    <InputTypeText
+                      id="roomInputQuery2"
+                      minlength='50px'
+                      maxlength='200px'
+                      placeholder='room #'
+                      margin-top='0px'
+                      name='roomNumberInfo'
+                      onChange={(e)=>handleRoomNumber(e)}
+                      width="200px"
+                      type='text'
+                    ></InputTypeText>
                   </div>
                 </div>
               </div>
@@ -107,14 +128,15 @@ const AddEditRooms = ({
             </div>
           </div>
 
-
           <div>
-            <BigButton
-              id='roomSubmitButton'
-              backgroundColor={colors.berry}
-              color='white'>SUBMIT</BigButton>
+            <div id='buttonRight'>
+              <BigButton
+                id='roomSubmitButton'
+                onClick={ handleSubmit }
+                backgroundColor={ colors.berry }
+                color='white'>SUBMIT</BigButton>
+            </div>
           </div>
-
 
         </HalfRoundDiv>
       </div>
