@@ -24,19 +24,6 @@ let GuestInfo = (props) => {
           id={'guestInfo'}
         />
       </form>
-      {/* <h2>Additional Guests</h2>
-      <form>
-        <h2>Guest 2</h2>
-        <InputTypeText/>
-        <InputTypeText/>
-        <h2>Guest 3</h2>
-        <InputTypeText/>
-        <InputTypeText/>
-        <h2>Guest 4</h2>
-        <InputTypeText/>
-        <InputTypeText/>
-      </form> */}
-
     </HalfRoundDiv>
   );
 };
