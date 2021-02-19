@@ -2,5 +2,6 @@ version: '3.7'
 services:
   app:
     build: .
+    command: npm start-dep
     ports:
       - '3000:3000'

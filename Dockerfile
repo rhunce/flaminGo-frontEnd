@@ -2,15 +2,15 @@ FROM node:latest
 
 ENV NODE_ENV=production 
 
-WORKDIR .
+WORKDIR /app
 
 COPY ["package.json", "package-lock.json*", "./"]
 
-RUN npm install
+RUN npm install --save --legacy-peer-deps
 
 COPY . .
 
-EXPOSE 7777
+EXPOSE 3000
 
 
 CMD ["node", "server/index.js"]
