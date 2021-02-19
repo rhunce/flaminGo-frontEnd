@@ -78,7 +78,7 @@ const FrontDeskLanding = ({ back }) => {
           />
         ) : paths.createBooking ? (
           <FlexCenterContainer>
-            <CreateBookingForm/>
+            <CreateBookingForm clickBack={clickBack}/>
           </FlexCenterContainer>
         ) : (
           <FlexCenterContainer>
