@@ -621,6 +621,10 @@ select {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: whitesmoke;
 }
 
 #roomEntriesContainer {
@@ -632,18 +636,21 @@ select {
 }
 
 #roomBox_add {
+  border: #ff2063 solid;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #roomHeaderBox {
+  border: #210af1 solid;
   font-family: "Open Sans", sans-serif;
   margin-bottom: 0;
   text-transform: uppercase;
 }
 
 .roomTable {
+  border: #5aff0e solid;
   margin-top: 0px;
   margin-left: 30px;
   margin-right: 30px;
