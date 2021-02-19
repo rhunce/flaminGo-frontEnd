@@ -72,7 +72,7 @@ class CreateBookingForm extends React.Component {
   }
 
   getAvailableRooms() {
-    axios.get('/reservations/availability/123')
+    axios.get(`/reservations/availability/123`)
       .then((reservations) => {
         let availableRoomTypes = reservations.data.results.map((rez) => {
           return rez.name;
@@ -93,7 +93,7 @@ class CreateBookingForm extends React.Component {
       guestList: this.state.guestList,
       bookingGuest: this.state.bookingGuest
     };
-    axios.post('/reservations/', body)
+    axios.post(`/reservations/`, body)
       .then((result) => {
         alert('Successfully Booked Reservation!');
       })
