@@ -324,10 +324,10 @@ input[type=checkbox]:checked label {
   grid-area: 19/5/20/8;
 }
 .addTask .dueBy {
-  grid-area: 20/5/22/8;
+  grid-area: 20/5/22/9;
 }
 .addTask .submitButton {
-  grid-area: 20/9/22/12;
+  grid-area: 20/10/22/12;
 }
 
 .mainBox {
