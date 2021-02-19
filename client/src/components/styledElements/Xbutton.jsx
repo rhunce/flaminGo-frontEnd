@@ -3,15 +3,21 @@ import React from 'react';
 import { colors } from './styleGuid';
 
 const XBtn = styled.button`
-  color: ${(props) => (props.color ? props.color : 'black')};
+  color: ${(props) => (props.color ? colors[props.color] : colors.black)};
   margin: ${(props) => (props.margin ? props.margin : '0')};
   border: none;
-  background: rgba(0,0,0,0);
+  background: rgba(0, 0, 0, 0);
   right: ${(props) => (props.right ? props.right : '0')};
   position: absolute;
   outline: none;
 `;
 
+/**
+ * @param {String} right - set the position right
+ * @param {String} color - set font color - default is white
+ * @param {Function} onClick - the onClick functionality
+ * @param {String} margin - set the margins for the element - default is html default (1em top and bottom)
+ */
 const XButton = ({ margin, onClick, right, color }) => (
   <XBtn onClick={onClick} right={right} margin={margin} color={color}>
     <svg

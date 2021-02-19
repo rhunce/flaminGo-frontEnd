@@ -6,6 +6,7 @@ import timeSheetTemplate from './timeSheetTemplate';
 import useTimeSheet from './useTimeSheet';
 import { MainContext } from '../../landingPage/MainContext';
 import axios from 'axios';
+import url from '../../../lib/apiPath';
 
 const FlexContainer = styled.div`
   display: flex;
@@ -40,7 +41,7 @@ const TimeSheetFormList = ({ selectedWeek, back }) => {
 
   const submit = (e) => {
     axios
-      .put(`/timesheets`, { ...timeSheet, employee_id: id })
+      .put(`${url}/timesheets`, { ...timeSheet, employee_id: id })
       .then(() => {
         console.log('yay');
         back();
