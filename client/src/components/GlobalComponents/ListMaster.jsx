@@ -22,6 +22,7 @@ import {
 } from '../../SampleData/SampleData.js';
 import axios from 'axios';
 import { MainContext } from '../landingPage/MainContext';
+import url from '../../lib/apiPath';
 
 const ListMaster = ({
   type,
@@ -46,15 +47,15 @@ const ListMaster = ({
     handleBackgroundChange('listBgContainer');
 
     if (type === 'room') {
-      axios.get('/rooms/').then((data) => {
+      axios.get(`${url}/rooms/`).then((data) => {
         setDataSet(data.data);
       });
     } else if (type === 'employee') {
-      axios.get('/employees/').then((data) => {
+      axios.get(`${url}/employees/`).then((data) => {
         setDataSet(data.data);
       });
     } else if (type === 'task') {
-      axios.get('/tasks/').then((data) => {
+      axios.get(`${url}/tasks/`).then((data) => {
         setDataSet(data.data);
       });
     }
@@ -348,9 +349,9 @@ const ListMaster = ({
                   onClick2={(entity) => {
                     console.log(entity);
                     axios
-                      .delete(`/employees/${entity.id}`)
+                      .delete(`${url}/employees/${entity.id}`)
                       .then(() => {
-                        axios.get('/employees/').then(({ data }) => {
+                        axios.get(`${url}/employees/`).then(({ data }) => {
                           setDataSet(data);
                         });
                       })

@@ -3,6 +3,7 @@ import Search from './Search';
 import Results from './Results';
 import Confirmation from './Confirmation';
 import axios from 'axios';
+import url from '../../../lib/apiPath';
 
 class CheckoutLanding extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class CheckoutLanding extends React.Component {
       inputLastName: '',
       inputReservationId: '',
       inputcheckOutDate: '',
-      inputRoomNumber: ''
+      inputRoomNumber: '',
     };
     this.nextPageClickHandler = this.nextPageClickHandler.bind(this);
   }
@@ -26,19 +27,22 @@ class CheckoutLanding extends React.Component {
         firstName,
         lastName,
         checkOut: checkOutDate,
-        reservation_id: reservationId
+        reservation_id: reservationId,
       };
       for (let key in inputParams) {
         if (inputParams[key] === '') {
           delete inputParams[key];
         }
       }
-      axios.get('/reservations', { params: inputParams })
-        .then(({data}) => {
+      axios
+        .get(`${url}/reservations`, { params: inputParams })
+        .then(({ data }) => {
           if (data.length === 0) {
             alert('No reservation found.');
           } else if (data.length > 1) {
-            alert('Please input more information to narrow reservation search results.');
+            alert(
+              'Please input more information to narrow reservation search results.'
+            );
           } else {
             const roomNumber = data[0].roomNumber;
             const reservationId = data[0]._id;
@@ -50,7 +54,7 @@ class CheckoutLanding extends React.Component {
               inputLastName: name.split(' ')[1],
               inputReservationId: reservationId,
               inputcheckOutDate: checkOutDate,
-              inputRoomNumber: roomNumber
+              inputRoomNumber: roomNumber,
             });
           }
         })
@@ -59,8 +63,9 @@ class CheckoutLanding extends React.Component {
         });
     } else if (this.state.resultsPage === true) {
       const reservationIdToCheckOut = this.state.inputReservationId;
-      axios.put(`/reservations/checkOut/${reservationIdToCheckOut}`)
-        .then(({data}) => {
+      axios
+        .put(`${url}/reservations/checkOut/${reservationIdToCheckOut}`)
+        .then(({ data }) => {
           this.setState({
             resultsPage: !this.state.resultsPage,
             checkoutConfirmedPage: !this.state.checkoutConfirmedPage,
@@ -75,9 +80,19 @@ class CheckoutLanding extends React.Component {
   render() {
     return (
       <div>
-        {this.state.searchPage === true ?
-          <Search nextPageClickHandler={this.nextPageClickHandler}/> :
-          this.state.resultsPage === true ? <Results inputFirstName={this.state.inputFirstName} inputLastName={this.state.inputLastName} inputReservationId={this.state.inputReservationId} inputRoomNumber={this.state.inputRoomNumber} nextPageClickHandler={this.nextPageClickHandler}/> : <Confirmation />}
+        {this.state.searchPage === true ? (
+          <Search nextPageClickHandler={this.nextPageClickHandler} />
+        ) : this.state.resultsPage === true ? (
+          <Results
+            inputFirstName={this.state.inputFirstName}
+            inputLastName={this.state.inputLastName}
+            inputReservationId={this.state.inputReservationId}
+            inputRoomNumber={this.state.inputRoomNumber}
+            nextPageClickHandler={this.nextPageClickHandler}
+          />
+        ) : (
+          <Confirmation />
+        )}
       </div>
     );
   }
