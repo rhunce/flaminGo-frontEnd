@@ -71,7 +71,7 @@ CHECK-IN / CHECK-OUT
   line-height: 33px;
 }
 input.inputs {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 .centeredInputBars {
   margin: auto;
@@ -83,7 +83,7 @@ input.inputs {
   margin: auto;
   width: 50%;
   height: 50%;
-  padding-top: 6%;
+  padding-top: 3%;
 }
 .searchButtonPlacement {
   margin: auto;
@@ -93,7 +93,7 @@ input.inputs {
 #searchButtonPlacement {
   margin: auto;
   width: 158px;
-  margin-top: 50px;
+  margin-top: 70px;
   background-color: $berry;
 }
 .tables {
@@ -170,7 +170,7 @@ td {
 .listHeaderSearch {
   border: 1px $berry solid;
   height: 40px;
-  width: 450px;
+  width: 300px;
   display: block;
   float: right;
   padding: 0 0 0 10px;
@@ -227,15 +227,16 @@ td {
 .entryTable th {
   font-weight: 400;
   width: 200px;
+  color: black;
 }
 
 .listEntryText {
-  color: black;
   margin: 0 0 0 20px;
 }
 
 .listEntryButtons {
   float: right;
+  justify-content: right;
 }
 
 /*Dropdown Test*/
@@ -324,22 +325,47 @@ input[type='checkbox']:checked label {
 }
 
 .searchButtonPlacement {
-  margin: auto;
-  width: 158px;
+
 }
 
 #reservationOuterContainer {
   margin: auto;
+}
+
+#checkIn2Container {
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#reservationTitle {
+  font-family: $mainFont;
+  font-weight: 700;
+  margin: 20px 0 0 0;
+  text-align: center;
+  font-size: 30px;
+}
+
+#reservationSubTitle {
+  font-family: $mainFont;
+  font-weight: 700;
+  margin: 0 0 30px 0;
+  text-align: center;
+  font-size: 18px;
+}
+
+.resSearch {
+  font-weight: 400;
 }
 
 #reservationInnerContainer {
-  width: 840px;
-  height: 440px;
+  width: 900px;
+  height: 350px;
   background-image: $berryToGrape;
-  margin: auto;
   border-radius: 30px;
-  overflow: scroll;
+  margin: 0 0 30px 0;
 }
 
 #roomsListInnerContainer {
@@ -409,6 +435,12 @@ input[type='checkbox']:checked label {
 
 }
 
+#listEntriesScroll {
+  margin: 0 20px 20px 0;
+  height: 290px;
+  overflow: scroll;
+}
+
 #listEntryMini {
   height: 100px;
   width: calc(100% - 40px);
@@ -422,6 +454,7 @@ input[type='checkbox']:checked label {
 
 #listEntryMini:hover{
   background-color: $grape;
+  color: white;
   cursor:pointer;
 }
 
@@ -480,12 +513,15 @@ select {
   line-height: 2;
   font-family: $mainFont;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 5fr 1fr;
+  margin: 50px 0 0 0;
 }
 
 .roomDetails div {
   grid-column-start: 2;
   grid-column-end: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .roomDetailsHeader {
@@ -493,16 +529,20 @@ select {
   font-family: $mainFont;
   font-weight: 700;
   color: black;
+  font-size: 22px;
 }
 
 .detailsTitle {
-  font-weight: 600;
+  font-weight: 700;
 }
+
+// .detailsContent {
+//   float: right;
+// }
 
 .closeRmDetails {
   margin-left: auto;
   margin-right: auto;
-  display: block;
   font-size: 14px;
   font-family: Open Sans,sans-serif;
   font-weight: 400;
@@ -512,11 +552,11 @@ select {
   border-radius: 20px;
   width: 160px;
   height: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  outline: none;
 }
 
-.listEntryButtons {
-  float: right;
-}
 
 //RoomAddEdit
 
@@ -600,3 +640,25 @@ select {
 #room_H3 {
   color: rgb(0, 0, 0);
 }
+
+#roomDetailsContainer {
+  background-color: white;
+  width: 60%;
+  border-radius: 0 30px 0 30px;
+  overflow: scroll;
+}
+
+@media only screen and (max-width: 1300px) {
+  .titleTable th {
+    width: 120px;
+    border-right: solid 1px white;
+    font-weight: 600;
+  }
+
+  .entryTable th {
+    font-weight: 400;
+    width: 120px;
+  }
+
+}
+

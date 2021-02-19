@@ -79,7 +79,7 @@ const CheckInReservationList = ({name, resId, reservationData, addPage, subtract
         >
           <div id="reservationInnerContainer">
             <div id="listEntriesHeaderMini"><TitleTableCheckIn/></div>
-                no results found
+                No results found
           </div>
           <FormButton className='searchButtonPlacement' onClick={subtractPage}> Back</FormButton>
         </HalfRoundDiv>
@@ -89,21 +89,27 @@ const CheckInReservationList = ({name, resId, reservationData, addPage, subtract
   return (
 
       <HalfRoundDiv
-        margin="0 30px 0 30px"
+        margin="0 30px 30px 30px"
         id="reservationOuterContainer"
+        width="1200px"
       >
-        <div>Search results for: Name:{name} Res ID: {resId}</div>
+        <div id="checkIn2Container">
+        <div id="reservationTitle">Search Results for:</div>
+        <div id="reservationSubTitle"> Name:&nbsp;&nbsp;<span className="resSearch">{name}</span> <br/>Reservation ID:&nbsp;&nbsp; <span className="resSearch">{resId}</span></div>
         <div id="reservationInnerContainer">
           <div id="listEntriesHeaderMini"><TitleTableCheckIn/></div>
+          <div id="listEntriesScroll">
           {reservationData.map((reservation, index) => {
-            return <ListEntryMini 
-            reservation={reservation} 
-            addPage={addPage} 
-            updateSelectedReservation={updateSelectedReservation} 
+            return <ListEntryMini
+            reservation={reservation}
+            addPage={addPage}
+            updateSelectedReservation={updateSelectedReservation}
             value={index}/>
           })}
+          </div>
         </div>
         <FormButton className='searchButtonPlacement' onClick={subtractPage}> Back</FormButton>
+        </div>
       </HalfRoundDiv>
 
   );

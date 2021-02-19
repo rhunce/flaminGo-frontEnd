@@ -1,6 +1,6 @@
 export const fields = [
-  { field: 'firstName', name: 'First Name', mandatory: true },
-  { field: 'lastName', name: 'Last Name', mandatory: true },
+  { field: 'name', name: 'Name', mandatory: true },
+
   { field: 'address1', name: 'Address 1', mandatory: true },
   { field: 'address2', name: 'Address 2' },
   { field: 'city', name: 'City', mandatory: true },
