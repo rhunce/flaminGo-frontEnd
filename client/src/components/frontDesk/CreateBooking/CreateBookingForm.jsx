@@ -14,7 +14,7 @@ class CreateBookingForm extends React.Component {
       dateForm: true,
       roomList: false,
       guestInfo: false,
-      bookingClient: {
+      bookingGuest: {
         firstName: '',
         lastName: '',
         phone: '',
@@ -22,6 +22,7 @@ class CreateBookingForm extends React.Component {
       },
       room_id: '',
       roomType_id: '',
+      roomType: '',
       checkIn: '',
       checkOut: '',
       guestList: []
@@ -30,11 +31,12 @@ class CreateBookingForm extends React.Component {
     this.goToNext = this.goToNext.bind(this);
     this.selectRoom = this.selectRoom.bind(this);
     this.getGuestInfo = this.getGuestInfo.bind(this);
+    this.submitBooking = this.submitBooking.bind(this);
   }
 
   getGuestInfo(event) {
     event.preventDefault();
-    this.setState({ bookingClient: {
+    this.setState({ bookingGuest: {
       firstName: event.target[0].value,
       lastName: event.target[1].value,
       phone: event.target[2].value,
@@ -66,23 +68,36 @@ class CreateBookingForm extends React.Component {
 
   selectRoom(event) {
     event.preventDefault();
-    console.log(event.target);
-    this.setState({room_id: event.target.name});
+    this.setState({roomType: event.target.name});
   }
 
   getAvailableRooms() {
-    axios.get('/rooms/')
-      .then((rooms) => {
-        console.log(rooms.data);
-        this.setState({availableRooms: rooms.data});
+    axios.get('/reservations/availability/123')
+      .then((reservations) => {
+        let availableRoomTypes = reservations.data.results.map((rez) => {
+          return rez.name;
+        });
+        this.setState({availableRooms: availableRoomTypes});
       })
       .catch((error) => { console.log(error); });
   }
 
+  //expected POST request body
+  // let { roomType, checkIn, checkOut, guestList, bookingGuest } = req.body;
+
   submitBooking() {
-    axios.post()
-      .then()
-      .catch();
+    let body = {
+      roomType: this.state.roomType,
+      checkIn: this.state.checkIn,
+      checkOut: this.state.checkOut,
+      guestList: this.state.guestList,
+      bookingGuest: this.state.bookingGuest
+    };
+    axios.post('/reservations/', body)
+      .then((result) => {
+        alert('Successfully Booked Reservation!');
+      })
+      .catch((error) => {console.log(error)});
   }
 
   componentDidMount() {
@@ -96,15 +111,17 @@ class CreateBookingForm extends React.Component {
           : this.state.roomList ? <AvailableRooms selectRoom={this.selectRoom} goToNext={this.goToNext} availableRooms={this.state.availableRooms}/>
             : this.state.guestInfo ? <GuestInfo getGuestInfo={this.getGuestInfo} goToNext={this.goToNext}/>
               : <ConfirmationPage
-                firstName={this.state.bookingClient.firstName}
-                lastName={this.state.bookingClient.lastName}
-                phone={this.state.bookingClient.phone}
-                email={this.state.bookingClient.email}
+                firstName={this.state.bookingGuest.firstName}
+                lastName={this.state.bookingGuest.lastName}
+                phone={this.state.bookingGuest.phone}
+                email={this.state.bookingGuest.email}
                 room_id={this.state.room_id}
                 roomType_id={this.state.roomType_id}
                 checkIn={this.state.checkIn}
                 checkOut={this.state.checkOut}
                 guestList={this.state.guestList}
+                submitBooking={this.submitBooking}
+                clickBack={this.props.clickBack}
               />}
       </HalfRoundDiv>
     );
