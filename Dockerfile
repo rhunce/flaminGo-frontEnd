@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY ["package.json", "package-lock.json*", "./"]
 
-RUN npm install --save --legacy-peer-deps
+RUN npm install
 
 COPY . .
 

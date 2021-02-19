@@ -43,7 +43,6 @@ const TimeSheetFormList = ({ selectedWeek, back }) => {
     axios
       .put(`${url}/timesheets`, { ...timeSheet, employee_id: id })
       .then(() => {
-        console.log('yay');
         back();
       })
       .catch((err) => {

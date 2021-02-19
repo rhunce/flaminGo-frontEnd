@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import url from '../../../lib/apiPath';
 const useTimeSheet = ({ userId, initialState = {} }, back) => {
-  console.log(userId);
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
@@ -24,7 +23,6 @@ const useTimeSheet = ({ userId, initialState = {} }, back) => {
     }
   }, []);
 
-  console.log(state);
   return [state, setState];
 };
 
