@@ -976,7 +976,7 @@ const SearchForReservations = () => {
   //functions
   const axiosRequestForName = () => {
     axios
-      .get('/reservations', {
+      .get(`${url}/reservations`, {
         params: {
           firstName: name,
         },
@@ -990,7 +990,7 @@ const SearchForReservations = () => {
 
   const axiosRequestForResId = () => {
     axios
-      .get('/reservations', {
+      .get(`${url}/reservations`, {
         params: {
           reservation_id: resId,
         },
