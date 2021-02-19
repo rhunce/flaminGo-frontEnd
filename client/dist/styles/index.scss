@@ -290,7 +290,7 @@ input[type='checkbox']:checked label {
 @import './createBooking';
 
   //created separate stylesheet for AddTaskForm
-@import 'addTask';
+// @import 'addTask';
 
   // checkin CSS
 
@@ -561,82 +561,150 @@ select {
 
 
 //RoomAddEdit
-
 #roomContainer {
   font-family: $mainFont;
   font-weight: 400;
   font-size: 18px;
 }
 
-
 #roomEntriesContainer {
-  padding: 20px;
-  margin: auto;
-  height: calc(90% - 80px);
-  width: calc(60% - 40px);
-  // display: flex;
-  // flex-wrap: nowrap;
-  // flex-direction: column;
-  // justify-content: start;
-  // align-items: center;
-  // align-content: space-between
+  padding: 30px;
+  display: flex;
+  height: calc(60% - 80px);
+  width: calc(100% - 40px);
+  flex-direction: column;
 }
 
-#roomBox {
-  border: #e000ce solid;
+#roomBox_add {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  // margin: 20px 20px 20px 20px;
-  flex: 1 0 auto;
+}
+
+#roomHeaderBox {
+  font-family: $mainFont;
+  margin-bottom: 0;
+  text-transform: uppercase;
 }
 
 .roomTable {
-  border: #00ff0d solid;
-  margin: 0 auto;
-  height: calc(80% - 80px);
-  width: calc(48% - 40px);
+  margin-top: 0px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  display: block;
+  height: calc(90% - 80px);
+  width: calc(90% - 40px);
   border-radius: 30px;
   background-color: $berry;
-  overflow: scroll;
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: center;
-  // margin: 0 20px 20px 20px;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
 }
 
 #roomInnerTable1 {
-  border: #d0ff00 solid;
   height: 100px;
   width: calc(100% - 40px);
   height: calc(100% - 80px);
-  margin: 0 auto;
-  border-radius: 30px;
+  margin: 40px 0 0 15px;
+  border-radius: 20px;
 }
 
+#roomInputBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  color:whitesmoke;
+}
+
+#roomlabel {
+  font-family: $mainFont;
+  font-size: 14px;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+#roomInputQuery1, #roomInputQuery2 {
+  font-family: $mainFont;
+  font-size: 18px;
+  padding: 7px 7px 7px 7px;
+}
+
+#roomInputBoxInside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  align-items: center;
+}
+
+//selecting modal
 #roomInnerTable2 {
-  border: #d0ff00 solid;
-  height: 100px;
+  height: 80px;
   width: calc(100% - 40px);
-  height: calc(50% - 80px);
-  margin: 0 auto;
-  border-radius: 30px;
+  height: calc(100% - 80px);
+  margin: 0 0 15px 15px;
+  border-radius: 20px;
+  max-height: 400px;
+  overflow-y: scroll;
+  position : relative; bottom:0;
 }
 
-//amenity List button bar
-#roomEntry {
-  border: #1900ff solid;
-  height: 100px;
+#roomInnerTable3 {
+  margin: 0 20px 10px 20px;
+  padding-bottom: 10px;
+}
+
+#roomSubmitButton{
+  width: 42%;
+  height: 60%;
+  font-size: 22px;
+  padding: 15px;
+  margin-bottom: 30px;
+  background-color: $clementine;
+}
+
+#roomSubmitButton:hover{
+  background-color: $carrot;
+  cursor:pointer;
+}
+
+#buttonRight {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-content: start;
+  margin-right: 45px;
+}
+
+//typeList in a child component
+#setTypeButton{
+  height: 50px;
   width: calc(100% - 40px);
-  margin: 20px 20px 20px 20px;
   padding: 5px;
   border-radius: 30px;
   background-color: white;
   text-align: center;
+  margin: 10px 10px 15px 0;
+}
+
+#roomSelectText {
+  font-family: $mainFont;
+  font-size: 20px;
+  font-weight: bold;
+  color: $berry;
+  border: none;
+  border-radius: 50px;
+  width: 400px;
+  height: 110px;
+  outline: none;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+#roomSelectText:hover{
+  color: $grape;
+  cursor: pointer;
 }
 
 #room_H3 {
