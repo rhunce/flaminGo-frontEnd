@@ -4,24 +4,28 @@ import BigButton from '../../styledElements/BigButton.jsx';
 import ModalTitle from '../../styledElements/ModalTitle.jsx';
 import InputTypeText from '../../styledElements/InputTypeText.jsx';
 import { colors } from '../../styledElements/styleGuid';
-
 import RoomTypeList from './RoomsComponents/RoomTypeList.jsx';
+import axios from 'axios';
 
+//sampleData
 import {
   roomTypeData
 } from '../../../SampleData/AmenitiesRoomType.js';
-import axios from 'axios';
 
 const AddEditRooms = ({
   type
 }) => {
 
   const [roomTypeState, setRoomTypeData] = useState([]);
-  const [queryInfo, setComplete] = useState('');
   const [roomFloor, setFloor] = useState('');
   const [roomNumber, setRoomNumber] = useState('');
   const [roomType, setType] = useState('');
 
+  useEffect(() => {
+    axios.get('/rooms/types')
+      .then(res => { setRoomTypeData(res.data); })
+      .catch(err => console.log(err));
+  });
   const handleAddRooms = (roomTypeQuery) => {
     setType(roomTypeQuery);
   };
@@ -34,17 +38,15 @@ const AddEditRooms = ({
   const handleSubmit = (e) => {
     event.preventDefault();
     let params = { 'roomNumber': roomNumber, 'floorNumber': roomFloor, 'roomType': roomType };
-
-    setComplete(params);
-    axios.post('/rooms', params)
-      .then(() => {
-      })
-      .catch(err => console.log(err));
-
-    // need something like component did mount
-    axios.get('/rooms/types')
-      .then(res => { setRoomTypeData(res.data); })
-      .catch(err => console.log(err));
+    if (!roomNumber || !roomFloor || !roomType) {
+      alert('There is missing information, Please fill it out!');
+    } else {
+      axios.post('/rooms', params)
+        .then(() => {
+          alert('Completed');
+        })
+        .catch(err => console.log(err));
+    }
 
   };
 
@@ -109,7 +111,7 @@ const AddEditRooms = ({
               </div>
 
               <div id='roomInnerTable2'>
-                {roomTypeData.map((oneRoomType) => {
+                {roomTypeState.map((oneRoomType) => {
                   if (type === 'ADD') {
                     return (
                       <div>
