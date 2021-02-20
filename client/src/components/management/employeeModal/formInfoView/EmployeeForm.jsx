@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { EmployeeContext } from '../EmployeeContext';
 import ModalTitle from '../../../styledElements/ModalTitle';
-import FormRow from './FormRow';
+import FormRow from '../../../styledElements/FormRow';
 import FormButton from '../../../styledElements/FormButton';
 import PositionDropDown from './PositionDropDown';
 import { fields, mandatory } from './employeeFormConstants';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ListMaster from '../GlobalComponents/ListMaster';
-import FlexCenterContainer from '../landingPage/FlexCenterContainer';
+import FlexCenterContainer from '../styledElements/FlexCenterContainer';
 import EmployeeContainer from './employeeModal/EmployeeContainer';
 
 const ViewEmployeeList = ({ setBackColor, setListBackground }) => {

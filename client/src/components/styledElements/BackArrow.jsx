@@ -18,10 +18,10 @@ const Button = styled.button`
 `;
 
 /**
- * @param {String} margin - set the margins for the element - default is 0
+ * @param {String} margin - set the margins for the element - @default 0
  * this is using margin shorthand property https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#margin_and_padding_properties
  * @param {Function} onClick - the onClick functionality
- * @param {String} color - set font color - default is white
+ * @param {String} color - set font color - @default white
  * @param {String} location - a string representing the location the arrow points to - i.e. `To ${location}` this is only revealed on hover
  */
 const BackArrow = ({ margin, color, onClick, location }) => (

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import LandingButtons from '../landingPage/LandingButtons';
-import useChoosePath from '../landingPage/useChoosePath';
+import LandingButtons from '../GlobalComponents/landingPage/LandingButtons';
+import useChoosePath from '../GlobalComponents/landingPage/useChoosePath';
 import BackArrow from '../styledElements/BackArrow';
-import FlexCenterContainer from '../landingPage/FlexCenterContainer';
+import FlexCenterContainer from '../styledElements/FlexCenterContainer';
 import ViewEmployeeList from './viewEmployeeList';
 import ViewAddEditRoom from './ViewAddEditRoom.jsx';
 

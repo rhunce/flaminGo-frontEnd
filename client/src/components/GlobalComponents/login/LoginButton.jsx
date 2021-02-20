@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import FormButton from '../styledElements/FormButton';
+import FormButton from '../../styledElements/FormButton';
 
 const LoginButton = (authenticated) => {
   const { loginWithRedirect } = useAuth0();

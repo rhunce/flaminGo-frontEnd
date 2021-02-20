@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 import MainHeader from './GlobalComponents/Header.jsx';
-import Landing from './landingPage/MainLanding';
-import Login from './login/Login.jsx';
+import Landing from './GlobalComponents/landingPage/MainLanding';
+import Login from './GlobalComponents/login/Login';
 import { useAuth0 } from '@auth0/auth0-react';
-import useChoosePath from './landingPage/useChoosePath.jsx';
+import useChoosePath from './GlobalComponents/landingPage/useChoosePath.jsx';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 const App = () => {
@@ -21,15 +20,17 @@ const App = () => {
 
   if (isLoading) {
     return (
-      <div style={{
-        position: 'fixed',
-        width: '100vw',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-        <ClipLoader color="#ffffff" loading size={80} />
+      <div
+        style={{
+          position: 'fixed',
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <ClipLoader color='#ffffff' loading size={80} />
       </div>
     );
   }
