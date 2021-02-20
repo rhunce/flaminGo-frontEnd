@@ -1,5 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react';
 import axios from 'axios';
+import url from '../../../lib/apiPath';
 
 const dataMapper = (data, employee) =>
   data.map((sheet) => {
@@ -25,7 +26,7 @@ export const EmployeeProvider = ({ children, employee }) => {
     if (!newEmployee) {
       console.log(employeeData);
       axios
-        .get(`/timesheets/${employee.id}`, { params: { count: 20 } })
+        .get(`${url}/timesheets/${employee.id}`, { params: { count: 20 } })
         .then(({ data }) => {
           setTimeSheetList(dataMapper(data, employeeData));
         });

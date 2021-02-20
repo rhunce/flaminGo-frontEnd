@@ -1,10 +1,11 @@
-import React from "react";
-import HalfRoundDiv from "../../styledElements/HalfRoundDiv.jsx";
-import SearchByDate from "./SearchByDate.jsx";
+import React from 'react';
+import HalfRoundDiv from '../../styledElements/HalfRoundDiv.jsx';
+import SearchByDate from './SearchByDate.jsx';
 import AvailableRooms from './AvailableRooms.jsx';
 import GuestInfo from './GuestInfo.jsx';
 import ConfirmationPage from './ConfirmationPage.jsx';
 import axios from 'axios';
+import url from '../../../lib/apiPath';
 
 class CreateBookingForm extends React.Component {
   constructor(props) {
@@ -18,14 +19,14 @@ class CreateBookingForm extends React.Component {
         firstName: '',
         lastName: '',
         phone: '',
-        email: ''
+        email: '',
       },
       room_id: '',
       roomType_id: '',
       roomType: '',
       checkIn: '',
       checkOut: '',
-      guestList: []
+      guestList: [],
     };
     this.inputDate = this.inputDate.bind(this);
     this.goToNext = this.goToNext.bind(this);
@@ -36,50 +37,55 @@ class CreateBookingForm extends React.Component {
 
   getGuestInfo(event) {
     event.preventDefault();
-    this.setState({ bookingGuest: {
-      firstName: event.target[0].value,
-      lastName: event.target[1].value,
-      phone: event.target[2].value,
-      email: event.target[3].value
-    }});
+    this.setState({
+      bookingGuest: {
+        firstName: event.target[0].value,
+        lastName: event.target[1].value,
+        phone: event.target[2].value,
+        email: event.target[3].value,
+      },
+    });
   }
 
   goToNext(event) {
     event.preventDefault();
     if (event.target.id === 'dateForm') {
-      this.setState({dateForm: false, roomList: true});
+      this.setState({ dateForm: false, roomList: true });
       //also need to set state of event.target.value
     } else if (event.target.id === 'roomList') {
-      this.setState({roomList: false, guestInfo: true});
+      this.setState({ roomList: false, guestInfo: true });
       //also need to set state of event.target.value
     } else {
-      this.setState({guestInfo: false});
+      this.setState({ guestInfo: false });
     }
   }
 
   inputDate(event) {
     event.preventDefault();
     if (event.target.name === 'checkIn') {
-      this.setState({checkIn: event.target.value});
+      this.setState({ checkIn: event.target.value });
     } else if (event.target.name === 'checkOut') {
-      this.setState({checkOut: event.target.value});
+      this.setState({ checkOut: event.target.value });
     }
   }
 
   selectRoom(event) {
     event.preventDefault();
-    this.setState({roomType: event.target.name});
+    this.setState({ roomType: event.target.name });
   }
 
   getAvailableRooms() {
-    axios.get(`/reservations/availability/123`)
+    axios
+      .get(`${url}/reservations/availability/123`)
       .then((reservations) => {
         let availableRoomTypes = reservations.data.results.map((rez) => {
           return rez.name;
         });
-        this.setState({availableRooms: availableRoomTypes});
+        this.setState({ availableRooms: availableRoomTypes });
       })
-      .catch((error) => { console.log(error); });
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   //expected POST request body
@@ -91,13 +97,16 @@ class CreateBookingForm extends React.Component {
       checkIn: this.state.checkIn,
       checkOut: this.state.checkOut,
       guestList: this.state.guestList,
-      bookingGuest: this.state.bookingGuest
+      bookingGuest: this.state.bookingGuest,
     };
-    axios.post(`/reservations/`, body)
+    axios
+      .post(`${url}/reservations/`, body)
       .then((result) => {
         alert('Successfully Booked Reservation!');
       })
-      .catch((error) => {console.log(error)});
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   componentDidMount() {
@@ -107,21 +116,33 @@ class CreateBookingForm extends React.Component {
   render() {
     return (
       <HalfRoundDiv>
-        {this.state.dateForm ? <SearchByDate inputDate={this.inputDate} goToNext={this.goToNext}/>
-          : this.state.roomList ? <AvailableRooms selectRoom={this.selectRoom} goToNext={this.goToNext} availableRooms={this.state.availableRooms}/>
-            : this.state.guestInfo ? <GuestInfo getGuestInfo={this.getGuestInfo} goToNext={this.goToNext}/>
-              : <ConfirmationPage
-                firstName={this.state.bookingGuest.firstName}
-                lastName={this.state.bookingGuest.lastName}
-                phone={this.state.bookingGuest.phone}
-                email={this.state.bookingGuest.email}
-                roomType={this.state.roomType}
-                checkIn={this.state.checkIn}
-                checkOut={this.state.checkOut}
-                guestList={this.state.guestList}
-                submitBooking={this.submitBooking}
-                clickBack={this.props.clickBack}
-              />}
+        {this.state.dateForm ? (
+          <SearchByDate inputDate={this.inputDate} goToNext={this.goToNext} />
+        ) : this.state.roomList ? (
+          <AvailableRooms
+            selectRoom={this.selectRoom}
+            goToNext={this.goToNext}
+            availableRooms={this.state.availableRooms}
+          />
+        ) : this.state.guestInfo ? (
+          <GuestInfo
+            getGuestInfo={this.getGuestInfo}
+            goToNext={this.goToNext}
+          />
+        ) : (
+          <ConfirmationPage
+            firstName={this.state.bookingGuest.firstName}
+            lastName={this.state.bookingGuest.lastName}
+            phone={this.state.bookingGuest.phone}
+            email={this.state.bookingGuest.email}
+            roomType={this.state.roomType}
+            checkIn={this.state.checkIn}
+            checkOut={this.state.checkOut}
+            guestList={this.state.guestList}
+            submitBooking={this.submitBooking}
+            clickBack={this.props.clickBack}
+          />
+        )}
       </HalfRoundDiv>
     );
   }

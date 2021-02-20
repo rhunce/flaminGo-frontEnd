@@ -6,6 +6,7 @@ import FormButton from '../../../styledElements/FormButton';
 import PositionDropDown from './PositionDropDown';
 import { fields, mandatory } from './employeeFormConstants';
 import axios from 'axios';
+import url from '../../../../lib/apiPath';
 import styled from 'styled-components';
 
 const FlexDiv = styled.div`
@@ -51,12 +52,12 @@ const EmployeeForm = ({ back }) => {
         lastName,
       };
       if (newEmployee) {
-        axios.post(`/employees`, user).then(() => {
+        axios.post(`${url}/employees`, user).then(() => {
           back();
         });
       } else {
         axios
-          .put(`/employees/${employee.id}`, user)
+          .put(`${url}/employees/${employee.id}`, user)
           .then(() => {
             back();
           })

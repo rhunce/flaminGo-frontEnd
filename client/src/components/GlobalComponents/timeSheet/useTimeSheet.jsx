@@ -1,14 +1,13 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-
+import url from '../../../lib/apiPath';
 const useTimeSheet = ({ userId, initialState = {} }, back) => {
-  console.log(userId);
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
     {
       axios
-        .get(`/timesheets/${userId}`, { params: { count: 1 } })
+        .get(`${url}/timesheets/${userId}`, { params: { count: 1 } })
         .then(({ data }) => {
           const today = parseInt(
             new Date().toISOString().slice(0, 10).split('-').join('')
@@ -24,7 +23,6 @@ const useTimeSheet = ({ userId, initialState = {} }, back) => {
     }
   }, []);
 
-  console.log(state);
   return [state, setState];
 };
 

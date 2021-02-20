@@ -18,7 +18,7 @@ $semiBold: 600;
 $bold: 700;
 
 h1 {
-  color: $grape;
+  color: black;
 }
 html {
   height: 100%;
@@ -290,7 +290,7 @@ input[type='checkbox']:checked label {
 @import './createBooking';
 
   //created separate stylesheet for AddTaskForm
-// @import 'addTask';
+@import 'addTask';
 
   // checkin CSS
 
@@ -327,7 +327,6 @@ input[type='checkbox']:checked label {
 }
 
 .searchButtonPlacement {
-
 }
 
 #reservationOuterContainer {
@@ -335,6 +334,14 @@ input[type='checkbox']:checked label {
 }
 
 #checkIn2Container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#checkIn3Container {
   width: 100%;
   display: flex;
   flex-direction: column;

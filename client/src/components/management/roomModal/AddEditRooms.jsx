@@ -6,25 +6,23 @@ import InputTypeText from '../../styledElements/InputTypeText.jsx';
 import { colors } from '../../styledElements/styleGuid';
 import RoomTypeList from './RoomsComponents/RoomTypeList.jsx';
 import axios from 'axios';
-
+import url from '../../../lib/apiPath';
 //sampleData
-import {
-  roomTypeData
-} from '../../../SampleData/AmenitiesRoomType.js';
+import { roomTypeData } from '../../../SampleData/AmenitiesRoomType.js';
 
-const AddEditRooms = ({
-  type
-}) => {
-
+const AddEditRooms = ({ type }) => {
   const [roomTypeState, setRoomTypeData] = useState([]);
   const [roomFloor, setFloor] = useState('');
   const [roomNumber, setRoomNumber] = useState('');
   const [roomType, setType] = useState('');
 
   useEffect(() => {
-    axios.get('/rooms/types')
-      .then(res => { setRoomTypeData(res.data); })
-      .catch(err => console.log(err));
+    axios
+      .get(`${url}/rooms/types`)
+      .then((res) => {
+        setRoomTypeData(res.data);
+      })
+      .catch((err) => console.log(err));
   });
   const handleAddRooms = (roomTypeQuery) => {
     setType(roomTypeQuery);
@@ -37,17 +35,21 @@ const AddEditRooms = ({
   };
   const handleSubmit = (e) => {
     event.preventDefault();
-    let params = { 'roomNumber': roomNumber, 'floorNumber': roomFloor, 'roomType': roomType };
+    let params = {
+      roomNumber: roomNumber,
+      floorNumber: roomFloor,
+      roomType: roomType,
+    };
     if (!roomNumber || !roomFloor || !roomType) {
       alert('There is missing information, Please fill it out!');
     } else {
-      axios.post('/rooms', params)
+      axios
+        .post(`${url}/rooms`, params)
         .then(() => {
           alert('Completed');
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
     }
-
   };
 
   return (
@@ -59,47 +61,40 @@ const AddEditRooms = ({
           width='100vh - 60px'
           height='calc(100vh - 260px)'
         >
-          <div id="roomHeaderBox">
-            <ModalTitle>{
-              type === 'ADD ROOM'} ADD ROOM
-            </ModalTitle>
+          <div id='roomHeaderBox'>
+            <ModalTitle>{type === 'ADD ROOM'} ADD ROOM</ModalTitle>
           </div>
 
           <div id='roomBox_add'>
             <div className='roomTable'>
-
               <div id='roomInnerTable1'>
                 <div id='roomInputBox'>
                   <div>
-                    <div id='roomlabel'>
-                      floor number
-                    </div>
+                    <div id='roomlabel'>floor number</div>
                     <InputTypeText
-                      id="roomInputQuery1"
+                      id='roomInputQuery1'
                       minlength='50px'
                       maxlength='200px'
                       placeholder='floor #'
                       margin-top='0px'
                       name='floorInfo'
                       onChange={(e) => handleFloorNumber(e)}
-                      width="200px"
+                      width='200px'
                       type='text'
                     ></InputTypeText>
                   </div>
 
                   <div>
-                    <div id='roomlabel'>
-                      room number
-                    </div>
+                    <div id='roomlabel'>room number</div>
                     <InputTypeText
-                      id="roomInputQuery2"
+                      id='roomInputQuery2'
                       minlength='50px'
                       maxlength='200px'
                       placeholder='room #'
                       margin-top='0px'
                       name='roomNumberInfo'
                       onChange={(e) => handleRoomNumber(e)}
-                      width="200px"
+                      width='200px'
                       type='text'
                     ></InputTypeText>
                   </div>
@@ -125,7 +120,6 @@ const AddEditRooms = ({
                   }
                 })}
               </div>
-
             </div>
           </div>
 
@@ -135,10 +129,12 @@ const AddEditRooms = ({
                 id='roomSubmitButton'
                 onClick={handleSubmit}
                 backgroundColor={colors.berry}
-                color='white'>SUBMIT</BigButton>
+                color='white'
+              >
+                SUBMIT
+              </BigButton>
             </div>
           </div>
-
         </HalfRoundDiv>
       </div>
     </div>
