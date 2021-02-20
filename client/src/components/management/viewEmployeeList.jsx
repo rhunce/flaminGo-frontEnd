@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import ListMaster from '../GlobalComponents/ListMaster';
-import FlexCenterContainer from '../landingPage/FlexCenterContainer';
+
 import EmployeeContainer from './employeeModal/EmployeeContainer';
+import FlexCenterContainer from '../styledElements/FlexCenterContainer';
+import ListMaster from '../globalComponents/ListMaster';
 
 const ViewEmployeeList = ({ setBackColor, setListBackground }) => {
   const [toggleModals, setToggleModal] = useState(0);

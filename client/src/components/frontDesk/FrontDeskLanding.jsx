@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import LandingButtons from '../landingPage/LandingButtons';
-import useChoosePath from '../landingPage/useChoosePath';
+
 import BackArrow from '../styledElements/BackArrow';
-import CreateBookingForm from './CreateBooking/CreateBookingForm.jsx';
-import ListMaster from '../GlobalComponents/ListMaster';
-import FlexCenterContainer from '../landingPage/FlexCenterContainer';
-import ViewAddEditRoom from '../management/ViewAddEditRoom.jsx';
 import CheckoutLanding from './checkout/CheckoutLanding';
+import CreateBookingForm from './CreateBooking/CreateBookingForm.jsx';
+import FlexCenterContainer from '../styledElements/FlexCenterContainer';
+import LandingButtons from '../globalComponents/landingPage/LandingButtons';
 import SearchForReservations from './checkIn/01searchForReservations';
+import useChoosePath from '../globalComponents/landingPage/useChoosePath';
+import ViewAddEditRoom from '../management/ViewAddEditRoom.jsx';
 
 const FrontDeskLanding = ({ back }) => {
   // set state to toggle for conditional rendering
@@ -32,7 +31,7 @@ const FrontDeskLanding = ({ back }) => {
     },
     { title: 'Check-Out', onClick: () => setPaths('checkOut') },
     { title: 'View Rooms', onClick: () => setPaths('viewRooms') },
-    { title: 'Create Booking', onClick: () => setPaths('createBooking') }
+    { title: 'Create Booking', onClick: () => setPaths('createBooking') },
   ];
 
   // return to main landing
@@ -66,7 +65,7 @@ const FrontDeskLanding = ({ back }) => {
           />
         ) : paths.createBooking ? (
           <FlexCenterContainer>
-            <CreateBookingForm clickBack={clickBack}/>
+            <CreateBookingForm clickBack={clickBack} />
           </FlexCenterContainer>
         ) : (
           <FlexCenterContainer>

@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useContext } from 'react';
 import FormButton from '../styledElements/FormButton.jsx';
 import HalfRoundDiv from '../styledElements/HalfRoundDiv.jsx';
-import ListEntry from '../GlobalComponents/ListEntry.jsx';
+import ListEntry from './ListEntry.jsx';
 import {
   titleTableRooms,
   titleTableTasks,
   titleTableEmployees,
   titleTableGuests,
-} from './ListComponents/titleTables.jsx';
+} from './listComponents/titleTables.jsx';
 import {
   entryTableRooms,
   entryTableTasks,
   entryTableEmployees,
   entryTableGuests,
-} from './ListComponents/entryTables.jsx';
+} from './listComponents/entryTables.jsx';
 import {
   roomsData,
   employeeData,
@@ -21,7 +21,7 @@ import {
   reservationData,
 } from '../../SampleData/SampleData.js';
 import axios from 'axios';
-import { MainContext } from '../landingPage/MainContext';
+import { MainContext } from './landingPage/MainContext';
 
 import url from '../../lib/apiPath.js';
 

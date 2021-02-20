@@ -1,12 +1,13 @@
 import React, { useState, useContext } from 'react';
-import LandingButtons from '../landingPage/LandingButtons';
-import useChoosePath from '../landingPage/useChoosePath';
-import BackArrow from '../styledElements/BackArrow';
-import ListMaster from '../GlobalComponents/ListMaster';
+
 import AddTaskForm from './AddTaskForm.jsx';
-import FlexCenterContainer from '../landingPage/FlexCenterContainer';
+import BackArrow from '../styledElements/BackArrow';
+import FlexCenterContainer from '../styledElements/FlexCenterContainer';
+import LandingButtons from '../globalComponents/landingPage/LandingButtons';
+import ListMaster from '../globalComponents/ListMaster';
+import { MainContext } from '../globalComponents/landingPage/MainContext.jsx';
+import useChoosePath from '../globalComponents/landingPage/useChoosePath';
 import ViewAddEditRoom from '../management/ViewAddEditRoom.jsx';
-import { MainContext } from '../landingPage/MainContext.jsx';
 
 const HMLanding = ({ back }) => {
   // set state to toggle for conditional rendering
@@ -17,7 +18,7 @@ const HMLanding = ({ back }) => {
     landing: true,
   });
 
-  const {id, name} = useContext(MainContext);
+  const { id, name } = useContext(MainContext);
 
   //set up for transition to room list page
   const [backColor, setBackColor] = useState('white');
@@ -68,7 +69,7 @@ const HMLanding = ({ back }) => {
         ) : paths.addTask ? (
           //  add task component
           <FlexCenterContainer>
-            <AddTaskForm employeeId={id} name={name} clickBack={clickBack}/>
+            <AddTaskForm employeeId={id} name={name} clickBack={clickBack} />
           </FlexCenterContainer>
         ) : (
           <FlexCenterContainer>

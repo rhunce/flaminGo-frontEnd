@@ -1,8 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import HalfRoundDiv from "../../styledElements/HalfRoundDiv.jsx";
-
-
-// import { reservationData } from '../../../SampleData/SampleData.js'
 import FormButton from "../../styledElements/FormButton.jsx";
 
 
@@ -68,8 +65,6 @@ let EntryTableReservations = ({reservation}) => {
 }
 
 const CheckInReservationList = ({name, resId, reservationData, addPage, subtractPage, updateSelectedReservation}) => {
-
-  // console.log(props, 'this is props')
 
   if (reservationData.length === 0) {
     return (

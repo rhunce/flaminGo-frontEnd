@@ -1,29 +1,88 @@
-import React from 'react';
-import HalfRoundDiv from "../../styledElements/HalfRoundDiv.jsx";
-import InputTypeText from "../../styledElements/InputTypeText.jsx";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import FormButton from '../../styledElements/FormButton.jsx';
+import HalfRoundDiv from '../../styledElements/HalfRoundDiv.jsx';
+import Header from '../../styledElements/ModalTitle';
+import FlexCenter from '../../styledElements/FlexCenterContainer';
+import FormRow from '../../styledElements/FormRow';
 
-let GuestInfo = (props) => {
+const Spacer = styled.div`
+  width: 1px;
+  height: 25px;
+`;
+
+let GuestInfo = ({ getGuestInfo }) => {
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+  });
+
+  const onChange = (e) => {
+    setForm((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   return (
-    <HalfRoundDiv id={'roomListContainer'}>
-      <h1 className="guestInfo">Guest Information</h1>
-      <form className="guestForm" onSubmit={(event) => {
-        props.getGuestInfo(event);
-        props.goToNext(event);
-      }}>
-        <h2>First Name</h2>
-        <InputTypeText placeholder={'First Name'}/>
-        <h2>Last Name</h2>
-        <InputTypeText placeholder={'Last Name'}/>
-        <h2>Phone</h2>
-        <InputTypeText placeholder={'Phone Number'}/>
-        <h2>Email</h2>
-        <InputTypeText placeholder={'Email'}/>
-        <InputTypeText
-          type='submit'
-          onClick={props.goToNext}
-          id={'guestInfo'}
-        />
-      </form>
+    <HalfRoundDiv padding='30px'>
+      <FlexCenter>
+        <form>
+          <Header>Guest Information</Header>
+          <FormRow
+            onChange={onChange}
+            name={'firstName'}
+            value={form.firstName}
+            width='140px'
+            label={'First Name'}
+            editMode={true}
+            placeholder={'First Name'}
+          />
+          <Spacer />
+          <FormRow
+            onChange={onChange}
+            name={'lastName'}
+            value={form.lastName}
+            width='140px'
+            label={'Last Name'}
+            editMode={true}
+            placeholder={'Last Name'}
+          />
+          <Spacer />
+          <FormRow
+            onChange={onChange}
+            name={'phone'}
+            value={form.phone}
+            width='140px'
+            label={'Phone'}
+            editMode={true}
+            placeholder={'Phone Number'}
+          />
+          <Spacer />
+          <FormRow
+            onChange={onChange}
+            name={'email'}
+            value={form.email}
+            width='140px'
+            label={'Email'}
+            editMode={true}
+            placeholder={'Email'}
+          />
+          <Spacer />
+          <FlexCenter>
+            <FormButton
+              margin='15px 0 0 0'
+              type='submit'
+              onClick={(e) => getGuestInfo(e, form)}
+              id={'guestInfo'}
+            >
+              Submit
+            </FormButton>
+          </FlexCenter>
+        </form>
+      </FlexCenter>
     </HalfRoundDiv>
   );
 };

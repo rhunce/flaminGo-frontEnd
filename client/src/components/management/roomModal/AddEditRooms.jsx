@@ -7,10 +7,11 @@ import { colors } from '../../styledElements/styleGuid';
 import RoomTypeList from './RoomsComponents/RoomTypeList.jsx';
 import axios from 'axios';
 import url from '../../../lib/apiPath';
-//sampleData
-import { roomTypeData } from '../../../SampleData/AmenitiesRoomType.js';
 
-const AddEditRooms = ({ type }) => {
+//sampleData
+import { roomTypeSampleData } from '../../../SampleData/AmenitiesRoomType.js';
+
+const AddEditRooms = ( { type } ) => {
   const [roomTypeState, setRoomTypeData] = useState([]);
   const [roomFloor, setFloor] = useState('');
   const [roomNumber, setRoomNumber] = useState('');
@@ -18,37 +19,43 @@ const AddEditRooms = ({ type }) => {
 
   useEffect(() => {
     axios
-      .get(`${url}/rooms/types`)
-      .then((res) => {
-        setRoomTypeData(res.data);
+      .get( `${url}/rooms/types` )
+      .then(res => {
+        setRoomTypeData( res.data );
       })
-      .catch((err) => console.log(err));
-  });
-  const handleAddRooms = (roomTypeQuery) => {
-    setType(roomTypeQuery);
+      .catch(err =>{
+        setRoomTypeData( roomTypeSampleData );
+        console.log( err );
+      });
+  }, []);
+  const handleAddRooms = ( roomTypeQuery ) => {
+    setType( roomTypeQuery );
   };
-  const handleFloorNumber = (e) => {
-    setFloor(e.target.value);
+  const handleFloorNumber = ( e ) => {
+    setFloor( e.target.value );
   };
-  const handleRoomNumber = (e) => {
-    setRoomNumber(e.target.value);
+  const handleRoomNumber = ( e ) => {
+    setRoomNumber( e.target.value );
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = ( e ) => {
     event.preventDefault();
     let params = {
       roomNumber: roomNumber,
       floorNumber: roomFloor,
       roomType: roomType,
     };
-    if (!roomNumber || !roomFloor || !roomType) {
+    if ( !roomNumber || !roomFloor || !roomType ) {
       alert('There is missing information, Please fill it out!');
     } else {
       axios
-        .post(`${url}/rooms`, params)
+        .post( `${url}/rooms`, params )
         .then(() => {
-          alert('Completed');
+          alert( 'Completed' );
         })
-        .catch((err) => console.log(err));
+        .catch( err =>{
+          alert( 'Not connected to Database' );
+          console.log( err );
+        });
     }
   };
 
@@ -61,8 +68,9 @@ const AddEditRooms = ({ type }) => {
           width='100vh - 60px'
           height='calc(100vh - 260px)'
         >
+
           <div id='roomHeaderBox'>
-            <ModalTitle>{type === 'ADD ROOM'} ADD ROOM</ModalTitle>
+            <ModalTitle>{ type === 'ADD ROOM' } ADD ROOM</ModalTitle>
           </div>
 
           <div id='roomBox_add'>
@@ -78,7 +86,7 @@ const AddEditRooms = ({ type }) => {
                       placeholder='floor #'
                       margin-top='0px'
                       name='floorInfo'
-                      onChange={(e) => handleFloorNumber(e)}
+                      onChange={ (e) => handleFloorNumber(e) }
                       width='200px'
                       type='text'
                     ></InputTypeText>
@@ -93,7 +101,7 @@ const AddEditRooms = ({ type }) => {
                       placeholder='room #'
                       margin-top='0px'
                       name='roomNumberInfo'
-                      onChange={(e) => handleRoomNumber(e)}
+                      onChange={ (e) => handleRoomNumber(e) }
                       width='200px'
                       type='text'
                     ></InputTypeText>
@@ -106,14 +114,15 @@ const AddEditRooms = ({ type }) => {
               </div>
 
               <div id='roomInnerTable2'>
-                {roomTypeState.map((oneRoomType) => {
+                {roomTypeState.map(( oneRoomType ) => {
+                  console.log('oneRoomType:', oneRoomType);
                   if (type === 'ADD') {
                     return (
                       <div>
                         <RoomTypeList
-                          key={oneRoomType._id}
-                          handleAddRooms={handleAddRooms}
-                          listType={oneRoomType.roomType}
+                          key={ 'rmType' + oneRoomType._id }
+                          handleAddRooms={ handleAddRooms }
+                          listType={ oneRoomType.roomType }
                         />
                       </div>
                     );
@@ -127,17 +136,19 @@ const AddEditRooms = ({ type }) => {
             <div id='buttonRight'>
               <BigButton
                 id='roomSubmitButton'
-                onClick={handleSubmit}
-                backgroundColor={colors.berry}
+                onClick={ handleSubmit }
+                backgroundColor={ colors.berry }
                 color='white'
               >
                 SUBMIT
               </BigButton>
             </div>
           </div>
+
         </HalfRoundDiv>
       </div>
     </div>
   );
 };
+
 export default AddEditRooms;

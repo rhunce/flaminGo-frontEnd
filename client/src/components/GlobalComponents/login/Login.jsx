@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors } from '../styledElements/styleGuid';
+
+import { colors } from '../../styledElements/styleGuid';
 import LoginButton from './LoginButton';
 
 const Wrapper = styled.main`

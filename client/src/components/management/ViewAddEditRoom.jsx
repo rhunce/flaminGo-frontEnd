@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import ListMaster from '../GlobalComponents/ListMaster';
-import FlexCenterContainer from '../landingPage/FlexCenterContainer';
+
 import AddEditRooms from './roomModal/AddEditRooms.jsx';
+import FlexCenterContainer from '../styledElements/FlexCenterContainer';
+import ListMaster from '../globalComponents/ListMaster';
 
 const ViewAddEditRoom = ({ setBackColor, setListBackground }) => {
   const [toggleModals, setToggleModal] = useState({

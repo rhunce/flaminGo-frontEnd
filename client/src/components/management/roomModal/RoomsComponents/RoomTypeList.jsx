@@ -6,7 +6,7 @@ const RoomTypeList = ({ handleAddRooms, listType }) => {
     <div
       id='setTypeButton'
       onClick={(e) => {
-        handleAddRooms(listType);
+        handleAddRooms( listType );
       }}
     >
       <div id='roomSelectText'>{listType}</div>
