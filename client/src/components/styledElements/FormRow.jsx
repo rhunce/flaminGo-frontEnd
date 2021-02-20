@@ -19,6 +19,7 @@ const FormRow = ({
   editMode,
   margin,
   value,
+  width,
 }) => {
   return (
     <FlexRow margin={margin}>
@@ -32,7 +33,7 @@ const FormRow = ({
         border={!editMode && 'none'}
         disabled={!editMode}
         type={name === 'startDate' ? 'date' : 'text'}
-        width={name === 'startDate' ? '169px' : undefined}
+        width={name === 'startDate' ? '169px' : width}
       />
     </FlexRow>
   );
