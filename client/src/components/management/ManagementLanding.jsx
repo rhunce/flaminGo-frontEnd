@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import LandingButtons from '../GlobalComponents/landingPage/LandingButtons';
-import useChoosePath from '../GlobalComponents/landingPage/useChoosePath';
+
 import BackArrow from '../styledElements/BackArrow';
 import FlexCenterContainer from '../styledElements/FlexCenterContainer';
-import ViewEmployeeList from './viewEmployeeList';
+import LandingButtons from '../globalComponents/landingPage/LandingButtons';
+import useChoosePath from '../globalComponents/landingPage/useChoosePath';
 import ViewAddEditRoom from './ViewAddEditRoom.jsx';
+import ViewEmployeeList from './viewEmployeeList';
 
 const ManagementLanding = ({ back }) => {
   // set state to toggle for conditional rendering

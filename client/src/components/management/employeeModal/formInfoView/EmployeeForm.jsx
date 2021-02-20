@@ -1,13 +1,14 @@
-import React, { useContext, useState } from 'react';
-import { EmployeeContext } from '../EmployeeContext';
-import ModalTitle from '../../../styledElements/ModalTitle';
-import FormRow from '../../../styledElements/FormRow';
-import FormButton from '../../../styledElements/FormButton';
-import PositionDropDown from './PositionDropDown';
-import { fields, mandatory } from './employeeFormConstants';
 import axios from 'axios';
-import url from '../../../../lib/apiPath';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
+
+import { EmployeeContext } from '../EmployeeContext';
+import FormButton from '../../../styledElements/FormButton';
+import FormRow from '../../../styledElements/FormRow';
+import { fields, mandatory } from './employeeFormConstants';
+import ModalTitle from '../../../styledElements/ModalTitle';
+import PositionDropDown from './PositionDropDown';
+import url from '../../../../lib/apiPath';
 
 const FlexDiv = styled.div`
   display: flex;

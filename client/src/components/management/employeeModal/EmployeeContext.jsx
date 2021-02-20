@@ -1,5 +1,6 @@
-import React, { useState, createContext, useEffect } from 'react';
 import axios from 'axios';
+import React, { useState, createContext, useEffect } from 'react';
+
 import url from '../../../lib/apiPath';
 
 const dataMapper = (data, employee) =>

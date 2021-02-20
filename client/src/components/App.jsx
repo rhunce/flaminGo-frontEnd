@@ -1,10 +1,10 @@
 import React from 'react';
 
-import MainHeader from './GlobalComponents/Header.jsx';
-import Landing from './GlobalComponents/landingPage/MainLanding';
-import Login from './GlobalComponents/login/Login';
+import MainHeader from './globalComponents/Header.jsx';
+import Landing from './globalComponents/landingPage/MainLanding';
+import Login from './globalComponents/login/Login';
 import { useAuth0 } from '@auth0/auth0-react';
-import useChoosePath from './GlobalComponents/landingPage/useChoosePath.jsx';
+import useChoosePath from './globalComponents/landingPage/useChoosePath.jsx';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 const App = () => {

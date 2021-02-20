@@ -35,16 +35,12 @@ class CreateBookingForm extends React.Component {
     this.submitBooking = this.submitBooking.bind(this);
   }
 
-  getGuestInfo(event) {
-    event.preventDefault();
+  getGuestInfo(e, form) {
+    e.preventDefault();
     this.setState({
-      bookingGuest: {
-        firstName: event.target[0].value,
-        lastName: event.target[1].value,
-        phone: event.target[2].value,
-        email: event.target[3].value,
-      },
+      bookingGuest: form,
     });
+    this.goToNext(e);
   }
 
   goToNext(event) {
@@ -125,10 +121,7 @@ class CreateBookingForm extends React.Component {
             availableRooms={this.state.availableRooms}
           />
         ) : this.state.guestInfo ? (
-          <GuestInfo
-            getGuestInfo={this.getGuestInfo}
-            goToNext={this.goToNext}
-          />
+          <GuestInfo getGuestInfo={this.getGuestInfo} />
         ) : (
           <ConfirmationPage
             firstName={this.state.bookingGuest.firstName}

@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import { colors } from '../../styledElements/styleGuid';
-import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
 import EmployeeForm from './formInfoView/EmployeeForm';
-import SummaryContainer from './workSummary/WorkSummaryContainer';
 import { EmployeeProvider } from './EmployeeContext';
+import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
+import SummaryContainer from './workSummary/WorkSummaryContainer';
 import XButton from '../../styledElements/Xbutton';
 
 const FlexDiv = styled.div`

@@ -1,7 +1,15 @@
 import React from 'react';
-import { FlexRow, FormLabel } from '../management/employeeModal/formInfoView/EmployFormPositioning';
+import {
+  FlexRow,
+  FormLabel,
+} from '../management/employeeModal/formInfoView/EmployFormPositioning';
 import FormInput from './InputTypeText';
 
+/**
+ *
+ * @param {String} label - set the form label
+ * @param {Boolean} editMode - set the disabled to true and border to none - default false
+ */
 const FormRow = ({
   label,
   name,
@@ -11,6 +19,7 @@ const FormRow = ({
   editMode,
   margin,
   value,
+  width,
 }) => {
   return (
     <FlexRow margin={margin}>
@@ -24,7 +33,7 @@ const FormRow = ({
         border={!editMode && 'none'}
         disabled={!editMode}
         type={name === 'startDate' ? 'date' : 'text'}
-        width={name === 'startDate' ? '169px' : undefined}
+        width={name === 'startDate' ? '169px' : width}
       />
     </FlexRow>
   );

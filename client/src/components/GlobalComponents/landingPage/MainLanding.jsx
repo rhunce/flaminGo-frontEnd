@@ -1,17 +1,18 @@
 import React from 'react';
-import FrontDeskLanding from '../../frontDesk/FrontDeskLanding';
-import LandingButtons from './MainLandingButtons';
-import useChoosePath from './useChoosePath';
-import HMLanding from '../../maintenance/HMLanding';
-import ManagementLanding from '../../management/ManagementLanding';
-import FlexCenterContainer from '../../styledElements/FlexCenterContainer';
-import TimeSheet from '../timeSheet/TimeSheetContainer';
-import { MainProvider } from './MainContext';
 import { useAuth0 } from '@auth0/auth0-react';
+
+import FlexCenterContainer from '../../styledElements/FlexCenterContainer';
+import FrontDeskLanding from '../../frontDesk/FrontDeskLanding';
+import HMLanding from '../../maintenance/HMLanding';
+import LandingButtons from './MainLandingButtons';
+import { MainProvider } from './MainContext';
+import ManagementLanding from '../../management/ManagementLanding';
+import TimeSheet from '../timeSheet/TimeSheetContainer';
 
 const MainLanding = ({ paths, setPaths }) => {
   const { user } = useAuth0();
 
+  // routs constant to iterate over
   const routs = {
     frontDesk: [
       {
