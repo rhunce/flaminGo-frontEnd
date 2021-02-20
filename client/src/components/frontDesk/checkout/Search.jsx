@@ -32,7 +32,7 @@ class Search extends React.Component {
             className="inputs"
             width={'90%'}
             onChange={this.inputChangeHandler}
-            placeholder="i.e. Adam"
+            placeholder="e.g. Adam"
           />
           <label htmlFor="lastNameInput" className="checkOutLabels">Last Name</label> <br/>
           <InputTypeText
@@ -40,7 +40,7 @@ class Search extends React.Component {
             className="inputs"
             width={'90%'}
             onChange={this.inputChangeHandler}
-            placeholder="i.e. Pollock"
+            placeholder="e.g. Pollock"
           />
           <label htmlFor="reservationIdInput" className="checkOutLabels">Reservation ID</label> <br/>
           <InputTypeText
@@ -48,7 +48,7 @@ class Search extends React.Component {
             className="inputs"
             width={'90%'}
             onChange={this.inputChangeHandler}
-            placeholder="i.e. last few/several digits such as 85debb"
+            placeholder="e.g. last few/several digits such as 85debb"
           />
           <label htmlFor="checkOutDateInput" className="checkOutLabels">Check Out Date</label> <br/>
           <InputTypeText
@@ -56,7 +56,7 @@ class Search extends React.Component {
             className="inputs"
             width={'90%'}
             onChange={this.inputChangeHandler}
-            placeholder="YYYY-MM-DD i.e. 2021-02-21"
+            placeholder="YYYY-MM-DD e.g. 2021-02-21"
           />
         </div>
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
