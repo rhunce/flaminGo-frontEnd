@@ -34,7 +34,6 @@ const AvailableRooms = (props) => {
       <div id='checkIn3Container'>
         <div className='checkInTitleDiv'> Check-In: Available Rooms</div>
         <div id='roomsListInnerContainer'>
-          {/* <div className='roomBox' onClick={(e)=> {props.addPage()}}> {props.selectedReservation.roomType} </div> */}
           {props.roomList.map((room) => {
             return (
               <div

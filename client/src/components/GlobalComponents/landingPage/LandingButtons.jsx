@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import BigButton from '../styledElements/BigButton';
+import BigButton from '../../styledElements/BigButton';
 
 const BtnContainer = styled.div`
   display: flex;

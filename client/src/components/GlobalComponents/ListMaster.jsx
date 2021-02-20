@@ -21,7 +21,7 @@ import {
   reservationData,
 } from '../../SampleData/SampleData.js';
 import axios from 'axios';
-import { MainContext } from '../landingPage/MainContext';
+import { MainContext } from './landingPage/MainContext';
 
 import url from '../../lib/apiPath.js';
 
