@@ -1,12 +1,13 @@
-import styled from 'styled-components';
-import React, { useState, useContext } from 'react';
-import FormRow from '../../styledElements/FormRow';
-import FormButton from '../../styledElements/FormButton';
-import timeSheetTemplate from './timeSheetTemplate';
-import useTimeSheet from './useTimeSheet';
-import { MainContext } from '../landingPage/MainContext';
 import axios from 'axios';
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+
+import FormButton from '../../styledElements/FormButton';
+import FormRow from '../../styledElements/FormRow';
+import { MainContext } from '../landingPage/MainContext';
+import timeSheetTemplate from './timeSheetTemplate';
 import url from '../../../lib/apiPath';
+import useTimeSheet from './useTimeSheet';
 
 // time sheet styles
 // centering div
@@ -66,6 +67,7 @@ const TimeSheetFormList = ({ back }) => {
                 key={day.name + day.day}
                 name={day.day}
                 value={timeSheet[day.day]}
+                editMode={true}
                 onChange={(e) => {
                   setTimeSheet((prevState) => ({
                     ...prevState,

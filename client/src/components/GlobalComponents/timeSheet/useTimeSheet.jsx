@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 import url from '../../../lib/apiPath';
 
 /**
  * custom hook for storing and updating a given users time sheet
  * @param {Sting} userId - the id of the current logged in user
  */
-const useTimeSheet = ({ userId }) => {
+const useTimeSheet = (userId) => {
   const [state, setState] = useState({});
 
   // useEffect to simulate component did mount

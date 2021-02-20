@@ -1,8 +1,9 @@
 import React from 'react';
-import { FlexRow, FormLabel } from './EmployFormPositioning';
+
 import DropDown from '../../../styledElements/DropDown';
-import positions from '../../../../lib/positionsConstant';
+import { FlexRow, FormLabel } from './EmployFormPositioning';
 import FormRow from '../../../styledElements/FormRow';
+import positions from '../../../../lib/positionsConstant';
 
 const PositionDropDown = ({ onChange, editMode, employee }) => {
   return (

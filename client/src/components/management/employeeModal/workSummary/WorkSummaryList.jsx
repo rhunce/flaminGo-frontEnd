@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+
+import { EmployeeContext } from '../EmployeeContext';
 import { gradients } from '../../../styledElements/styleGuid';
 import ListItem from './WorkSummaryListItem';
-import { EmployeeContext } from '../EmployeeContext';
 
 const ListContainer = styled.div`
   background-image: ${gradients.berryToGrape};
