@@ -15,7 +15,7 @@ class CheckoutLanding extends React.Component {
       inputFirstName: '',
       inputLastName: '',
       inputReservationId: '',
-      inputcheckOutDate: '',
+      inputCheckOutDate: '',
       inputRoomNumber: '',
     };
     this.nextPageClickHandler = this.nextPageClickHandler.bind(this);
@@ -26,8 +26,9 @@ class CheckoutLanding extends React.Component {
       let inputParams = {
         firstName,
         lastName,
-        checkOut: checkOutDate,
+        // eslint-disable-next-line camelcase
         reservation_id: reservationId,
+        checkOut: checkOutDate
       };
       for (let key in inputParams) {
         if (inputParams[key] === '') {
@@ -53,7 +54,7 @@ class CheckoutLanding extends React.Component {
               inputFirstName: name.split(' ')[0],
               inputLastName: name.split(' ')[1],
               inputReservationId: reservationId,
-              inputcheckOutDate: checkOutDate,
+              inputCheckOutDate: checkOutDate,
               inputRoomNumber: roomNumber,
             });
           }
@@ -65,7 +66,7 @@ class CheckoutLanding extends React.Component {
       const reservationIdToCheckOut = this.state.inputReservationId;
       axios
         .put(`${url}/reservations/checkOut/${reservationIdToCheckOut}`)
-        .then(({ data }) => {
+        .then(() => {
           this.setState({
             resultsPage: !this.state.resultsPage,
             checkoutConfirmedPage: !this.state.checkoutConfirmedPage,
