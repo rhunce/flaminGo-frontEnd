@@ -1,7 +1,6 @@
 import React from "react";
 import HalfRoundDiv from "../../styledElements/HalfRoundDiv.jsx";
 import ListEntry from './ListEntry.jsx';
-import FlexCenterContainer from '../../landingPage/FlexCenterContainer.jsx';
 
 let AvailableRooms = (props) => {
   return (

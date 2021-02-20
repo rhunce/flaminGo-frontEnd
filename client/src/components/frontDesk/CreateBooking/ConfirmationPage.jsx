@@ -1,5 +1,4 @@
 import React from 'react';
-import FlexCenterContainer from '../../landingPage/FlexCenterContainer.jsx';
 import FormButton from '../../styledElements/FormButton.jsx';
 
 let ConfirmationPage = (props) => {
@@ -24,7 +23,7 @@ let ConfirmationPage = (props) => {
         Confirm Booking
       </FormButton>
     </div>
-  )
-}
+  );
+};
 
 export default ConfirmationPage;
