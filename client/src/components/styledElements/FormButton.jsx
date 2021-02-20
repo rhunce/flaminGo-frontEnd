@@ -3,21 +3,22 @@ import styled from 'styled-components';
 import { colors, fonts } from './styleGuid';
 
 const Button = styled.button`
+  font-size: 14px;
   font-family: ${fonts.mainFont};
-  font-size: 16px;
   font-weight: ${fonts.plain};
   color: ${colors.white};
   background-color: ${(props) =>
-    props.color ? props.color : colors.clementine};
+    props.color ? colors[props.color] : colors.clementine};
   border: none;
   border-radius: 20px;
   width: ${(props) => (props.width ? props.width : '160px')};
   height: 40px;
+  outline: none;
   margin: ${(props) => (props.margin ? props.margin : 0)};
 
   &:active {
     background-color: ${(props) =>
-      props.color ? colors.grape : colors.carrot};
+    props.color ? colors.grape : colors.carrot};
   }
 `;
 /**
@@ -32,6 +33,7 @@ const Button = styled.button`
  * @param {String} width - change the width of the button - default is 160px and should work for the majority of buttons
  */
 const FormButton = ({
+  name,
   children,
   onClick,
   backgroundColor,
@@ -43,6 +45,7 @@ const FormButton = ({
   width,
 }) => (
   <Button
+    name={name}
     id={id}
     type={type}
     margin={margin}

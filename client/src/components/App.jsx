@@ -1,29 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import TextAreaForm from './styledElements/TextAreaForm.jsx';
+import MainHeader from './GlobalComponents/Header.jsx';
+import Landing from './landingPage/MainLanding';
+import Login from './login/Login.jsx';
+import { useAuth0 } from '@auth0/auth0-react';
+import useChoosePath from './landingPage/useChoosePath.jsx';
+import ClipLoader from 'react-spinners/ClipLoader';
 
+const App = () => {
+  const { isAuthenticated, user, isLoading } = useAuth0();
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  const [paths, setPaths] = useChoosePath({
+    management: false,
+    hm: false,
+    frontDesk: false,
+    timeSheet: false,
+    landing: true,
+  });
 
-  componentDidMount() {
-    this.getData();
-  }
-
-  getData() {}
-
-  render() {
+  if (isLoading) {
     return (
-      <div>
-        HrNYC34 PROJECT
-        <h1> {this.props.projectName} </h1>
+      <div style={{
+        position: 'fixed',
+        width: '100vw',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+        <ClipLoader color="#ffffff" loading size={80} />
       </div>
     );
   }
-}
+
+  return (
+    <div>
+      {isAuthenticated ? (
+        <main className='main'>
+          <MainHeader back={() => setPaths('landing')} />
+          <Landing paths={paths} setPaths={setPaths} />
+        </main>
+      ) : (
+        <Login />
+      )}
+    </div>
+  );
+};
 
 export default App;
