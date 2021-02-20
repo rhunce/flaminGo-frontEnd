@@ -1,6 +1,6 @@
 import React from 'react';
-import { FlexRow, FormLabel } from './EmployFormPositioning';
-import FormInput from '../../../styledElements/InputTypeText';
+import { FlexRow, FormLabel } from '../management/employeeModal/formInfoView/EmployFormPositioning';
+import FormInput from './InputTypeText';
 
 const FormRow = ({
   label,

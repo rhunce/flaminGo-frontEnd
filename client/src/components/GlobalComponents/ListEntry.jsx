@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import FormButton from '../styledElements/FormButton.jsx';
 import RoomDetailsModal from './RoomDetailsModal';
-import { MainContext } from '../landingPage/MainContext';
+import { MainContext } from './landingPage/MainContext';
 import TaskDetailsModal from './TaskDetailsModal';
 import axios from 'axios';
 import url from '../../lib/apiPath';
