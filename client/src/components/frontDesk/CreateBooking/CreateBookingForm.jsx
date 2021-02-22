@@ -10,8 +10,8 @@ import url from '../../../lib/apiPath';
 class CreateBookingForm extends React.Component {
   constructor(props) {
     super(props);
+    //conditionally renders form page components based on state booleans
     this.state = {
-      availableRooms: [],
       dateForm: true,
       roomList: false,
       guestInfo: false,
@@ -21,13 +21,13 @@ class CreateBookingForm extends React.Component {
         phone: '',
         email: '',
       },
-      room_id: '',
-      roomType_id: '',
+      availableRooms: [],
       roomType: '',
-      checkIn: '',
+      checkIn: '1970-01-01',
       checkOut: '',
       guestList: [],
     };
+
     this.inputDate = this.inputDate.bind(this);
     this.goToNext = this.goToNext.bind(this);
     this.selectRoom = this.selectRoom.bind(this);
@@ -47,10 +47,8 @@ class CreateBookingForm extends React.Component {
     event.preventDefault();
     if (event.target.id === 'dateForm') {
       this.setState({ dateForm: false, roomList: true });
-      //also need to set state of event.target.value
     } else if (event.target.id === 'roomList') {
       this.setState({ roomList: false, guestInfo: true });
-      //also need to set state of event.target.value
     } else {
       this.setState({ guestInfo: false });
     }
@@ -71,12 +69,18 @@ class CreateBookingForm extends React.Component {
   }
 
   getAvailableRooms() {
+    //query for all available rooms within componentDidMount
+    //component renders with '1970-10-10' as the default search date
     axios
-      .get(`${url}/reservations/availability/123`)
+      .get(`${url}/reservations/availability/${this.state.checkIn}`)
+      //this endpoint may be refactored later to take in 2 dates via query parameters
+      //gets all available room types (not individual room)
       .then((reservations) => {
+        //update list of available room types based on date input by user
         let availableRoomTypes = reservations.data.results.map((rez) => {
           return rez.name;
         });
+        //uses user input to set state with selected room type
         this.setState({ availableRooms: availableRoomTypes });
       })
       .catch((error) => {
@@ -84,9 +88,8 @@ class CreateBookingForm extends React.Component {
       });
   }
 
-  //expected POST request body
+  //POST request body
   // let { roomType, checkIn, checkOut, guestList, bookingGuest } = req.body;
-
   submitBooking() {
     let body = {
       roomType: this.state.roomType,

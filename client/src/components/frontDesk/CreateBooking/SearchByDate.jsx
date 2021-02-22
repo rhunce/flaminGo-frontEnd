@@ -2,8 +2,6 @@ import React from 'react';
 import FormButton from '../../styledElements/FormButton.jsx';
 import HalfRoundDiv from '../../styledElements/HalfRoundDiv.jsx';
 import InputTypeText from '../../styledElements/InputTypeText.jsx';
-import InputTypeRadio from '../../styledElements/InputTypeRadio.jsx';
-import TextAreaForm from '../../styledElements/TextAreaForm.jsx';
 
 let SearchByDate = (props) => {
   return (
