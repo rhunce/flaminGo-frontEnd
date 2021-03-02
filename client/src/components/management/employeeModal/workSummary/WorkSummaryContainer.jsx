@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import ModalTitle from '../../../styledElements/ModalTitle';
 import WorkSummaryList from './WorkSummaryList';
 

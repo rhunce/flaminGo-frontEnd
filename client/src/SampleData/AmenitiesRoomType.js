@@ -1,4 +1,4 @@
-exports.amenitiesData = [
+exports.amenitiesSampleData = [
   {
     '_id': '5ff90d07450a752b55cbf9fc1',
     'amenity': 'Fridge'
@@ -25,7 +25,7 @@ exports.amenitiesData = [
   }
 ];
 
-exports.roomTypeData = [
+exports.roomTypeSampleData = [
   {
     '_id': '5ff8c7b6aa128920932054861',
     'roomType': 'Single Queen',

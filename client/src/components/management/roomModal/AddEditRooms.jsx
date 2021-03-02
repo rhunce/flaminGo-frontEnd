@@ -1,164 +1,154 @@
 import React, { useState, useEffect } from 'react';
-import FormButton from '../../styledElements/FormButton.jsx';
 import HalfRoundDiv from '../../styledElements/HalfRoundDiv.jsx';
-
 import BigButton from '../../styledElements/BigButton.jsx';
 import ModalTitle from '../../styledElements/ModalTitle.jsx';
 import InputTypeText from '../../styledElements/InputTypeText.jsx';
 import { colors } from '../../styledElements/styleGuid';
-
-import AmenityList from './RoomsComponents/AmenityList.jsx';
 import RoomTypeList from './RoomsComponents/RoomTypeList.jsx';
+import axios from 'axios';
+import url from '../../../lib/apiPath';
 
-import {
-  amenitiesData,
-  roomTypeData
-} from '../../../SampleData/AmenitiesRoomType.js';
+//sampleData
+import { roomTypeSampleData } from '../../../SampleData/AmenitiesRoomType.js';
 
-const AddEditRooms = ({
-  type,
-  onClick1,
-  onClick2
-}) => {
+const AddEditRooms = ( { type } ) => {
+  const [roomTypeState, setRoomTypeData] = useState([]);
+  const [roomFloor, setFloor] = useState('');
+  const [roomNumber, setRoomNumber] = useState('');
+  const [roomType, setType] = useState('');
 
-
-  console.log('componentType', type);
-
-  let aData; let rData; let titleHeader; let queryPlaceHolderLeft; let queryPlaceHolderRight;
-
-  if (type === 'ADD') {
-    aData = amenitiesData;
-    rData = roomTypeData;
-    queryPlaceHolderLeft = 'New Amenity';
-    queryPlaceHolderRight = 'New Type';
-  } else if (type === 'EDIT') {
-    aData = amenitiesData;
-    rData = roomTypeData;
-    queryPlaceHolderLeft = 'Choose Amenity';
-    queryPlaceHolderRight = 'Choose Type';
-  }
-
-  const [searchQuery, setSearch] = useState('');
-  const handleSearch = (e) => {
-    let query = document.getElementById('searchBar').value;
-    setSearch(query);
+  useEffect(() => {
+    axios
+      .get( `${url}/rooms/types` )
+      .then(res => {
+        setRoomTypeData( res.data );
+      })
+      .catch(err =>{
+        setRoomTypeData( roomTypeSampleData );
+        console.log( err );
+      });
+  }, []);
+  const handleAddRooms = ( roomTypeQuery ) => {
+    setType( roomTypeQuery );
+  };
+  const handleFloorNumber = ( e ) => {
+    setFloor( e.target.value );
+  };
+  const handleRoomNumber = ( e ) => {
+    setRoomNumber( e.target.value );
+  };
+  const handleSubmit = ( e ) => {
+    event.preventDefault();
+    let params = {
+      roomNumber: roomNumber,
+      floorNumber: roomFloor,
+      roomType: roomType,
+    };
+    if ( !roomNumber || !roomFloor || !roomType ) {
+      alert('There is missing information, Please fill it out!');
+    } else {
+      axios
+        .post( `${url}/rooms`, params )
+        .then(() => {
+          alert( 'Completed' );
+        })
+        .catch( err =>{
+          alert( 'Not connected to Database' );
+          console.log( err );
+        });
+    }
   };
 
   return (
     <div id='roomContainer'>
-      <HalfRoundDiv
-        gradients={true}
-        margin='0 30px 0 30px'
-        width='100vh - 60px'
-        height='calc(100vh - 260px)'
-      >
+      <div>
+        <HalfRoundDiv
+          id='roomEntriesContainer'
+          margin='0 30px 0 30px'
+          width='100vh - 60px'
+          height='calc(100vh - 260px)'
+        >
 
-        <div>
-          <HalfRoundDiv
-            id='roomEntriesContainer'
-            margin='0 30px 0 30px'
-            width='100vh - 60px'
-            height='calc(100vh - 260px)'
-          >
-            <div>
-              <ModalTitle>{
-                type === 'ADD' ? 'ADD ROOM' : 'EDIT ROOM'}
-              </ModalTitle>
-            </div>
+          <div id='roomHeaderBox'>
+            <ModalTitle>{ type === 'ADD ROOM' } ADD ROOM</ModalTitle>
+          </div>
 
-            <div id='roomBox'>
-              <div className='roomTable'>
-
-                <div id='roomInnerTable1'>
+          <div id='roomBox_add'>
+            <div className='roomTable'>
+              <div id='roomInnerTable1'>
+                <div id='roomInputBox'>
                   <div>
-                    <ModalTitle color= 'white' >
-                      {type === 'ADD' ? 'ADD Amenity' : 'EDIT Amenity'}
-                    </ModalTitle>
-                    <InputTypeText></InputTypeText>
-                    <FormButton margin='0 20px 0 0' onClick1={(e) => onClick1(onClick1)}>
-                      ADD
-                    </FormButton>
+                    <div id='roomlabel'>floor number</div>
+                    <InputTypeText
+                      id='roomInputQuery1'
+                      minlength='50px'
+                      maxlength='200px'
+                      placeholder='floor #'
+                      margin-top='0px'
+                      name='floorInfo'
+                      onChange={ (e) => handleFloorNumber(e) }
+                      width='200px'
+                      type='text'
+                    ></InputTypeText>
+                  </div>
+
+                  <div>
+                    <div id='roomlabel'>room number</div>
+                    <InputTypeText
+                      id='roomInputQuery2'
+                      minlength='50px'
+                      maxlength='200px'
+                      placeholder='room #'
+                      margin-top='0px'
+                      name='roomNumberInfo'
+                      onChange={ (e) => handleRoomNumber(e) }
+                      width='200px'
+                      type='text'
+                    ></InputTypeText>
                   </div>
                 </div>
-
-                <div id='roomInnerTable2'>
-                  {aData.map((oneAmenity) => {
-                    console.log('oneAmenity:', oneAmenity);
-                    if (type === 'ADD') {
-                      return (
-                        <div>
-                          <AmenityList
-                            key={oneAmenity._id}
-                            onClick1={onClick1}
-                            onClick2={onClick2}
-                            entity={oneAmenity}
-                            listType={oneAmenity.amenity}
-                            type='ADD'
-                          />
-                        </div>
-                      );
-                    } else if (type === 'EDIT') {
-                      return (
-                        <>EDIT</>
-                      );
-                    }
-                  })}
-                </div>
               </div>
-              <div className='roomTable'>
-                <div id='roomInnerTable1'>
-                  <div>
-                    <ModalTitle color= 'white' >
-                      {type === 'ADD' ? 'ADD RoomType' : 'EDIT RoomType'}
-                    </ModalTitle>
 
-                    <InputTypeText></InputTypeText>
-                    <FormButton margin='0 20px 0 0' onClick1={(e) => onClick1(onClick1)}>
-                      ADD
-                    </FormButton>
-                  </div>
-                </div>
-                <div id='roomInnerTable2'>
-                  {rData.map((oneRoomType) => {
-                    console.log('oneRoomType:', oneRoomType);
-                    if (type === 'ADD') {
-                      return (
-                        <div>
-                          <RoomTypeList
-                            key={oneRoomType._id}
-                            onClick1={onClick1}
-                            onClick2={onClick2}
-                            entity={oneRoomType}
-                            listType={oneRoomType.roomType}
-                            type='ADD'
-                          />
-                        </div>
-                      );
-                    } else if (type === 'EDIT') {
-                      return (
-                        <>EDIT</>
-                      );
-                    }
-                  })}
-                </div>
+              <div id='roomInnerTable3'>
+                <hr />
+              </div>
+
+              <div id='roomInnerTable2'>
+                {roomTypeState.map(( oneRoomType ) => {
+                  console.log('oneRoomType:', oneRoomType);
+                  if (type === 'ADD') {
+                    return (
+                      <div>
+                        <RoomTypeList
+                          key={ 'rmType' + oneRoomType._id }
+                          handleAddRooms={ handleAddRooms }
+                          listType={ oneRoomType.roomType }
+                        />
+                      </div>
+                    );
+                  }
+                })}
               </div>
             </div>
+          </div>
 
-            <div>
+          <div>
+            <div id='buttonRight'>
               <BigButton
-                // margin={margin}
-                // onClick={onClick}
-                // type={type}
-                // disabled={disabled}
-                backgroundColor={colors.berry}
-                color='white'>SUBMIT</BigButton>
+                id='roomSubmitButton'
+                onClick={ handleSubmit }
+                backgroundColor={ colors.berry }
+                color='white'
+              >
+                SUBMIT
+              </BigButton>
             </div>
+          </div>
 
-          </HalfRoundDiv>
-        </div>
-
-      </HalfRoundDiv>
+        </HalfRoundDiv>
+      </div>
     </div>
   );
 };
+
 export default AddEditRooms;

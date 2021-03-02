@@ -1,50 +1,55 @@
-import styled from 'styled-components';
-import React, { useState, useContext } from 'react';
-import FormRow from '../../management/employeeModal/formInfoView/FormRow';
-import FormButton from '../../styledElements/FormButton';
-import timeSheetTemplate from './timeSheetTemplate';
-import useTimeSheet from './useTimeSheet';
-import { MainContext } from '../../landingPage/MainContext';
 import axios from 'axios';
+import React, { useContext } from 'react';
+import styled from 'styled-components';
 
+import FormButton from '../../styledElements/FormButton';
+import FormRow from '../../styledElements/FormRow';
+import { MainContext } from '../landingPage/MainContext';
+import timeSheetTemplate from './timeSheetTemplate';
+import url from '../../../lib/apiPath';
+import useTimeSheet from './useTimeSheet';
+
+// time sheet styles
+// centering div
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
   align-items: center;
 `;
-
+// spacing b/c margins were not working
 const Spacer = styled.div`
   width: 1px;
   height: 25px;
 `;
-
+// centering div using position and transform b/c flex was going wonky
 const Centered = styled.div`
   position: absolute;
-
   left: 50%;
   transform: translate(-50%);
 `;
 
-const TimeSheetFormList = ({ selectedWeek, back }) => {
+/**
+ *  Main Form component of the time sheet. (see file for inline comments/explanation)
+ * @param {Function} back - This is the function that allows the user to close this form passed as props
+ * through TimeSheetContainer from the main landing
+ */
+const TimeSheetFormList = ({ back }) => {
+  // passing the users id to useTimeSheet hook to request the correct sheet
   const { id } = useContext(MainContext);
+  const [timeSheet, setTimeSheet] = useTimeSheet(id);
 
-  const [editMode, setEditMode] = useState(selectedWeek ? false : true);
-  const [timeSheet, setTimeSheet] = useTimeSheet({
-    userId: !selectedWeek ? id : null,
-    initialState: selectedWeek,
-  });
-
+  // submit updates to aa time sheet
   const submit = (e) => {
     axios
-      .put(`/timesheets`, timeSheet)
+      // adding the user if back to the sheet (this allows new sheets to be created)
+      .put(`${url}/timesheets`, { ...timeSheet, employee_id: id })
       .then(() => {
-        console.log('yay');
         back();
       })
       .catch((err) => {
+        // should alert error on failure but not yet implemented
         console.error(err);
-        console.log(timeSheet);
         back();
       });
   };
@@ -52,15 +57,17 @@ const TimeSheetFormList = ({ selectedWeek, back }) => {
   return (
     <Centered>
       <FlexContainer>
+        {/* using a constant to map over the days  */}
         {timeSheetTemplate.map((day) => {
           return (
             <FlexContainer>
+              {/* see form row in styledElements for details */}
               <FormRow
                 label={day.name}
-                editMode={editMode}
                 key={day.name + day.day}
                 name={day.day}
                 value={timeSheet[day.day]}
+                editMode={true}
                 onChange={(e) => {
                   setTimeSheet((prevState) => ({
                     ...prevState,
@@ -81,16 +88,3 @@ const TimeSheetFormList = ({ selectedWeek, back }) => {
 };
 
 export default TimeSheetFormList;
-// {
-//   "timesheet_id": "60108729ffefc9bae1075652",
-//   "employee_id": "60108729ffefc9bae1075651",
-//   "monday": 8,
-//   "tuesday": 7,
-//   "wednesday": 8,
-//   "thursday": 5,
-//   "friday": 9,
-//   "saturday": 0,
-//   "sunday": 0,
-//   "weekStart": "2021-02-08",
-//   "weekEnd": "2021-02-14"
-// }

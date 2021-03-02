@@ -1,12 +1,8 @@
-import React, { useState } from "react";
-import ListMaster from "../GlobalComponents/ListMaster";
-import FlexCenterContainer from "../landingPage/FlexCenterContainer";
-import EmployeeContainer from "./employeeModal/EmployeeContainer";
-import {
-  sampleEmployee,
-  timeSheetSample,
-} from "./employeeModal/sampleEmployeeData";
-import AddEditRooms from "./roomModal/AddEditRooms.jsx";
+import React, { useState } from 'react';
+
+import AddEditRooms from './roomModal/AddEditRooms.jsx';
+import FlexCenterContainer from '../styledElements/FlexCenterContainer';
+import ListMaster from '../globalComponents/ListMaster';
 
 const ViewAddEditRoom = ({ setBackColor, setListBackground }) => {
   const [toggleModals, setToggleModal] = useState({
@@ -17,15 +13,15 @@ const ViewAddEditRoom = ({ setBackColor, setListBackground }) => {
   const [selectedData, setSelectedData] = useState(null);
 
   const closeModal = () => {
-    setBackColor("black");
-    setListBackground("listBgContainer");
+    setBackColor('black');
+    setListBackground('listBgContainer');
     setToggleModal(0);
   };
 
   const openAddRoom = (data) => {
     console.log(selectedData);
     setSelectedData(data);
-    setBackColor("white");
+    setBackColor('white');
     setListBackground(0);
     setToggleModal({
       mainList: false,
@@ -37,7 +33,7 @@ const ViewAddEditRoom = ({ setBackColor, setListBackground }) => {
   const openEditRoom = (data) => {
     console.log(selectedData);
     setSelectedData(data);
-    setBackColor("white");
+    setBackColor('white');
     setListBackground(0);
     setToggleModal({
       mainList: false,
@@ -69,18 +65,18 @@ const ViewAddEditRoom = ({ setBackColor, setListBackground }) => {
         <ListMaster
           onClick1={openAddRoom}
           onClick2={openEditRoom}
-          type="room"
+          type='room'
           handleBackChange={setBackColor}
           handleBackgroundChange={setListBackground}
         />
       ) : toggleModals.addRoom ? (
         <FlexCenterContainer>
-          <AddEditRooms type="ADD" />
+          <AddEditRooms type='ADD' />
         </FlexCenterContainer>
       ) : (
-          <FlexCenterContainer>
-            <AddEditRooms type="EDIT" />
-          </FlexCenterContainer>
+        <FlexCenterContainer>
+          <AddEditRooms type='EDIT' />
+        </FlexCenterContainer>
       )}
     </div>
   );

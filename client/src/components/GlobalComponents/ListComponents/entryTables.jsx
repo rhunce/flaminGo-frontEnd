@@ -4,14 +4,9 @@ import axios from 'axios';
 let entryTableRooms = (entity) => {
 
   let roomNumber = entity.roomNumber;
-  let roomType;
+  let roomType = entity.roomType;
   let occupied = entity.isOccupied;
   let cleaned = entity.isClean
-
-  axios.get(`/rooms/${entity._id}`)
-  .then((result) => {roomType = result.data.roomType})
-
-
   let occupStatus, cleanStatus;
 
   if (occupied) {
@@ -77,7 +72,8 @@ let entryTableTasks = (entity) => {
 
   let title = entity.taskTitle;
   let department = entity.department;
-  let setting = `Room ${entity.location}`
+  let setting = `Room ${entity.location}`;
+  let assignedTo = entity.employeeAssigned;
 
   return (
     <table className="entryTable">
@@ -86,6 +82,7 @@ let entryTableTasks = (entity) => {
         <th>{title}</th>
         <th>{setting}</th>
         <th>{department}</th>
+        <th>{assignedTo}</th>
       </tr>
       </tbody>
     </table>

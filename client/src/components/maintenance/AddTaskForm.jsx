@@ -4,21 +4,21 @@ import HalfRoundDiv from '../styledElements/HalfRoundDiv.jsx';
 import InputTypeText from '../styledElements/InputTypeText.jsx';
 import InputTypeRadio from '../styledElements/InputTypeRadio.jsx';
 import TextAreaForm from '../styledElements/TextAreaForm.jsx';
-import { gradient } from '../styledElements/styleGuid.js';
 import axios from 'axios';
+import url from '../../lib/apiPath';
 
 class AddTaskForm extends React.Component {
   constructor(props) {
     super(props);
 
-    //each input field has its own state property and event handler
+    //each form input field has its own state property and event handler
     this.state = {
-      // employeeCreated: '',
+      employeeAssigned: '',
       taskTitle: '',
       location: '',
       taskDescription: '',
       department: '',
-      dueBy: ''
+      dueBy: '',
     };
     this.inputEmployeeName = this.inputEmployeeName.bind(this);
     this.inputTaskTitle = this.inputTaskTitle.bind(this);
@@ -29,101 +29,141 @@ class AddTaskForm extends React.Component {
     this.submitAddTaskForm = this.submitAddTaskForm.bind(this);
   }
 
+  //Collect employee name as string
+  //Employee name must be entered exactly as it appears in the employees table in order to find employee ID
   inputEmployeeName(event) {
     event.preventDefault();
-    this.setState({employeeCreated: event.target.value});
+    this.setState({ employeeAssigned: event.target.value });
   }
 
   inputTaskTitle(event) {
     event.preventDefault();
-    this.setState({taskTitle: event.target.value});
+    this.setState({ taskTitle: event.target.value });
   }
 
   inputRoom(event) {
     event.preventDefault();
-    this.setState({location: event.target.value});
+    this.setState({ location: event.target.value });
   }
 
   inputDescription(event) {
     event.preventDefault();
-    this.setState({taskDescription: event.target.value});
+    this.setState({ taskDescription: event.target.value });
   }
 
+  //Task type is determined by radio button options
   selectType(event) {
-    event.preventDefault();
-    this.setState({department: event.target.value});
+    this.setState({ department: event.target.value });
   }
 
+  //Task type is determined by datetime-local HTML form
   inputDueDate(event) {
     event.preventDefault();
-    let dueDate = (new Date(event.target.value)).toISOString();
-    this.setState({dueBy: dueDate});
+    // format date output as an ISO string
+    let dueDate = new Date(event.target.value).toISOString();
+    this.setState({ dueBy: dueDate });
   }
 
   //sends all form info to server in request body
   submitAddTaskForm(event) {
-    // event.preventDefault();
-    //from API docs: POST '/tasks' to add a new task
-    //need to add user ID from authentication cookies to add to request object
-
-    const data = {
+    //additional info to send to server along with form inputs
+    const requestBody = {
+      //gather id and name from MainContext of employee creating the task
       employeeCreated_id: this.props.employeeId,
-      employeeCreated: this.props.name
+      employeeCreated: this.props.name,
+      //a GET request will be made to populate employee ID of employee being assigned
+      employeeAssigned_id: ''
     };
-    Object.assign(data, this.state);
+    Object.assign(requestBody, this.state);
 
-    axios.post('/tasks/', data)
-      .then((results) => {
-        alert('Task successfully added to task list');
-        console.log('Form successfully submitted:', results);
+    //use employeeAssigned string from state to search database for their employee ID
+    axios.get(`${url}/employees/`)
+      .then(({data}) => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].name === this.state.employeeAssigned) {
+            //append it to the request body object
+            requestBody.employeeAssigned_id = data[i].id;
+          }
+        }
       })
-      .catch((error) => { console.log(error); });
+      .then((results) => {
+        //send request body of all user inputs to the tasks table in the database
+        axios
+          .post(`${url}/tasks/`, requestBody)
+          .then((results) => {
+            alert('Task successfully added to task list');
+          })
+          .catch((error) => {
+            console.log('POST tasks error:', (error));
+          });
+      })
+      .catch((error) => { console.log('GET employees error:', error); });
   }
 
   render() {
     return (
       <div>
         <HalfRoundDiv className={'addTask'}>
-          <h1 className="formTitle">Add a Task</h1>
-          {/* <h2 className="employeeName">Employee Name</h2>
-          <InputTypeText onChange={this.inputEmployeeName} className="employeeNameInput" placeholder={'Employee Name'} /> */}
-          <h2 className="taskInputTitle">Task Title</h2>
-          <InputTypeText onChange={this.inputTaskTitle} className="taskInput" placeholder={'Task Title'} />
-          <h2 className="roomInputTitle">Location</h2>
-          <InputTypeText onChange={this.inputRoom} className="roomInput" placeholder={'Room Number'} />
-          <h2 className="textAreaTitle">Task Description</h2>
-          <TextAreaForm onChange={this.inputDescription} className="textArea" placeholder={'Task Description'} />
-          <h2 className="radioTitle">Department</h2>
-
-          {/* radio button options do not have selected when I add the click handlers */}
-          <form className="ticketType">
-            <label for="Housekeeping">
+          <h1 className='formTitle'>Add a Task</h1>
+          <h2 className="employeeName">Assign To</h2>
+          <InputTypeText onChange={this.inputEmployeeName} className="employeeNameInput" placeholder={'Employee Name'} />
+          <h2 className='taskInputTitle'>Task Title</h2>
+          <InputTypeText
+            onChange={this.inputTaskTitle}
+            className='taskInput'
+            placeholder={'Task Title'}
+          />
+          <h2 className='roomInputTitle'>Location</h2>
+          <InputTypeText
+            onChange={this.inputRoom}
+            className='roomInput'
+            placeholder={'Room Number'}
+          />
+          <h2 className='textAreaTitle'>Task Description</h2>
+          <TextAreaForm
+            onChange={this.inputDescription}
+            className='textArea'
+            placeholder={'Task Description'}
+          />
+          <h2 className='radioTitle'>Department</h2>
+          <form className='ticketType'>
+            <label for='Housekeeping'>
               <input
                 onClick={this.selectType}
-                name="task"
-                type="radio"
-                value="Housekeeping"
-                id="Housekeeping"
+                name='task'
+                type='radio'
+                value='Housekeeping'
+                id='Housekeeping'
               />
               Housekeeping
             </label>
-            <label for="Maintenance">
+            <label for='Maintenance'>
               <input
                 onClick={this.selectType}
-                name="task"
-                type="radio"
-                value="Maintenance"
-                id="Maintenance"
+                name='task'
+                type='radio'
+                value='Maintenance'
+                id='Maintenance'
               />
               Maintenance
             </label>
           </form>
-          <h2 className="dueByTitle" >Due By</h2>
-          <InputTypeText type="datetime-local" className="dueBy" onChange={this.inputDueDate} />
-          <FormButton onClick={()=>{
-            this.submitAddTaskForm();
-            this.props.clickBack();
-          }} className="submitButton">Submit</FormButton>
+          <h2 className='dueByTitle'>Due By</h2>
+          <InputTypeText
+            type='datetime-local'
+            className='dueBy'
+            onChange={this.inputDueDate}
+          />
+          <FormButton
+            onClick={() => {
+              //Clicking submit button sends user inputs to the server and takes user back to Maintenance landing page
+              this.submitAddTaskForm();
+              this.props.clickBack();
+            }}
+            className='submitButton'
+          >
+            Submit
+          </FormButton>
         </HalfRoundDiv>
       </div>
     );

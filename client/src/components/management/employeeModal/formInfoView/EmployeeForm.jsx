@@ -1,12 +1,14 @@
-import React, { useContext, useState } from 'react';
-import { EmployeeContext } from '../EmployeeContext';
-import ModalTitle from '../../../styledElements/ModalTitle';
-import FormRow from './FormRow';
-import FormButton from '../../../styledElements/FormButton';
-import PositionDropDown from './PositionDropDown';
-import { fields, mandatory } from './employeeFormConstants';
 import axios from 'axios';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
+
+import { EmployeeContext } from '../EmployeeContext';
+import FormButton from '../../../styledElements/FormButton';
+import FormRow from '../../../styledElements/FormRow';
+import { fields, mandatory } from './employeeFormConstants';
+import ModalTitle from '../../../styledElements/ModalTitle';
+import PositionDropDown from './PositionDropDown';
+import url from '../../../../lib/apiPath';
 
 const FlexDiv = styled.div`
   display: flex;
@@ -15,10 +17,11 @@ const FlexDiv = styled.div`
   align-items: center;
 `;
 
-const EmployeeForm = () => {
+const EmployeeForm = ({ back }) => {
   const { useEmployeeData, useNewEmployee } = useContext(EmployeeContext);
   const [newEmployee] = useNewEmployee;
   const [employee, setEmployee] = useEmployeeData;
+
   const editEmployee = (e) => {
     setEmployee((prevState) => ({
       ...prevState,
@@ -34,6 +37,7 @@ const EmployeeForm = () => {
       const field = row.field;
       if (!employee.hasOwnProperty(field)) return false;
     }
+    if (employee.name.split(' ').length < 2) return false;
     return true;
   };
 
@@ -42,14 +46,26 @@ const EmployeeForm = () => {
     if (dataChecker(employee)) {
       employee.country = 'Bermuda';
       employee.isActive = true;
-
+      const [firstName, lastName] = employee.name.split(' ');
+      const user = {
+        ...employee,
+        firstName,
+        lastName,
+      };
       if (newEmployee) {
-        // axios.post(`/employees`, employee).then(() => setEditMode(true));
+        axios.post(`${url}/employees`, user).then(() => {
+          back();
+        });
       } else {
-        // axios.put(`/employees/${employee._id}`).then(() => setEditMode(true));;
+        axios
+          .put(`${url}/employees/${employee.id}`, user)
+          .then(() => {
+            back();
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       }
-      console.log('this will be posted', employee);
-      setEditMode(false);
     } else {
       setInvalidEntry(true);
     }
@@ -58,11 +74,7 @@ const EmployeeForm = () => {
   return (
     <FlexDiv>
       <ModalTitle margin='0'>
-        {employee && (employee.firstName || employee.lastName)
-          ? `${employee.firstName ? employee.firstName : ''} ${
-              employee.lastName ? employee.lastName : ''
-            }`
-          : `New Employee`}
+        {employee && employee.name ? `${employee.name}` : `New Employee`}
       </ModalTitle>
       {fields.map((row, i) => {
         return (
@@ -88,11 +100,7 @@ const EmployeeForm = () => {
           <FormButton margin={'10px'} onClick={saveEmployee}>
             Save
           </FormButton>
-          <FormButton
-            margin={'10px'}
-            backgroundColor='berry'
-            onClick={() => console.log(employee)}
-          >
+          <FormButton margin={'10px'} backgroundColor='berry' onClick={back}>
             Cancel
           </FormButton>
         </div>

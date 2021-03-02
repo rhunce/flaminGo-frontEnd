@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import { colors } from '../../styledElements/styleGuid';
-import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
 import EmployeeForm from './formInfoView/EmployeeForm';
-import SummaryContainer from './workSummary/WorkSummaryContainer';
 import { EmployeeProvider } from './EmployeeContext';
+import HalfRoundDiv from '../../styledElements/HalfRoundDiv';
+import SummaryContainer from './workSummary/WorkSummaryContainer';
 import XButton from '../../styledElements/Xbutton';
 
 const FlexDiv = styled.div`
@@ -22,14 +23,14 @@ const Bar = styled.div`
   margin-right: 40px;
 `;
 
-const EmployeeContainer = ({ employee, sampleData, back }) => {
+const EmployeeContainer = ({ employee, back }) => {
   return (
-    <EmployeeProvider employee={employee} sampleData={sampleData}>
+    <EmployeeProvider employee={employee}>
       <HalfRoundDiv padding='40px' height='650px' width='975px'>
         <div style={{ position: 'relative' }}>
           <XButton onClick={back} />
           <FlexDiv>
-            <EmployeeForm />
+            <EmployeeForm back={back} />
             <Bar />
             <SummaryContainer />
           </FlexDiv>

@@ -1,4 +1,5 @@
 h1 {
+<<<<<<< HEAD
   color: #a91cff;
 <<<<<<< HEAD
 }
@@ -6,6 +7,9 @@ h1 {
 Body {
   font-family: Open Sans, sans-serif;
 =======
+=======
+  color: black;
+>>>>>>> c9dee9c6be2ec8af0bf9ddca5daf061f24825ce5
 }
 
 html {
@@ -60,7 +64,7 @@ CHECK-IN / CHECK-OUT
 }
 
 input.inputs {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .centeredInputBars {
@@ -74,7 +78,7 @@ input.inputs {
   margin: auto;
   width: 50%;
   height: 50%;
-  padding-top: 6%;
+  padding-top: 3%;
 }
 
 .searchButtonPlacement {
@@ -86,7 +90,7 @@ input.inputs {
 #searchButtonPlacement {
   margin: auto;
   width: 158px;
-  margin-top: 50px;
+  margin-top: 70px;
   background-color: #ff2063;
 }
 
@@ -170,7 +174,7 @@ td {
 .listHeaderSearch {
   border: 1px #ff2063 solid;
   height: 40px;
-  width: 450px;
+  width: 300px;
   display: block;
   float: right;
   padding: 0 0 0 10px;
@@ -227,15 +231,16 @@ td {
 .entryTable th {
   font-weight: 400;
   width: 200px;
+  color: black;
 }
 
 .listEntryText {
-  color: black;
   margin: 0 0 0 20px;
 }
 
 .listEntryButtons {
   float: right;
+  justify-content: right;
 }
 
 /*Dropdown Test*/
@@ -285,6 +290,88 @@ input[type=checkbox]:checked label {
   background-color: white;
 }
 
+.dateForm {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.title {
+  grid-area: 2/2/3/6;
+}
+
+.from {
+  grid-area: 5/2/6/6;
+}
+
+.fromDateInput {
+  grid-area: 7/2/8/6;
+}
+
+.to {
+  grid-area: 5/8/6/12;
+}
+
+.toDateInput {
+  grid-area: 7/8/8/12;
+}
+
+.submit {
+  grid-area: 10/2/11/6;
+}
+
+#roomListContainer {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+#roomListContainer .title {
+  grid-area: 2/2/3/12;
+}
+#roomListContainer .roomList {
+  grid-area: 4/2/12/12;
+}
+#roomListContainer .guestInfo {
+  grid-area: 1/2/2/12;
+}
+#roomListContainer .guestForm {
+  grid-area: 2/2/12/12;
+}
+#roomListContainer #guestInfo {
+  display: block;
+}
+#roomListContainer #listEntry {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #ff8b03;
+}
+
+.confirmation {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.confirmation .infoList {
+  grid-area: 2/5/3/9;
+  list-style-type: none;
+}
+.confirmation .title {
+  grid-area: 1/5/2/9;
+}
+.confirmation #submitConfirm {
+  grid-area: 3/5/4/9;
+}
+
+.guestForm {
+  width: 85%;
+}
+
 .addTask {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -330,10 +417,10 @@ input[type=checkbox]:checked label {
   grid-area: 19/5/20/8;
 }
 .addTask .dueBy {
-  grid-area: 20/5/22/8;
+  grid-area: 20/5/22/9;
 }
 .addTask .submitButton {
-  grid-area: 20/9/22/12;
+  grid-area: 20/10/22/12;
 }
 
 .mainBox {
@@ -368,23 +455,52 @@ input[type=checkbox]:checked label {
   padding-top: 10%;
 }
 
-.searchButtonPlacement {
-  margin: auto;
-  width: 158px;
-}
-
 #reservationOuterContainer {
   margin: auto;
+}
+
+#checkIn2Container {
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#checkIn3Container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#reservationTitle {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  margin: 20px 0 0 0;
+  text-align: center;
+  font-size: 30px;
+}
+
+#reservationSubTitle {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  margin: 0 0 30px 0;
+  text-align: center;
+  font-size: 18px;
+}
+
+.resSearch {
+  font-weight: 400;
 }
 
 #reservationInnerContainer {
-  width: 840px;
-  height: 440px;
+  width: 900px;
+  height: 350px;
   background-image: linear-gradient(135deg, #ff2063, #a91cff);
-  margin: auto;
   border-radius: 30px;
-  overflow: scroll;
+  margin: 0 0 30px 0;
 }
 
 #roomsListInnerContainer {
@@ -453,6 +569,12 @@ input[type=checkbox]:checked label {
   color: white;
 }
 
+#listEntriesScroll {
+  margin: 0 20px 20px 0;
+  height: 290px;
+  overflow: scroll;
+}
+
 #listEntryMini {
   height: 100px;
   width: calc(100% - 40px);
@@ -466,6 +588,7 @@ input[type=checkbox]:checked label {
 
 #listEntryMini:hover {
   background-color: #a91cff;
+  color: white;
   cursor: pointer;
 }
 
@@ -523,12 +646,15 @@ select {
   line-height: 2;
   font-family: "Open Sans", sans-serif;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 5fr 1fr;
+  margin: 50px 0 0 0;
 }
 
 .roomDetails div {
   grid-column-start: 2;
   grid-column-end: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .roomDetailsHeader {
@@ -536,16 +662,16 @@ select {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   color: black;
+  font-size: 22px;
 }
 
 .detailsTitle {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .closeRmDetails {
   margin-left: auto;
   margin-right: auto;
-  display: block;
   font-size: 14px;
   font-family: Open Sans, sans-serif;
   font-weight: 400;
@@ -555,10 +681,9 @@ select {
   border-radius: 20px;
   width: 160px;
   height: 40px;
-}
-
-.listEntryButtons {
-  float: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  outline: none;
 }
 
 #roomContainer {
@@ -568,63 +693,167 @@ select {
 }
 
 #roomEntriesContainer {
-  padding: 20px;
-  margin: auto;
-  height: calc(90% - 80px);
-  width: calc(60% - 40px);
+  padding: 30px;
+  display: flex;
+  height: calc(60% - 80px);
+  width: calc(100% - 40px);
+  flex-direction: column;
 }
 
-#roomBox {
-  border: #e000ce solid;
+#roomBox_add {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  flex: 1 0 auto;
+}
+
+#roomHeaderBox {
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 0;
+  text-transform: uppercase;
 }
 
 .roomTable {
-  border: #00ff0d solid;
-  margin: 0 auto;
-  height: calc(80% - 80px);
-  width: calc(48% - 40px);
+  margin-top: 0px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  display: block;
+  height: calc(90% - 80px);
+  width: calc(90% - 40px);
   border-radius: 30px;
   background-color: #ff2063;
-  overflow: scroll;
 }
 
 #roomInnerTable1 {
-  border: #d0ff00 solid;
   height: 100px;
   width: calc(100% - 40px);
   height: calc(100% - 80px);
-  margin: 0 auto;
-  border-radius: 30px;
+  margin: 40px 0 0 15px;
+  border-radius: 20px;
+}
+
+#roomInputBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+#roomlabel {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+#roomInputQuery1, #roomInputQuery2 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  padding: 7px 7px 7px 7px;
+}
+
+#roomInputBoxInside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  align-items: center;
 }
 
 #roomInnerTable2 {
-  border: #d0ff00 solid;
-  height: 100px;
+  height: 80px;
   width: calc(100% - 40px);
-  height: calc(50% - 80px);
-  margin: 0 auto;
-  border-radius: 30px;
+  height: calc(100% - 80px);
+  margin: 0 0 15px 15px;
+  border-radius: 20px;
+  max-height: 500px;
+  overflow-y: scroll;
+  position: relative;
+  bottom: 0;
 }
 
-#roomEntry {
-  border: #1900ff solid;
-  height: 100px;
+#roomInnerTable3 {
+  margin: 0 20px 10px 20px;
+  padding-bottom: 10px;
+}
+
+#roomSubmitButton {
+  width: 42%;
+  height: 60%;
+  font-size: 22px;
+  padding: 15px;
+  margin-bottom: 30px;
+  background-color: #ff8b03;
+}
+
+#roomSubmitButton:hover {
+  background-color: #ff4f03;
+  cursor: pointer;
+}
+
+#buttonRight {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-content: start;
+  margin-right: 45px;
+}
+
+#setTypeButton {
+  height: 50px;
   width: calc(100% - 40px);
-  margin: 20px 20px 20px 20px;
   padding: 5px;
   border-radius: 30px;
   background-color: white;
   text-align: center;
+  margin: 10px 10px 15px 0;
+}
+
+#roomSelectText {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff2063;
+  border: none;
+  border-radius: 50px;
+  width: 400px;
+  height: 110px;
+  outline: none;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+#roomSelectText:hover {
+  color: #a91cff;
+  cursor: pointer;
 }
 
 #room_H3 {
   color: black;
 >>>>>>> 91255ce9fb1046c5eea3d7f1d21f946627e5ee0e
+}
+
+#roomDetailsContainer {
+  background-color: white;
+  width: 60%;
+  border-radius: 0 30px 0 30px;
+  overflow: scroll;
+}
+
+@media only screen and (max-width: 1300px) {
+  .titleTable th {
+    width: 120px;
+    border-right: solid 1px white;
+    font-weight: 600;
+  }
+
+  .entryTable th {
+    font-weight: 400;
+    width: 120px;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

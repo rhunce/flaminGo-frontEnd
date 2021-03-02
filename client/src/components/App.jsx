@@ -1,28 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import MainHeader from './GlobalComponents/Header.jsx';
-import Landing from './landingPage/MainLanding';
-import Login from './login/Login.jsx';
+import React from 'react';
+
+import MainHeader from './globalComponents/Header.jsx';
+import Landing from './globalComponents/landingPage/MainLanding';
+import Login from './globalComponents/login/Login';
 import { useAuth0 } from '@auth0/auth0-react';
+import useChoosePath from './globalComponents/landingPage/useChoosePath.jsx';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 const App = () => {
-  const [color, setColor] = useState('berry');
+  const { isAuthenticated, user, isLoading } = useAuth0();
 
-  const {
-    isLoading,
-    isAuthenticated,
-    error,
-    user,
-    loginWithRedirect,
-    logout,
-  } = useAuth0();
+  const [paths, setPaths] = useChoosePath({
+    management: false,
+    hm: false,
+    frontDesk: false,
+    timeSheet: false,
+    landing: true,
+  });
+
+  if (isLoading) {
+    return (
+      <div
+        style={{
+          position: 'fixed',
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <ClipLoader color='#ffffff' loading size={80} />
+      </div>
+    );
+  }
 
   return (
     <div>
       {isAuthenticated ? (
         <main className='main'>
-          <MainHeader />
-          <Landing user={user} />
+          <MainHeader back={() => setPaths('landing')} />
+          <Landing paths={paths} setPaths={setPaths} />
         </main>
       ) : (
         <Login />

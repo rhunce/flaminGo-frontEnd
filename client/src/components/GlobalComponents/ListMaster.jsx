@@ -1,27 +1,29 @@
 import React, { useState, useEffect, useContext } from 'react';
 import FormButton from '../styledElements/FormButton.jsx';
 import HalfRoundDiv from '../styledElements/HalfRoundDiv.jsx';
-import ListEntry from '../GlobalComponents/ListEntry.jsx';
+import ListEntry from './ListEntry.jsx';
 import {
   titleTableRooms,
   titleTableTasks,
   titleTableEmployees,
   titleTableGuests,
-} from './ListComponents/titleTables.jsx';
+} from './listComponents/titleTables.jsx';
 import {
   entryTableRooms,
   entryTableTasks,
   entryTableEmployees,
   entryTableGuests,
-} from './ListComponents/entryTables.jsx';
+} from './listComponents/entryTables.jsx';
 import {
   roomsData,
   employeeData,
   taskData,
   reservationData,
-} from "../../SampleData/SampleData.js";
+} from '../../SampleData/SampleData.js';
 import axios from 'axios';
-import { MainContext } from '../landingPage/MainContext';
+import { MainContext } from './landingPage/MainContext';
+
+import url from '../../lib/apiPath.js';
 
 const ListMaster = ({
   type,
@@ -29,49 +31,35 @@ const ListMaster = ({
   handleBackgroundChange,
   onClick1,
   onClick2,
+  openNewEmployee,
 }) => {
-
-  // useEffect(() => {
-  //   handleBackChange('black');
-  //   handleBackgroundChange('listBgContainer');
-  // });
-
   let titleTable, searchParam;
 
   const { position } = useContext(MainContext);
 
-  const [dataSet, setDataSet] = useState([])
+  const [dataSet, setDataSet] = useState([]);
   useEffect(() => {
     handleBackChange('black');
     handleBackgroundChange('listBgContainer');
-    if (type ==="room") {
-      axios.get("/rooms/")
-      .then((data) => {setDataSet(data.data)})
-      // .then(({ data }) => {
-      //   console.log('Data:', data)
-      //   return data.map((room) => {
-      //     console.log('Room:', room)
-      //     axios.get(`/rooms/${room._id}`)
-      //     .then(({ data }) => {room.roomType = data.roomType;
-      //     return room})
-      //   })
-      // })
-      // .then((fullData) => {return Promise.all(fullData)})
-      // .then((result) => {setDataSet(result)})
-    } else if (type ==="employee") {
-      axios.get("/employees/")
-      .then((data) => {setDataSet(data.data)})
-    } else if (type ==="task") {
-      axios.get("/tasks/")
-      .then((data) => {setDataSet(data.data)})
+
+    if (type === 'room') {
+      axios.get(`${url}/rooms/`).then((data) => {
+        setDataSet(data.data);
+      });
+    } else if (type === 'employee') {
+      axios.get(`${url}/employees/`).then((data) => {
+        setDataSet(data.data);
+      });
+    } else if (type === 'task') {
+      axios.get(`${url}/tasks/`).then((data) => {
+        setDataSet(data.data);
+      });
     }
   }, []);
 
-  console.log('dataset:', dataSet)
-
   if (type === 'room') {
     titleTable = titleTableRooms();
-    searchParam = 'Search by amenity';
+    searchParam = 'Search by amenity or type';
     // setDataSet(roomsData)
   } else if (type === 'employee') {
     titleTable = titleTableEmployees();
@@ -83,10 +71,9 @@ const ListMaster = ({
     // setDataSet(taskData)
   }
 
-  var data = JSON.parse(JSON.stringify(dataSet))
+  var data = JSON.parse(JSON.stringify(dataSet));
 
-
- // let titleTable, searchParam;
+  // let titleTable, searchParam;
 
   // if (type === 'room') {
   //   titleTable = titleTableRooms();
@@ -130,7 +117,8 @@ const ListMaster = ({
 
   const handleSearch = (e) => {
     let search = document.getElementById('searchBar').value;
-    setSearch(search);
+    let searchLower = search.toLowerCase();
+    setSearch(searchLower);
   };
 
   let searched = [];
@@ -139,13 +127,21 @@ const ListMaster = ({
       searched = data.filter((room) => {
         let amenitiesString = room.amenities.join();
         let amenitiesLower = amenitiesString.toLowerCase();
-        return amenitiesLower.includes(searchTerm);
+        let roomType = room.roomType.toLowerCase();
+        let searchString = amenitiesLower + roomType;
+        return searchString.includes(searchTerm);
       });
       data = searched;
     } else if (type === 'employee') {
       searched = data.filter((employee) => {
         let name = employee.name.toLowerCase();
         return name.includes(searchTerm);
+      });
+      data = searched;
+    } else if (type === 'task') {
+      searched = data.filter((task) => {
+        let assignedTo = task.employeeAssigned.toLowerCase();
+        return assignedTo.includes(searchTerm);
       });
       data = searched;
     }
@@ -156,39 +152,59 @@ const ListMaster = ({
   const [sortTerm, setSort] = useState('');
 
   let handleSort = () => {
-    let sortBy = document.getElementsByClassName("sortBy")[0].value;
-    setSort(sortBy)
-  }
+    let sortBy = document.getElementsByClassName('sortBy')[0].value;
+    setSort(sortBy);
+  };
 
-  if (sortTerm === "roomType" || sortTerm === "name" || sortTerm === "position") {
-    data.sort(function(a, b){
-      if(a[sortTerm] < b[sortTerm]) { return -1; }
-      if(a[sortTerm] > b[sortTerm]) { return 1; }
+  if (
+    sortTerm === 'roomType' ||
+    sortTerm === 'name' ||
+    sortTerm === 'position'
+  ) {
+    data.sort(function (a, b) {
+      if (a[sortTerm] < b[sortTerm]) {
+        return -1;
+      }
+      if (a[sortTerm] > b[sortTerm]) {
+        return 1;
+      }
       return 0;
-  })
-  } else if (sortTerm === "roomNumber") {
-    data.sort(function(a, b){
-      if(parseInt(a[sortTerm]) < parseInt(b[sortTerm])) { return -1; }
-      if(parseInt(a[sortTerm]) > parseInt(b[sortTerm])) { return 1; }
+    });
+  } else if (sortTerm === 'roomNumber') {
+    data.sort(function (a, b) {
+      if (parseInt(a[sortTerm]) < parseInt(b[sortTerm])) {
+        return -1;
+      }
+      if (parseInt(a[sortTerm]) > parseInt(b[sortTerm])) {
+        return 1;
+      }
       return 0;
-  })
+    });
   }
 
   let sortOptions;
-  if (type === "room") {
-    sortOptions =   <select className="sortBy" defaultValue="" onChange={handleSort}>
-    <option value="" disabled hidden>Sort By</option>
-    <option value="roomNumber">Room Number</option>
-    <option value="roomType">Room Type</option>
-  </select>
-  } else if (type === "employee") {
-    sortOptions = <select className="sortBy" defaultValue="" onChange={handleSort}>
-    <option value="" disabled hidden>Sort By</option>
-    <option value="position">Position</option>
-    <option value="name">Name</option>
-  </select>
-  } else if (type === "task") {
-    sortOptions = "";
+  if (type === 'room') {
+    sortOptions = (
+      <select className='sortBy' defaultValue='' onChange={handleSort}>
+        <option value='' disabled hidden>
+          Sort By
+        </option>
+        <option value='roomNumber'>Room Number</option>
+        <option value='roomType'>Room Type</option>
+      </select>
+    );
+  } else if (type === 'employee') {
+    sortOptions = (
+      <select className='sortBy' defaultValue='' onChange={handleSort}>
+        <option value='' disabled hidden>
+          Sort By
+        </option>
+        <option value='position'>Position</option>
+        <option value='name'>Name</option>
+      </select>
+    );
+  } else if (type === 'task') {
+    sortOptions = '';
   }
 
   //Filter functionality
@@ -204,12 +220,23 @@ const ListMaster = ({
     data = data.filter((room) => {
       let vacant = !room.isOccupied;
 
-      return vacant}
-    );
-  } else if (filterTerm === "cleaned") {
+      return vacant;
+    });
+  } else if (filterTerm === 'occupied') {
+    data = data.filter((room) => {
+      let occupied = room.isOccupied;
+
+      return occupied;
+    });
+  } else if (filterTerm === 'cleaned') {
     data = data.filter((room) => {
       let cleaned = room.isClean;
       return cleaned;
+    });
+  } else if (filterTerm === 'uncleaned') {
+    data = data.filter((room) => {
+      let notcleaned = !room.isClean;
+      return notcleaned;
     });
   } else if (filterTerm === 'worked') {
     data = data.filter((employee) => {
@@ -224,38 +251,81 @@ const ListMaster = ({
     data = data.filter((task) => {
       return task.department === 'Maintenance';
     });
+  } else if (filterTerm === 'completed') {
+    axios
+      .get(`${url}/tasks`, { params: { isComplete: true } })
+      .then((results) => {
+        setDataSet(results.data);
+      });
+  } else if (filterTerm === 'uncompleted') {
+    axios
+      .get(`${url}/tasks`, { params: { isComplete: false } })
+      .then((results) => {
+        setDataSet(results.data);
+      });
   } else if (filterTerm === '') {
     data = data;
   }
 
   let filterOptions;
-  if (type === "room") {
-    filterOptions = <select className="filterBy" defaultValue="" onChange={handleFilter}>
-    <option value="" disabled hidden>Filter</option>
-    <option value="">See All Rooms</option>
-    <option value="vacancy">Vacant</option>
-    <option value="cleaned">Cleaned</option>
-  </select>
-  } else if (type === "employee") {
-    filterOptions = <select className="filterBy" defaultValue="" onChange={handleFilter}>
-    <option value="" disabled hidden>Filter</option>
-    <option value="">See All Employees</option>
-    <option value="worked">Worked This Week</option>
-    </select>
-  } else if (type === "task") {
-     filterOptions = <select className="filterBy" defaultValue="" onChange={handleFilter}>
-    <option value="" disabled hidden>Filter</option>
-    <option value="">See All Tasks</option>
-    <option value="housekeeping">Housekeeping</option>
-    <option value="maintenance">Maintenance</option>
-    </select>
+  if (type === 'room') {
+    filterOptions = (
+      <select className='filterBy' defaultValue='' onChange={handleFilter}>
+        <option value='' disabled hidden>
+          Filter
+        </option>
+        <option value=''>See All Rooms</option>
+        <option value='vacancy'>Vacant</option>
+        <option value='occupied'>Occupied</option>
+        <option value='cleaned'>Cleaned</option>
+        <option value='uncleaned'>Uncleaned</option>
+      </select>
+    );
+  } else if (type === 'employee') {
+    filterOptions = (
+      <select className='filterBy' defaultValue='' onChange={handleFilter}>
+        <option value='' disabled hidden>
+          Filter
+        </option>
+        <option value=''>See All Employees</option>
+        <option value='worked'>Worked This Week</option>
+      </select>
+    );
+  } else if (type === 'task') {
+    filterOptions = (
+      <select className='filterBy' defaultValue='' onChange={handleFilter}>
+        <option value='' disabled hidden>
+          Filter
+        </option>
+        <option value='housekeeping'>Housekeeping</option>
+        <option value='maintenance'>Maintenance</option>
+        <option value='completed'>Completed</option>
+        <option value='uncompleted'>Uncompleted</option>
+      </select>
+    );
   }
 
-  let addButton = ''
-  if (position === "systemAdministration" && type === "room") {
-    addButton = <FormButton backgroundColor="berry" margin="0 30px 0 0" onClick={onClick1}>Add Room</FormButton>
-  } else if (position === "systemAdministration" && type === "employee") {
-    addButton = <FormButton backgroundColor="berry" margin="0 30px 0 0">Add Employee</FormButton>
+  let addButton = '';
+  if (position === 'systemAdministration' && type === 'room') {
+    addButton = (
+      <FormButton
+        backgroundColor='berry'
+        margin='0 30px 0 0'
+        onClick={onClick1}
+      >
+        Add Room
+      </FormButton>
+    );
+  } else if (position === 'systemAdministration' && type === 'employee') {
+    addButton = (
+      <FormButton
+        backgroundColor='berry'
+        margin='0 30px 0 0'
+        onClick={openNewEmployee}
+      >
+        Add Employee
+      </FormButton>
+    );
   }
 
   return (
@@ -292,6 +362,7 @@ const ListMaster = ({
                   onClick2={onClick2}
                   table={entryTableRooms(entity)}
                   type='room'
+                  key={entity._id}
                 />
               );
             } else if (type === 'employee') {
@@ -299,9 +370,22 @@ const ListMaster = ({
                 <ListEntry
                   entity={entity}
                   onClick1={onClick1}
-                  onClick2={onClick2}
+                  onClick2={(entity) => {
+                    console.log(entity);
+                    axios
+                      .delete(`${url}/employees/${entity.id}`)
+                      .then(() => {
+                        axios.get(`${url}/employees/`).then(({ data }) => {
+                          setDataSet(data);
+                        });
+                      })
+                      .catch((err) => {
+                        console.error(err);
+                      });
+                  }}
                   table={entryTableEmployees(entity)}
                   type='employee'
+                  key={entity.id}
                 />
               );
             } else if (type === 'task') {
@@ -312,6 +396,8 @@ const ListMaster = ({
                   onClick2={onClick2}
                   table={entryTableTasks(entity)}
                   type='task'
+                  key={entity.task_id}
+                  completed={entity.isComplete}
                 />
               );
             } else if (type === 'guest') {
