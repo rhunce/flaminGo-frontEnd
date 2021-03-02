@@ -8,7 +8,7 @@ import FormRow from '../../../styledElements/FormRow';
 import { fields, mandatory } from './employeeFormConstants';
 import ModalTitle from '../../../styledElements/ModalTitle';
 import PositionDropDown from './PositionDropDown';
-import url from '../../../../lib/apiPath';
+import url, { employeeUrl } from '../../../../lib/apiPath';
 
 const FlexDiv = styled.div`
   display: flex;
@@ -53,12 +53,12 @@ const EmployeeForm = ({ back }) => {
         lastName,
       };
       if (newEmployee) {
-        axios.post(`${url}/employees`, user).then(() => {
+        axios.post(`${employeeUrl}/employees`, user).then(() => {
           back();
         });
       } else {
         axios
-          .put(`${url}/employees/${employee.id}`, user)
+          .put(`${employeeUrl}/employees/${employee.id}`, user)
           .then(() => {
             back();
           })

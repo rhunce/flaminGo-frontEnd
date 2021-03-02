@@ -23,7 +23,7 @@ import {
 import axios from 'axios';
 import { MainContext } from './landingPage/MainContext';
 
-import url from '../../lib/apiPath.js';
+import url, {employeeUrl} from '../../lib/apiPath.js';
 
 const ListMaster = ({
   type,
@@ -47,7 +47,7 @@ const ListMaster = ({
         setDataSet(data.data);
       });
     } else if (type === 'employee') {
-      axios.get(`${url}/employees/`).then((data) => {
+      axios.get(`${employeeUrl}/employees/`).then((data) => {
         setDataSet(data.data);
       });
     } else if (type === 'task') {
@@ -252,17 +252,17 @@ const ListMaster = ({
       return task.department === 'Maintenance';
     });
   } else if (filterTerm === 'completed') {
-    axios
-      .get(`${url}/tasks`, { params: { isComplete: true } })
-      .then((results) => {
-        setDataSet(results.data);
-      });
+    // axios
+    //   .get(`${url}/tasks`, { params: { isComplete: true } })
+    //   .then((results) => {
+    //     setDataSet(results.data);
+    //   });
   } else if (filterTerm === 'uncompleted') {
-    axios
-      .get(`${url}/tasks`, { params: { isComplete: false } })
-      .then((results) => {
-        setDataSet(results.data);
-      });
+    // axios
+    //   .get(`${url}/tasks`, { params: { isComplete: false } })
+    //   .then((results) => {
+    //     setDataSet(results.data);
+    //   });
   } else if (filterTerm === '') {
     data = data;
   }
@@ -373,9 +373,9 @@ const ListMaster = ({
                   onClick2={(entity) => {
                     console.log(entity);
                     axios
-                      .delete(`${url}/employees/${entity.id}`)
+                      .delete(`${employeeUrl}/employees/${entity.id}`)
                       .then(() => {
-                        axios.get(`${url}/employees/`).then(({ data }) => {
+                        axios.get(`${employeeUrl}/employees/`).then(({ data }) => {
                           setDataSet(data);
                         });
                       })

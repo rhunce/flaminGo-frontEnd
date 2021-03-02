@@ -5,7 +5,7 @@ import InputTypeText from '../styledElements/InputTypeText.jsx';
 import InputTypeRadio from '../styledElements/InputTypeRadio.jsx';
 import TextAreaForm from '../styledElements/TextAreaForm.jsx';
 import axios from 'axios';
-import url from '../../lib/apiPath';
+import url, {employeeUrl} from '../../lib/apiPath';
 
 class AddTaskForm extends React.Component {
   constructor(props) {
@@ -77,7 +77,7 @@ class AddTaskForm extends React.Component {
     Object.assign(requestBody, this.state);
 
     //use employeeAssigned string from state to search database for their employee ID
-    axios.get(`${url}/employees/`)
+    axios.get(`${employeeUrl}/employees/`)
       .then(({data}) => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].name === this.state.employeeAssigned) {
