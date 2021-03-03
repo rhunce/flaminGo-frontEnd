@@ -4,9 +4,9 @@ node_modules/
 ## Compiled files ##
 client/dist/*
 
-## API keys ##
-env/config.js
-.env
+# ## API keys ##
+# env/config.js
+# .env
 
 ## ETC ##
 !client/dist/index.html

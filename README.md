@@ -1,98 +1,45 @@
 # FlaminGo Front-end by Tonhil Hotels
-> Table of Contents
+Property management application with authentication.
 
-- [Introduction](#Introduction)
-- [Technologies](#Technologies)
-- [Components](#Components)
-   - [Login Portal Page](#Login-Portal-Page)
-   - [Front desk](#Front-desk)
-   - [Housekeeping/maintenance](#Housekeeping/maintenance)
-   - [Management](#Management)
-   - [System Admin](#System-Admin)
+## Getting Started
+​
+(1) Fork the repo and clone it down to your computer.
 
-- [Installation Guidelines](#Installation-Guidelines)
+(2) Open it in VS Code (or whatever IDE you use) like you normally would.
 
----
-
-## Introduction
-> 'Property Management Solutin APP' Developed by a team of 11 developers
+(3) In your terminal, from the root directory of the repository, run
+​
 ```
-We developed this project as a group over the course of 7 days during the Hack Reactor program.
-UPDATED NEEDED
+npm install --force
 ```
-* Deployed our site on AWS can be found [here](URL_for_link).
 
-## Technologies
->  For this project, we used the following languages and frameworks in our implementation
+(4) then run
+​
+```
+npm run build-dev
+```
 
-* Front-end
-  + React
-    Hooks
-    Context
-  + Axios
-  + Webpack
-  + Babel
+(5) and then run this to start your server
+```
+npm run start
+```
+​
+(6) Now, type
+```
+localhost:3000
+```
+into your browser and hit ENTER. The application should open up.
 
-* Server
-  + Nodejs
-  + Express
-  + Nodemon
-  + Morgan
+(7) Click the Longin button.
 
-* Back-end
-  + MongoDB
-  + Mongoose
+(8) Enter for email:
+```
+tina123@gmail.com
+```
 
-* Deployment
-  + Docker
-  + AWS
+(9) Enter for password:
+```
+password123!
+```
 
-* Test Suite
-  + Jest
-  + Enzyme
-
-* Style Guide
-  + ESLint with AirBNB style guide
-
-## Components
-Document can be found [here](URL_for_link).
-
-#### 0. LOGIN PORTAL PAGE
- **Main Landing Page:**
-  * This page will have a Login & Password
-  * Each user will have their own token attached which will let them have certain permissions
-
-#### 1 .FRONT DESK COMPONENTS
-  * Guest Check In
-  * Guest Check Out
-  * Check Room Status
-
-
-#### 2 .HOUSEKEEPING / MAINTENANCE COMPONENTS
-  * See Tasks
-  * Add Task Form
-  * Check Room Status_intergrate into front-desk component
-
-#### 3. MANAGEMENT COMPONENTS
-  * Employee List
-  * Employee Details
-  * Timesheets
-  * Payments
-
-#### 4 .SYSTEM ADMIN COMPONENTS
- **Hotel Setup for each location :**
-  * Add rooms
-  * Edit rooms
-
-## Installation Guidelines
-  1. clone this repo to your local machine
-  2. run ```npm install``` in this 'root' directory
-  3. run ```npm run build-dev```in this 'root' directory
-  4. run ```npm run sass```
-  5. clone 'flaminGo-backEnd' repo to your local machine in same folder for this repo
-  6. run ```npm install``` in the flaminGo-backEnd 'root' directory
-  7. run ```npm start``` in the flaminGo-backEnd 'root' directory
-  8. find the site on ***localhost:7777***
-
-
-_Have a great day!_
+(10) Click the Log In button and feel free to explore the App.
